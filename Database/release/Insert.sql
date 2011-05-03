@@ -4,9 +4,13 @@
 Insert into Customers Values('Mario','Mario','steven','nash','19880422',1,'0903322322','210 HighWay')
 Insert into Customers Values('Lohan','Lohan','maria','carey','19880712',0,'0903754323','91 SanPaulo')
 
---Insert Managers 
+--Insert Roles 
 
-Insert into Managers Values('admin','admin','')
+Insert into Roles Values('Super admin')
+
+--Insert Accounts 
+
+Insert into Accounts Values('admin','admin','0')
 
 --Insert Menu
 
@@ -14,11 +18,11 @@ Insert into Menu Values('Manage Members','','')
 Insert into Menu Values('Manage Staffs','','')
 Insert into Menu Values('Manage Orders','','')
 
---insert Me_Ma
+--insert Ro_Me
 
-Insert into Me_Ma Values(0,0)
-Insert into Me_Ma Values(0,1)
-Insert into Me_Ma Values(0,2)
+Insert into Ro_Me Values(0,0)
+Insert into Ro_Me Values(0,1)
+Insert into Ro_Me Values(0,2)
 
 -- insert PaymentMethods
 
