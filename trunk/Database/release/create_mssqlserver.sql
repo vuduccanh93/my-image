@@ -5,7 +5,7 @@
 /* Project name:                                                          */
 /* Author:                                                                */
 /* Script type:           Database creation script                        */
-/* Created on:            2011-05-03 19:10                                */
+/* Created on:            2011-05-03 19:13                                */
 /* ---------------------------------------------------------------------- */
 
 
@@ -158,14 +158,14 @@ CREATE TABLE [Menu] (
 GO
 
 /* ---------------------------------------------------------------------- */
-/* Add table "Me_Ma"                                                      */
+/* Add table "Ro_Me"                                                      */
 /* ---------------------------------------------------------------------- */
 
-CREATE TABLE [Me_Ma] (
+CREATE TABLE [Ro_Me] (
     [ID] INTEGER IDENTITY(0,1) NOT NULL,
     [R_id] INTEGER,
     [M_id] INTEGER,
-    CONSTRAINT [PK_Me_Ma] PRIMARY KEY ([ID])
+    CONSTRAINT [PK_Ro_Me] PRIMARY KEY ([ID])
 )
 GO
 
@@ -241,11 +241,11 @@ ALTER TABLE [Accounts] ADD CONSTRAINT [Roles_Accounts]
     FOREIGN KEY ([R_id]) REFERENCES [Roles] ([ID])
 GO
 
-ALTER TABLE [Me_Ma] ADD CONSTRAINT [Roles_Me_Ma] 
+ALTER TABLE [Ro_Me] ADD CONSTRAINT [Roles_Ro_Me] 
     FOREIGN KEY ([R_id]) REFERENCES [Roles] ([ID])
 GO
 
-ALTER TABLE [Me_Ma] ADD CONSTRAINT [Menu_Me_Ma] 
+ALTER TABLE [Ro_Me] ADD CONSTRAINT [Menu_Ro_Me] 
     FOREIGN KEY ([M_id]) REFERENCES [Menu] ([ID])
 GO
 
