@@ -1,0 +1,54 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>Untitled Page</title>
+    <link href="inc/css/web.css" rel="stylesheet" type="text/css" />
+    <!--[if IE]><p><lin k href="inc/css/ie.css" rel="stylesheet" type="text/css" /></p><![endif]-->
+</head>
+<body>
+    <form id="mainform" runat="server">
+      <div id="header">
+          <div id="header-wrapper"></div>    
+      </div>
+      <div id="space"></div>
+      <div id="content">
+          <div id="content-wrapper">
+              <div id="content-left">
+                <div class="nav">
+                    <asp:contentplaceholder id="ContentPlaceHolderLeft" runat="server">
+                    </asp:contentplaceholder>
+                    <ul>
+                        <li><a href="#">Home</a><em></em></li>
+                        <li><a href="#">Thông tin công nghệ</a><em></em></li>
+                    </ul>
+                </div>
+              </div>
+              <div id="content-right">
+              <div id="top">
+                 <div class="tl"></div><div class="tm"></div><div class="tr"></div>
+              </div>
+              <!----------------------------------------------------------------------->  
+              <div id="content-top"></div>
+              <div id="content-main">
+                <asp:contentplaceholder id="ContentPlaceHolderRight" runat="server">
+                </asp:contentplaceholder>
+              </div>
+              <!----------------------------------------------------------------------->        
+              <div id="bottom">
+                  <div class="bl"></div><div class="bm"></div><div class="br"></div>
+              </div>
+              <!----------------------------------------------------------------------->
+              </div>
+              <!----------------------------------------------------------------------->  
+          </div>
+      </div>
+      <div id="footer">
+          <div id="footer-wrapper"></div>
+      </div>
+      <div id="logo"></div>
+    </form>
+</body>
+</html>
