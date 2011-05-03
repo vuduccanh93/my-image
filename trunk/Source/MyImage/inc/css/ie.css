@@ -1,0 +1,141 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent;margin:0;padding:0;}
+
+body{
+    background:url(../img/header-bg.jpg) center top no-repeat #C5EFFF;
+    margin:0;
+    padding:0;
+    border:0;
+}
+#headwrap{
+    margin:0;
+    height: 150px;
+}
+#header-top{
+    background:url(../img/1px.png);
+    width:900px;
+    height:50px;
+    position:relative;
+    left:50%;
+    margin:0 0 10px -450px;	
+}
+#headwrap-inner{
+	background:url(../img/banner.png);
+    width:900px;
+    position:relative;
+    left:50%;
+    margin-left:-450px;
+	height:150px;
+}
+#subnav {
+	background:url(../img/menu.png) repeat-x;
+    width:900px;
+    position:relative;
+    left:50%;
+    margin-left:-450px;
+	margin-top:10px;
+	height:30px;
+    position:relative;
+	padding:10px 0 0 0;
+    text-align: left;
+}
+#subnav a,#subnav a:visited{
+    text-shadow: 0 -1px 1px #222;
+    text-decoration: none;
+    font-family: TrumpGothicEastRegular, Helvetica, Arial, 'Trebuchet MS', Tahoma, Arial, sans-serif;
+    font-size: 21px;
+    font-weight: normal;
+    line-height: 1px;
+	color:#fff;
+	padding:10px;
+	height:20px;
+}
+#subnav a:hover{
+	color:#000;
+}
+#space{
+    clear: both;
+}
+#footerwrap{
+    margin:5px 0;
+    height: 150px;
+}
+#footerwrap-inner{
+	background:url(../img/footer-bg.png) center no-repeat;
+    width:900px;
+	height:108px;
+    position:relative;
+    left:50%;
+    margin-left:-450px;
+}
+#contentwrap{
+	margin: 0;
+	padding:0;
+}
+#contentwrap-inner{
+	padding:0;
+	width:900px;
+    position:relative;
+    left:50%;
+    margin-left:-450px;
+}
+#home-right{
+    background:#C9EDF5;
+	margin: 0;
+	padding:5px;
+    float:right;
+    width: 695px;
+	height:700px;
+	
+}
+#home-left{
+	margin:0;
+	padding:0;
+	float:left;
+    width: 200px;
+}
+#home-fixedleft{
+    position: fixed;
+    left:50%;
+    margin-left:-450px;
+    top:200px;
+    width: 200px;
+}
+.box-header{
+	margin:7px 0 0 0 ;
+	padding:4px 0 0 0 ;
+	width:195px;
+	text-align:center;
+	height:30px;
+	background:url(../img/box-header.png) repeat-x;
+	font-size: 21px;
+}
+.box{
+    background:#FFF;	
+	width:195px;
+	padding: 0 5px;
+
+}
+.footer-box-left{
+	width:285px;
+	float:left;
+	padding:5px 0 0 15px
+}
+.footer-box-right{
+	width:595px;
+	float:right;
+	padding:5px 5px 5px 0;
+}
+.footer-box-right-left{
+	width:300px;
+	float:left;
+}
+.footer-box-right-right{
+	width:295px;
+	float:right;
+}
+.gettop{
+	position:fixed;
+	right:70px;
+	bottom:70px;
+	visibility:hidden;
+}
