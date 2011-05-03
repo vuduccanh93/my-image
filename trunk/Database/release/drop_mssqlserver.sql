@@ -1,11 +1,11 @@
 /* ---------------------------------------------------------------------- */
 /* Script generated with: DeZign for Databases v4.1.3                     */
 /* Target DBMS:           MS SQL Server 2005                              */
-/* Project file:          eProject.dez                                    */
+/* Project file:          database.dez                                    */
 /* Project name:                                                          */
 /* Author:                                                                */
 /* Script type:           Database drop script                            */
-/* Created on:            2011-05-03 13:52                                */
+/* Created on:            2011-05-03 14:51                                */
 /* ---------------------------------------------------------------------- */
 
 

@@ -1,11 +1,11 @@
 /* ---------------------------------------------------------------------- */
 /* Script generated with: DeZign for Databases v4.1.3                     */
 /* Target DBMS:           MS SQL Server 2005                              */
-/* Project file:          eProject.dez                                    */
+/* Project file:          database.dez                                    */
 /* Project name:                                                          */
 /* Author:                                                                */
 /* Script type:           Database creation script                        */
-/* Created on:            2011-05-03 13:52                                */
+/* Created on:            2011-05-03 14:51                                */
 /* ---------------------------------------------------------------------- */
 
 
@@ -177,7 +177,7 @@ CREATE TABLE [ShippingPrices] (
     [ID] INTEGER IDENTITY(0,1) NOT NULL,
     [S_providers_id] INTEGER,
     [Ship_time] VARCHAR(40),
-    [Price] VARCHAR(40),
+    [Price] FLOAT,
     [Last_modifed] VARCHAR(40),
     CONSTRAINT [PK_ShippingPrices] PRIMARY KEY ([ID])
 )
