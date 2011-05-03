@@ -5,7 +5,7 @@
 /* Project name:                                                          */
 /* Author:                                                                */
 /* Script type:           Database drop script                            */
-/* Created on:            2011-05-03 14:51                                */
+/* Created on:            2011-05-03 19:10                                */
 /* ---------------------------------------------------------------------- */
 
 
@@ -34,7 +34,10 @@ GO
 ALTER TABLE [UploadDetails] DROP CONSTRAINT [Upload_UploadDetails]
 GO
 
-ALTER TABLE [Me_Ma] DROP CONSTRAINT [Managers_Me_Ma]
+ALTER TABLE [Accounts] DROP CONSTRAINT [Roles_Accounts]
+GO
+
+ALTER TABLE [Me_Ma] DROP CONSTRAINT [Roles_Me_Ma]
 GO
 
 ALTER TABLE [Me_Ma] DROP CONSTRAINT [Menu_Me_Ma]
@@ -156,17 +159,17 @@ DROP TABLE [UploadDetails]
 GO
 
 /* ---------------------------------------------------------------------- */
-/* Drop table "Managers"                                                  */
+/* Drop table "Accounts"                                                  */
 /* ---------------------------------------------------------------------- */
 
 /* Drop constraints */
 
-ALTER TABLE [Managers] DROP CONSTRAINT [PK_Managers]
+ALTER TABLE [Accounts] DROP CONSTRAINT [PK_Accounts]
 GO
 
 /* Drop table */
 
-DROP TABLE [Managers]
+DROP TABLE [Accounts]
 GO
 
 /* ---------------------------------------------------------------------- */
@@ -223,4 +226,18 @@ GO
 /* Drop table */
 
 DROP TABLE [StateProvinces]
+GO
+
+/* ---------------------------------------------------------------------- */
+/* Drop table "Roles"                                                     */
+/* ---------------------------------------------------------------------- */
+
+/* Drop constraints */
+
+ALTER TABLE [Roles] DROP CONSTRAINT [PK_Roles]
+GO
+
+/* Drop table */
+
+DROP TABLE [Roles]
 GO
