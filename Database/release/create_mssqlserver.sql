@@ -5,7 +5,7 @@
 /* Project name:                                                          */
 /* Author:                                                                */
 /* Script type:           Database creation script                        */
-/* Created on:            2011-05-03 14:51                                */
+/* Created on:            2011-05-03 19:10                                */
 /* ---------------------------------------------------------------------- */
 
 
@@ -132,15 +132,15 @@ CREATE TABLE [UploadDetails] (
 GO
 
 /* ---------------------------------------------------------------------- */
-/* Add table "Managers"                                                   */
+/* Add table "Accounts"                                                   */
 /* ---------------------------------------------------------------------- */
 
-CREATE TABLE [Managers] (
+CREATE TABLE [Accounts] (
     [ID] INTEGER IDENTITY(0,1) NOT NULL,
     [Username] VARCHAR(80),
     [Password] VARCHAR(80),
     [R_id] INTEGER,
-    CONSTRAINT [PK_Managers] PRIMARY KEY ([ID])
+    CONSTRAINT [PK_Accounts] PRIMARY KEY ([ID])
 )
 GO
 
@@ -163,8 +163,8 @@ GO
 
 CREATE TABLE [Me_Ma] (
     [ID] INTEGER IDENTITY(0,1) NOT NULL,
-    [Ma_id] INTEGER,
-    [Me_id] INTEGER,
+    [R_id] INTEGER,
+    [M_id] INTEGER,
     CONSTRAINT [PK_Me_Ma] PRIMARY KEY ([ID])
 )
 GO
@@ -191,6 +191,17 @@ CREATE TABLE [StateProvinces] (
     [ID] INTEGER IDENTITY(0,1) NOT NULL,
     [Name] VARCHAR(40),
     CONSTRAINT [PK_StateProvinces] PRIMARY KEY ([ID])
+)
+GO
+
+/* ---------------------------------------------------------------------- */
+/* Add table "Roles"                                                      */
+/* ---------------------------------------------------------------------- */
+
+CREATE TABLE [Roles] (
+    [ID] INTEGER IDENTITY(0,1) NOT NULL,
+    [Name] NVARCHAR(40),
+    CONSTRAINT [PK_Roles] PRIMARY KEY ([ID])
 )
 GO
 
@@ -226,12 +237,16 @@ ALTER TABLE [UploadDetails] ADD CONSTRAINT [Upload_UploadDetails]
     FOREIGN KEY ([U_id]) REFERENCES [Upload] ([ID])
 GO
 
-ALTER TABLE [Me_Ma] ADD CONSTRAINT [Managers_Me_Ma] 
-    FOREIGN KEY ([Ma_id]) REFERENCES [Managers] ([ID])
+ALTER TABLE [Accounts] ADD CONSTRAINT [Roles_Accounts] 
+    FOREIGN KEY ([R_id]) REFERENCES [Roles] ([ID])
+GO
+
+ALTER TABLE [Me_Ma] ADD CONSTRAINT [Roles_Me_Ma] 
+    FOREIGN KEY ([R_id]) REFERENCES [Roles] ([ID])
 GO
 
 ALTER TABLE [Me_Ma] ADD CONSTRAINT [Menu_Me_Ma] 
-    FOREIGN KEY ([Me_id]) REFERENCES [Menu] ([ID])
+    FOREIGN KEY ([M_id]) REFERENCES [Menu] ([ID])
 GO
 
 ALTER TABLE [ShippingPrices] ADD CONSTRAINT [StateProvinces_ShippingPrices] 
