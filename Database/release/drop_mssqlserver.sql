@@ -5,7 +5,7 @@
 /* Project name:                                                          */
 /* Author:                                                                */
 /* Script type:           Database drop script                            */
-/* Created on:            2011-05-03 19:10                                */
+/* Created on:            2011-05-03 19:13                                */
 /* ---------------------------------------------------------------------- */
 
 
@@ -37,10 +37,10 @@ GO
 ALTER TABLE [Accounts] DROP CONSTRAINT [Roles_Accounts]
 GO
 
-ALTER TABLE [Me_Ma] DROP CONSTRAINT [Roles_Me_Ma]
+ALTER TABLE [Ro_Me] DROP CONSTRAINT [Roles_Ro_Me]
 GO
 
-ALTER TABLE [Me_Ma] DROP CONSTRAINT [Menu_Me_Ma]
+ALTER TABLE [Ro_Me] DROP CONSTRAINT [Menu_Ro_Me]
 GO
 
 ALTER TABLE [ShippingPrices] DROP CONSTRAINT [StateProvinces_ShippingPrices]
@@ -187,17 +187,17 @@ DROP TABLE [Menu]
 GO
 
 /* ---------------------------------------------------------------------- */
-/* Drop table "Me_Ma"                                                     */
+/* Drop table "Ro_Me"                                                     */
 /* ---------------------------------------------------------------------- */
 
 /* Drop constraints */
 
-ALTER TABLE [Me_Ma] DROP CONSTRAINT [PK_Me_Ma]
+ALTER TABLE [Ro_Me] DROP CONSTRAINT [PK_Ro_Me]
 GO
 
 /* Drop table */
 
-DROP TABLE [Me_Ma]
+DROP TABLE [Ro_Me]
 GO
 
 /* ---------------------------------------------------------------------- */
