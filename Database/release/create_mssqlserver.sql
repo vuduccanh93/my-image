@@ -5,7 +5,7 @@
 /* Project name:                                                          */
 /* Author:                                                                */
 /* Script type:           Database creation script                        */
-/* Created on:            2011-05-03 19:13                                */
+/* Created on:            2011-05-04 09:01                                */
 /* ---------------------------------------------------------------------- */
 
 
@@ -140,6 +140,7 @@ CREATE TABLE [Accounts] (
     [Username] VARCHAR(80),
     [Password] VARCHAR(80),
     [R_id] INTEGER,
+    [Status] INTEGER,
     CONSTRAINT [PK_Accounts] PRIMARY KEY ([ID])
 )
 GO

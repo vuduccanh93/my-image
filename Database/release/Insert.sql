@@ -1,5 +1,5 @@
 
---Insert customers
+--Insert Customers
 
 Insert into Customers Values('Mario','Mario','steven','nash','19880422',1,'0903322322','210 HighWay')
 Insert into Customers Values('Lohan','Lohan','maria','carey','19880712',0,'0903754323','91 SanPaulo')
@@ -10,7 +10,7 @@ Insert into Roles Values('Super admin')
 
 --Insert Accounts 
 
-Insert into Accounts Values('admin','admin','0')
+Insert into Accounts Values('admin','admin','0','0')
 
 --Insert Menu
 
