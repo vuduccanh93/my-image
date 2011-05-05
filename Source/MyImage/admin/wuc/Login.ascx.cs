@@ -13,7 +13,11 @@ public partial class admin_wuc_Login : System.Web.UI.UserControl
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Session["U"] != null)
+        {
+            String _RedirectUrl = @"../";
+            Response.Redirect(_RedirectUrl);
+        }
     }
     protected void submit_Click(object sender, EventArgs e)
     {
@@ -28,9 +32,12 @@ public partial class admin_wuc_Login : System.Web.UI.UserControl
             Session["P"] = _Acc.Password;
             Session["R"] = _Acc.Rid;
             Session["I"] = _Acc.ID;
+            Session.Timeout = 10;
             clearTextFields();
-
-            lblError.Text = "Username/password is match!";
+            String _RedirectUrl = Request.Url.GetLeftPart(UriPartial.Authority) +
+                                VirtualPathUtility.ToAbsolute("~/") +
+                                @"admin/";
+            Response.Redirect(_RedirectUrl);
         }
         else
         {
@@ -42,5 +49,11 @@ public partial class admin_wuc_Login : System.Web.UI.UserControl
     {
         txtUsername.Text = "";
         txtPassword.Text = "";
+    }
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        String _RedirectUrl = Request.Url.GetLeftPart(UriPartial.Authority) +
+                                VirtualPathUtility.ToAbsolute("~/");
+        Response.Redirect(_RedirectUrl);
     }
 }
