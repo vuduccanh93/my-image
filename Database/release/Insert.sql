@@ -14,9 +14,9 @@ Insert into Accounts Values('admin','admin','0','0')
 
 --Insert Menu
 
-Insert into Menu Values('Manage Members','','')
-Insert into Menu Values('Manage Staffs','','')
-Insert into Menu Values('Manage Orders','','')
+Insert into Menu Values('Manage Members','?tk=m','')
+Insert into Menu Values('Manage Staffs','?tk=s','')
+Insert into Menu Values('Manage Orders','?tk=o','')
 
 --insert Ro_Me
 
