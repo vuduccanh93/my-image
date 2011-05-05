@@ -11,7 +11,7 @@ using System.Web.UI.HtmlControls;
 /// <summary>
 /// Summary description for AccountModel
 /// </summary>
-public class AccountModel
+public class MemberModel
 {
     private String id;
     private String username;
@@ -44,7 +44,7 @@ public class AccountModel
         get { return this.status; }
         set { this.status = value; }
     }
-    public AccountModel()
+    public MemberModel()
 	{
         id = "";
         username = "";
