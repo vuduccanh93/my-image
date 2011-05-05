@@ -5,7 +5,7 @@
 /* Project name:                                                          */
 /* Author:                                                                */
 /* Script type:           Database creation script                        */
-/* Created on:            2011-05-04 09:01                                */
+/* Created on:            2011-05-05 18:29                                */
 /* ---------------------------------------------------------------------- */
 
 
@@ -132,16 +132,16 @@ CREATE TABLE [UploadDetails] (
 GO
 
 /* ---------------------------------------------------------------------- */
-/* Add table "Accounts"                                                   */
+/* Add table "Members"                                                    */
 /* ---------------------------------------------------------------------- */
 
-CREATE TABLE [Accounts] (
+CREATE TABLE [Members] (
     [ID] INTEGER IDENTITY(0,1) NOT NULL,
     [Username] VARCHAR(80),
     [Password] VARCHAR(80),
     [R_id] INTEGER,
     [Status] INTEGER,
-    CONSTRAINT [PK_Accounts] PRIMARY KEY ([ID])
+    CONSTRAINT [PK_Members] PRIMARY KEY ([ID])
 )
 GO
 
@@ -238,7 +238,7 @@ ALTER TABLE [UploadDetails] ADD CONSTRAINT [Upload_UploadDetails]
     FOREIGN KEY ([U_id]) REFERENCES [Upload] ([ID])
 GO
 
-ALTER TABLE [Accounts] ADD CONSTRAINT [Roles_Accounts] 
+ALTER TABLE [Members] ADD CONSTRAINT [Roles_Members] 
     FOREIGN KEY ([R_id]) REFERENCES [Roles] ([ID])
 GO
 

@@ -8,15 +8,15 @@ Insert into Customers Values('Lohan','Lohan','maria','carey','19880712',0,'09037
 
 Insert into Roles Values('Super admin')
 
---Insert Accounts 
+--Insert Members 
 
-Insert into Accounts Values('admin','admin','0','0')
+Insert into Members Values('admin','admin','0','0')
 
 --Insert Menu
 
-Insert into Menu Values('Manage Members','?tk=m','')
-Insert into Menu Values('Manage Staffs','?tk=s','')
-Insert into Menu Values('Manage Orders','?tk=o','')
+Insert into Menu Values('Customers','?t=cu','')
+Insert into Menu Values('Accounts','?t=ac','')
+Insert into Menu Values('Orders','?t=or','')
 
 --insert Ro_Me
 

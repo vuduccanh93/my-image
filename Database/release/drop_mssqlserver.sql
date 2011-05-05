@@ -5,7 +5,7 @@
 /* Project name:                                                          */
 /* Author:                                                                */
 /* Script type:           Database drop script                            */
-/* Created on:            2011-05-04 09:01                                */
+/* Created on:            2011-05-05 18:29                                */
 /* ---------------------------------------------------------------------- */
 
 
@@ -34,7 +34,7 @@ GO
 ALTER TABLE [UploadDetails] DROP CONSTRAINT [Upload_UploadDetails]
 GO
 
-ALTER TABLE [Accounts] DROP CONSTRAINT [Roles_Accounts]
+ALTER TABLE [Members] DROP CONSTRAINT [Roles_Members]
 GO
 
 ALTER TABLE [Ro_Me] DROP CONSTRAINT [Roles_Ro_Me]
@@ -159,17 +159,17 @@ DROP TABLE [UploadDetails]
 GO
 
 /* ---------------------------------------------------------------------- */
-/* Drop table "Accounts"                                                  */
+/* Drop table "Members"                                                   */
 /* ---------------------------------------------------------------------- */
 
 /* Drop constraints */
 
-ALTER TABLE [Accounts] DROP CONSTRAINT [PK_Accounts]
+ALTER TABLE [Members] DROP CONSTRAINT [PK_Members]
 GO
 
 /* Drop table */
 
-DROP TABLE [Accounts]
+DROP TABLE [Members]
 GO
 
 /* ---------------------------------------------------------------------- */
