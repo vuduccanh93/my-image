@@ -24,8 +24,8 @@ public partial class admin_wuc_Login : System.Web.UI.UserControl
         String _U = txtUsername.Text.Trim();
         String _P = txtPassword.Text.Trim();
 
-        AccountModel _Acc = null;
-        _Acc = AccountDAO.GetByU_P(_U, _P);
+        MemberModel _Acc = null;
+        _Acc = MemberDAO.GetByU_P(_U, _P);
         if (_Acc != null)
         {
             Session["U"] = _Acc.Username;

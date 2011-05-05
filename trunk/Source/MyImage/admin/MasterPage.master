@@ -6,8 +6,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title>Untitled Page</title>
-    <link href="inc/css/web.css" rel="stylesheet" type="text/css" />
+	<meta http-equiv="refresh" content="600">
     <!--[if IE]><p><lin k href="inc/css/ie.css" rel="stylesheet" type="text/css" /></p><![endif]-->
+    <link href="inc/css/web.css" rel="stylesheet" type="text/css" />
+    <script type='text/javascript' src='inc/js/remote.js'></script>
+    
 </head>
 <body>
     <form id="mainform" runat="server">
