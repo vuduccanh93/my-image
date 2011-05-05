@@ -12,11 +12,11 @@ using System.Data.SqlClient;
 /// <summary>
 /// Summary description for AccountDAO
 /// </summary>
-public class AccountDAO
+public class MemberDAO
 {
-    public static AccountModel GetByU_P(String _U, String _P)
+    public static MemberModel GetByU_P(String _U, String _P)
     {
-        AccountModel _Model = null;
+        MemberModel _Model = null;
         DataTable _Rs = null;
         try
         {
@@ -34,7 +34,7 @@ public class AccountDAO
             {
                 foreach (DataRow row in _Rs.Rows)
                 {
-                    _Model = new AccountModel();
+                    _Model = new MemberModel();
                     _Model.ID = row["Id"].ToString();
                     _Model.Username = row["Username"].ToString();
                     _Model.Password = row["Password"].ToString();
