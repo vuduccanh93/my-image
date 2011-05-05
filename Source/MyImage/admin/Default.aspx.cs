@@ -11,15 +11,21 @@ using System.Web.UI.HtmlControls;
 
 public partial class admin_Default : System.Web.UI.Page
 {
+    public static int USER_MENU = 0;
+    public static int STAFF_MENU = USER_MENU + 1;
+    public static int ORDER_MENU = USER_MENU + 2;
+
+    public String WEB_URL = "";
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["U"] == null)
         {
             Response.Redirect("~/admin/login/");
+            return;
         }
         if (!Page.IsPostBack)
         {
-            
+            WEB_URL = Request.Url.GetLeftPart(UriPartial.Authority) + VirtualPathUtility.ToAbsolute("~/");
             
         }
     }
@@ -29,12 +35,33 @@ public partial class admin_Default : System.Web.UI.Page
         String _pHtml = "<ul>";
         foreach (DataRow _Dr in _MNTable.Rows)
         {
-            _pHtml += "<li><a href='" + _Dr["Link"].ToString() + "'>" + _Dr["Name"].ToString() + "</a><em></em></li>";
+            _pHtml += "<li><a href='javascript:void(0)' onClick=sendRequest('" +
+                WEB_URL +
+                @"admin/Funcs.aspx" +
+                _Dr["Link"].ToString() +
+                "'," +
+                "'content-main'" +
+                ")>" +
+                _Dr["Name"].ToString() +
+                "</a><em></em></li>";
         }
         _pHtml += "<li><a href=" +
-                 Request.Url.GetLeftPart(UriPartial.Authority) + VirtualPathUtility.ToAbsolute("~/") +
+                 WEB_URL +
                  @"admin/login/?logout=true" + ">Logout</a></li>";
         _pHtml += "</ul>";
         Response.Write(_pHtml);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
