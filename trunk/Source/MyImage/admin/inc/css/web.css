@@ -56,7 +56,7 @@ body{
 {
 	margin:0;
 	padding:0;
-	width:200px;
+	width:150px;
 	position:relative;
     float:left;
 }
@@ -64,7 +64,7 @@ body{
 {
 	margin:0;
 	padding:0;
-	width:800px;
+	width:850px;
 	position:relative;
     float:right;
 }
@@ -95,14 +95,14 @@ body{
     padding-right:30px;
 }
 #content-top{
-    width:800px;
+    width:850px;
     height:120px;
     padding:0;
     background:#FFFFFF;
     float:right;
 }
 #content-main{
-    width:780px;
+    width:830px;
     height:300px;
     min-height:300px;
     padding:0 10px;
@@ -114,17 +114,18 @@ body{
 {
 	margin:0;
 	padding-top:60px;
+	color:#FFFFFF;
 }
 #login table
 {
 	width: inherit;
 	margin-left: auto;
 	margin-right: auto;
-	border:3px solid;
+	border:3px solid #FFFFFF;
 	padding:30px;
 }
 #top{
-    width:800px;
+    width:850px;
     height:20px;
     position:relative;
     padding:0;
@@ -137,7 +138,7 @@ body{
     float: left;
 }
 .tm {
-    width: 760px;
+    width: 810px;
     height: 20px;
     float: left;
     background: #FFFFFF;
@@ -149,7 +150,7 @@ body{
     float: left;
 }
 #bottom{
-    width:800px;
+    width:850px;
     height:20px;
     position:relative;
     float:right;
@@ -163,7 +164,7 @@ body{
     float: left;
 }
 .bm {
-    width: 760px;
+    width: 810px;
     height: 20px;
     float: left;
     background: #FFFFFF;
@@ -180,7 +181,7 @@ body{
     position: relative;
 }
 #footer-wrapper{
-    width:900px;
+    width:1000px;
     height:100px;
     position:relative;
     left:50%;
@@ -191,4 +192,25 @@ body{
 .groupbox{
     margin: 3px 0;
     border: 1px solid #DDDDDD;
+}
+
+.customer
+{
+	width:780px;
+	border-color: #600;
+    border-width: 1px;
+    border-style: solid;
+}
+.customer tr,.customer tr td
+{
+	border-color: #600;
+    border-width: 1px;
+    border-style: solid;
+    margin: 0;
+    padding: 4px;
+    background-color: #FFC;
+}
+.customer tr td.center
+{
+	text-align:center;
 }
