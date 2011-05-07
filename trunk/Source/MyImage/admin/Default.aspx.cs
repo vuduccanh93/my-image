@@ -11,6 +11,7 @@ using System.Web.UI.HtmlControls;
 
 public partial class admin_Default : System.Web.UI.Page
 {
+    public String _Token = null;
     public static int USER_MENU = 0;
     public static int STAFF_MENU = USER_MENU + 1;
     public static int ORDER_MENU = USER_MENU + 2;
@@ -27,7 +28,10 @@ public partial class admin_Default : System.Web.UI.Page
         {
             WEB_URL = Request.Url.GetLeftPart(UriPartial.Authority) + VirtualPathUtility.ToAbsolute("~/");
             
+            
+            
         }
+        Main();
     }
     public void LoadMenu(String _Rid)
     {
@@ -58,17 +62,39 @@ public partial class admin_Default : System.Web.UI.Page
         _pHtml += "</ul>";
         Response.Write(_pHtml);
     }
+    public void Main(){
+        if (Request.QueryString["t"] != null)
+        {
+            _Token = Request.QueryString["t"].ToString();
+            switch (_Token){
+                case "cu":
+                    Control wucCus = (Control)Page.LoadControl(Request.ApplicationPath + @"/admin/wuc/wucCustomer.ascx");
+                    PlaceHolderRight.Controls.Add(wucCus);
+                    break;
+                case "ac":
 
+                    break;
+                case "or":
 
+                    break;
+                case "a":
 
-
-
-
-
-
-
-
-
-
-
+                break;
+            }
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
