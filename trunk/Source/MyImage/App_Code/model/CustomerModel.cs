@@ -16,6 +16,7 @@ public class CustomerModel
 	private String id;
     private String username;
     private String password;
+    private String email;
     private String fName;
     private String lName;
     private String dob;
@@ -37,6 +38,11 @@ public class CustomerModel
     {
         get { return this.password; }
         set { this.password = value; }
+    }
+    public String Email
+    {
+        get { return this.email; }
+        set { this.email = value; }
     }
     public String FName
     {
@@ -73,6 +79,7 @@ public class CustomerModel
         id = "";
         username = "";
         password = "";
+        email = "";
         fName = "";
         lName = "";
         dob = "";
@@ -83,7 +90,8 @@ public class CustomerModel
     public CustomerModel(String _ID,String _Username,
                         String _Password,String _FName,
                         String _LName,String _Dob,
-                        String _Gender,String _PNo,String _Address)
+                        String _Gender,String _PNo,String _Address,
+                        String _Email)
     {
         this.id = _ID;
         this.username = _Username;
@@ -94,5 +102,6 @@ public class CustomerModel
         this.gender = _Gender;
         this.pNo = _PNo;
         this.address = _Address;
+        this.email = _Email;
     }
 }
