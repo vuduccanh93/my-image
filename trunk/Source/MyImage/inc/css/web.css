@@ -46,7 +46,6 @@ body{
 }
 #content-wrapper{
     width:1000px;
-    height:auto;
     min-height: 500px;
     position:relative;
     left:50%;
@@ -102,7 +101,7 @@ body{
 }
 #content-main{
     width:800px;
-    min-height:400px;
+    min-height:500px;
     position:relative;
     float:right;
     background:#FFFFFF;
@@ -175,4 +174,8 @@ body{
 .groupbox{
     margin: 3px 0;
     border: 1px solid #DDDDDD;
+}
+.space
+{
+	clear:both;
 }
