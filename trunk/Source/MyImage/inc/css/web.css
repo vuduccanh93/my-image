@@ -102,7 +102,7 @@ body{
 }
 #content-main{
     width:800px;
-    height:80px;
+    min-height:400px;
     position:relative;
     float:right;
     background:#FFFFFF;
