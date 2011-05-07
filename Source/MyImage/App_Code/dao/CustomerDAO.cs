@@ -20,7 +20,7 @@ public class CustomerDAO
     }
     public static DataTable Upsdate(CustomerModel _Model)
     {
-        SqlParameter[] param = new SqlParameter[8];
+        SqlParameter[] param = new SqlParameter[9];
         int i = 0;
         param[i] = new SqlParameter("ID", SqlDbType.VarChar);
         param[i++].Value = _Model.ID;
@@ -38,6 +38,8 @@ public class CustomerDAO
         param[i++].Value = _Model.PNo;
         param[i] = new SqlParameter("Address", SqlDbType.VarChar);
         param[i++].Value = _Model.Address;
+        param[i] = new SqlParameter("Email", SqlDbType.VarChar);
+        param[i++].Value = _Model.Email;
         return DataUtil.executeStore("sp_Customer_Update", param);
     }
     public static Boolean Insert(CustomerModel _Model)
