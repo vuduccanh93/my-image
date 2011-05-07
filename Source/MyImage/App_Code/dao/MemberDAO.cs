@@ -20,8 +20,6 @@ public class MemberDAO
         DataTable _Rs = null;
         try
         {
-            
-
             SqlParameter[] param = new SqlParameter[2];
             int i = 0;
 
@@ -29,7 +27,7 @@ public class MemberDAO
             param[i++].Value = _U;
             param[i] = new SqlParameter("P", SqlDbType.VarChar);
             param[i++].Value = _P;
-            _Rs = DataUtil.executeStore("sp_Account_GetByU_P", param);
+            _Rs = DataUtil.executeStore("sp_Members_GetByU_P", param);
             if (_Rs != null)
             {
                 foreach (DataRow row in _Rs.Rows)
