@@ -28,26 +28,36 @@ Insert into Ro_Me Values(0,2)
 
 -- insert PaymentMethods
 
-Insert into dbo.PaymentMethods Values ('Cash')
-Insert into dbo.PaymentMethods Values ('Credit Card')
+Insert into PaymentMethods Values ('Cash')
+Insert into PaymentMethods Values ('Credit Card')
 
 -- insert StateProvinces
 
-Insert into dbo.StateProvinces Values('San Jose')
-Insert into dbo.StateProvinces Values('Los Angeles')
-Insert into dbo.StateProvinces Values('New York')
+Insert into StateProvinces Values('San Jose')
+Insert into StateProvinces Values('Los Angeles')
+Insert into StateProvinces Values('New York')
 
 -- inset Shipping Prices
 
-Insert into dbo.ShippingPrices Values(0,'1-3 days','4',getdate())
-Insert into dbo.ShippingPrices Values(0,'4-6 days','2',getdate())
-Insert into dbo.ShippingPrices Values(1,'1-3 days','4',getdate())
-Insert into dbo.ShippingPrices Values(1,'4-6 days','2',getdate())
-Insert into dbo.ShippingPrices Values(2,'1-3 days','6',getdate())
-Insert into dbo.ShippingPrices Values(2,'4-6 days','3',getdate())
+Insert into ShippingPrices Values(0,'1-3 days','4',getdate())
+Insert into ShippingPrices Values(0,'4-6 days','2',getdate())
+Insert into ShippingPrices Values(1,'1-3 days','4',getdate())
+Insert into ShippingPrices Values(1,'4-6 days','2',getdate())
+Insert into ShippingPrices Values(2,'1-3 days','6',getdate())
+Insert into ShippingPrices Values(2,'4-6 days','3',getdate())
 
---Insert dbo.PrintingPrices
+--Insert PrintingPrices
 
-Insert into dbo.PrintingPrices Values('3x4','1')
-Insert into dbo.PrintingPrices Values('4x6','2')
-Insert into dbo.PrintingPrices Values('4x8','4')
+Insert into PrintingPrices Values('3x4','1')
+Insert into PrintingPrices Values('4x6','2')
+Insert into PrintingPrices Values('4x8','4')
+
+--Insert CreditCards
+Insert into CreditCards Values('1234567891234567','2013/03/01','PHAM DINH THI','HDS')
+Insert into CreditCards Values('2342342523423413','2013/04/01','TRINH HUY HUY','SLL')
+Insert into CreditCards Values('1235151232323231','2013/04/01','SOLO','WES')
+Insert into CreditCards Values('1231232141251232','2013/08/01','HOANG LONG','AWQ')
+
+--Insert Orders
+
+Insert into Orders Values('HVA0001','ABBC','DIA CHI',0,100000,20000,120000,0,0,0,0,'20110507 153012')
