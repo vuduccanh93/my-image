@@ -40,4 +40,44 @@ public class CustomerDAO
         param[i++].Value = _Model.Address;
         return DataUtil.executeStore("sp_Customer_Update", param);
     }
+    public static Boolean Insert(CustomerModel _Model)
+    {
+        SqlParameter[] param = new SqlParameter[9];
+        int i = 0;
+        param[i] = new SqlParameter("Username", SqlDbType.VarChar);
+        param[i++].Value = _Model.Username;
+        param[i] = new SqlParameter("Password", SqlDbType.VarChar);
+        param[i++].Value = _Model.Password;
+        param[i] = new SqlParameter("Email", SqlDbType.VarChar);
+        param[i++].Value = _Model.Email;
+        param[i] = new SqlParameter("FName", SqlDbType.VarChar);
+        param[i++].Value = _Model.FName;
+        param[i] = new SqlParameter("LName", SqlDbType.VarChar);
+        param[i++].Value = _Model.LName;
+        param[i] = new SqlParameter("Dob", SqlDbType.VarChar);
+        param[i++].Value = _Model.Dob;
+        param[i] = new SqlParameter("Gender", SqlDbType.VarChar);
+        param[i++].Value = _Model.Gender;
+        param[i] = new SqlParameter("PNo", SqlDbType.VarChar);
+        param[i++].Value = _Model.PNo;
+        param[i] = new SqlParameter("Address", SqlDbType.VarChar);
+        param[i++].Value = _Model.Address;
+        return DataUtil.executeNonStore("sp_Customer_Insert", param);
+    }
+    public static String GetUsername()
+    {
+        SqlParameter[] param = new SqlParameter[1];
+        param[0] = new SqlParameter("Username", SqlDbType.VarChar);
+        param[0].Direction = ParameterDirection.Output;
+        DataUtil.executeStore("sp_Customer_GetUsername", param);
+        return param[0].Value.ToString();
+    }
+    public static String GetPassword()
+    {
+        SqlParameter[] param = new SqlParameter[1];
+        param[0] = new SqlParameter("Password", SqlDbType.VarChar);
+        param[0].Direction = ParameterDirection.Output;
+        DataUtil.executeStore("sp_Customer_GetPassword", param);
+        return param[0].Value.ToString();
+    }
 }
