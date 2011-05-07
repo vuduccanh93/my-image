@@ -35,15 +35,22 @@ public partial class admin_Default : System.Web.UI.Page
         String _pHtml = "<ul>";
         foreach (DataRow _Dr in _MNTable.Rows)
         {
-            _pHtml += "<li><a href='javascript:void(0)' onClick=sendRequest('" +
-                WEB_URL +
-                @"admin/Funcs.aspx" +
-                _Dr["Link"].ToString() +
-                "'," +
-                "'content-main'" +
-                ")>" +
+            //_pHtml += "<li><a href='javascript:void(0)' onClick=sendRequest('" +
+            //    WEB_URL +
+            //    @"admin/Funcs.aspx" +
+            //    _Dr["Link"].ToString() +
+            //    "'," +
+            //    "'content-main'" +
+            //    ")>" +
+            //    _Dr["Name"].ToString() +
+            //    "</a><em></em></li>";
+
+            _pHtml += "<li><a href='" +
+                _Dr["Link"].ToString() + 
+                "'>" +
                 _Dr["Name"].ToString() +
                 "</a><em></em></li>";
+
         }
         _pHtml += "<li><a href=" +
                  WEB_URL +
