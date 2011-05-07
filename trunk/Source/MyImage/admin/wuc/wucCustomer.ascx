@@ -1,5 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="wucCustomer.ascx.cs" Inherits="admin_wuc_wucCustomer" %>
-<asp:GridView ID="grvCustomer" runat="server" AutoGenerateColumns="False" CssClass="customer" OnRowEditing="grvCustomer_RowEditing" OnRowCancelingEdit="grvCustomer_RowCancelingEdit" OnRowUpdated="grvCustomer_RowUpdated" Width="810px" OnRowUpdating="grvCustomer_RowUpdating" AllowPaging="True">
+<asp:GridView ID="grvCustomer" runat="server" AutoGenerateColumns="False" CssClass="customer" OnRowEditing="grvCustomer_RowEditing" OnRowCancelingEdit="grvCustomer_RowCancelingEdit" OnRowUpdated="grvCustomer_RowUpdated" Width="810px" OnRowUpdating="grvCustomer_RowUpdating" AllowPaging="True" OnRowCommand="grvCustomer_RowCommand">
     <Columns>
         <asp:TemplateField HeaderText="ID" Visible="False">
             <EditItemTemplate>
@@ -41,6 +41,14 @@
                 <asp:CheckBox ID="CheckBox1" runat="server" Checked='<%# Bind("Gender") %>' Enabled="false" />
             </ItemTemplate>
             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+        </asp:TemplateField>
+        <asp:TemplateField HeaderText="Email">
+            <EditItemTemplate>
+                <asp:TextBox ID="txtEmail" runat="server" Text='<%# Bind("Email") %>'></asp:TextBox>
+            </EditItemTemplate>
+            <ItemTemplate>
+                <asp:Label ID="Label7" runat="server" Text='<%# Bind("Email") %>'></asp:Label>
+            </ItemTemplate>
         </asp:TemplateField>
         <asp:BoundField DataField="Dob" HeaderText="Birthday" Visible="False" />
         <asp:TemplateField HeaderText="Phone .no">

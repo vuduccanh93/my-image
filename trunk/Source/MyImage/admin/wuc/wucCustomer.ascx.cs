@@ -57,10 +57,18 @@ public partial class admin_wuc_wucCustomer : System.Web.UI.UserControl
         String _P_no = ((TextBox)_Row.FindControl("txtP_no")).Text;
         String _Gender = ((CheckBox)_Row.FindControl("ckbGender")).Checked ? "1" : "0";
         String _Address = ((TextBox)_Row.FindControl("txtAddress")).Text;
+        String _Email = ((TextBox)_Row.FindControl("txtEmail")).Text;
 
-        CustomerModel _Model = new CustomerModel(_ID, _Username, "", _F_name, _L_name, "", _Gender, _P_no, _Address);
+        CustomerModel _Model = new CustomerModel(_ID, _Username, "", _F_name, _L_name, "", _Gender, _P_no, _Address,_Email);
         CustomerDAO.Upsdate(_Model);
         grvCustomer.EditIndex = -1;
         BindData();
+    }
+    protected void grvCustomer_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        if (e.CommandName == "Select")
+        {
+
+        }
     }
 }
