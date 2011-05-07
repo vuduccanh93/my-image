@@ -5,7 +5,7 @@
 /* Project name:                                                          */
 /* Author:                                                                */
 /* Script type:           Database creation script                        */
-/* Created on:            2011-05-05 18:29                                */
+/* Created on:            2011-05-06 07:54                                */
 /* ---------------------------------------------------------------------- */
 
 
@@ -24,7 +24,7 @@ CREATE TABLE [Customers] (
     [F_name] VARCHAR(40),
     [L_name] VARCHAR(40),
     [Dob] VARCHAR(17),
-    [Gender] BINARY(1),
+    [Gender] BIT,
     [P_no] VARCHAR(20),
     [Address] VARCHAR(100),
     CONSTRAINT [PK_Customers] PRIMARY KEY ([ID])

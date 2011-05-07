@@ -7,10 +7,12 @@ Insert into Customers Values('Lohan','Lohan','maria','carey','19880712',0,'09037
 --Insert Roles 
 
 Insert into Roles Values('Super admin')
+Insert into Roles Values('Printer')
 
 --Insert Members 
 
 Insert into Members Values('admin','admin','0','0')
+Insert into Members Values('printer','printer','1','0')
 
 --Insert Menu
 
