@@ -5,7 +5,7 @@
 /* Project name:                                                          */
 /* Author:                                                                */
 /* Script type:           Database creation script                        */
-/* Created on:            2011-05-07 14:09                                */
+/* Created on:            2011-05-07 16:45                                */
 /* ---------------------------------------------------------------------- */
 
 
@@ -26,6 +26,7 @@ CREATE TABLE [Customers] (
     [Dob] VARCHAR(17),
     [Gender] BIT,
     [P_no] VARCHAR(20),
+    [Email] VARCHAR(40),
     [Address] VARCHAR(100),
     CONSTRAINT [PK_Customers] PRIMARY KEY ([ID])
 )
@@ -112,7 +113,6 @@ GO
 CREATE TABLE [Upload] (
     [ID] INTEGER IDENTITY(0,1) NOT NULL,
     [Folder] VARCHAR(80),
-    [C_id] VARCHAR(40),
     [Created_date] VARCHAR(40),
     CONSTRAINT [PK_Upload] PRIMARY KEY ([ID])
 )

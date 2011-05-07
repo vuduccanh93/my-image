@@ -1,8 +1,8 @@
 
 --Insert Customers
 
-Insert into Customers Values('Mario','Mario','steven','nash','19880422',1,'0903322322','210 HighWay')
-Insert into Customers Values('Lohan','Lohan','maria','carey','19880712',0,'0903754323','91 SanPaulo')
+Insert into Customers Values('Mario','Mario','steven','nash','19880422',1,'0903322322','Email@yahoo.com','210 HighWay')
+Insert into Customers Values('Lohan','Lohan','maria','carey','19880712',0,'0903754323','Email@yahoo.com','91 SanPaulo')
 
 --Insert Roles 
 
@@ -58,6 +58,24 @@ Insert into CreditCards Values('2342342523423413','2013/04/01','TRINH HUY HUY','
 Insert into CreditCards Values('1235151232323231','2013/04/01','SOLO','WES')
 Insert into CreditCards Values('1231232141251232','2013/08/01','HOANG LONG','AWQ')
 
+
+--Insert Upload
+
+Insert into Upload Values('/asdg/','20110507 153012')
+Insert into Upload Values('/asds/','20110507 153012')
+
+--Insert UploadDetails
+
+Insert into UploadDetails Values(0,'2.jpeg')
+Insert into UploadDetails Values(0,'1.jpeg')
+Insert into UploadDetails Values(0,'3.jpeg')
+
 --Insert Orders
 
 Insert into Orders Values('HVA0001','ABBC','DIA CHI',0,100000,20000,120000,0,0,0,0,'20110507 153012')
+
+--Insert OrderDetails
+
+Insert into OrderDetails Values(0,0,10000,'4x6',22)
+Insert into OrderDetails Values(0,1,10000,'4x6',22)
+Insert into OrderDetails Values(0,2,10000,'4x6',22)
