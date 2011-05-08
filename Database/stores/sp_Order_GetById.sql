@@ -6,21 +6,29 @@ CREATE PROC [sp_Order_GetById](
 )
 AS
 BEGIN
-	SELECT	ID,
-			No,
-			Order_content,
-			Address,
-			S_provinces_id,
-			Shipping_price,
-			Printing_price,
-			Amount,
-			P_methods_id,
-			C_cards_id,
-			C_id AS 'Customer_id',
-			Status,
-			Created_date
-	FROM Orders
-	WHERE ID = @ID
+	SELECT	A.ID,
+			A.No,
+			A.Order_content,
+			A.Address,
+			A.S_provinces_id,
+			C.Name AS 'S_provinces_name',
+			A.Shipping_price,
+			A.Printing_price,
+			A.Amount,
+			A.P_methods_id,
+			D.Name AS 'P_Methods_name',
+			A.C_cards_id,
+			B.Number AS 'C_cards_number',
+			A.C_id AS 'Customer_id',
+			(E.F_name + ' ' +  E.L_name) AS 'Customer_name',
+			A.Status,
+			A.Created_date
+	FROM Orders AS A
+	INNER JOIN CreditCards AS B ON B.ID = A.C_cards_id
+	INNER JOIN StateProvinces AS C ON C.ID = A.S_provinces_id
+	INNER JOIN PaymentMethods AS D ON D.ID = A.P_methods_id
+	INNER JOIN Customers AS E ON E.ID = A.C_id
+	WHERE A.ID = @ID
 END
 
 

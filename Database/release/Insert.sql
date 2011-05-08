@@ -76,6 +76,6 @@ Insert into Orders Values('HVA0001','ABBC','DIA CHI',0,100000,20000,120000,0,0,0
 
 --Insert OrderDetails
 
-Insert into OrderDetails Values(0,0,10000,'4x6',22)
-Insert into OrderDetails Values(0,1,10000,'4x6',22)
-Insert into OrderDetails Values(0,2,10000,'4x6',22)
+Insert into OrderDetails Values(0,0,10000,'4x6',22,220000)
+Insert into OrderDetails Values(0,1,10000,'4x6',22,220000)
+Insert into OrderDetails Values(0,2,10000,'4x6',22,220000)

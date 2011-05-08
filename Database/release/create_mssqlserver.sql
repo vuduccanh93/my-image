@@ -5,7 +5,7 @@
 /* Project name:                                                          */
 /* Author:                                                                */
 /* Script type:           Database creation script                        */
-/* Created on:            2011-05-07 16:45                                */
+/* Created on:            2011-05-09 00:24                                */
 /* ---------------------------------------------------------------------- */
 
 
@@ -87,9 +87,10 @@ CREATE TABLE [OrderDetails] (
     [ID] INTEGER IDENTITY(0,1) NOT NULL,
     [O_id] INTEGER,
     [U_details_id] INTEGER,
-    [Price] VARCHAR(40),
+    [Price] FLOAT,
     [Size] VARCHAR(10),
     [Quantity] INTEGER,
+    [Amount] FLOAT,
     CONSTRAINT [PK_OrderDetails] PRIMARY KEY ([ID])
 )
 GO
