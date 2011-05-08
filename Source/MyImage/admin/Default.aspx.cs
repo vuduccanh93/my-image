@@ -68,20 +68,32 @@ public partial class admin_Default : System.Web.UI.Page
             _Token = Request.QueryString["t"].ToString();
             switch (_Token){
                 case "cu":
-                    Control wucCus = (Control)Page.LoadControl(Request.ApplicationPath + @"/admin/wuc/wucCustomer.ascx");
-                    PlaceHolderRight.Controls.Add(wucCus);
+                        addControl(Request.ApplicationPath + @"/admin/wuc/wucCustomer.ascx");
                     break;
                 case "ac":
-
+                    
                     break;
                 case "or":
-
+                    if (Request.QueryString["oid"] != null)
+                    {
+                        
+                        addControl(Request.ApplicationPath + @"/admin/wuc/wucOrderDetail.ascx");
+                    }
+                    else
+                    {
+                        addControl(Request.ApplicationPath + @"/admin/wuc/wucOrder.ascx");
+                    }
                     break;
                 case "a":
 
                 break;
             }
         }
+    }
+    private void addControl(String _Path)
+    {
+        Control wucCus = (Control)Page.LoadControl(_Path);
+        PlaceHolderRight.Controls.Add(wucCus);
     }
 }
 
