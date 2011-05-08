@@ -28,13 +28,16 @@ public partial class admin_wuc_wucOrderDetail : System.Web.UI.UserControl
             {
                 lblNo.Text = Model.NO;
                 lblDate.Text = Model.CreatedDate;
-                lblCustomer.Text = Model.CustomerId;
-                lblPayment.Text = Model.PMethodId;
-                lblCC.Text = Model.CCardId;
+                lblStatus.Text = UtilDAO.OrderStatusFormat(Model.Status);
+                lblCustomer.Text = Model.Customer;
+                lblPayment.Text = Model.PMethod;
+                lblCC.Text = Model.CCard;
                 lblPPrice.Text = Model.PPrice;
-                lblPState.Text = Model.SProvinceId;
+                lblPState.Text = Model.SProvince;
                 lblSPrice.Text = Model.SPrice;
                 lblContent.Text = Model.Content;
+                grvOrderDetail.DataSource = OrderDetailDAO.GetByOrderId(Model.ID);
+                grvOrderDetail.DataBind();
             }
         }
     }

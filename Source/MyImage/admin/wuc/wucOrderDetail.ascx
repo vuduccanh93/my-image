@@ -54,5 +54,13 @@
         <asp:Label ID="lblContent" runat="server" Text="Label"></asp:Label></td>
 </tr>
 </table>
-<asp:GridView ID="GridView1" runat="server">
+<asp:GridView ID="grvOrderDetail" runat="server" AutoGenerateColumns="False">
+    <Columns>
+        <asp:BoundField DataField="name" HeaderText="Image" />
+        <asp:BoundField DataField="link" HeaderText="Link" />
+        <asp:BoundField DataField="price" HeaderText="Price" />
+        <asp:BoundField DataField="size" HeaderText="Size" />
+        <asp:BoundField DataField="quantity" HeaderText="Quantity" />
+        <asp:BoundField DataField="amount" HeaderText="Amount" />
+    </Columns>
 </asp:GridView>
