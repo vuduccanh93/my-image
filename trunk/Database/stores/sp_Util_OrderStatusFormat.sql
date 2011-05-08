@@ -2,12 +2,11 @@ IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[dbo].[sp_Util_Or
 DROP PROCEDURE [dbo].[sp_Util_OrderStatusFormat]
 GO
 CREATE PROC [sp_Util_OrderStatusFormat](
-	@Status			INT IN
-	@Output			VARCHAR(10) OUTPUT
+	@Status			INT,
+	@Output			VARCHAR(15) OUTPUT
 )	
 AS
 BEGIN
-	SET @Output = ''
 	IF @Status = -1
 	BEGIN
 		SET @Output = 'Not payment'
