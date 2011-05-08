@@ -33,12 +33,22 @@ public class OrderDAO
             {
                 foreach (DataRow row in _Rs.Rows)
                 {
-                    _Model = new OrderModel(row["ID"].ToString(), row["No"].ToString(),
-                                        row["Order_content"].ToString(), row["Address"].ToString(),
-                                        row["S_provinces_id"].ToString(), row["Shipping_price"].ToString(),
-                                        row["Printing_price"].ToString(), row["Amount"].ToString(),
-                                        row["P_methods_id"].ToString(), row["C_cards_id"].ToString(),
-                                        row["Customer_id"].ToString(), row["Status"].ToString(),
+                    _Model = new OrderModel(row["ID"].ToString(),
+                                        row["No"].ToString(),
+                                        row["Order_content"].ToString(),
+                                        row["Address"].ToString(),
+                                        row["S_provinces_id"].ToString(),
+                                        row["S_provinces_name"].ToString(),
+                                        row["Shipping_price"].ToString(),
+                                        row["Printing_price"].ToString(),
+                                        row["Amount"].ToString(),
+                                        row["P_methods_id"].ToString(),
+                                        row["P_Methods_name"].ToString(),
+                                        row["C_cards_id"].ToString(),
+                                        row["C_cards_number"].ToString(),
+                                        row["Customer_id"].ToString(),
+                                        row["Customer_name"].ToString(),
+                                        row["Status"].ToString(),
                                         row["Created_date"].ToString());
                 }
             }
