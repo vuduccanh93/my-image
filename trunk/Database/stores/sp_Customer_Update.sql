@@ -10,7 +10,8 @@ create proc [sp_Customer_Update]
 	@Dob			VARCHAR(17),
 	@Gender			VARCHAR(1),
 	@PNo			VARCHAR(20),
-	@Address		VARCHAR(100)
+	@Address		VARCHAR(100),
+	@Email			VARCHAR(40)
 AS
 BEGIN
 	UPDATE Customers
@@ -20,6 +21,7 @@ BEGIN
 		Dob = @Dob,
 		Gender = @Gender,
 		P_no = @PNo,
-		Address = @Address
+		Address = @Address,
+		Email = @Email
 	WHERE ID = @ID
 END
