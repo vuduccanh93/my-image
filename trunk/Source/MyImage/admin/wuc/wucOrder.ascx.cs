@@ -32,11 +32,4 @@ public partial class admin_wuc_wucOrder : System.Web.UI.UserControl
         grvOrder.DataSource = OrderDAO.GetAll();
         grvOrder.DataBind();
     }
-    protected void grvOrder_RowCommand(object sender, GridViewCommandEventArgs e)
-    {
-        if (e.CommandName == "Select")
-        {
-            //hien thi chi tiet hoa don
-        }
-    }
 }

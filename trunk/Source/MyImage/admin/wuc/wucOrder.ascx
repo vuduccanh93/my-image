@@ -1,5 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="wucOrder.ascx.cs" Inherits="admin_wuc_wucOrder" %>
-<asp:GridView ID="grvOrder" runat="server" AutoGenerateColumns="False" CssClass="order" OnRowCommand="grvOrder_RowCommand">
+<asp:GridView ID="grvOrder" runat="server" AutoGenerateColumns="False" CssClass="order" >
     <Columns>
         <asp:BoundField DataField="ID" HeaderText="ID" Visible="False" />
         <asp:BoundField DataField="No" HeaderText="No" />
@@ -30,8 +30,8 @@
         <asp:BoundField DataField="Created_date" HeaderText="Created date" >
             <ItemStyle HorizontalAlign="Right" VerticalAlign="Middle" />
         </asp:BoundField>
-        <asp:CommandField SelectText="View" ShowSelectButton="True" HeaderText="Detail">
+        <asp:HyperLinkField HeaderText="Detail" Text="View" DataNavigateUrlFields="ID" DataNavigateUrlFormatString="../?t=or&oid={0}" >
             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-        </asp:CommandField>
+        </asp:HyperLinkField>
     </Columns>
 </asp:GridView>
