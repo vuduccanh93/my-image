@@ -13,9 +13,9 @@
         <asp:BoundField DataField="Printing_price" HeaderText="Printing price" Visible="False" >
             <ItemStyle HorizontalAlign="Right" VerticalAlign="Middle" />
         </asp:BoundField>
-        <asp:BoundField DataField="S_provinces_name" HeaderText="Provinces name" />
+        <asp:BoundField DataField="S_provinces_name" HeaderText="Province/State" />
         <asp:BoundField DataField="P_methods_id" HeaderText="Methods id" Visible="False" />
-        <asp:BoundField DataField="P_Methods_name" HeaderText="Methods name" >
+        <asp:BoundField DataField="P_Methods_name" HeaderText="Payment" >
             <ItemStyle HorizontalAlign="Right" VerticalAlign="Middle" />
         </asp:BoundField>
         <asp:BoundField DataField="Amount" HeaderText="Amount" >
@@ -30,7 +30,7 @@
         <asp:BoundField DataField="Created_date" HeaderText="Created date" >
             <ItemStyle HorizontalAlign="Right" VerticalAlign="Middle" />
         </asp:BoundField>
-        <asp:HyperLinkField HeaderText="Detail" Text="View" DataNavigateUrlFields="ID" DataNavigateUrlFormatString="../?t=or&oid={0}" >
+        <asp:HyperLinkField HeaderText="Detail" Text="View" DataNavigateUrlFields="ID" DataNavigateUrlFormatString="../?t=or&amp;oid={0}" >
             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
         </asp:HyperLinkField>
     </Columns>

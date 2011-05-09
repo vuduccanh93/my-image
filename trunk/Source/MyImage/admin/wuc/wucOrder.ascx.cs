@@ -21,15 +21,25 @@ public partial class admin_wuc_wucOrder : System.Web.UI.UserControl
     }
     public void Main()
     {
-        if (Request.QueryString["t"] != null && Request.QueryString["t"].ToString().Equals("or"))
+        if (Request.QueryString["t"] != null && Request.QueryString["t"].ToString().Equals("or") &&
+            Request.QueryString["cusid"] != null)
         {
-            _Token = Request.QueryString["t"].ToString();
+            BindData(Request.QueryString["cusid"].ToString());
+        }
+        else if (Request.QueryString["t"] != null && Request.QueryString["t"].ToString().Equals("or"))
+        {
             BindData();
         }
     }
     private void BindData()
     {
         grvOrder.DataSource = OrderDAO.GetAll();
+        grvOrder.DataBind();
+    }
+
+    private void BindData(String _CusId)
+    {
+        grvOrder.DataSource = OrderDAO.GetByCusId(_CusId);
         grvOrder.DataBind();
     }
 }
