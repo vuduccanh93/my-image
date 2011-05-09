@@ -27,4 +27,17 @@ public class UtilDAO
         _Rs = param[i].Value.ToString();
         return _Rs;
     }
+    public static String DateTimeFormat(String _DateTime, String _Format)
+    {
+        SqlParameter[] param = new SqlParameter[3];
+        int i = 0;
+        param[i] = new SqlParameter("@Input", SqlDbType.VarChar);
+        param[i++].Value = _DateTime;
+        param[i] = new SqlParameter("@Format", SqlDbType.VarChar);
+        param[i++].Value = _Format;
+        param[i] = new SqlParameter("@Output", SqlDbType.VarChar, 19);
+        param[i].Direction = ParameterDirection.Output;
+        DataUtil.executeNonStore("sp_Util_DateTimeFormat", param);
+        return param[i].Value.ToString();
+    }
 }
