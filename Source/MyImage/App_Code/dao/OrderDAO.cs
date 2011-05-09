@@ -18,6 +18,14 @@ public class OrderDAO
     {
         return DataUtil.executeStore("sp_Order_GetAll", null);
     }
+    public static DataTable GetByCusId(String _CusId)
+    {
+        SqlParameter[] param = new SqlParameter[1];
+            int i = 0;
+            param[i] = new SqlParameter("@CusId", SqlDbType.Int);
+            param[i++].Value = _CusId;
+            return DataUtil.executeStore("sp_Order_GetByCusId", param);
+    }
     public static OrderModel GetById(String _Id)
     {
         OrderModel _Model = null;
@@ -59,4 +67,5 @@ public class OrderDAO
         }
         return _Model;
     }
+
 }
