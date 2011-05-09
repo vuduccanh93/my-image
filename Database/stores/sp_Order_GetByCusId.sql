@@ -1,7 +1,9 @@
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[dbo].[sp_Order_GetAll]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [dbo].[sp_Order_GetAll]
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[dbo].[sp_Order_GetByCusId]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [dbo].[sp_Order_GetByCusId]
 GO
-CREATE PROC [sp_Order_GetAll]	
+CREATE PROC [sp_Order_GetByCusId](
+	@CusId				INT
+)
 AS
 BEGIN
 	SELECT	A.ID,
@@ -26,6 +28,7 @@ BEGIN
 	INNER JOIN StateProvinces AS C ON C.ID = A.S_provinces_id
 	INNER JOIN PaymentMethods AS D ON D.ID = A.P_methods_id
 	INNER JOIN Customers AS E ON E.ID = A.C_id
+	WHERE A.C_id = @CusId
 END
 
 

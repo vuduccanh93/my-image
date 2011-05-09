@@ -72,7 +72,11 @@ Insert into UploadDetails Values(0,'3.jpeg')
 
 --Insert Orders
 
-Insert into Orders Values('HVA0001','ABBC','DIA CHI',0,100000,20000,120000,0,0,0,0,'20110507 153012')
+Insert into Orders Values('HVA0000','ABBC','DIA CHI',0,100000,20000,120000,0,0,0,0,'20110507 153012')
+Insert into Orders Values('HVA0001','ABBC','DIA CHI',0,100000,20000,120000,0,0,1,0,'20110507 153012')
+Insert into Orders Values('HVA0002','ABBC','DIA CHI',0,100000,20000,120000,0,0,0,1,'20110507 153012')
+Insert into Orders Values('HVA0003','ABBC','DIA CHI',0,100000,20000,120000,0,0,1,1,'20110507 153012')
+Insert into Orders Values('HVA0004','ABBC','DIA CHI',0,100000,20000,120000,0,0,1,1,'20110507 153012')
 
 --Insert OrderDetails
 
