@@ -27,14 +27,15 @@ public partial class admin_wuc_wucOrderDetail : System.Web.UI.UserControl
             if (Model != null)
             {
                 lblNo.Text = Model.NO;
-                lblDate.Text = Model.CreatedDate;
+                lblDate.Text = UtilDAO.DateTimeFormat(Model.CreatedDate,Constants.DATE_FORMAT_YYYY_MM_DD_HH_MM_SS);
                 lblStatus.Text = UtilDAO.OrderStatusFormat(Model.Status);
                 lblCustomer.Text = Model.Customer;
                 lblPayment.Text = Model.PMethod;
                 lblCC.Text = Model.CCard;
                 lblPPrice.Text = Model.PPrice;
                 lblPState.Text = Model.SProvince;
-                lblSPrice.Text = Model.SPrice;
+                lblSPrice.Text = String.Format("{0:0,0}", Model.SPrice);
+                lblAmount.Text = Model.Amount;
                 lblContent.Text = Model.Content;
                 grvOrderDetail.DataSource = OrderDetailDAO.GetByOrderId(Model.ID);
                 grvOrderDetail.DataBind();

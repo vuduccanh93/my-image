@@ -35,6 +35,7 @@ public partial class admin_wuc_wucCustomer : System.Web.UI.UserControl
     }
     protected void grvCustomer_RowEditing(object sender, GridViewEditEventArgs e)
     {
+
         grvCustomer.EditIndex = e.NewEditIndex;
         BindData();
     }
