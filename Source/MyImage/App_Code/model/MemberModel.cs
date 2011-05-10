@@ -17,6 +17,7 @@ public class MemberModel
     private String username;
     private String password;
     private String rid;
+    private String statusId;
     private String status;
 
     public String ID
@@ -39,6 +40,11 @@ public class MemberModel
         get { return this.rid; }
         set { this.rid = value; }
     }
+    public String StatusId
+    {
+        get { return this.statusId; }
+        set { this.statusId = value; }
+    }
     public String Status
     {
         get { return this.status; }
@@ -50,6 +56,7 @@ public class MemberModel
         username = "";
         password = "";
         rid = "";
+        statusId = "";
         status = "";
 	}
 }
