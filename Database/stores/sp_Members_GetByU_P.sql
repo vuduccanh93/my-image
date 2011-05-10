@@ -8,7 +8,14 @@ CREATE PROC [sp_Members_GetByU_P]
 )	
 AS
 BEGIN
-	SELECT ID,Username,Password,R_id,Status FROM Members
+	SELECT	A.ID,
+			A.Username,
+			A.Password,
+			A.R_id,
+			A.Status_id,
+			B.Status
+	FROM Members AS A
+	INNER JOIN MemberStatus AS B ON A.Status_id = B.ID
 	WHERE Username = @U AND Password = @P
 END
 
