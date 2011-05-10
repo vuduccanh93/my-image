@@ -1,31 +1,30 @@
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[dbo].[sp_Util_OrderStatusFormat]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE [dbo].[sp_Util_OrderStatusFormat]
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[dbo].[sp_Customer_GetUsername]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [dbo].[sp_Customer_GetUsername]
 GO
-CREATE PROC [sp_Util_OrderStatusFormat](
-	@Status			INT IN
-	@Output			VARCHAR(10) OUTPUT
+CREATE PROC [sp_Customer_GetUsername](
+	@Username		VARCHAR(40) OUTPUT
 )	
 AS
 BEGIN
-	SET @Output = ''
-	IF @Status = -1
+	DECLARE @Prefix VARCHAR(20)
+	DECLARE @Suf VARCHAR(20)
+	SELECT @Suf = COUNT(ID) FROM Members
+	IF @Suf < 10
 	BEGIN
-		SET @Output = 'Not payment'
-	END
-	ELSE IF @Status = 0
-	BEGIN
-		SET @Output = 'Waiting'
+		SET @Suf = '000' + @Suf
 	END
 
-	ELSE IF @Status = 1
+	ELSE IF @Suf < 100
 	BEGIN
-		SET @Output = 'Shipping'
+		SET @Suf = '00' + @Suf
 	END
 
-	ELSE IF @Status = 2
+	ELSE IF @Suf < 1000
 	BEGIN
-		SET @Output = 'Shipped'
+		SET @Suf = '0' + @Suf
 	END
+	SET @Prefix = 'MIG-'
+	SET @Username = @Prefix + @Suf
 END
 
 
