@@ -21,13 +21,15 @@ BEGIN
 			A.C_id AS 'Customer_id',
 			E.Username,
 			(E.F_name + ' ' +  E.L_name) AS 'Fullname',
-			dbo.udf_Util_OrderStatusFormat(A.Status) AS 'Status',
+			F.Id AS 'Status_id',
+			F.Status AS 'Status_name',
 			dbo.udf_Util_DateTimeFormat(A.Created_date ,'yyyy-mm-dd') AS 'Created_date'
 	FROM Orders AS A
 	INNER JOIN CreditCards AS B ON B.ID = A.C_cards_id
 	INNER JOIN StateProvinces AS C ON C.ID = A.S_provinces_id
 	INNER JOIN PaymentMethods AS D ON D.ID = A.P_methods_id
 	INNER JOIN Customers AS E ON E.ID = A.C_id
+	INNER JOIN OrderStatus AS F ON F.ID = A.Status_id
 	WHERE A.C_id = @CusId
 END
 
