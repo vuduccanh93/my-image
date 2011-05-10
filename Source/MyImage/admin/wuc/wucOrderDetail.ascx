@@ -12,7 +12,9 @@
     <td style="height: 21px">
         Status:</td>
     <td colspan="3" class="style2">
-        <asp:Label ID="lblStatus" runat="server" Text="Label"></asp:Label></td>
+        &nbsp;<asp:DropDownList ID="drlStatus" runat="server">
+        </asp:DropDownList>
+        <asp:Button ID="btnSaveStatus" runat="server" OnClick="btnSaveStatus_Click" Text="Save" /></td>
 </tr>
 <tr>
     <td >Customer:</td>
