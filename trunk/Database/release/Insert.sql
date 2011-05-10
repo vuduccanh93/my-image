@@ -1,18 +1,28 @@
 
+--Insert CustomerStatus
+
+Insert into CustomerStatus VALUES('Allow','')
+Insert into CustomerStatus VALUES('Block','')
+
 --Insert Customers
 
-Insert into Customers Values('Mario','Mario','steven','nash','19880422',1,'0903322322','Email@yahoo.com','210 HighWay')
-Insert into Customers Values('Lohan','Lohan','maria','carey','19880712',0,'0903754323','Email@yahoo.com','91 SanPaulo')
+Insert into Customers Values('Mario','Mario','steven','nash','19880422',1,'0903322322','Email@yahoo.com','210 HighWay',0)
+Insert into Customers Values('Lohan','Lohan','maria','carey','19880712',0,'0903754323','Email@yahoo.com','91 SanPaulo',0)
 
 --Insert Roles 
 
 Insert into Roles Values('Super admin')
 Insert into Roles Values('Printer')
 
+--Insert MemberStatus
+
+Insert into MemberStatus VALUES('Allow','')
+Insert into MemberStatus VALUES('Block','')
+
 --Insert Members 
 
-Insert into Members Values('admin','admin','0','0')
-Insert into Members Values('printer','printer','1','0')
+Insert into Members Values('admin','admin','0',0)
+Insert into Members Values('printer','printer','1',0)
 
 --Insert Menu
 
@@ -36,6 +46,13 @@ Insert into PaymentMethods Values ('Credit Card')
 Insert into StateProvinces Values('San Jose')
 Insert into StateProvinces Values('Los Angeles')
 Insert into StateProvinces Values('New York')
+
+--Insert OrderStatus
+
+Insert into OrderStatus VALUES('Not payment','')
+Insert into OrderStatus VALUES('Waiting','')
+Insert into OrderStatus VALUES('Shipping','')
+Insert into OrderStatus VALUES('Shipped','')
 
 -- inset Shipping Prices
 
