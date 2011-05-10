@@ -13,7 +13,7 @@ BEGIN
 			A.Password,
 			A.R_id,
 			A.Status_id,
-			B.Status
+			B.Status AS 'Status_name'
 	FROM Members AS A
 	INNER JOIN MemberStatus AS B ON A.Status_id = B.ID
 	WHERE Username = @U AND Password = @P
