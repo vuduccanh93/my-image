@@ -14,19 +14,6 @@ using System.Data.SqlClient;
 /// </summary>
 public class UtilDAO
 {
-    public static String OrderStatusFormat(String _Status)
-    {
-        String _Rs = "";
-        SqlParameter[] param = new SqlParameter[2];
-        int i = 0;
-        param[i] = new SqlParameter("@Status", SqlDbType.Int);
-        param[i++].Value = _Status;
-        param[i] = new SqlParameter("@Output", SqlDbType.VarChar,15);
-        param[i].Direction = ParameterDirection.Output;
-        DataUtil.executeNonStore("sp_Util_OrderStatusFormat", param);
-        _Rs = param[i].Value.ToString();
-        return _Rs;
-    }
     public static String DateTimeFormat(String _DateTime, String _Format)
     {
         SqlParameter[] param = new SqlParameter[3];

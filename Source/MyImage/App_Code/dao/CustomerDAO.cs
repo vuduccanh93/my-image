@@ -69,7 +69,7 @@ public class CustomerDAO
     public static String GetUsername()
     {
         SqlParameter[] param = new SqlParameter[1];
-        param[0] = new SqlParameter("Username", SqlDbType.VarChar);
+        param[0] = new SqlParameter("Username", SqlDbType.VarChar,40);
         param[0].Direction = ParameterDirection.Output;
         DataUtil.executeStore("sp_Customer_GetUsername", param);
         return param[0].Value.ToString();
@@ -77,7 +77,7 @@ public class CustomerDAO
     public static String GetPassword()
     {
         SqlParameter[] param = new SqlParameter[1];
-        param[0] = new SqlParameter("Password", SqlDbType.VarChar);
+        param[0] = new SqlParameter("Password", SqlDbType.VarChar,10);
         param[0].Direction = ParameterDirection.Output;
         DataUtil.executeStore("sp_Customer_GetPassword", param);
         return param[0].Value.ToString();
