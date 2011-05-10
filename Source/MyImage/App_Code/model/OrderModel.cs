@@ -28,6 +28,7 @@ public class OrderModel
     private String cCard;
     private String customerId;
     private String customer;
+    private String statusId;
     private String status;
     private String createdDate;
 
@@ -106,6 +107,11 @@ public class OrderModel
         get { return this.customer; }
         set { this.customer = value; }
     }
+    public String StatusId
+    {
+        get { return this.statusId; }
+        set { this.statusId = value; }
+    }
     public String Status
     {
         get { return this.status; }
@@ -134,16 +140,28 @@ public class OrderModel
         this.cCard = "";
         this.customerId = "";
         this.customer = "";
+        this.statusId = "";
         this.status = "";
         this.createdDate = "";
     }
-    public OrderModel(String _Id, String _No,
-                        String _Content, String _Address, String _SProvinceId,
-                        String _SProvince, String _SPrice,
-                        String _PPrice, String _Amount,
-                        String _PMethodId, String _PMethod, String _CCardId, String _CCard,
-                        String _CustomerId, String _Customer, String _Status,
-                        String _CreatedDate)
+    public OrderModel(String _Id,
+                    String _No,        
+                    String _Content,
+                    String _Address,
+                    String _SProvinceId,      
+                    String _SProvince,
+                    String _SPrice, 
+                    String _PPrice,
+                    String _Amount,
+                    String _PMethodId,
+                    String _PMethod,
+                    String _CCardId,
+                    String _CCard,
+                    String _CustomerId,
+                    String _Customer,
+                    String _StatusId,
+                    String _Status,
+                    String _CreatedDate)
     {
         this.id = _Id;
         this.no = _No;
@@ -160,6 +178,7 @@ public class OrderModel
         this.cCard = _CCard;
         this.customerId = _CustomerId;
         this.customer = _Customer;
+        this.statusId = _StatusId;
         this.status = _Status;
         this.createdDate = _CreatedDate;
     }
