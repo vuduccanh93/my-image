@@ -27,8 +27,12 @@ public partial class admin_wuc_wucOrderDetail : System.Web.UI.UserControl
             if (Model != null)
             {
                 lblNo.Text = Model.NO;
-                lblDate.Text = UtilDAO.DateTimeFormat(Model.CreatedDate,Constants.DATE_FORMAT_YYYY_MM_DD_HH_MM_SS);
-                lblStatus.Text = UtilDAO.OrderStatusFormat(Model.Status);
+                lblDate.Text = Model.CreatedDate;
+                drlStatus.DataSource = OrderStatusDAO.GetAll();
+                drlStatus.DataTextField = "Status";
+                drlStatus.DataValueField = "ID";
+                drlStatus.DataBind();
+                drlStatus.SelectedValue = Model.StatusId;
                 lblCustomer.Text = Model.Customer;
                 lblPayment.Text = Model.PMethod;
                 lblCC.Text = Model.CCard;
@@ -41,5 +45,9 @@ public partial class admin_wuc_wucOrderDetail : System.Web.UI.UserControl
                 grvOrderDetail.DataBind();
             }
         }
+    }
+    protected void btnSaveStatus_Click(object sender, EventArgs e)
+    {
+        OrderDAO.UpdateStatus(Model.ID,drlStatus.SelectedValue.ToString());
     }
 }

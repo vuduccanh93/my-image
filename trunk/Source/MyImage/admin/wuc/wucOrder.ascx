@@ -24,7 +24,7 @@
         <asp:BoundField DataField="C_cards_id" HeaderText="Cards id" Visible="False" />
         <asp:BoundField DataField="Customer_id" HeaderText="Customer id" Visible="False" />
         <asp:BoundField DataField="Username" HeaderText="Username" Visible="False" />
-        <asp:BoundField DataField="Status" HeaderText="Status" >
+        <asp:BoundField DataField="Status_name" HeaderText="Status" >
             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
         </asp:BoundField>
         <asp:BoundField DataField="Created_date" HeaderText="Created date" >
