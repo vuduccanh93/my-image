@@ -26,6 +26,16 @@ public class OrderDAO
             param[i++].Value = _CusId;
             return DataUtil.executeStore("sp_Order_GetByCusId", param);
     }
+    public static Boolean UpdateStatus(String _Id,String _Status)
+    {
+        SqlParameter[] param = new SqlParameter[2];
+        int i = 0;
+        param[i] = new SqlParameter("@ID", SqlDbType.Int);
+        param[i++].Value = _Id;
+        param[i] = new SqlParameter("@Status", SqlDbType.Int);
+        param[i++].Value = _Status;
+        return DataUtil.executeNonStore("sp_Order_UpdateStatus", param);
+    }
     public static OrderModel GetById(String _Id)
     {
         OrderModel _Model = null;
@@ -51,12 +61,13 @@ public class OrderDAO
                                         row["Printing_price"].ToString(),
                                         row["Amount"].ToString(),
                                         row["P_methods_id"].ToString(),
-                                        row["P_Methods_name"].ToString(),
+                                        row["P_methods_name"].ToString(),
                                         row["C_cards_id"].ToString(),
                                         row["C_cards_number"].ToString(),
                                         row["Customer_id"].ToString(),
                                         row["Customer_name"].ToString(),
-                                        row["Status"].ToString(),
+                                        row["Status_id"].ToString(),
+                                        row["Status_name"].ToString(),
                                         row["Created_date"].ToString());
                 }
             }
