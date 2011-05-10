@@ -27,15 +27,22 @@ Insert into Members Values('printer','printer','1',0)
 --Insert Menu
 
 Insert into Menu Values('Customers','?t=cu','')
-Insert into Menu Values('Accounts','?t=ac','')
+Insert into Menu Values('Member','?t=me','')
 Insert into Menu Values('Orders','?t=or','')
+Insert into Menu Values('Payment Methods','?t=pm','')
+Insert into Menu Values('State/Province(s)','?t=sp','')
+Insert into Menu Values('Shipping Prices','?t=sh','')
+Insert into Menu Values('Printing Prices','?t=pp','')
 
 --insert Ro_Me
 
 Insert into Ro_Me Values(0,0)
 Insert into Ro_Me Values(0,1)
 Insert into Ro_Me Values(0,2)
-
+Insert into Ro_Me Values(0,3)
+Insert into Ro_Me Values(0,4)
+Insert into Ro_Me Values(0,5)
+Insert into Ro_Me Values(0,6)
 -- insert PaymentMethods
 
 Insert into PaymentMethods Values ('Cash')
@@ -51,6 +58,7 @@ Insert into StateProvinces Values('New York')
 
 Insert into OrderStatus VALUES('Not payment','')
 Insert into OrderStatus VALUES('Waiting','')
+Insert into OrderStatus VALUES('Applied','')
 Insert into OrderStatus VALUES('Shipping','')
 Insert into OrderStatus VALUES('Shipped','')
 
