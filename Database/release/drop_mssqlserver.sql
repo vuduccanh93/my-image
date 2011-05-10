@@ -5,13 +5,16 @@
 /* Project name:                                                          */
 /* Author:                                                                */
 /* Script type:           Database drop script                            */
-/* Created on:            2011-05-09 00:24                                */
+/* Created on:            2011-05-10 09:02                                */
 /* ---------------------------------------------------------------------- */
 
 
 /* ---------------------------------------------------------------------- */
 /* Drop foreign key constraints                                           */
 /* ---------------------------------------------------------------------- */
+
+ALTER TABLE [Customers] DROP CONSTRAINT [CustomerStatus_Customers]
+GO
 
 ALTER TABLE [Orders] DROP CONSTRAINT [Customers_Orders]
 GO
@@ -25,6 +28,9 @@ GO
 ALTER TABLE [Orders] DROP CONSTRAINT [CreditCards_Orders]
 GO
 
+ALTER TABLE [Orders] DROP CONSTRAINT [OrderStatus_Orders]
+GO
+
 ALTER TABLE [OrderDetails] DROP CONSTRAINT [UploadDetails_OrderDetails]
 GO
 
@@ -35,6 +41,9 @@ ALTER TABLE [UploadDetails] DROP CONSTRAINT [Upload_UploadDetails]
 GO
 
 ALTER TABLE [Members] DROP CONSTRAINT [Roles_Members]
+GO
+
+ALTER TABLE [Members] DROP CONSTRAINT [MemberStatus_Members]
 GO
 
 ALTER TABLE [Ro_Me] DROP CONSTRAINT [Roles_Ro_Me]
@@ -240,4 +249,46 @@ GO
 /* Drop table */
 
 DROP TABLE [Roles]
+GO
+
+/* ---------------------------------------------------------------------- */
+/* Drop table "OrderStatus"                                               */
+/* ---------------------------------------------------------------------- */
+
+/* Drop constraints */
+
+ALTER TABLE [OrderStatus] DROP CONSTRAINT [PK_OrderStatus]
+GO
+
+/* Drop table */
+
+DROP TABLE [OrderStatus]
+GO
+
+/* ---------------------------------------------------------------------- */
+/* Drop table "CustomerStatus"                                            */
+/* ---------------------------------------------------------------------- */
+
+/* Drop constraints */
+
+ALTER TABLE [CustomerStatus] DROP CONSTRAINT [PK_CustomerStatus]
+GO
+
+/* Drop table */
+
+DROP TABLE [CustomerStatus]
+GO
+
+/* ---------------------------------------------------------------------- */
+/* Drop table "MemberStatus"                                              */
+/* ---------------------------------------------------------------------- */
+
+/* Drop constraints */
+
+ALTER TABLE [MemberStatus] DROP CONSTRAINT [PK_MemberStatus]
+GO
+
+/* Drop table */
+
+DROP TABLE [MemberStatus]
 GO

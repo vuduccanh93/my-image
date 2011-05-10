@@ -5,7 +5,7 @@
 /* Project name:                                                          */
 /* Author:                                                                */
 /* Script type:           Database creation script                        */
-/* Created on:            2011-05-09 00:24                                */
+/* Created on:            2011-05-10 09:02                                */
 /* ---------------------------------------------------------------------- */
 
 
@@ -28,6 +28,7 @@ CREATE TABLE [Customers] (
     [P_no] VARCHAR(20),
     [Email] VARCHAR(40),
     [Address] VARCHAR(100),
+    [Status_id] INTEGER NOT NULL,
     CONSTRAINT [PK_Customers] PRIMARY KEY ([ID])
 )
 GO
@@ -73,7 +74,7 @@ CREATE TABLE [Orders] (
     [P_methods_id] INTEGER,
     [C_cards_id] INTEGER,
     [C_id] INTEGER,
-    [Status] INTEGER,
+    [Status_id] INTEGER,
     [Created_date] VARCHAR(17),
     CONSTRAINT [PK_Orders] PRIMARY KEY ([ID])
 )
@@ -140,7 +141,7 @@ CREATE TABLE [Members] (
     [Username] VARCHAR(80),
     [Password] VARCHAR(80),
     [R_id] INTEGER,
-    [Status] INTEGER,
+    [Status_id] INTEGER,
     CONSTRAINT [PK_Members] PRIMARY KEY ([ID])
 )
 GO
@@ -207,8 +208,48 @@ CREATE TABLE [Roles] (
 GO
 
 /* ---------------------------------------------------------------------- */
+/* Add table "OrderStatus"                                                */
+/* ---------------------------------------------------------------------- */
+
+CREATE TABLE [OrderStatus] (
+    [ID] INTEGER IDENTITY(0,1) NOT NULL,
+    [Status] VARCHAR(40),
+    [Description] VARCHAR(100),
+    CONSTRAINT [PK_OrderStatus] PRIMARY KEY ([ID])
+)
+GO
+
+/* ---------------------------------------------------------------------- */
+/* Add table "CustomerStatus"                                             */
+/* ---------------------------------------------------------------------- */
+
+CREATE TABLE [CustomerStatus] (
+    [ID] INTEGER IDENTITY(0,1) NOT NULL,
+    [Status] VARCHAR(40),
+    [Description] VARCHAR(100),
+    CONSTRAINT [PK_CustomerStatus] PRIMARY KEY ([ID])
+)
+GO
+
+/* ---------------------------------------------------------------------- */
+/* Add table "MemberStatus"                                               */
+/* ---------------------------------------------------------------------- */
+
+CREATE TABLE [MemberStatus] (
+    [ID] INTEGER IDENTITY(0,1) NOT NULL,
+    [Status] VARCHAR(40),
+    [Description] VARCHAR(100),
+    CONSTRAINT [PK_MemberStatus] PRIMARY KEY ([ID])
+)
+GO
+
+/* ---------------------------------------------------------------------- */
 /* Foreign key constraints                                                */
 /* ---------------------------------------------------------------------- */
+
+ALTER TABLE [Customers] ADD CONSTRAINT [CustomerStatus_Customers] 
+    FOREIGN KEY ([Status_id]) REFERENCES [CustomerStatus] ([ID])
+GO
 
 ALTER TABLE [Orders] ADD CONSTRAINT [Customers_Orders] 
     FOREIGN KEY ([C_id]) REFERENCES [Customers] ([ID])
@@ -226,6 +267,10 @@ ALTER TABLE [Orders] ADD CONSTRAINT [CreditCards_Orders]
     FOREIGN KEY ([C_cards_id]) REFERENCES [CreditCards] ([ID])
 GO
 
+ALTER TABLE [Orders] ADD CONSTRAINT [OrderStatus_Orders] 
+    FOREIGN KEY ([Status_id]) REFERENCES [OrderStatus] ([ID])
+GO
+
 ALTER TABLE [OrderDetails] ADD CONSTRAINT [UploadDetails_OrderDetails] 
     FOREIGN KEY ([U_details_id]) REFERENCES [UploadDetails] ([ID])
 GO
@@ -240,6 +285,10 @@ GO
 
 ALTER TABLE [Members] ADD CONSTRAINT [Roles_Members] 
     FOREIGN KEY ([R_id]) REFERENCES [Roles] ([ID])
+GO
+
+ALTER TABLE [Members] ADD CONSTRAINT [MemberStatus_Members] 
+    FOREIGN KEY ([Status_id]) REFERENCES [MemberStatus] ([ID])
 GO
 
 ALTER TABLE [Ro_Me] ADD CONSTRAINT [Roles_Ro_Me] 
