@@ -14,11 +14,21 @@ using System.Data.SqlClient;
 /// </summary>
 public class MemberDAO
 {
+    public static DataTable GetWithOutId(String _Id)
+    {
+        SqlParameter[] param = new SqlParameter[1];
+        int i = 0;
+        param[i] = new SqlParameter("@Id", SqlDbType.VarChar);
+        param[i++].Value = _Id;
+        return DataUtil.executeStore("sp_Members_GetWithOutId", param);
+    }
     public static MemberModel GetByU_P(String _U, String _P)
     {
+
         MemberModel _Model = null;
         DataTable _Rs = null;
         try
+
         {
             SqlParameter[] param = new SqlParameter[2];
             int i = 0;
@@ -37,7 +47,7 @@ public class MemberDAO
                     _Model.Username = row["Username"].ToString();
                     _Model.Password = row["Password"].ToString();
                     _Model.Rid = row["R_id"].ToString();
-                    _Model.Status = row["Status"].ToString();
+                    _Model.Status = row["Status_id"].ToString();
                 }
             }
         }
