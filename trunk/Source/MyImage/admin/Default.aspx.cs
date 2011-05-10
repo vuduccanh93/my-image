@@ -39,22 +39,11 @@ public partial class admin_Default : System.Web.UI.Page
         String _pHtml = "<ul>";
         foreach (DataRow _Dr in _MNTable.Rows)
         {
-            //_pHtml += "<li><a href='javascript:void(0)' onClick=sendRequest('" +
-            //    WEB_URL +
-            //    @"admin/Funcs.aspx" +
-            //    _Dr["Link"].ToString() +
-            //    "'," +
-            //    "'content-main'" +
-            //    ")>" +
-            //    _Dr["Name"].ToString() +
-            //    "</a><em></em></li>";
-
             _pHtml += "<li><a href='" +
                 _Dr["Link"].ToString() + 
                 "'>" +
                 _Dr["Name"].ToString() +
                 "</a><em></em></li>";
-
         }
         _pHtml += "<li><a href=" +
                  WEB_URL +
@@ -68,10 +57,10 @@ public partial class admin_Default : System.Web.UI.Page
             _Token = Request.QueryString["t"].ToString();
             switch (_Token){
                 case "cu":
-                        addControl(Request.ApplicationPath + @"/admin/wuc/wucCustomer.ascx");
+                    addControl(Request.ApplicationPath + @"/admin/wuc/wucCustomer.ascx");
                     break;
-                case "ac":
-                    
+                case "me":
+                    addControl(Request.ApplicationPath + @"/admin/wuc/wucMember.ascx");
                     break;
                 case "or":
                     if (Request.QueryString["oid"] != null)
@@ -84,9 +73,18 @@ public partial class admin_Default : System.Web.UI.Page
                         addControl(Request.ApplicationPath + @"/admin/wuc/wucOrder.ascx");
                     }
                     break;
-                case "a":
+                case "pm":
 
-                break;
+                    break;
+                case "sp":
+                    addControl(Request.ApplicationPath + @"/admin/wuc/wucStateProvince.ascx");
+                    break;
+                case "sh":
+
+                    break;
+                case "pp":
+
+                    break;
             }
         }
     }
