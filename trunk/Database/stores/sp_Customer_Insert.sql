@@ -9,12 +9,14 @@ create proc sp_Customer_Insert
 	@FName			VARCHAR(40),
 	@LName			VARCHAR(40),
 	@Dob			VARCHAR(17),
-	@Gender			VARCHAR(1),
+	@Gender			bit,
 	@PNo			VARCHAR(20),
 	@Address		VARCHAR(100)
 AS
 BEGIN
 	INSERT INTO CUSTOMERS(
+		Username,
+		Password,
 		Email,
 		F_name,
 		L_name,
@@ -23,6 +25,8 @@ BEGIN
 		P_no,
 		Address
 		) VALUES( 
+		@Username,
+		@Password,
 		@Email,
 		@FName,
 		@LName,

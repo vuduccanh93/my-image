@@ -4,11 +4,11 @@ go
 
 create proc [sp_Customer_Update]
 	@ID		INT,
-	@Username		VARCHAR(40),
+	@Password		VARCHAR(40),
 	@FName			VARCHAR(40),
 	@LName			VARCHAR(40),
 	@Dob			VARCHAR(17),
-	@Gender			VARCHAR(1),
+	@Gender			bit,
 	@PNo			VARCHAR(20),
 	@Address		VARCHAR(100),
 	@Email			VARCHAR(40)
@@ -16,6 +16,7 @@ AS
 BEGIN
 	UPDATE Customers
 	SET 
+		Password = @Password,
 		F_name = @FName,
 		L_name = @LName,
 		Dob = @Dob,
