@@ -18,7 +18,7 @@ public class CustomerDAO
     {
         return DataUtil.executeStore("sp_Customer_GetAll", null);
     }
-    public static Boolean Upsdate(CustomerModel _Model)
+    public static Boolean Update(CustomerModel _Model)
 
     {
         SqlParameter[] param = new SqlParameter[10];
