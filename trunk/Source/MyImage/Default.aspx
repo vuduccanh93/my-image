@@ -1,10 +1,7 @@
 <%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" Title="Untitled Page" %>
-
 <asp:Content ID="ContentLeft" ContentPlaceHolderID="ContentPlaceHolderLeft" Runat="Server">
-    <% LoadMenu(); %>
+<%LoadMenu(); %>
 </asp:Content>
 <asp:Content ID="ContentRight" ContentPlaceHolderID="ContentPlaceHolderRight" Runat="Server">
-    <asp:PlaceHolder ID="PlaceHolderRight" runat="server"></asp:PlaceHolder>
-    
 </asp:Content>
 
