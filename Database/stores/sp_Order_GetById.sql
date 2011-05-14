@@ -8,7 +8,7 @@ AS
 BEGIN
 	SELECT	A.ID,
 			A.No,
-			A.Order_content,
+			A.Content,
 			A.Address,
 			A.S_provinces_id,
 			C.Name AS 'S_provinces_name',
