@@ -18,14 +18,20 @@ public class StateProvinceDAO
     {
         return DataUtil.executeStore("sp_StateProvince_GetAll", null);
     }
+    public static DataTable GetAllAvalable()
+    {
+        return DataUtil.executeStore("sp_StateProvince_GetAllAvalable", null);
+    }
     public static Boolean Update(StateProvinceModel _Model)
     {
-        SqlParameter[] param = new SqlParameter[2];
+        SqlParameter[] param = new SqlParameter[3];
         int i = 0;
-        param[i] = new SqlParameter("@Id", SqlDbType.VarChar);
+        param[i] = new SqlParameter("@Id", SqlDbType.Int);
         param[i++].Value = _Model.ID;
         param[i] = new SqlParameter("@Name", SqlDbType.VarChar);
         param[i++].Value = _Model.Name;
+        param[i] = new SqlParameter("@Available", SqlDbType.Int);
+        param[i++].Value = _Model.Available;
 
         return DataUtil.executeNonStore("sp_StateProvince_Update", param);
     }
@@ -41,10 +47,12 @@ public class StateProvinceDAO
     }
     public static Boolean Insert(StateProvinceModel _Model)
     {
-        SqlParameter[] param = new SqlParameter[1];
+        SqlParameter[] param = new SqlParameter[2];
         int i = 0;
         param[i] = new SqlParameter("@Name", SqlDbType.VarChar);
         param[i++].Value = _Model.Name;
+        param[i] = new SqlParameter("@Available", SqlDbType.Int);
+        param[i++].Value = _Model.Available;
 
         return DataUtil.executeNonStore("sp_StateProvince_Insert", param);
     }
