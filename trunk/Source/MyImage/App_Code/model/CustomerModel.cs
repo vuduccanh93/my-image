@@ -23,7 +23,8 @@ public class CustomerModel
     private String gender;
     private String pNo;
     private String address;
-
+    private String statusId;
+    private String status;
     public String ID
     {
         get { return this.id; }
@@ -74,6 +75,16 @@ public class CustomerModel
         get { return this.address; }
         set { this.address = value; }
     }
+    public String StatusId
+    {
+        get { return this.statusId; }
+        set { this.statusId = value; }
+    }
+    public String Status
+    {
+        get { return this.status; }
+        set { this.status = value; }
+    }
     public CustomerModel()
 	{
         id = "";
@@ -86,12 +97,14 @@ public class CustomerModel
         gender = "";
         pNo = "";
         address = "";
+        statusId = "";
+        status = "";
 	}
     public CustomerModel(String _ID,String _Username,
                         String _Password,String _FName,
                         String _LName,String _Dob,
                         String _Gender,String _PNo,String _Address,
-                        String _Email)
+                        String _Email,String _StatusId,String _Status)
     {
         this.id = _ID;
         this.username = _Username;
@@ -103,5 +116,7 @@ public class CustomerModel
         this.pNo = _PNo;
         this.address = _Address;
         this.email = _Email;
+        this.statusId = _StatusId;
+        this.status = _Status;
     }
 }

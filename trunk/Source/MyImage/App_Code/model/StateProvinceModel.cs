@@ -15,6 +15,8 @@ public class StateProvinceModel
 {
     private String id;
     private String name;
+    private String available;
+
     public String ID
     {
         get { return this.id; }
@@ -25,14 +27,21 @@ public class StateProvinceModel
         get { return this.name; }
         set { this.name = value; }
     }
+    public String Available
+    {
+        get { return this.available; }
+        set { this.available = value; }
+    }
     public StateProvinceModel()
 	{
         id = "";
         name = "";
+        available = "";
 	}
-    public StateProvinceModel(String _ID,String _Name)
+    public StateProvinceModel(String _ID,String _Name,String _Available)
     {
         id = _ID;
         name = _Name;
+        available = _Available;
     }
 }
