@@ -3,7 +3,7 @@ drop procedure [dbo].[sp_Customer_Update]
 go
 
 create proc [sp_Customer_Update]
-	@ID		INT,
+	@ID				INT,
 	@Password		VARCHAR(40),
 	@FName			VARCHAR(40),
 	@LName			VARCHAR(40),
@@ -15,16 +15,33 @@ create proc [sp_Customer_Update]
 	@Status			INT
 AS
 BEGIN
-	UPDATE Customers
-	SET 
-		Password = @Password,
-		F_name = @FName,
-		L_name = @LName,
-		Dob = @Dob,
-		Gender = @Gender,
-		P_no = @PNo,
-		Address = @Address,
-		Email = @Email,
-		Status_id = @Status
-	WHERE ID = @ID
+	IF @Status <> ''
+	BEGIN
+		UPDATE Customers
+		SET 
+			Password = @Password,
+			F_name = @FName,
+			L_name = @LName,
+			Dob = @Dob,
+			Gender = @Gender,
+			P_no = @PNo,
+			Address = @Address,
+			Email = @Email,
+			Status_id = @Status
+		WHERE ID = @ID
+	END
+	ELSE
+	BEGIN
+		UPDATE Customers
+		SET 
+			Password = @Password,
+			F_name = @FName,
+			L_name = @LName,
+			Dob = @Dob,
+			Gender = @Gender,
+			P_no = @PNo,
+			Address = @Address,
+			Email = @Email
+		WHERE ID = @ID
+	END
 END
