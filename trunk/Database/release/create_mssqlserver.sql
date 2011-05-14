@@ -5,7 +5,7 @@
 /* Project name:                                                          */
 /* Author:                                                                */
 /* Script type:           Database creation script                        */
-/* Created on:            2011-05-10 09:02                                */
+/* Created on:            2011-05-12 14:04                                */
 /* ---------------------------------------------------------------------- */
 
 
@@ -65,9 +65,9 @@ GO
 CREATE TABLE [Orders] (
     [ID] INTEGER IDENTITY(0,1) NOT NULL,
     [No] VARCHAR(40),
-    [Order_content] NVARCHAR(200),
+    [Content] NVARCHAR(200),
     [Address] VARCHAR(200),
-    [S_provinces_id] INTEGER,
+    [S_province_id] INTEGER,
     [Shipping_price] FLOAT,
     [Printing_price] FLOAT,
     [Amount] FLOAT,
@@ -192,6 +192,7 @@ GO
 CREATE TABLE [StateProvinces] (
     [ID] INTEGER IDENTITY(0,1) NOT NULL,
     [Name] VARCHAR(40),
+    [Available] BIT,
     CONSTRAINT [PK_StateProvinces] PRIMARY KEY ([ID])
 )
 GO
@@ -255,10 +256,6 @@ ALTER TABLE [Orders] ADD CONSTRAINT [Customers_Orders]
     FOREIGN KEY ([C_id]) REFERENCES [Customers] ([ID])
 GO
 
-ALTER TABLE [Orders] ADD CONSTRAINT [StateProvinces_Orders] 
-    FOREIGN KEY ([S_provinces_id]) REFERENCES [StateProvinces] ([ID])
-GO
-
 ALTER TABLE [Orders] ADD CONSTRAINT [PaymentMethods_Orders] 
     FOREIGN KEY ([P_methods_id]) REFERENCES [PaymentMethods] ([ID])
 GO
@@ -269,6 +266,10 @@ GO
 
 ALTER TABLE [Orders] ADD CONSTRAINT [OrderStatus_Orders] 
     FOREIGN KEY ([Status_id]) REFERENCES [OrderStatus] ([ID])
+GO
+
+ALTER TABLE [Orders] ADD CONSTRAINT [StateProvinces_Orders] 
+    FOREIGN KEY ([S_province_id]) REFERENCES [StateProvinces] ([ID])
 GO
 
 ALTER TABLE [OrderDetails] ADD CONSTRAINT [UploadDetails_OrderDetails] 

@@ -5,7 +5,7 @@
 /* Project name:                                                          */
 /* Author:                                                                */
 /* Script type:           Database drop script                            */
-/* Created on:            2011-05-10 09:02                                */
+/* Created on:            2011-05-12 14:04                                */
 /* ---------------------------------------------------------------------- */
 
 
@@ -19,9 +19,6 @@ GO
 ALTER TABLE [Orders] DROP CONSTRAINT [Customers_Orders]
 GO
 
-ALTER TABLE [Orders] DROP CONSTRAINT [StateProvinces_Orders]
-GO
-
 ALTER TABLE [Orders] DROP CONSTRAINT [PaymentMethods_Orders]
 GO
 
@@ -29,6 +26,9 @@ ALTER TABLE [Orders] DROP CONSTRAINT [CreditCards_Orders]
 GO
 
 ALTER TABLE [Orders] DROP CONSTRAINT [OrderStatus_Orders]
+GO
+
+ALTER TABLE [Orders] DROP CONSTRAINT [StateProvinces_Orders]
 GO
 
 ALTER TABLE [OrderDetails] DROP CONSTRAINT [UploadDetails_OrderDetails]
