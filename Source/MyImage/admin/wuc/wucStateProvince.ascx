@@ -1,5 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="wucStateProvince.ascx.cs" Inherits="admin_wuc_wucStateProvince" %>
-<asp:GridView ID="grvStateProvince" runat="server" AutoGenerateColumns="False" CssClass="state-province" OnRowCancelingEdit="grvStateProvince_RowCancelingEdit" OnRowEditing="grvStateProvince_RowEditing" OnRowUpdated="grvStateProvince_RowUpdated" OnRowUpdating="grvStateProvince_RowUpdating" OnRowCommand="grvStateProvince_RowCommand" ShowFooter="True">
+<asp:GridView ID="grvStateProvince" runat="server" AutoGenerateColumns="False" CssClass="state-province" OnRowCancelingEdit="grvStateProvince_RowCancelingEdit" OnRowEditing="grvStateProvince_RowEditing" OnRowUpdated="grvStateProvince_RowUpdated" OnRowUpdating="grvStateProvince_RowUpdating" OnRowCommand="grvStateProvince_RowCommand" ShowFooter="True" AllowPaging="True" OnPageIndexChanging="grvStateProvince_PageIndexChanging" PageSize="5">
     <Columns>
         <asp:TemplateField HeaderText="ID" Visible="False">
             <EditItemTemplate>
@@ -9,24 +9,49 @@
                 <asp:Label ID="lblId" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
             </ItemTemplate>
         </asp:TemplateField>
-        <asp:TemplateField HeaderText="State/Province(s)">
+        <asp:TemplateField HeaderText="State/Province">
             <EditItemTemplate>
                 <asp:TextBox ID="txtName" runat="server" Text='<%# Bind("Name") %>'></asp:TextBox>
             </EditItemTemplate>
             <ItemTemplate>
                 <asp:Label ID="lblName" runat="server" Text='<%# Bind("Name") %>'></asp:Label>
             </ItemTemplate>
+            <HeaderTemplate>
+            </HeaderTemplate>
             <FooterTemplate>
-                 <asp:TextBox ID="txtNewSProvince" runat="server"></asp:TextBox>&nbsp;
-                 <asp:Button ID="btnInsertNewRow" CommandName="InsertNewSProvince" runat="server" Text="Insert" />
-                <br />
-                <asp:Label ID="lblInsertError" runat="server" Text=" " ForeColor="DarkRed"></asp:Label>
+                <asp:TextBox ID="txtNewSProvince" runat="server" CssClass="editmod-xl"></asp:TextBox>
+            </FooterTemplate>
+        </asp:TemplateField>
+        <asp:TemplateField HeaderText="Available">
+            <EditItemTemplate>
+                <asp:CheckBox ID="ckbAvailable" runat="server" Checked='<%# Bind("Available") %>'/>
+            </EditItemTemplate>
+            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+            <ItemTemplate>
+                <asp:CheckBox ID="CheckBox1" runat="server" Checked='<%# Bind("Available") %>' Enabled="false" />
+            </ItemTemplate>
+            <FooterTemplate>
+                <div style="vertical-align: middle; text-align: center">
+                <asp:CheckBox ID="ckbNewAvailable" runat="server" CssClass="text-center"/>
+                </div>
+            </FooterTemplate>
+        </asp:TemplateField>
+        <asp:TemplateField>
+            <EditItemTemplate>
+                <asp:TextBox ID="TextBox1" runat="server" Visible="False"></asp:TextBox>
+            </EditItemTemplate>
+            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+            <ItemTemplate>
+                <asp:Label ID="Label1" runat="server"></asp:Label>
+            </ItemTemplate>
+            <FooterTemplate>
+                <div>
+                    <asp:Button ID="btnInsertNewRow" CommandName="InsertNewSProvince" runat="server" Text="Insert" />
+                </div>
             </FooterTemplate>
         </asp:TemplateField>
         <asp:CommandField ShowEditButton="True" />
     </Columns>
     <EmptyDataTemplate>
-        <asp:Button ID="Button1" runat="server" Text="Button" />
-        
     </EmptyDataTemplate>
 </asp:GridView>
