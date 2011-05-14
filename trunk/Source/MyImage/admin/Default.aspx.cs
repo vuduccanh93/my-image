@@ -80,7 +80,7 @@ public partial class admin_Default : System.Web.UI.Page
                     addControl(Request.ApplicationPath + @"/admin/wuc/wucStateProvince.ascx");
                     break;
                 case "sh":
-
+                    addControl(Request.ApplicationPath + @"/admin/wuc/wucShippingPrice.ascx");
                     break;
                 case "pp":
 
