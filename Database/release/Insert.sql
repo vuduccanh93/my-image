@@ -50,9 +50,9 @@ Insert into PaymentMethods Values ('Credit Card')
 
 -- insert StateProvinces
 
-Insert into StateProvinces Values('San Jose')
-Insert into StateProvinces Values('Los Angeles')
-Insert into StateProvinces Values('New York')
+Insert into StateProvinces Values('San Jose',0)
+Insert into StateProvinces Values('Los Angeles',0)
+Insert into StateProvinces Values('New York',0)
 
 --Insert OrderStatus
 
