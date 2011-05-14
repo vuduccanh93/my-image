@@ -4,11 +4,13 @@ go
 
 create proc [sp_StateProvince_Update]
 	@Id			INT,
-	@Name		VARCHAR(40)
+	@Name		VARCHAR(40),
+	@Available	INT
 AS
 BEGIN
 	UPDATE StateProvinces
 	SET 
-		Name = @Name
+		Name = @Name,
+		Available = @Available
 	WHERE ID = @Id
 END

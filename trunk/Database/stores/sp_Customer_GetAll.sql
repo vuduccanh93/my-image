@@ -4,7 +4,18 @@ GO
 CREATE PROC [sp_Customer_GetAll]	
 AS
 BEGIN
-	SELECT ID,Username,Password,F_name,L_name,Dob,Gender,P_no,Address,Email FROM Customers
+	SELECT	A.ID,
+			A.Username,
+			A.Password,
+			A.F_name,
+			A.L_name,Dob,
+			A.Gender,
+			A.P_no,
+			A.Address,Email,
+			A.Status_id,
+			B.Status
+	FROM Customers AS A
+	INNER JOIN CustomerStatus AS B ON B.ID = A.Status_id 
 END
 
 
