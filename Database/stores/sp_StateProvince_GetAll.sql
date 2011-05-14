@@ -4,7 +4,7 @@ GO
 CREATE PROC [sp_StateProvince_GetAll]	
 AS
 BEGIN
-	SELECT ID,Name FROM StateProvinces
+	SELECT ID,Name,Available FROM StateProvinces
 END
 
 

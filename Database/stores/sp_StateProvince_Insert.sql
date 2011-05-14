@@ -3,8 +3,9 @@ drop procedure [dbo].[sp_StateProvince_Insert]
 go
 
 create proc [sp_StateProvince_Insert]
-	@Name		VARCHAR(40)
+	@Name		VARCHAR(40),
+	@Available	INT
 AS
 BEGIN
-	INSERT INTO StateProvinces(Name) VALUES(@Name)
+	INSERT INTO StateProvinces(Name,Available) VALUES(@Name,@Available)
 END
