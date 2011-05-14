@@ -33,16 +33,31 @@ public partial class admin_wuc_wucCustomer : System.Web.UI.UserControl
         grvCustomer.DataSource = CustomerDAO.GetAll();
         grvCustomer.DataBind();
     }
+    private void BindDRLStatus(int _RowIndex)
+    {
+        GridViewRow _Row = grvCustomer.Rows[_RowIndex];
+        DropDownList drlStatus = (DropDownList)(_Row.FindControl("drlStatus"));
+        drlStatus.DataSource = MemberStatusDAO.GetAll();
+        drlStatus.DataTextField = "Status";
+        drlStatus.DataValueField = "ID";
+        drlStatus.DataBind();
+
+        String _Id = ((Label)_Row.FindControl("lblStatusId")).Text;
+        drlStatus.SelectedValue = _Id;
+    }
     protected void grvCustomer_RowEditing(object sender, GridViewEditEventArgs e)
     {
 
         grvCustomer.EditIndex = e.NewEditIndex;
         BindData();
+        BindDRLStatus(e.NewEditIndex);
+        grvCustomer.Columns[1].Visible = false;
     }
     protected void grvCustomer_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
     {
         grvCustomer.EditIndex = -1;
         BindData();
+        grvCustomer.Columns[1].Visible = true;
     }
     protected void grvCustomer_RowUpdated(object sender, GridViewUpdatedEventArgs e)
     {
@@ -59,11 +74,12 @@ public partial class admin_wuc_wucCustomer : System.Web.UI.UserControl
         String _Gender = ((CheckBox)_Row.FindControl("ckbGender")).Checked ? "1" : "0";
         String _Address = ((TextBox)_Row.FindControl("txtAddress")).Text;
         String _Email = ((TextBox)_Row.FindControl("txtEmail")).Text;
-
-        CustomerModel _Model = new CustomerModel(_ID, _Username, "", _F_name, _L_name, "", _Gender, _P_no, _Address,_Email);
-        CustomerDAO.Upsdate(_Model);
+        String _Status = ((DropDownList)(_Row.FindControl("drlStatus"))).SelectedValue.ToString(); ;
+        CustomerModel _Model = new CustomerModel(_ID, _Username, "", _F_name, _L_name, "", _Gender, _P_no, _Address,_Email,_Status,"");
+        CustomerDAO.Update(_Model);
         grvCustomer.EditIndex = -1;
         BindData();
+        grvCustomer.Columns[1].Visible = true;
     }
     protected void grvCustomer_RowCommand(object sender, GridViewCommandEventArgs e)
     {

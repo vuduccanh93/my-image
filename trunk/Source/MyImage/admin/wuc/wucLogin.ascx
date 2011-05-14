@@ -18,13 +18,13 @@
     <tr>
         <td>Username:</td>
         <td>
-            <asp:TextBox ID="txtUsername" runat="server" />
+            <asp:TextBox ID="txtUsername" runat="server" >admin</asp:TextBox>
         </td>
     </tr>
     <tr>
         <td >Password:</td>
         <td >
-            <asp:TextBox ID="txtPassword" TextMode="Password" runat="server" />
+            <asp:TextBox ID="txtPassword" TextMode="Password" runat="server" >admin</asp:TextBox>
         </td>
     </tr>
     <tr>

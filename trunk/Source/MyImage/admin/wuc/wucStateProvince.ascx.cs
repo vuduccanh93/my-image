@@ -35,15 +35,17 @@ public partial class admin_wuc_wucStateProvince : System.Web.UI.UserControl
         GridViewRow _Row = grvStateProvince.Rows[e.RowIndex];
         String _Id = ((TextBox)_Row.FindControl("txtId")).Text;
         String _Name = ((TextBox)_Row.FindControl("txtName")).Text;
-        if (StateProvinceDAO.IsAvailable(new StateProvinceModel(_Id, _Name)) == 0)
+        String _Avail = ((CheckBox)_Row.FindControl("ckbAvailable")).Checked ? "1" : "0";
+        StateProvinceModel _Model = new StateProvinceModel(_Id, _Name, _Avail);
+        if (StateProvinceDAO.IsAvailable(_Model) == 0)
         {
-            StateProvinceDAO.Update(new StateProvinceModel(_Id, _Name));
+            StateProvinceDAO.Update(_Model);
             grvStateProvince.EditIndex = -1;
             BindData();
         }
         else
         {
-            Response.Write("<script>alert('" + _Name + " is NOT AVAILABLE!')</script>");
+            Alert(_Name + " is NOT AVAILABLE!");
         }
         
     }
@@ -61,18 +63,35 @@ public partial class admin_wuc_wucStateProvince : System.Web.UI.UserControl
         if (e.CommandName == "InsertNewSProvince")
         {
             TextBox _SPName = (TextBox)grvStateProvince.FooterRow.FindControl("txtNewSProvince");
-            Label _SPError = (Label)grvStateProvince.FooterRow.FindControl("lblInsertError");
-            if (StateProvinceDAO.IsAvailable(new StateProvinceModel("", _SPName.Text)) == 0)
+            CheckBox _SPAvalable = (CheckBox)grvStateProvince.FooterRow.FindControl("ckbNewAvailable");
+            StateProvinceModel _NewModel = null;
+            if (String.IsNullOrEmpty(_SPName.Text.Trim()))
             {
-                StateProvinceDAO.Insert(new StateProvinceModel("", _SPName.Text));
-                _SPError.Text = "";
-                BindData();
+                Alert("State/Province(s) is NOT NULL or EMPTY!");
             }
             else
             {
-                Response.Write("<script>alert('" + _SPName.Text + " is NOT AVAILABLE!')</script>");
-                _SPName.Text = "";
+                _NewModel = new StateProvinceModel("", _SPName.Text, _SPAvalable.Checked ? "1" : "0");
+                if (StateProvinceDAO.IsAvailable(_NewModel) == 0)
+                {
+                    StateProvinceDAO.Insert(_NewModel);
+                    BindData();
+                }
+                else
+                {
+                    Alert(_SPName.Text +" is NOT AVAILABLE!");
+                }
             }
         }
+    }
+
+    protected void Alert(String _Text)
+    {
+        Response.Write("<script>alert('" + _Text + "')</script>");
+    }
+    protected void grvStateProvince_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        grvStateProvince.PageIndex = e.NewPageIndex;
+        BindData();
     }
 }

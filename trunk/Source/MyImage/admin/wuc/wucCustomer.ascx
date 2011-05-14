@@ -9,9 +9,9 @@
                 <asp:Label ID="Label6" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
             </ItemTemplate>
         </asp:TemplateField>
-        <asp:TemplateField HeaderText="Username">
+        <asp:TemplateField HeaderText="Username" >
             <EditItemTemplate>
-                <asp:TextBox ID="txtUsername" runat="server" Text='<%# Bind("Username") %>' ReadOnly="True" CssClass="editmod-m"></asp:TextBox>
+                <asp:TextBox ID="txtUsername" runat="server" Text='<%# Bind("Username") %>' ReadOnly="True" CssClass="editmod-l"></asp:TextBox>
             </EditItemTemplate>
             <ItemTemplate>
                 <asp:Label ID="Label5" runat="server" Text='<%# Bind("Username") %>'></asp:Label>
@@ -73,6 +73,16 @@
                 <asp:Label ID="Label4" runat="server" Text='<%# Bind("Address") %>'></asp:Label>
             </ItemTemplate>
             <ControlStyle CssClass="editmod-m" />
+        </asp:TemplateField>
+        <asp:TemplateField HeaderText="Status">
+            <EditItemTemplate>
+                <asp:DropDownList ID="drlStatus" runat="server">
+                </asp:DropDownList>
+                <asp:Label ID="lblStatusId" runat="server" Text='<%# Bind("Status_id") %>' CssClass="editmod-hide"></asp:Label>
+            </EditItemTemplate>
+            <ItemTemplate>
+                <asp:Label ID="lblStatus" runat="server" Text='<%# Bind("Status") %>'></asp:Label>
+            </ItemTemplate>
         </asp:TemplateField>
         <asp:HyperLinkField HeaderText="Order(s)" Text="View" DataNavigateUrlFields="ID" DataNavigateUrlFormatString="../?t=or&amp;cusid={0}" >
             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
