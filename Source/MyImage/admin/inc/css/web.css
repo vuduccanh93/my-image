@@ -283,9 +283,26 @@ body{
     padding: 4px;
     background-color: #FFC;
 }
-
-
-
+.shipping-price
+{
+	width:830px;
+	border-color: #600;
+    border-width: 1px;
+    border-style: solid;
+}
+.shipping-price tr,.shipping-price tr td
+{
+	border-color: #600;
+    border-width: 1px;
+    border-style: solid;
+    margin: 0;
+    padding: 4px;
+    background-color: #FFC;
+}
+.text-center
+{
+	text-align:center;
+}
 .editmod-hide
 {
 	display:none;	
