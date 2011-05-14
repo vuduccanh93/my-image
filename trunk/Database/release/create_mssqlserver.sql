@@ -5,7 +5,7 @@
 /* Project name:                                                          */
 /* Author:                                                                */
 /* Script type:           Database creation script                        */
-/* Created on:            2011-05-12 14:04                                */
+/* Created on:            2011-05-14 18:52                                */
 /* ---------------------------------------------------------------------- */
 
 
@@ -67,7 +67,7 @@ CREATE TABLE [Orders] (
     [No] VARCHAR(40),
     [Content] NVARCHAR(200),
     [Address] VARCHAR(200),
-    [S_province_id] INTEGER,
+    [S_provinces_id] INTEGER,
     [Shipping_price] FLOAT,
     [Printing_price] FLOAT,
     [Amount] FLOAT,
@@ -269,7 +269,7 @@ ALTER TABLE [Orders] ADD CONSTRAINT [OrderStatus_Orders]
 GO
 
 ALTER TABLE [Orders] ADD CONSTRAINT [StateProvinces_Orders] 
-    FOREIGN KEY ([S_province_id]) REFERENCES [StateProvinces] ([ID])
+    FOREIGN KEY ([S_provinces_id]) REFERENCES [StateProvinces] ([ID])
 GO
 
 ALTER TABLE [OrderDetails] ADD CONSTRAINT [UploadDetails_OrderDetails] 
