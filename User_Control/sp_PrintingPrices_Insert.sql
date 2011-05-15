@@ -3,6 +3,6 @@ create proc [sp_PrintingPrices_Insert]
 	@Price		FLOAT
 AS
 BEGIN
-	INSERT INTO PrintingPrices(Size) VALUES(@Size)
-	INSERT INTO PrintingPrices(Price) VALUES(@Price)
+	INSERT INTO PrintingPrices(Size, Price) VALUES(@Size, @Price)	
 END
+

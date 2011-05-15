@@ -1,2 +1,0 @@
-DAO sai,
-kieu du lieu INPUT trong store nhu the nao the ben DAO ghi nhu vay, kiem tra lai dao di, lam xong truoc trua mai
