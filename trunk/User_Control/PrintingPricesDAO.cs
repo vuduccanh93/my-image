@@ -21,12 +21,14 @@ public class PrintingPricesDAO
 
     public static Boolean Update(PrintingPricesModel _Model)
     {
-        SqlParameter[] param = new SqlParameter[2];
-        int i = 0;        
+        SqlParameter[] param = new SqlParameter[3];
+        int i = 0;
+        param[i] = new SqlParameter("@Id", SqlDbType.Int);
+        param[i++].Value = Convert.ToInt16(_Model.ID);
         param[i] = new SqlParameter("@Size", SqlDbType.VarChar);
         param[i++].Value = _Model.Size;
-        param[i] = new SqlParameter("@Price", SqlDbType.VarChar);
-        param[i++].Value = _Model.Price;
+        param[i] = new SqlParameter("@Price", SqlDbType.Float);
+        param[i++].Value = Convert.ToDouble(_Model.Price);
 
         return DataUtil.executeNonStore("sp_PrintingPrices_Update", param);
     }
@@ -37,9 +39,10 @@ public class PrintingPricesDAO
         int i = 0;
         param[i] = new SqlParameter("@Size", SqlDbType.VarChar);
         param[i++].Value = _Model.Size;
-        param[i] = new SqlParameter("@Price", SqlDbType.VarChar);
-        param[i++].Value = _Model.Price;
+        param[i] = new SqlParameter("@Price", SqlDbType.Float);
+        param[i++].Value = Convert.ToDouble(_Model.Price);
 
         return DataUtil.executeNonStore("PrintingPrices_Insert", param);
     }
+    
 }

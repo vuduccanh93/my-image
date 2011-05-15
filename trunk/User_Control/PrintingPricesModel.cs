@@ -13,14 +13,15 @@ using System.Web.UI.HtmlControls;
 /// </summary>
 public class PrintingPricesModel
 {
-	//private String id;
+	private String id;
     private String size;
     private String price;
-   // public String ID
-   // {
-        //get { return this.id; }
-       // set { this.id = value; }
-   // }
+
+    public String ID
+    {
+        get { return this.id; }
+        set { this.id = value; }
+    }
     public String Size
     {
         get { return this.size; }
@@ -32,15 +33,17 @@ public class PrintingPricesModel
         get { return this.price; }
         set { this.price = value; }
     }
-
     public PrintingPricesModel()
-	{
+    {
+        id = "";
         size = "";
         price = "";
-	}
-    public PrintingPricesModel( String _Size, String _Price)
-    {        
-        size = _Size;
-        price = _Price;
+    }
+    
+    public PrintingPricesModel(String _ID,String _Size, String _Price)
+    {
+       this.id = _ID;
+       this.size = _Size;
+       this.price = _Price;
     }
 }
