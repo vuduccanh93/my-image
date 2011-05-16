@@ -32,7 +32,7 @@ public class CustomerDAO
         param[i] = new SqlParameter("LName", SqlDbType.VarChar);
         param[i++].Value = _Model.LName;
         param[i] = new SqlParameter("Dob", SqlDbType.VarChar);
-        param[i++].Value = _Model.Dob;
+        param[i++].Value = "";
         param[i] = new SqlParameter("Gender", SqlDbType.Int);
         param[i++].Value = _Model.Gender;
         param[i] = new SqlParameter("PNo", SqlDbType.VarChar);
@@ -42,7 +42,7 @@ public class CustomerDAO
         param[i] = new SqlParameter("Email", SqlDbType.VarChar);
         param[i++].Value = _Model.Email;
         param[i] = new SqlParameter("Status", SqlDbType.Int);
-        param[i++].Value = _Model.StatusId;
+        param[i++].Value = _Model.StatusId.Equals("") ? "-1" : _Model.StatusId;
         return DataUtil.executeNonStore("sp_Customer_Update", param);
     }
     public static Boolean Insert(CustomerModel _Model)
@@ -60,7 +60,7 @@ public class CustomerDAO
         param[i] = new SqlParameter("LName", SqlDbType.VarChar);
         param[i++].Value = _Model.LName;
         param[i] = new SqlParameter("Dob", SqlDbType.VarChar);
-        param[i++].Value = "";
+        param[i++].Value = _Model.Dob;
         param[i] = new SqlParameter("Gender", SqlDbType.VarChar);
         param[i++].Value = _Model.Gender;
         param[i] = new SqlParameter("PNo", SqlDbType.VarChar);
