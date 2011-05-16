@@ -13,10 +13,37 @@ using System.Web.UI.HtmlControls;
 /// </summary>
 public class PrintingPriceModel
 {
-	public PrintingPriceModel()
-	{
-		//
-		// TODO: Add constructor logic here
-		//
-	}
+	private String id;
+    private String size;
+    private String price;
+
+    public String ID
+    {
+        get { return this.id; }
+        set { this.id = value; }
+    }
+    public String Size
+    {
+        get { return this.size; }
+        set { this.size = value; }
+    }
+
+    public String Price
+    {
+        get { return this.price; }
+        set { this.price = value; }
+    }
+    public PrintingPriceModel()
+    {
+        id = "";
+        size = "";
+        price = "";
+    }
+    
+    public PrintingPriceModel(String _ID,String _Size, String _Price)
+    {
+       this.id = _ID;
+       this.size = _Size;
+       this.price = _Price;
+    }
 }
