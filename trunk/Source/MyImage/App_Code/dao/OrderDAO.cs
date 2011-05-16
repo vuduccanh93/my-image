@@ -51,24 +51,25 @@ public class OrderDAO
             {
                 foreach (DataRow row in _Rs.Rows)
                 {
-                    _Model = new OrderModel(row["ID"].ToString(),
-                                        row["No"].ToString(),
-                                        row["Order_content"].ToString(),
-                                        row["Address"].ToString(),
-                                        row["S_provinces_id"].ToString(),
-                                        row["S_provinces_name"].ToString(),
-                                        row["Shipping_price"].ToString(),
-                                        row["Printing_price"].ToString(),
-                                        row["Amount"].ToString(),
-                                        row["P_methods_id"].ToString(),
-                                        row["P_methods_name"].ToString(),
-                                        row["C_cards_id"].ToString(),
-                                        row["C_cards_number"].ToString(),
-                                        row["Customer_id"].ToString(),
-                                        row["Customer_name"].ToString(),
-                                        row["Status_id"].ToString(),
-                                        row["Status_name"].ToString(),
-                                        row["Created_date"].ToString());
+                    _Model = new OrderModel();
+                    _Model.ID = row["ID"].ToString();
+                    _Model.NO = row["No"].ToString();
+                    _Model.Content = row["Content"].ToString();
+                    _Model.Address = row["Address"].ToString();
+                    _Model.SProvinceId = row["S_provinces_id"].ToString();
+                    _Model.SProvince = row["S_provinces_name"].ToString();
+                    _Model.SPrice = row["Shipping_price"].ToString();
+                    _Model.PPrice = row["Printing_price"].ToString();
+                    _Model.Amount = row["Amount"].ToString();
+                    _Model.PMethodId = row["P_methods_id"].ToString();
+                    _Model.PMethod = row["P_methods_name"].ToString();
+                    _Model.CCardId = row["C_cards_id"].ToString();
+                    _Model.CCard = row["C_cards_number"].ToString();
+                    _Model.CustomerId = row["Customer_id"].ToString();
+                    _Model.CustomerId = row["Customer_name"].ToString();
+                    _Model.StatusId = row["Status_id"].ToString();
+                    _Model.Status = row["Status_name"].ToString();
+                    _Model.CreatedDate = row["Created_date"].ToString();
                 }
             }
         }
