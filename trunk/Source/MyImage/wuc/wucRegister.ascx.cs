@@ -13,22 +13,22 @@ using System.Web.UI.HtmlControls;
 public partial class wuc_wucRegister : System.Web.UI.UserControl
 {
     
-    public string ServerValue = String.Empty;   
+       
     protected void Page_Load(object sender, EventArgs e)
     {
-
-        ServerValue = "12456789";
     }
 
 
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
         CustomerModel model = new CustomerModel();
+        
         model.Username = CustomerDAO.GetUsername();
         model.Password = CustomerDAO.GetPassword();
         model.FName = txtFirstname.Text;
         model.LName = txtLastname.Text;
-        model.Dob = Request.Form["dateI"];
+        String Dob = Request.Form["txtBirthday"];
+        model.Dob = Dob.Substring(6, 4) + Dob.Substring(0, 2)+ Dob.Substring(3, 2);
         model.Gender = rdbFemale.Checked ? "0" : "1";
         model.PNo = txtPhone.Text;
         model.Address = txtAddress.Text;

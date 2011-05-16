@@ -18,7 +18,7 @@ public partial class _Default : System.Web.UI.Page
     }
     public void LoadMenu()
     {
-        String _Html = "<ul> <li><a href='~'> Home </a></li>";
+        String _Html = "<ul> <li><a href='#'> Home </a></li>";
 
         if(Session["CusId"]==null)
         {
@@ -54,8 +54,40 @@ public partial class _Default : System.Web.UI.Page
                         addControl(Request.ApplicationPath + @"/wuc/wucLogin.ascx");
                     break;
                 case "changeinfo":
-                    addControl(Request.ApplicationPath + @"/wuc/wucChangeInfo.ascx");
-                    break;
+                    if (Session["user"] != null)
+                        addControl(Request.ApplicationPath + @"/wuc/wucChangeInfo.ascx");
+
+                case "order":
+                    if (Request.QueryString("t") != null && Request.QueryString("start") != null &&
+                        Request.QueryString("upload") != null && Request.QueryString("content") != null &&
+                        Request.QueryString("payment") != null && Request.QueryString("finish"))
+                    {
+
+                    }
+                    else if (Request.QueryString("t") != null && Request.QueryString("start") != null &&
+                                Request.QueryString("upload") != null && Request.QueryString("content") != null &&
+                                Request.QueryString("payment") != null)
+                    {
+
+                    }
+                    else if (Request.QueryString("t") != null && Request.QueryString("start") != null &&
+                                 Request.QueryString("upload") != null && Request.QueryString("content") != null)
+                    {
+
+                    }
+                    else if (Request.QueryString("t") != null && Request.QueryString("start") != null &&
+                        Request.QueryString("upload") != null)
+                    {
+
+                    }
+                    else if (Request.QueryString("t") != null && Request.QueryString("start") != null)
+                    {
+
+                    }
+                    else if (Request.QueryString("t") != null)
+                    {
+
+                    }
 
                     break;
             }
