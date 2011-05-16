@@ -13,19 +13,12 @@ public partial class admin_wuc_wucPrintingPrices : System.Web.UI.UserControl
 {  
     protected void Page_Load(object sender, EventArgs e)
     {
-       // if (!Page.IsPostBack)
+       if (!Page.IsPostBack)
         Main();
     }
 
     private void Main()
-    {
-        //if (!Page.IsPostBack)
-        //{
-        //    txtSizePP.Text = "";
-        //    txtPricePP.Text = "";
-        //    Page.SetFocus(txtSizePP);
-        //}
-        
+    {       
         BindData();
     }
 
@@ -58,21 +51,24 @@ public partial class admin_wuc_wucPrintingPrices : System.Web.UI.UserControl
         String _Size = (_Row.FindControl("txtSize") as TextBox).Text;
         String _Price = (_Row.FindControl("txtPrice") as TextBox).Text;   
     
-        PrintingPricesModel _Model = new PrintingPricesModel(_Id, _Size, _Price);
+        PrintingPriceModel _Model = new PrintingPriceModel(_Id, _Size, _Price);
         PrintingPricesDAO.Update(_Model);
         grvPrintingPrices.EditIndex = -1;
-        BindData();
-        Main();
+        BindData();        
+    }    
+    
+    protected void grvPrintingPrices_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        if (e.CommandName == "NewInsert")
+        {
+            String _PPSize = ((TextBox) grvPrintingPrices.HeaderRow.FindControl("txtNewSize")).Text;
+            String _PPPrice = ((TextBox)grvPrintingPrices.HeaderRow.FindControl("txtNewPrice")).Text;
+
+            PrintingPriceModel _Model = new PrintingPriceModel("", _PPSize, _PPPrice);
+            PrintingPricesDAO.Insert(_Model);
+            BindData();
+            
+        }
     }
     
-    protected void btnAdd_Click(object sender, EventArgs e)
-    {        
-        String _Size = txtSizePP.Text;
-        String _Price = txtPricePP.Text;
-        PrintingPricesModel _Model = new PrintingPricesModel("",  _Size, _Price);
-        PrintingPricesDAO.Insert(_Model);
-        //grvPrintingPrices.EditIndex = -1;
-       // BindData();
-        Main();       
-    }
 }
