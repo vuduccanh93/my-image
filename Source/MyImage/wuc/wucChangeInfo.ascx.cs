@@ -11,12 +11,14 @@ using System.Web.UI.HtmlControls;
 
 public partial class wuc_wucChangeInfo : System.Web.UI.UserControl
 {
+    public string ServerValue = String.Empty;
     protected void Page_Load(object sender, EventArgs e)
     {
-        CustomerModel model = (CustomerModel)Session["User"];
+        CustomerModel model = (CustomerModel)Session["user"];
         txtEmail.Text = model.Email;
         txtFName.Text = model.FName;
         txtLName.Text = model.LName;
+        ServerValue = model.Dob;
         txtPhone.Text = model.PNo;
         txtAddress.Text = model.Address;
         if (model.Gender.Equals("False"))
@@ -33,7 +35,7 @@ public partial class wuc_wucChangeInfo : System.Web.UI.UserControl
 
     protected void btnAccept_Click(object sender, EventArgs e)
     {
-         CustomerModel model = (CustomerModel)Session["User"];
+         CustomerModel model = (CustomerModel)Session["user"];
          if (txtOldPassword.Text.Equals(""))
          {
              CustomerModel cusModel = new CustomerModel();
@@ -45,10 +47,11 @@ public partial class wuc_wucChangeInfo : System.Web.UI.UserControl
              cusModel.Address = txtAddress.Text;
              cusModel.Password = model.Password;
              cusModel.Gender = rdbFemale.Checked ? "1" : "0";
-             if (CustomerDAO.Upsdate(cusModel))
+             cusModel.Status = model.Status;
+             if (CustomerDAO.Update(cusModel))
              {
+                 Session["user"] = CustomerDAO.GetByU_P(model.Username, model.Password);
                  Response.Redirect("~/?t=changeinfo&rs=success");
-                 Session["User"] = CustomerDAO.GetByU_P(model.Username,model.Password);
              }
          }
          else 
@@ -67,7 +70,7 @@ public partial class wuc_wucChangeInfo : System.Web.UI.UserControl
                      cusModel.Address = txtAddress.Text;
                      cusModel.Gender = rdbFemale.Checked ? "0" : "1";
                      cusModel.Password = txtNewPassword.Text.Trim();
-                     if (CustomerDAO.Upsdate(cusModel))
+                     if (CustomerDAO.Update(cusModel))
                      {
                          Response.Redirect("~/?t=changeinfo&rs=success");
                      }

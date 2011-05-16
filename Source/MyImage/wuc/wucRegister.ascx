@@ -36,7 +36,16 @@
     </tr>
     <tr>
         <td style="width: 98px">BirthDay</td>
-			<td><input id="exampleI" name="dateI" type="text" maxlength="10" value="<%=ServerValue%>"/></td>
+			<td><input id="txtBirthday" name="txtBirthday" type="text" maxlength="10" value=""/>
+			<script type="text/javascript" language="javascript">
+	                new tcal ({
+		                // form name
+		                'formname': 'aspnetForm',
+		                // input name
+		                'controlname': 'txtBirthday'
+	                });
+	        </script>
+			</td>
         
     </tr>
     <tr>

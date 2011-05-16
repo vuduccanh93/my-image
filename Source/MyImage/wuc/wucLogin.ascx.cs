@@ -28,14 +28,14 @@ public partial class wuc_wucLogin : System.Web.UI.UserControl
         CustomerModel model = CustomerDAO.GetByU_P(Useranme,Password);
         if (model != null)
         {
-            if (model.Status.Equals("1"))
+            if (model.Status.Equals("0"))
             {
                 lblStatusLogin.Text ="User is block";
             }
-            else if (model.Status.Equals("0"))
+            else if (model.Status.Equals("1"))
             {
                 Session["CusId"] = model.ID;
-                Session["User"] = model;
+                Session["user"] = model;
                 Response.Redirect(@"~/?t=login&lg=success");
             }
         }
