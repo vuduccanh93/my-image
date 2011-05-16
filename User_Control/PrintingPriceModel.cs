@@ -9,11 +9,11 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 
 /// <summary>
-/// Summary description for PrintingPricesModel
+/// Summary description for PrintingPriceModel
 /// </summary>
-public class PrintingPricesModel
+public class PrintingPriceModel
 {
-	private String id;
+		private String id;
     private String size;
     private String price;
 
@@ -33,14 +33,14 @@ public class PrintingPricesModel
         get { return this.price; }
         set { this.price = value; }
     }
-    public PrintingPricesModel()
+    public PrintingPriceModel()
     {
         id = "";
         size = "";
         price = "";
     }
     
-    public PrintingPricesModel(String _ID,String _Size, String _Price)
+    public PrintingPriceModel(String _ID,String _Size, String _Price)
     {
        this.id = _ID;
        this.size = _Size;

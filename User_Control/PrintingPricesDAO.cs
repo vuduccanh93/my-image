@@ -19,30 +19,30 @@ public class PrintingPricesDAO
         return DataUtil.executeStore("sp_PrintingPrices_GetAll", null);
     }
 
-    public static Boolean Update(PrintingPricesModel _Model)
+    public static Boolean Update(PrintingPriceModel _Model)
     {
         SqlParameter[] param = new SqlParameter[3];
         int i = 0;
         param[i] = new SqlParameter("@Id", SqlDbType.Int);
-        param[i++].Value = Convert.ToInt16(_Model.ID);
+        param[i++].Value = _Model.ID;
         param[i] = new SqlParameter("@Size", SqlDbType.VarChar);
         param[i++].Value = _Model.Size;
         param[i] = new SqlParameter("@Price", SqlDbType.Float);
-        param[i++].Value = Convert.ToDouble(_Model.Price);
+        param[i++].Value = _Model.Price;
 
         return DataUtil.executeNonStore("sp_PrintingPrices_Update", param);
     }
     
-    public static Boolean Insert(PrintingPricesModel _Model)
+    public static Boolean Insert(PrintingPriceModel _Model)
     {
         SqlParameter[] param = new SqlParameter[2];
         int i = 0;
         param[i] = new SqlParameter("@Size", SqlDbType.VarChar);
         param[i++].Value = _Model.Size;
         param[i] = new SqlParameter("@Price", SqlDbType.Float);
-        param[i++].Value = Convert.ToDouble(_Model.Price);
+        param[i++].Value =_Model.Price;
 
-        return DataUtil.executeNonStore("PrintingPrices_Insert", param);
+        return DataUtil.executeNonStore("sp_PrintingPrices_Insert", param);
     }
     
 }
