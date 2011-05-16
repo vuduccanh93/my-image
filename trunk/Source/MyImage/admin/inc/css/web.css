@@ -299,6 +299,22 @@ body{
     padding: 4px;
     background-color: #FFC;
 }
+.printing-price
+{
+	width:630px;
+	border-color: #600;
+    border-width: 1px;
+    border-style: solid;
+}
+.printing-price tr,.printing-price tr td
+{
+	border-color: #600;
+    border-width: 1px;
+    border-style: solid;
+    margin: 0;
+    padding: 4px;
+    background-color: #FFC;
+}
 .text-center
 {
 	text-align:center;

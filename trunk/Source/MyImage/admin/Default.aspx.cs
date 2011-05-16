@@ -73,8 +73,8 @@ public partial class admin_Default : System.Web.UI.Page
                         addControl(Request.ApplicationPath + @"/admin/wuc/wucOrder.ascx");
                     }
                     break;
-                case "pm":
-
+                case "ss":
+					
                     break;
                 case "sp":
                     addControl(Request.ApplicationPath + @"/admin/wuc/wucStateProvince.ascx");
@@ -83,7 +83,7 @@ public partial class admin_Default : System.Web.UI.Page
                     addControl(Request.ApplicationPath + @"/admin/wuc/wucShippingPrice.ascx");
                     break;
                 case "pp":
-
+                    addControl(Request.ApplicationPath + @"/admin/wuc/wucPrintingPrices.ascx");
                     break;
             }
         }

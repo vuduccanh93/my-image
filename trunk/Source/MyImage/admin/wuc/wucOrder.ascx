@@ -4,7 +4,7 @@
         <asp:BoundField DataField="ID" HeaderText="ID" Visible="False" />
         <asp:BoundField DataField="No" HeaderText="No" />
         <asp:BoundField DataField="Order_content" HeaderText="Order content" Visible="False" />
-        <asp:BoundField DataField="Fullname" HeaderText="Fullname" />
+        <asp:BoundField DataField="Customer_name" HeaderText="Fullname" />
         <asp:BoundField DataField="Address" HeaderText="Address" Visible="False" />
         <asp:BoundField DataField="S_provinces_id" HeaderText="Provinces id" Visible="False" />
         <asp:BoundField DataField="Shipping_price" HeaderText="Shipping price" Visible="False" >
