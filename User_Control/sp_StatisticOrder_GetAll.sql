@@ -1,7 +1,6 @@
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[dbo].[sp_StatisticOrder_GetAll]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
 DROP PROCEDURE [dbo].[sp_StatisticOrder_GetAll]
 GO
-
 create proc sp_StatisticOrder_GetAll
 AS
 BEGIN
