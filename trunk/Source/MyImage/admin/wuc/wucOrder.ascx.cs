@@ -11,13 +11,15 @@ using System.Web.UI.HtmlControls;
 
 public partial class admin_wuc_wucOrder : System.Web.UI.UserControl
 {
-    String _Token = null;
+    private String WEB_URL = "";
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
         {
             Main();
+            WEB_URL = Request.Url.GetLeftPart(UriPartial.Authority) + VirtualPathUtility.ToAbsolute("~/");
         }
+        hplOrderStatistic.NavigateUrl = WEB_URL+@"admin/?t=or&sta=true";
     }
     public void Main()
     {

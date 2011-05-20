@@ -1,4 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="wucOrder.ascx.cs" Inherits="admin_wuc_wucOrder" %>
+<asp:HyperLink ID="hplOrderStatistic" runat="server">HyperLink</asp:HyperLink><br />
 <asp:GridView ID="grvOrder" runat="server" AutoGenerateColumns="False" CssClass="order" >
     <Columns>
         <asp:BoundField DataField="ID" HeaderText="ID" Visible="False" />
