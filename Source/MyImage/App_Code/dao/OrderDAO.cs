@@ -79,5 +79,20 @@ public class OrderDAO
         }
         return _Model;
     }
-
+    public static DataTable Status_GetAll()
+    {
+        return DataUtil.executeStore("sp_Order_Status_GetAll", null);
+    }
+    public static DataTable Statistic_GetByFromTo(String _Opt,String _From,String _To)
+    {
+        SqlParameter[] param = new SqlParameter[3];
+        int i = 0;
+        param[i] = new SqlParameter("@Opt", SqlDbType.Int);
+        param[i++].Value = _Opt;
+        param[i] = new SqlParameter("@From", SqlDbType.VarChar);
+        param[i++].Value = _From;
+        param[i] = new SqlParameter("@To", SqlDbType.VarChar);
+        param[i++].Value = _To;
+        return DataUtil.executeStore("sp_Order_Statistic_GetByFromTo", param);
+    }
 }
