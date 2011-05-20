@@ -315,6 +315,19 @@ body{
     padding: 4px;
     background-color: #FFC;
 }
+.statistic-price
+{
+	width:830px;
+	border-color: #600;
+    border-width: 1px;
+    border-style: solid;
+}
+.statistic-price tr,.statistic-price tr td
+{
+    margin: 0;
+    padding: 4px;
+    background-color: #FFC;
+}
 .text-center
 {
 	text-align:center;
