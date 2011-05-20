@@ -68,6 +68,10 @@ public partial class admin_Default : System.Web.UI.Page
                         
                         addControl(Request.ApplicationPath + @"/admin/wuc/wucOrderDetail.ascx");
                     }
+                    else if (Request.QueryString["sta"] != null)
+                    {
+                        addControl(Request.ApplicationPath + @"/admin/wuc/wucOrderStatistic.ascx");
+                    }
                     else
                     {
                         addControl(Request.ApplicationPath + @"/admin/wuc/wucOrder.ascx");

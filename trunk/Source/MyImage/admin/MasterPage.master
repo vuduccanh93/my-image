@@ -8,7 +8,9 @@
 	<meta http-equiv="refresh" content="600" />
     <!--[if IE]><p><lin k href="inc/css/ie.css" rel="stylesheet" type="text/css" /></p><![endif]-->
     <link href="inc/css/web.css" rel="stylesheet" type="text/css" />
+    <link href="inc/css/calendar.css" rel="stylesheet" type="text/css" />
     <script type='text/javascript' src='inc/js/remote.js'></script>
+    <script type='text/javascript' src='inc/js/calendar_us.js'></script>
     
 </head>
 <body>
