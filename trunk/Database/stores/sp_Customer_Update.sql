@@ -15,7 +15,7 @@ create proc [sp_Customer_Update]
 	@Status			INT
 AS
 BEGIN
-	IF @Status <> ''
+	IF @Status = -1
 	BEGIN
 		UPDATE Customers
 		SET 
@@ -41,7 +41,8 @@ BEGIN
 			Gender = @Gender,
 			P_no = @PNo,
 			Address = @Address,
-			Email = @Email
+			Email = @Email,
+			Status_id = @Status
 		WHERE ID = @ID
 	END
 END
