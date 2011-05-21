@@ -5,7 +5,7 @@
 /* Project name:                                                          */
 /* Author:                                                                */
 /* Script type:           Database creation script                        */
-/* Created on:            2011-05-14 18:52                                */
+/* Created on:            2011-05-21 14:58                                */
 /* ---------------------------------------------------------------------- */
 
 
@@ -115,6 +115,7 @@ GO
 CREATE TABLE [Upload] (
     [ID] INTEGER IDENTITY(0,1) NOT NULL,
     [Folder] VARCHAR(80),
+    [Uploaded] INTEGER,
     [Created_date] VARCHAR(40),
     CONSTRAINT [PK_Upload] PRIMARY KEY ([ID])
 )
