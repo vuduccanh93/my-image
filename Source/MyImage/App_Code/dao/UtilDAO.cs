@@ -27,4 +27,13 @@ public class UtilDAO
         DataUtil.executeNonStore("sp_Util_DateTimeFormat", param);
         return param[i].Value.ToString();
     }
+	    public static String GetDateTime()
+    {
+        SqlParameter[] param = new SqlParameter[1];
+        int i = 0;
+        param[i] = new SqlParameter("@Output", SqlDbType.VarChar, 19);
+        param[i].Direction = ParameterDirection.Output;
+        DataUtil.executeNonStore("sp_Util_GetDatetime", param);
+        return param[i].Value.ToString();
+    }
 }
