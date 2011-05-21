@@ -34,6 +34,7 @@ public partial class wuc_wucLogin : System.Web.UI.UserControl
             }
             else if (model.Status.Equals("1"))
             {
+                Session["cusname"] = model.Username;
                 Session["CusId"] = model.ID;
                 Session["user"] = model;
                 Response.Redirect(@"~/?t=login&lg=success");
