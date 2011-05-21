@@ -8,20 +8,8 @@ CREATE PROC sp_CreditCards_Encrypt(
 	@HolderName varchar(50)	,
 	@three_letter	varchar(3)	
 )
-AS
-	declare @num	varchar(17)	
-	SET @num = (select EncryptedData = EncryptByPassPhrase('MAK', @number ))
+AS	
 BEGIN	
 	 INSERT INTO CreditCards (Number, Exp_date, Holder_name,L_three_letter)
-	 VALUES(@num, @expDate, @HolderName, @three_letter)	
+	 VALUES(EncryptByPassPhrase('MAK', @number ), @expDate, @HolderName, @three_letter)	
 END
-
-
-
-
-
- 
-
-
-
-

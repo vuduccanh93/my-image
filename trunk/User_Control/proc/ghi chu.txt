@@ -3,4 +3,3 @@ sp_CreditCards_UpdateEncrypt :su dung khi cai table luc ban dau chua ma hoa
 
 sp_CreditCards_Encrypt:su dung khi insert zo se ma hoa luon
 
-gui truoc encrypt mai gui tiep Decrypt

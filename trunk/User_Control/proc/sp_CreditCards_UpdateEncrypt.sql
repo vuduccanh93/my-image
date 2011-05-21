@@ -6,6 +6,5 @@ CREATE PROC sp_CreditCards_UpdateEncrypt
 AS
 BEGIN
 	update CreditCards set Number =
-EncryptByPassPhrase('Number', convert(varchar(100),Number) )
+EncryptByPassPhrase('MAK', convert(varchar(100),Number) )
 END
-
