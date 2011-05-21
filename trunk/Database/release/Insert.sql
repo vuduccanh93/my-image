@@ -86,8 +86,8 @@ Insert into CreditCards Values('1231232141251232','2013/08/01','HOANG LONG','AWQ
 
 --Insert Upload
 
-Insert into Upload Values('/asdg/','20110507 153012')
-Insert into Upload Values('/asds/','20110507 153012')
+Insert into Upload Values('/asdg/','20110507 153012',1)
+Insert into Upload Values('/asds/','20110507 153012',1)
 
 --Insert UploadDetails
 
