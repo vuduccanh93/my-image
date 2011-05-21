@@ -13,8 +13,8 @@
     <tr>
         <td style="height: 26px" align="right">
             <asp:Label ID="lblPassword" runat="server" Text="Password : "></asp:Label></td>
-        <td style="height: 26px" align="right">
-            <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox></td>
+        <td style="height: 26px" align="left">
+            <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" Width="155px"></asp:TextBox></td>
     </tr>
     <tr>
         <td colspan ="2" align="center">
