@@ -11,7 +11,7 @@ BEGIN
      FROM CreditCards 	
 END
 
-execute sp_CreditCards_Decrypt
+
 
 
 
