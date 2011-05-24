@@ -81,7 +81,7 @@ body{
 #home-right{
     background:#C9EDF5;
 	margin: 0;
-	padding:5px;
+	padding:0px;
     float:right;
     width: 695px;
 	height:700px;
@@ -101,9 +101,9 @@ body{
     width: 200px;
 }
 .box-header{
-	margin:7px 0 0 0 ;
-	padding:4px 0 0 0 ;
-	width:195px;
+	margin:0 ;
+	padding:0 ;
+	width:190px;
 	text-align:center;
 	height:30px;
 	background:url(../img/box-header.png) repeat-x;
@@ -111,9 +111,9 @@ body{
 }
 .box{
     background:#FFF;	
-	width:195px;
-	padding: 0 5px;
-
+	width:190px;
+	padding: 0;
+	float:left;
 }
 .footer-box-left{
 	width:285px;
@@ -138,4 +138,30 @@ body{
 	right:70px;
 	bottom:70px;
 	visibility:hidden;
+}
+.nav
+{
+	margin:0;
+	padding:0;
+}
+.nav ul
+{
+	margin:0;
+    padding:0;
+}
+.nav ul li
+{
+	list-style:none;
+    padding:3px 0;
+    margin:0;
+    text-align:right;
+	font-weight:bold;
+	background:url(../img/menuitem.png) no-repeat top right;
+	height:20px;
+	width:180px;
+}
+.nav ul li a{
+	color: #000000;
+    text-decoration: none;
+    padding-right:30px;
 }
