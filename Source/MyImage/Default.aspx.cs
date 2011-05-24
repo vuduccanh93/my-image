@@ -15,6 +15,7 @@ public partial class _Default : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Main();
+        addValueCLB();
     }
     public void LoadMenu()
     {
@@ -79,7 +80,7 @@ public partial class _Default : System.Web.UI.Page
                     else if (Request.QueryString["t"] != null && Request.QueryString["start"] != null &&
                         Request.QueryString["upload"] != null)
                     {
-                        addControl(Request.ApplicationPath + @"/wuc/wucOrder_Upload.ascx");
+                        addControl(Request.ApplicationPath + @"/wuc/wucOrder_OrderDetails.ascx");
                     }
                     else if (Request.QueryString["t"]!= null && Request.QueryString["start"] != null)
                     {
@@ -101,6 +102,13 @@ public partial class _Default : System.Web.UI.Page
     }
     private void addValueCLB()
     {
+        DataTable dt = UploadDAO.getImageByUId("12");
+        GridView1.DataSource = dt;
+        GridView1.DataBind();
+    }
+    protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
+    {
 
+        CheckBoxList drlStatus = (CheckBoxList)(grvMember.Rows[e.NewEditIndex].Cells[1].FindControl("CheckBoxList1"));
     }
 }
