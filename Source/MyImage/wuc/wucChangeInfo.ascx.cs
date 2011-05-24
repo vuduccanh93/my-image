@@ -11,79 +11,71 @@ using System.Web.UI.HtmlControls;
 
 public partial class wuc_wucChangeInfo : System.Web.UI.UserControl
 {
-    public string ServerValue = String.Empty;
+    public string ServerValue = "";
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        CustomerModel model = (CustomerModel)Session["user"];
-        txtEmail.Text = model.Email;
-        txtFName.Text = model.FName;
-        txtLName.Text = model.LName;
-        ServerValue = model.Dob;
-        txtPhone.Text = model.PNo;
-        txtAddress.Text = model.Address;
-        if (model.Gender.Equals("False"))
+        if (!Page.IsPostBack)
         {
-            rdbFemale.Checked = true;
+            CustomerModel model = (CustomerModel)Session["user"];
+            txtEmail.Text = model.Email;
+            txtFName.Text = model.FName;
+            txtLName.Text = model.LName;
+            ServerValue = UtilDAO.DateTimeFormat(model.Dob, Constants.DATE_FORMAT_YYYY_MM_DD_S2);
+            txtPhone.Text = model.PNo;
+            txtAddress.Text = model.Address;
+            if (model.Gender.Equals("0"))
+            {
+                rdbFemale.Checked = true;
+            }
+            else
+            {
+                rdbMale.Checked = true;
+            }
         }
-        else if (model.Gender.Equals("True"))
-        {
-           
-            rdbMale.Checked = true;
-        }
-        
     }
 
     protected void btnAccept_Click(object sender, EventArgs e)
     {
-         CustomerModel model = (CustomerModel)Session["user"];
-         if (txtOldPassword.Text.Equals(""))
-         {
-             CustomerModel cusModel = new CustomerModel();
-             cusModel.ID = model.ID;
-             cusModel.Email = txtEmail.Text;
-             cusModel.FName =txtFName.Text; 
-             cusModel.LName = txtLName.Text; 
-             cusModel.PNo = txtPhone.Text ;
-             cusModel.Address = txtAddress.Text;
-             cusModel.Password = model.Password;
-             cusModel.Gender = rdbFemale.Checked ? "1" : "0";
-             cusModel.Status = model.Status;
-             if (CustomerDAO.Update(cusModel))
-             {
-                 Session["user"] = CustomerDAO.GetByU_P(model.Username, model.Password);
-                 Response.Redirect("~/?t=changeinfo&rs=success");
-             }
-         }
-         else 
-         {
-             if (txtOldPassword.Text.Equals(model.Password))
-             {
-                 if (txtNewPassword.Text.Equals(txtCofPassword.Text))
-                 {
-                     CustomerModel cusModel = new CustomerModel();
-                     cusModel.ID = model.ID;
-                     cusModel.Email = txtEmail.Text;
-                     cusModel.FName = txtFName.Text;
-                     cusModel.LName = txtLName.Text;
-                     cusModel.Dob = model.Dob;
-                     cusModel.PNo = txtPhone.Text;
-                     cusModel.Address = txtAddress.Text;
-                     cusModel.Gender = rdbFemale.Checked ? "0" : "1";
-                     cusModel.Password = txtNewPassword.Text.Trim();
-                     if (CustomerDAO.Update(cusModel))
-                     {
-                         Response.Redirect("~/?t=changeinfo&rs=success");
-                     }
-                 }
-                 else
-                 {
-                     Label1.Text = "New Password and Cof Password are not match";
-                 }
-             }
-             else
-             {
-                 Label1.Text = "Old Password is incorrect";
-             }
-         }
+        CustomerModel model = (CustomerModel)Session["user"];
+        model.ID = model.ID;
+        model.Email = txtEmail.Text;
+        model.FName = txtFName.Text;
+        model.LName = txtLName.Text;
+        model.PNo = txtPhone.Text;
+        model.Address = txtAddress.Text;
+        model.Gender = rdbFemale.Checked ? "0" : "1";
+        model.StatusId = model.StatusId;
+        model.Dob = Request.Form["txtBirthday"].Substring(0, 4) + Request.Form["txtBirthday"].Substring(5, 2) + Request.Form["txtBirthday"].Substring(8, 2) + " 000000";
+        ServerValue = Request.Form["txtBirthday"];
+        if (!String.IsNullOrEmpty(txtOldPassword.Text.Trim()))
+        {
+            if (txtOldPassword.Text.Equals(model.Password))
+            {
+                if (txtNewPassword.Text.Equals(txtCofPassword.Text))
+                {
+                    model.Password = txtNewPassword.Text.Trim();
+                }
+                else
+                {
+                    lblErr.Text = "New password is not match";
+                    return;
+                }
+            }
+            else
+            {
+                lblErr.Text = "Old password is not correct";
+                return;
+            }
+        }
+        if (CustomerDAO.Update(model))
+        {
+            Session["user"] = model;
+            Response.Redirect("~/?t=changeinfo&rs=success");
+        }
+        else lblErr.Text = "Update failed.Please try again later";
     }
+
+
+
 }

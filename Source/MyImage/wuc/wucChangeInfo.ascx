@@ -4,7 +4,7 @@
     <caption>Infomation Of User</caption>
     <tr>
         <td colspan="2" align="center"> 
-            <asp:Label ID="Label1" runat="server"></asp:Label></td>
+            <asp:Label ID="lblErr" runat="server"></asp:Label></td>
     </tr>
     <tr>
         <td align="right">
