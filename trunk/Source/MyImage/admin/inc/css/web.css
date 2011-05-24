@@ -217,11 +217,17 @@ body{
 {
 	width:600px;
 	background-color: #FFC;
+	border-color: #600;
+    border-width: 1px;
+    border-style: solid;
 }
 .order-detail tr td
 {
     margin: 0;
     padding: 4px;
+    border-color: #600;
+    border-width: 1px;
+    border-style: solid;
 }
 .order-detail tr td.style2
 {
@@ -340,6 +346,7 @@ body{
 {
 	width:60px;	
 	vertical-align:middle;
+	color:Green;
 }
 .editmod-s
 {

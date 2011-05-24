@@ -1,17 +1,20 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="wucCustomer.ascx.cs" Inherits="admin_wuc_wucCustomer" %>
 <asp:GridView ID="grvCustomer" runat="server" AutoGenerateColumns="False" CssClass="customer" OnRowEditing="grvCustomer_RowEditing" OnRowCancelingEdit="grvCustomer_RowCancelingEdit" OnRowUpdated="grvCustomer_RowUpdated" EditRowStyle-CssClass="customer" OnRowUpdating="grvCustomer_RowUpdating" AllowPaging="True" >
     <Columns>
-        <asp:TemplateField HeaderText="ID" Visible="False" >
+        <asp:TemplateField HeaderText="ID" HeaderStyle-CssClass="editmod-hide">
             <EditItemTemplate>
-                <asp:TextBox ID="txtID" runat="server" Text='<%# Bind("ID") %>'></asp:TextBox>
+                <asp:TextBox ID="txtID" runat="server" Text='<%# Bind("ID") %>' CssClass="editmod-hide"></asp:TextBox>
             </EditItemTemplate>
             <ItemTemplate>
                 <asp:Label ID="Label6" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
             </ItemTemplate>
+            <HeaderStyle CssClass="editmod-hide" />
+            <FooterStyle CssClass="editmod-hide" />
+            <ItemStyle CssClass="editmod-hide" />
         </asp:TemplateField>
         <asp:TemplateField HeaderText="Username" >
             <EditItemTemplate>
-                <asp:TextBox ID="txtUsername" runat="server" Text='<%# Bind("Username") %>' ReadOnly="True" CssClass="editmod-l"></asp:TextBox>
+                <asp:TextBox ID="txtUsername" runat="server" Text='<%# Bind("Username") %>' ReadOnly="True" CssClass="editmod-s"></asp:TextBox>
             </EditItemTemplate>
             <ItemTemplate>
                 <asp:Label ID="Label5" runat="server" Text='<%# Bind("Username") %>'></asp:Label>
@@ -20,7 +23,7 @@
         </asp:TemplateField>
         <asp:TemplateField HeaderText="First name">
             <EditItemTemplate>
-                <asp:TextBox ID="txtF_name" runat="server" Text='<%# Bind("F_name") %>' CssClass="editmod-m"></asp:TextBox>
+                <asp:TextBox ID="txtF_name" runat="server" Text='<%# Bind("F_name") %>' CssClass="editmod-s" Width="80px"></asp:TextBox>
             </EditItemTemplate>
             <ItemTemplate>
                 <asp:Label ID="Label1" runat="server" Text='<%# Bind("F_name") %>'></asp:Label>
@@ -29,7 +32,7 @@
         </asp:TemplateField>
         <asp:TemplateField HeaderText="Last name">
             <EditItemTemplate>
-                <asp:TextBox ID="txtL_name" runat="server" Text='<%# Bind("L_name") %>' CssClass="editmod-m"></asp:TextBox>
+                <asp:TextBox ID="txtL_name" runat="server" Text='<%# Bind("L_name") %>' CssClass="editmod-s" Width="80px"></asp:TextBox>
             </EditItemTemplate>
             <ItemTemplate>
                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("L_name") %>'></asp:Label>
@@ -48,7 +51,7 @@
         </asp:TemplateField>
         <asp:TemplateField HeaderText="Email">
             <EditItemTemplate>
-                <asp:TextBox ID="txtEmail" runat="server" Text='<%# Bind("Email") %>' CssClass="editmod-m"></asp:TextBox>
+                <asp:TextBox ID="txtEmail" runat="server" Text='<%# Bind("Email") %>' CssClass="editmod-s" Width="90px"></asp:TextBox>
             </EditItemTemplate>
             <ItemTemplate>
                 <asp:Label ID="Label7" runat="server" Text='<%# Bind("Email") %>'></asp:Label>
@@ -67,7 +70,7 @@
         </asp:TemplateField>
         <asp:TemplateField HeaderText="Address">
             <EditItemTemplate>
-                <asp:TextBox ID="txtAddress" runat="server" Text='<%# Bind("Address") %>' TextMode="MultiLine" CssClass="editmod-m"></asp:TextBox>
+                <asp:TextBox ID="txtAddress" runat="server" Text='<%# Bind("Address") %>' TextMode="MultiLine" CssClass="editmod-s" Width="140px"></asp:TextBox>
             </EditItemTemplate>
             <ItemTemplate>
                 <asp:Label ID="Label4" runat="server" Text='<%# Bind("Address") %>'></asp:Label>
@@ -76,7 +79,7 @@
         </asp:TemplateField>
         <asp:TemplateField HeaderText="Status">
             <EditItemTemplate>
-                <asp:DropDownList ID="drlStatus" runat="server">
+                <asp:DropDownList ID="drlStatus" runat="server" Width="55px">
                 </asp:DropDownList>
                 <asp:Label ID="lblStatusId" runat="server" Text='<%# Bind("Status_id") %>' CssClass="editmod-hide"></asp:Label>
             </EditItemTemplate>
