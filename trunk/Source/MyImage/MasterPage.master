@@ -1,64 +1,105 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head runat="server">
-    <title>Untitled Page</title>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link href="inc/css/web.css" rel="stylesheet" type="text/css" />
-    <!--[if IE]><p><lin k href="inc/css/ie.css" rel="stylesheet" type="text/css" /></p><![endif]-->
- 
+    <!--[if IE]><p><link href="inc/css/ie.css" rel="stylesheet" type="text/css" /></p><![endif]-->
     <link rel="stylesheet" type="text/css" href="inc/css/calendar.css" media="screen" />
-	
-	<script type="text/javascript" src="inc/js/calendar_us.js"></script>
-
-	
-	<!-- Calendar -->
-	
-	
-	
+    <script type='text/javascript' src='inc/js/calendar_us.js'></script>
+    <script type='text/javascript' src="inc/js/js.js"></script>
 </head>
-<body>
+<body onscroll="hideGetTop('gettop')">
     <form id="mainform" runat="server">
-      <div id="header">
-          <div id="header-wrapper"></div>    
-      </div>
-      <div id="space"></div>
-      <div id="content">
-          <div id="content-wrapper">
-              <div id="content-left">
-                <div class="nav">
-                    <asp:contentplaceholder id="ContentPlaceHolderLeft" runat="server">
-                    </asp:contentplaceholder>
-                    
+        <div id="header-top">
+            header top
+        </div>
+        <div id="headwrap">
+            <div id="headwrap-inner">
+                banner here
+            </div>
+        </div>
+        <div class="space">
+        </div>
+        <div id="subnav">
+            <!--<a href="">Trang Chu</a> <a href="">Manga List</a> <a href="">admin</a>-->
+        </div>
+        <div id="contentwrap">
+            <div id="contentwrap-inner">
+                <div id="home-left">
+                    <div class="box-header">
+                        Menu</div>
+                    <div class="box">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolderLeft" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                    <div class="box-header">
+                        1</div>
+                    <div class="box">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolderLeftTop" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                    <div class="box-header">
+                        2</div>
+                    <div class="box">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolderLeftMiddle" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                    <div class="box-header">
+                        3</div>
+                    <div class="box">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolderLeftBottom" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
                 </div>
-              </div>
-              <div id="content-right">
-              <div id="top">
-                 <div class="tl"></div><div class="tm"></div><div class="tr"></div>
-              </div>
-              <!----------------------------------------------------------------------->  
-              <div id="content-top"></div>
-              <div id="content-main">
-                <asp:contentplaceholder id="ContentPlaceHolderRight" runat="server">
-                </asp:contentplaceholder>
-              </div>
-              <!----------------------------------------------------------------------->        
-              <div id="bottom">
-                  <div class="bl"></div><div class="bm"></div><div class="br"></div>
-              </div>
-              <!----------------------------------------------------------------------->
-              </div>
-              <!----------------------------------------------------------------------->  
-          </div>
-      </div>
-      <div class="space"></div>
-      <div id="footer">
-          <div id="footer-wrapper"></div>
-      </div>
-      <div id="logo"></div>
+                <div id="home-right">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolderRight" runat="server">
+                    </asp:ContentPlaceHolder>
+                    <div>
+                        <!--[if IE]><p>You are using Internet Explorer.</p><![endif]-->
+                        <!--[if !IE]><p>You are not using an uplevel Internet Explorer version.</p><![endif]>
+                        <!--[if IE 8]><p>Welcome to Internet Explorer 8!</p><![endif]-->
+                        <!--[if !(IE 8)]><p>You are not using Internet Explorer8.</p><![endif]-->
+                        <!--[if gte IE 7]><p>You are using IE 7 or greater.</p><![endif]-->
+                        <!--[if (IE 5)]><p>You are using IE 5 (any version).</p><![endif]-->
+                        <!--[if (gte IE 5.5)&(lt IE 7)]><p>You are using IE 5.5 or IE 6.</p><![endif]-->
+                        <!--[if lt IE 5.5]><p>Please upgrade your version of Internet Explorer.</p><![endif]-->
+                        <!--[if true]>You are using an <em>uplevel</em> browser.<![endif]-->
+                        <!--[if false]>You are using a <em>downlevel</em> browser.<![endif]-->
+                        <!--[if true]><![if IE 7]><p>This nested comment is displayed in IE 7.</p><![endif]><![endif]-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="space">
+        </div>
+        <div id="footerwrap">
+            <div id="footerwrap-inner">
+                <div class="footer-box-left">
+                    noi dung box left<br />
+                    link 1<br />
+                    link 2<br />
+                    link 3<br />
+                </div>
+                <div class="footer-box-right">
+                    <div class="footer-box-right-left">
+                        noi dung box right left<br />
+                        link 3<br />
+                        link 2<br />
+                        link 3<br />
+                    </div>
+                    <div class="footer-box-right-right">
+                        noi dung box right right<br />
+                        link 3<br />
+                        link 2<br />
+                        link 3<br />
+                    </div>
+                </div>
+            </div>
+            <a href="#" id="gettop" name="gettop" class="gettop">
+                <img src="inc/img/top.png" alt="Lên trên" /></a>
+        </div>
     </form>
-    
 </body>
-
 </html>
