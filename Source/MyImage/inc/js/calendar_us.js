@@ -1,8 +1,4 @@
-// Tigra Calendar v4.0.4 (10/23/2009) American (mm/dd/yyyy)
-// http://www.softcomplex.com/products/tigra_calendar/
-// Public Domain Software... You're welcome.
-
-// default settins
+// default settings
 var A_TCALDEF = {
 	'months' : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 	'weekdays' : ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
@@ -14,12 +10,12 @@ var A_TCALDEF = {
 // date parsing function
 function f_tcalParseDate (s_date) {
 
-	var re_date = /^\s*(\d{1,2})\/(\d{1,2})\/(\d{2,4})\s*$/;
+	var re_date = /^\s*(\d{2,4})\/(\d{1,2})\/(\d{1,2})\s*$/;
 	if (!re_date.exec(s_date))
-		return alert ("Invalid date: '" + s_date + "'.\nAccepted format is mm/dd/yyyy.")
-	var n_day = Number(RegExp.$2),
-		n_month = Number(RegExp.$1),
-		n_year = Number(RegExp.$3);
+		return alert ("Invalid date: '" + s_date + "'.\nAccepted format is yyyy/mm/dd.")
+	var n_day = Number(RegExp.$3),
+		n_month = Number(RegExp.$2),
+		n_year = Number(RegExp.$1);
 	
 	if (n_year < 100)
 		n_year += (n_year < this.a_tpl.centyear ? 2000 : 1900);
@@ -34,9 +30,9 @@ function f_tcalParseDate (s_date) {
 // date generating function
 function f_tcalGenerDate (d_date) {
 	return (
-		 (d_date.getMonth() < 9 ? '0' : '') + (d_date.getMonth() + 1) + "/"
-		+ (d_date.getDate() < 10 ? '0' : '') + d_date.getDate() + "/"
-		+ d_date.getFullYear()
+	    d_date.getFullYear() + "/"
+		+ (d_date.getMonth() < 9 ? '0' : '') + (d_date.getMonth() + 1) + "/"
+		+ (d_date.getDate() < 10 ? '0' : '') + d_date.getDate() 
 	);
 }
 
