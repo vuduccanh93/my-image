@@ -17,9 +17,8 @@ public partial class wuc_wucOrder_Start : System.Web.UI.UserControl
     }
     protected void btnStart_Click(object sender, EventArgs e)
     {
-        
-        Session["start"] = false;
-        Session["uploaded"] = 0;
+
+        Session["upload_start"] = 1;
         Response.Redirect("Default.aspx?t=order&start=true");
 
     }
