@@ -8,15 +8,13 @@ create proc [sp_Customer_Update]
 	@FName			VARCHAR(40),
 	@LName			VARCHAR(40),
 	@Dob			VARCHAR(17),
-	@Gender			bit,
+	@Gender			VARCHAR(1),
 	@PNo			VARCHAR(20),
 	@Address		VARCHAR(100),
 	@Email			VARCHAR(40),
-	@Status			INT
+	@Status			VARCHAR(2)
 AS
 BEGIN
-	IF @Status = -1
-	BEGIN
 		UPDATE Customers
 		SET 
 			Password = @Password,
@@ -29,20 +27,4 @@ BEGIN
 			Email = @Email,
 			Status_id = @Status
 		WHERE ID = @ID
-	END
-	ELSE
-	BEGIN
-		UPDATE Customers
-		SET 
-			Password = @Password,
-			F_name = @FName,
-			L_name = @LName,
-			Dob = @Dob,
-			Gender = @Gender,
-			P_no = @PNo,
-			Address = @Address,
-			Email = @Email,
-			Status_id = @Status
-		WHERE ID = @ID
-	END
 END
