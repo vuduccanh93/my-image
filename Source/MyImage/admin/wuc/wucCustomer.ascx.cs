@@ -32,7 +32,6 @@ public partial class admin_wuc_wucCustomer : System.Web.UI.UserControl
     {
         grvCustomer.DataSource = CustomerDAO.GetAll();
         grvCustomer.DataBind();
-        //grvCustomer.Columns[0].Visible = false;
     }
     private void BindDRLStatus(int _RowIndex)
     {
@@ -63,7 +62,7 @@ public partial class admin_wuc_wucCustomer : System.Web.UI.UserControl
     protected void grvCustomer_RowUpdated(object sender, GridViewUpdatedEventArgs e)
     {
         BindData();
-    }
+    }   
     protected void grvCustomer_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
         GridViewRow _Row = grvCustomer.Rows[e.RowIndex];
