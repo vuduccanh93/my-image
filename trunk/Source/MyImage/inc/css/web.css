@@ -137,3 +137,29 @@ body{
 	position:fixed;right:70px;bottom:70px;
 	visibility:hidden;
 }
+.nav
+{
+	margin:0;
+	padding:0;
+}
+.nav ul
+{
+	margin:10px 0;
+    padding:0;
+}
+.nav ul li
+{
+	list-style:none;
+    padding:3px 0;
+    margin:0;
+    text-align:right;
+	font-weight:bold;
+	background:url(../img/menuitem.png) no-repeat top right;
+	height:20px;
+	width:180px;
+}
+.nav ul li a{
+	color: #000000;
+    text-decoration: none;
+    padding-right:30px;
+}
