@@ -19,11 +19,10 @@ public class CustomerDAO
         return DataUtil.executeStore("sp_Customer_GetAll", null);
     }
     public static Boolean Update(CustomerModel _Model)
-
     {
         SqlParameter[] param = new SqlParameter[10];
         int i = 0;
-        param[i] = new SqlParameter("ID", SqlDbType.VarChar);
+        param[i] = new SqlParameter("ID", SqlDbType.Int);
         param[i++].Value = _Model.ID;
         param[i] = new SqlParameter("Password", SqlDbType.VarChar);
         param[i++].Value = _Model.Password;
@@ -32,8 +31,8 @@ public class CustomerDAO
         param[i] = new SqlParameter("LName", SqlDbType.VarChar);
         param[i++].Value = _Model.LName;
         param[i] = new SqlParameter("Dob", SqlDbType.VarChar);
-        param[i++].Value = "";
-        param[i] = new SqlParameter("Gender", SqlDbType.Int);
+        param[i++].Value = _Model.Dob;
+        param[i] = new SqlParameter("Gender", SqlDbType.VarChar);
         param[i++].Value = _Model.Gender;
         param[i] = new SqlParameter("PNo", SqlDbType.VarChar);
         param[i++].Value = _Model.PNo;
@@ -41,8 +40,8 @@ public class CustomerDAO
         param[i++].Value = _Model.Address;
         param[i] = new SqlParameter("Email", SqlDbType.VarChar);
         param[i++].Value = _Model.Email;
-        param[i] = new SqlParameter("Status", SqlDbType.Int);
-        param[i++].Value = _Model.StatusId.Equals("") ? "-1" : _Model.StatusId;
+        param[i] = new SqlParameter("Status", SqlDbType.VarChar);
+        param[i++].Value = _Model.StatusId;
         return DataUtil.executeNonStore("sp_Customer_Update", param);
     }
     public static Boolean Insert(CustomerModel _Model)
@@ -109,12 +108,13 @@ public class CustomerDAO
                     _Model.Password = row["Password"].ToString();
                     _Model.FName = row["F_name"].ToString();
                     _Model.LName = row["L_name"].ToString();
-                    _Model.Gender = row["Gender"].ToString();
+                    _Model.Gender = row["Gender"].ToString().Equals("False") ? "0" : "1";
                     _Model.Dob = row["Dob"].ToString();
                     _Model.PNo = row["P_no"].ToString();
                     _Model.Email = row["Email"].ToString();
                     _Model.Address = row["Address"].ToString();
-                    _Model.Status = row["Status_id"].ToString();
+                    _Model.StatusId = row["Status_id"].ToString();
+                    _Model.StatusId = row["Status_name"].ToString();
                 }
             }
         }
