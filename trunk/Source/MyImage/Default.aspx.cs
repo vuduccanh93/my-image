@@ -18,7 +18,7 @@ public partial class _Default : System.Web.UI.Page
     }
     public void LoadMenu()
     {
-        String _Html = "<ul> <li><a href='#'> Home </a></li>";
+        String _Html = "<div class='nav'><ul> <li><a href='#'> Home </a></li>";
 
         if(Session["CusId"]==null)
         {
@@ -31,7 +31,7 @@ public partial class _Default : System.Web.UI.Page
             _Html += "<li><a href = 'Default.aspx?t=changeinfo'> Change Info </a><em></em></li>";
             _Html += "<li><a href = '#'> Logout </a><em></em></li>";
         }
-        _Html += "</ul>";
+        _Html += "</ul></div>";
         Response.Write(_Html);
     }
     public void Main()
@@ -79,15 +79,15 @@ public partial class _Default : System.Web.UI.Page
                     else if (Request.QueryString["t"] != null && Request.QueryString["start"] != null &&
                         Request.QueryString["upload"] != null)
                     {
-
+                        addControl(Request.ApplicationPath + @"/wuc/wucOrder_Upload.ascx");
                     }
                     else if (Request.QueryString["t"]!= null && Request.QueryString["start"] != null)
                     {
-
+                        addControl(Request.ApplicationPath + @"/wuc/wucOrder_Upload.ascx");
                     }
                     else if (Request.QueryString["t"] != null)
                     {
-                        addControl(Request.ApplicationPath + @"/wuc/wucUploadImage.ascx");
+                        addControl(Request.ApplicationPath + @"/wuc/wucOrder_Start.ascx");
                     }
 
                     break;
@@ -98,5 +98,9 @@ public partial class _Default : System.Web.UI.Page
     {
         Control wucCus = (Control)Page.LoadControl(_Path);
         PlaceHolderRight.Controls.Add(wucCus);
+    }
+    private void addValueCLB()
+    {
+
     }
 }
