@@ -13,10 +13,32 @@ using System.Web.UI.HtmlControls;
 /// </summary>
 public class UploadDetailModel
 {
-	public UploadDetailModel()
+	 private String id;
+    private String u_id;
+    private String img;
+
+    public String ID
+    {
+        get { return this.id; }
+        set { this.id = value; }
+    }
+
+    public String U_id
+    {
+        get { return this.u_id; }
+        set { this.u_id = value; }
+    }
+
+    public String Img
+    {
+        get { return this.img; }
+        set { this.img = value; }
+    }
+
+    public UploadDetailModel()
 	{
-		//
-		// TODO: Add constructor logic here
-		//
+        id = "";
+        u_id = "";
+        img = "";
 	}
 }
