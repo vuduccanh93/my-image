@@ -15,8 +15,10 @@ create proc [sp_Customer_Update]
 	@Status			VARCHAR(2)
 AS
 BEGIN
-		UPDATE Customers
-		SET 
+	IF @Dob = ''
+		SELECT @Dob = Dob FROM Customers WHERE ID = @ID
+	UPDATE Customers
+	SET 
 			Password = @Password,
 			F_name = @FName,
 			L_name = @LName,
@@ -26,5 +28,5 @@ BEGIN
 			Address = @Address,
 			Email = @Email,
 			Status_id = @Status
-		WHERE ID = @ID
+	WHERE ID = @ID
 END
