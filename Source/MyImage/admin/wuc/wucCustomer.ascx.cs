@@ -32,6 +32,7 @@ public partial class admin_wuc_wucCustomer : System.Web.UI.UserControl
     {
         grvCustomer.DataSource = CustomerDAO.GetAll();
         grvCustomer.DataBind();
+        //grvCustomer.Columns[0].Visible = false;
     }
     private void BindDRLStatus(int _RowIndex)
     {
@@ -66,16 +67,16 @@ public partial class admin_wuc_wucCustomer : System.Web.UI.UserControl
     protected void grvCustomer_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
         GridViewRow _Row = grvCustomer.Rows[e.RowIndex];
-        String _ID = ((TextBox)_Row.FindControl("txtID")).Text;
-        String _Username = ((TextBox)_Row.FindControl("txtUsername")).Text;
-        String _F_name = ((TextBox)_Row.FindControl("txtF_name")).Text;
-        String _L_name = ((TextBox)_Row.FindControl("txtL_name")).Text;
-        String _P_no = ((TextBox)_Row.FindControl("txtP_no")).Text;
-        String _Gender = ((CheckBox)_Row.FindControl("ckbGender")).Checked ? "1" : "0";
-        String _Address = ((TextBox)_Row.FindControl("txtAddress")).Text;
-        String _Email = ((TextBox)_Row.FindControl("txtEmail")).Text;
-        String _Status = ((DropDownList)(_Row.FindControl("drlStatus"))).SelectedValue.ToString(); ;
-        CustomerModel _Model = new CustomerModel(_ID, _Username, "", _F_name, _L_name, "", _Gender, _P_no, _Address,_Email,_Status,"");
+        CustomerModel _Model = new CustomerModel();
+        _Model.ID = ((TextBox)_Row.FindControl("txtID")).Text;
+        _Model.Username = ((TextBox)_Row.FindControl("txtUsername")).Text;
+        _Model.FName = ((TextBox)_Row.FindControl("txtF_name")).Text;
+        _Model.LName = ((TextBox)_Row.FindControl("txtL_name")).Text;
+        _Model.PNo = ((TextBox)_Row.FindControl("txtP_no")).Text;
+        _Model.Gender = ((CheckBox)_Row.FindControl("ckbGender")).Checked ? "1" : "0";
+        _Model.Address = ((TextBox)_Row.FindControl("txtAddress")).Text;
+        _Model.Email = ((TextBox)_Row.FindControl("txtEmail")).Text;
+        _Model.StatusId = ((DropDownList)(_Row.FindControl("drlStatus"))).SelectedValue.ToString(); ;
         CustomerDAO.Update(_Model);
         grvCustomer.EditIndex = -1;
         BindData();
