@@ -15,6 +15,10 @@ public partial class wuc_wucChangeInfo : System.Web.UI.UserControl
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["user"] == null)
+        {
+            Response.Redirect(@"~");
+        }
         if (!Page.IsPostBack)
         {
             CustomerModel model = (CustomerModel)Session["user"];
