@@ -12,28 +12,14 @@ using System.Web.UI.HtmlControls;
 public partial class _Default : System.Web.UI.Page
 {
     String _Token = null;
+    private String WEB_URL = "";
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!Page.IsPostBack)
+        {
+            WEB_URL = Request.Url.GetLeftPart(UriPartial.Authority) + VirtualPathUtility.ToAbsolute("~/");
+        }
         Main();
-        addValueCLB();
-    }
-    public void LoadMenu()
-    {
-        String _Html = "<div class='nav'><ul> <li><a href='#'> Home </a></li>";
-
-        if(Session["CusId"]==null)
-        {
-            _Html += "<li><a href='Default.aspx?t=login'> Login </a></li> ";
-            _Html += "<li><a href='Default.aspx?t=register'> Register </a></li>";
-        }
-        else
-        {
-            _Html += "<li><a href = 'Default.aspx?t=order'> Order </a><em></em></li>";
-            _Html += "<li><a href = 'Default.aspx?t=changeinfo'> Change Info </a><em></em></li>";
-            _Html += "<li><a href = '#'> Logout </a><em></em></li>";
-        }
-        _Html += "</ul></div>";
-        Response.Write(_Html);
     }
     public void Main()
     {
@@ -49,8 +35,11 @@ public partial class _Default : System.Web.UI.Page
                         addControl(Request.ApplicationPath + @"/wuc/wucRegister.ascx");
                     break;
                 case "login":
-                    if (Request.QueryString["lg"] != null)
-                        addControl(Request.ApplicationPath + @"/wuc/wucLoginSuccess.ascx");
+                    if (Request.QueryString["logout"] != null)
+                    {
+                        Session["user"] = null;
+                        Response.Redirect(WEB_URL);
+                    }
                     else
                         addControl(Request.ApplicationPath + @"/wuc/wucLogin.ascx");
                     break;
@@ -100,15 +89,5 @@ public partial class _Default : System.Web.UI.Page
         Control wucCus = (Control)Page.LoadControl(_Path);
         PlaceHolderRight.Controls.Add(wucCus);
     }
-    private void addValueCLB()
-    {
-        DataTable dt = UploadDAO.getImageByUId("12");
-        GridView1.DataSource = dt;
-        GridView1.DataBind();
-    }
-    protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
-    {
 
-        CheckBoxList drlStatus = (CheckBoxList)(grvMember.Rows[e.NewEditIndex].Cells[1].FindControl("CheckBoxList1"));
-    }
 }
