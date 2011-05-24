@@ -14,11 +14,7 @@ public partial class wuc_wucLogin : System.Web.UI.UserControl
     String WEB_URL = "";
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!Page.IsPostBack)
-        {
-            WEB_URL = Request.Url.GetLeftPart(UriPartial.Authority) + VirtualPathUtility.ToAbsolute("~/");
-        }
-
+        if (Session["user"] != null) Response.Redirect(WEB_URL);
     }
     protected void btnLogin_Click(object sender, EventArgs e)
     {
@@ -28,21 +24,19 @@ public partial class wuc_wucLogin : System.Web.UI.UserControl
         CustomerModel model = CustomerDAO.GetByU_P(Useranme,Password);
         if (model != null)
         {
-            if (model.Status.Equals("0"))
+            if (model.StatusId.Equals("0"))
             {
-                lblStatusLogin.Text ="User is block";
-            }
-            else if (model.Status.Equals("1"))
-            {
-                Session["cusname"] = model.Username;
-                Session["CusId"] = model.ID;
                 Session["user"] = model;
-                Response.Redirect(@"~/?t=login&lg=success");
+                Response.Redirect(@"~");
+            }
+            else
+            {
+                lblStatusLogin.Text = "Username is banned";
             }
         }
         else
         {
-            lblStatusLogin.Text = "Username or Password is not match";
+            lblStatusLogin.Text = "Username/password is not match";
         }
     }
 }

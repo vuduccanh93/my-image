@@ -23,18 +23,18 @@ public partial class wuc_wucUploadImage : System.Web.UI.UserControl
     }
     protected Boolean ValidUploadFile(HttpFileCollection _Files)
     {
-         flag = true;
+        HttpPostedFile file;
+        if (_Files != null && _Files.Count == 0)
+        {
+            lblErr.Text = "Choose 1 file at least";
+            return true;
+        }
         for (int i = 0; i < _Files.Count; i++)
         {
-            HttpPostedFile file = _Files[i];
-            if (file.ContentLength > 0)
-            {
-                flag = false;
-            }
-
+            file = _Files[i];
             if (file.ContentLength > (1024 * 1024))
             {
-                Label1.Text = "File size is too large";
+                lblErr.Text = "File size is too large";
                 return true;
             }
         }
@@ -47,7 +47,7 @@ public partial class wuc_wucUploadImage : System.Web.UI.UserControl
         {
             return;
         }
-        if (flag == true)
+        if (ValidUploadFile(uploadFilCol))
         {
             return;
         }
