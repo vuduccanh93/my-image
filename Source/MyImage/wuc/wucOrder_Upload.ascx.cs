@@ -12,10 +12,16 @@ using System.IO;
 
 public partial class wuc_wucUploadImage : System.Web.UI.UserControl
 {
-    private Boolean flag;
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        if (Session["user"] == null)
+        {
+            Response.Redirect(@"~");
+        }
+        if (Session["upload_start"] == null || !Session["upload_start"].ToString().Equals("1"))
+        {
+            Response.Redirect("Default.aspx?t=order");
+        }
     }
     protected void FileExists(String _Path)
     {

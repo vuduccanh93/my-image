@@ -13,6 +13,16 @@ public partial class wuc_wucOrder_OrderDetails : System.Web.UI.UserControl
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (!Page.IsPostBack)
+        {
+            if (Session["user"] == null)
+            {
+                Response.Redirect(@"~");
+            }
+            if (Session["upload_uploaded"] == null || !Session["upload_uploaded"].ToString().Equals("1"))
+            {
+                Response.Redirect(@"~");
+            }
+        }
     }
 }
