@@ -13,10 +13,36 @@ using System.Web.UI.HtmlControls;
 /// </summary>
 public class UploadModel
 {
+    private String id;
+    private String folder;
+    private String uploaded;
+    private String created_date;
+
+    public String ID
+    {
+        get { return this.id; }
+        set { this.id = value; }
+    }
+    public String Folder
+    {
+        get { return this.folder; }
+        set { this.folder = value; }
+    }
+    public String Uploaded
+    {
+        get { return this.uploaded; }
+        set { this.uploaded = value; }
+    }
+    public String Created_Date
+    {
+        get { return this.created_date; }
+        set { this.created_date = value; }
+    }
 	public UploadModel()
 	{
-		//
-		// TODO: Add constructor logic here
-		//
+        id = "";
+        folder = "";
+        uploaded = "";
+        created_date = "";
 	}
 }
