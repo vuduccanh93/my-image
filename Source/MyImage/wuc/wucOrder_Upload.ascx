@@ -9,4 +9,5 @@
 </asp:Label>
 <br />
 <asp:Label ID="lblMsgErr" runat="server" Text="">
-</asp:Label>
+</asp:Label><br />
+<asp:Button ID="btnNext" runat="server" OnClick="btnNext_Click" Text="Next" />
