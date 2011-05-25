@@ -38,6 +38,8 @@ public partial class _Default : System.Web.UI.Page
                     if (Request.QueryString["logout"] != null)
                     {
                         Session["user"] = null;
+                        Session["upload_start"] = null;
+                        Session["upload_uploaded"] = null;
                         Response.Redirect(WEB_URL);
                     }
                     else

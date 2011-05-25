@@ -18,7 +18,7 @@ public class UploadDetailDAO
     {
         SqlParameter[] param = new SqlParameter[2];
         int i = 0;
-        param[i] = new SqlParameter("@U_id", SqlDbType.VarChar);
+        param[i] = new SqlParameter("@U_id", SqlDbType.Int);
         param[i++].Value = model.U_id;
         param[i] = new SqlParameter("@Img", SqlDbType.VarChar);
         param[i++].Value = model.Img;

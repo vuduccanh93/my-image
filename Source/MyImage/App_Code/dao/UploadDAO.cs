@@ -20,7 +20,7 @@ public class UploadDAO
         param[i] = new SqlParameter("@Folder", SqlDbType.VarChar);
         param[i++].Value = model.Folder;
         param[i] = new SqlParameter("@Uploaded", SqlDbType.VarChar);
-        param[i++].Value = 0;
+        param[i++].Value = model.Uploaded;
         param[i] = new SqlParameter("@Created_date", SqlDbType.VarChar);
         param[i++].Value = model.Created_Date;
         param[i] = new SqlParameter("@Output", SqlDbType.Int,10);

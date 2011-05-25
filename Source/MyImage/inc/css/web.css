@@ -134,7 +134,9 @@ body{
 	float:right;
 }
 .gettop{
-	position:fixed;right:70px;bottom:70px;
+	position:fixed;
+	right:70px;
+	bottom:70px;
 	visibility:hidden;
 }
 .nav
