@@ -2,10 +2,10 @@ if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].sp_UploadDe
 drop procedure [dbo].sp_UploadDetail_Insert
 go
 
-create proc sp_UploadDetail_Insert
-@U_id			int ,
-@Img			varchar(200)	
-as
+CREATE PROCEDURE sp_UploadDetail_Insert
+@U_id			INT ,
+@Img			VARCHAR(200)	
+AS
 BEGIN
 	INSERT INTO UploadDetails(
 					U_id,
