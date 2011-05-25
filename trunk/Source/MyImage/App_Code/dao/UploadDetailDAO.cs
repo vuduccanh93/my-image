@@ -24,4 +24,21 @@ public class UploadDetailDAO
         param[i++].Value = model.Img;
         return DataUtil.executeNonStore("sp_UploadDetail_Insert", param);
     }
+    public static DataTable GetByUploadId(String UploadId)
+    {
+        DataTable _Rs = null;
+        SqlParameter[] param = new SqlParameter[1];
+        int i = 0;
+        param[i] = new SqlParameter("@UploadId", SqlDbType.Int);
+        param[i++].Value = UploadId;
+        try
+        {
+            _Rs = DataUtil.executeStore("sp_UploadDetails_GetByUploadId", param);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message.ToString());
+        }
+        return _Rs;
+    }
 }
