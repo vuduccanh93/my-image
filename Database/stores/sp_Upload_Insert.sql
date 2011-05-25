@@ -9,12 +9,12 @@ CREATE PROC [sp_Upload_Insert]
 @Output				int	OUTPUT
 AS
 BEGIN
-INSERT INTO UPLOAD(	FOLDER,
-					UPLOADED,
-					CREATED_DATE) 
+INSERT INTO UPLOAD(	Folder,
+					Uploaded,
+					Created_date) 
 			VALUES(	@Folder,
 					@Uploaded,
 					@Created_date)
 
-set @Output = SCOPE_IDENTITY()
+SET @Output = SCOPE_IDENTITY()
 END
