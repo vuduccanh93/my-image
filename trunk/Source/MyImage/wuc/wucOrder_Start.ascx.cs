@@ -8,18 +8,36 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
+using System.IO;
 
 public partial class wuc_wucOrder_Start : System.Web.UI.UserControl
 {
+    UploadModel ULModel;
     protected void Page_Load(object sender, EventArgs e)
     {
 
     }
     protected void btnStart_Click(object sender, EventArgs e)
     {
-
         Session["upload_start"] = 1;
-        Response.Redirect("Default.aspx?t=order&start=true");
-
+        ULModel = new UploadModel();
+        string SavePath  = "";
+        string Username = ((CustomerModel)Session["user"]).Username;
+        ULModel.Created_Date = UtilDAO.GetDateTime();
+        if (!String.IsNullOrEmpty(ULModel.Created_Date))
+        {
+            SavePath = Server.MapPath("~/Upload/" + Username + @"/" + ULModel.Created_Date + @"/");
+            ULModel.Folder = "~/Upload/" + Username + @"/" + ULModel.Created_Date + @"/";
+            ULModel.Uploaded = "0";
+            ULModel.ID = UploadDAO.Insert(ULModel);
+            FileExists(SavePath);
+            Session["upload_savepath"] = SavePath;
+            Session["upload_uploadmodel"] = ULModel;
+            Response.Redirect("Default.aspx?t=order&start=true");
+        }
+    }
+    protected void FileExists(String _Path)
+    {
+        if (!Directory.Exists(_Path)) Directory.CreateDirectory(_Path);
     }
 }
