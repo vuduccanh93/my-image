@@ -50,7 +50,7 @@ public partial class wuc_wucOrder_OrderDetails : System.Web.UI.UserControl
                 Label _lblPrice;
                 TextBox _txtQuantity;
                 int i = 0;
-                Holder.Controls.Add(new LiteralControl("<table border='1'>"));
+                Holder.Controls.Add(new LiteralControl("<table class='upload_printingprice'>"));
                 Holder.Controls.Add(new LiteralControl("<tr><td></td>"));
                 Holder.Controls.Add(new LiteralControl("<td>Size</td>"));
                 Holder.Controls.Add(new LiteralControl("<td>Price</td>"));
@@ -76,7 +76,7 @@ public partial class wuc_wucOrder_OrderDetails : System.Web.UI.UserControl
 
                     _txtQuantity = new TextBox();
                     _txtQuantity.ID = "txtQuantity" + i;
-                    _txtQuantity.Text = "";
+                    _txtQuantity.Text = "0";
 
                     Holder.Controls.Add(new LiteralControl("<tr>"));
                     Holder.Controls.Add(new LiteralControl("<td>"));
