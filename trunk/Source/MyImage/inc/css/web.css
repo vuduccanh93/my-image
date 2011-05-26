@@ -165,3 +165,44 @@ body{
     text-decoration: none;
     padding-right:30px;
 }
+.upload_orderdetails
+{
+	font-family: Verdana;
+	font-weight: normal;
+	font-size: 11px;
+	color: #404040;
+	width: 680px;
+	border:none;
+	background-color: #fafafa;
+	margin:2px 0 2px 1px;
+}
+.upload_orderdetails td
+{
+	border:none;
+    margin: 0;
+    padding: 0;
+    background-color: #FFC;
+}
+.upload_printingprice
+{	
+	font-family: Verdana;
+	font-weight: normal;
+	font-size: 11px;
+	color: #404040;
+	width: 320px;
+	background-color: #fafafa;
+	border: 1px #6699CC solid;
+	border-collapse: collapse;
+	border-spacing: 0px;
+	margin:2px 0 2px 1px;
+}
+.upload_printingprice td
+{	
+	border-bottom: 0px solid #6699CC;
+	background-color: #BEC8D1;
+	text-align: center;
+	font-family: Verdana;
+	font-weight: bold;
+	font-size: 11px;
+	color: #404040;
+}
