@@ -40,63 +40,119 @@ public partial class wuc_wucOrder_OrderDetails : System.Web.UI.UserControl
     {
         foreach (GridViewRow _Dtr in grvUploadDetails.Rows)
         {
-            PlaceHolder Holder = (PlaceHolder)_Dtr.FindControl("phlPrintingPrice");
-            if (Holder != null)
-            {
-
-                CheckBox _ckbGet;
-                Label _lblID;
-                Label _lblSize;
-                Label _lblPrice;
-                TextBox _txtQuantity;
-                int i = 0;
-                Holder.Controls.Add(new LiteralControl("<table class='upload_printingprice'>"));
-                Holder.Controls.Add(new LiteralControl("<tr><td></td>"));
-                Holder.Controls.Add(new LiteralControl("<td>Size</td>"));
-                Holder.Controls.Add(new LiteralControl("<td>Price</td>"));
-                Holder.Controls.Add(new LiteralControl("<td>Quantity</td></tr>"));
-
-                foreach (DataRow _Dr in PrintingPriceDAO.GetAll().Rows)
-                {
-                    i = 0;
-                    _ckbGet = new CheckBox();
-                    _ckbGet.ID = "ckbGet" + i;
-
-                    _lblID = new Label();
-                    _lblID.Text = _Dr["ID"].ToString();
-                    _lblID.ID = "lblID" + i;
-
-                    _lblSize = new Label();
-                    _lblSize.Text = _Dr["Size"].ToString();
-                    _lblSize.ID = "lblSize" + i;
-
-                    _lblPrice = new Label();
-                    _lblPrice.Text = _Dr["Price"].ToString();
-                    _lblPrice.ID = "lblPrice" + i;
-
-                    _txtQuantity = new TextBox();
-                    _txtQuantity.ID = "txtQuantity" + i;
-                    _txtQuantity.Text = "0";
-
-                    Holder.Controls.Add(new LiteralControl("<tr>"));
-                    Holder.Controls.Add(new LiteralControl("<td>"));
-                    Holder.Controls.Add(_ckbGet);
-                    Holder.Controls.Add(_lblID);           
-                    Holder.Controls.Add(new LiteralControl("</td>"));
-                    Holder.Controls.Add(new LiteralControl("<td>"));
-                    Holder.Controls.Add(_lblSize);
-                    Holder.Controls.Add(new LiteralControl("</td>"));
-                    Holder.Controls.Add(new LiteralControl("<td>"));
-                    Holder.Controls.Add(_lblPrice);
-                    Holder.Controls.Add(new LiteralControl("</td>"));
-                    Holder.Controls.Add(new LiteralControl("<td>"));
-                    Holder.Controls.Add(_txtQuantity);
-                    Holder.Controls.Add(new LiteralControl("</td>"));
-                    Holder.Controls.Add(new LiteralControl("</tr>"));
-                    i++;
-                }
-                Holder.Controls.Add(new LiteralControl("</table>"));
-            }
+            GridView grv = (GridView)_Dtr.FindControl("grvPrintingPrice");
+            DataTable dt= PrintingPriceDAO.GetAll();
+            grv.DataSource = dt;
+            grv.DataBind();
         }
+    }
+
+    protected void txtQuantity_TextChanged(object sender, EventArgs e)
+    {
+        txtTotal.Text = "0"; 
+        TextBox txtQuantity = ((TextBox)(sender));
+        GridViewRow gvr = ((GridViewRow)(txtQuantity.NamingContainer));
+        Label _Price = (Label)gvr.FindControl("lblPrice");
+        double dblQuantity = String.IsNullOrEmpty(txtQuantity.Text) ? 0 : Convert.ToDouble(txtQuantity.Text);
+        double dblPrice = Convert.ToDouble(_Price.Text);
+        TextBox _Amount = (TextBox)gvr.FindControl("txtAmount");
+        _Amount.Text = Convert.ToString(dblPrice * dblQuantity);
+        foreach (GridViewRow _Dtr in grvUploadDetails.Rows)
+        {
+            GridView grvPrintingPrice = (GridView)_Dtr.FindControl("grvPrintingPrice");
+            foreach (GridViewRow _DtrP in grvPrintingPrice.Rows)
+            {
+                CheckBox cbk = (CheckBox)_DtrP.FindControl("ckbGet");
+                if (cbk.Checked)
+                {
+                    TextBox txtAmount = (TextBox)_DtrP.FindControl("txtAmount");
+                    double Amount =  String.IsNullOrEmpty(txtAmount.Text) ? 0 : Convert.ToDouble(txtAmount.Text);
+                    txtTotal.Text = Convert.ToString(Amount + Convert.ToDouble(txtTotal.Text));
+                }
+            }
+
+        }
+        
+       
+    }
+
+
+    protected void ckbGet_CheckedChanged(object sender, EventArgs e)
+    {
+        txtTotal.Text = "0";
+        CheckBox ckbGet = ((CheckBox)(sender));
+        GridViewRow gvr = ((GridViewRow)(ckbGet.NamingContainer));
+        TextBox txtQuantity = (TextBox)gvr.FindControl("txtQuantity");
+        double dblQuantity = String.IsNullOrEmpty(txtQuantity.Text) ? 0 : Convert.ToDouble(txtQuantity.Text);
+        foreach (GridViewRow _Dtr in grvUploadDetails.Rows)
+        {
+            GridView grvPrintingPrice = (GridView)_Dtr.FindControl("grvPrintingPrice");
+            foreach (GridViewRow _DtrP in grvPrintingPrice.Rows)
+            {
+                CheckBox cbk = (CheckBox)_DtrP.FindControl("ckbGet");
+                if (cbk.Checked)
+                {
+                    TextBox txtAmount = (TextBox)_DtrP.FindControl("txtAmount");
+                    double Amount = String.IsNullOrEmpty(txtAmount.Text) ? 0 : Convert.ToDouble(txtAmount.Text);
+                    txtTotal.Text = Convert.ToString(Amount + Convert.ToDouble(txtTotal.Text));
+                }
+            }
+
+        }
+    }
+    protected void btnNext_Click(object sender, EventArgs e)
+    {
+        if (String.IsNullOrEmpty(txtTotal.Text) || txtTotal.Text.Equals("0"))
+        {
+            return;
+        }
+        else
+        {
+            OrderModel orderModel = new OrderModel();
+            String orderId = OrderDAO.Insert(orderModel);
+            Session["orderid"] = orderId;
+            List<OrderDetailModel> _listModel = new List<OrderDetailModel>(); 
+            foreach (GridViewRow _Dtr in grvUploadDetails.Rows)
+            {
+                GridView grvPrintingPrice = (GridView)_Dtr.FindControl("grvPrintingPrice");
+                Label Id = (Label)_Dtr.FindControl("lblID");
+                foreach (GridViewRow _DtrP in grvPrintingPrice.Rows)
+                {
+                    CheckBox cbk = (CheckBox)_DtrP.FindControl("ckbGet");
+                    Label lblPrice = (Label)_DtrP.FindControl("lblPrice");
+                    Label lblSize = (Label)_DtrP.FindControl("lblSize");
+                    TextBox txtQuantity = (TextBox)_DtrP.FindControl("txtQuantity");
+                    TextBox txtAmount = (TextBox)_DtrP.FindControl("txtAmount");
+                    if (cbk.Checked)
+                    {
+                        OrderDetailModel model = new OrderDetailModel();
+                        model.OrderId = orderId;
+                        model.UploadDetailId = Id.Text; 
+                        model.Price = lblPrice.Text;
+                        model.Size = lblSize.Text;
+                        model.Quantity = txtQuantity.Text;
+                        model.Amount = txtAmount.Text;
+                        _listModel.Add(model);
+                        
+                    }
+                }
+            }
+            if (_listModel.Count > 0)
+            {
+                if (!OrderDetailDAO.MultiInsert(_listModel))
+                {
+                    Alert("Insert error");
+                }
+            }
+            else
+            {
+                Response.Redirect("Default.aspx?t=order&start=true&upload=true&content=true");
+            }
+
+        }
+    }
+    protected void Alert(String _Text)
+    {
+        Response.Write("<script>alert('" + _Text + "')</script>");
     }
 }
