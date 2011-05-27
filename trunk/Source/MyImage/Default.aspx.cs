@@ -38,8 +38,12 @@ public partial class _Default : System.Web.UI.Page
                     if (Request.QueryString["logout"] != null)
                     {
                         Session["user"] = null;
-                        Session["upload_start"] = null;
-                        Session["upload_uploaded"] = null;
+                        Session["order_start"] = null;
+                        Session["order_upload"] = null;
+                        Session["upload_savepath"] = null;
+                        Session["upload_uploadmodel"] = null;
+                        Session["order_orderdetails"] = null;
+                        Session["order"] = null;
                         Response.Redirect(WEB_URL);
                     }
                     else
@@ -66,7 +70,7 @@ public partial class _Default : System.Web.UI.Page
                     else if (Request.QueryString["t"] != null && Request.QueryString["start"] != null &&
                                  Request.QueryString["upload"] != null && Request.QueryString["content"] != null)
                     {
-
+                        addControl(Request.ApplicationPath + @"/wuc/wucOrder_Order.ascx");
                     }
                     else if (Request.QueryString["t"] != null && Request.QueryString["start"] != null &&
                         Request.QueryString["upload"] != null)

@@ -15,11 +15,15 @@ public partial class wuc_wucOrder_Start : System.Web.UI.UserControl
     UploadModel ULModel;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Session["user"] == null)
+        {
+            Response.Redirect(@"~");
+            return;
+        }
     }
     protected void btnStart_Click(object sender, EventArgs e)
     {
-        Session["upload_start"] = 1;
+        
         ULModel = new UploadModel();
         string SavePath  = "";
         string Username = ((CustomerModel)Session["user"]).Username;
@@ -31,9 +35,11 @@ public partial class wuc_wucOrder_Start : System.Web.UI.UserControl
             ULModel.Uploaded = "0";
             ULModel.ID = UploadDAO.Insert(ULModel);
             FileExists(SavePath);
+            Session["order_start"] = 1;
             Session["upload_savepath"] = SavePath;
             Session["upload_uploadmodel"] = ULModel;
             Response.Redirect("Default.aspx?t=order&start=true");
+            return;
         }
     }
     protected void FileExists(String _Path)
