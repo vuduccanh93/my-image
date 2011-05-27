@@ -31,7 +31,7 @@ INSERT INTO Orders(	No,
 					Status_id,
 					Created_date
 					) 
-			VALUES(	@No,
+			VALUES(	dbo.udf_Util_Order_GenerateNo(),
 					@Content,
 					@Address,
 					@S_provinces_id,
