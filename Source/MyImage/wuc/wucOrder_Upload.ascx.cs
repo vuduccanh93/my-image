@@ -17,13 +17,21 @@ public partial class wuc_wucUploadImage : System.Web.UI.UserControl
     String SavePath, MsgErr, MsgInf = "";
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["user"] == null)
+        if (!Page.IsPostBack)
         {
-            Response.Redirect(@"~");
-        }
-        if (Session["upload_start"] == null || !Session["upload_start"].ToString().Equals("1"))
-        {
-            Response.Redirect("Default.aspx?t=order");
+            if (Session["user"] == null)
+            {
+                Response.Redirect("?");
+            }
+            if (Session["order_start"] == null || !Session["order_start"].ToString().Equals("1"))
+            {
+                Response.Redirect("Default.aspx?t=order");
+                return;
+            }
+            else
+            {
+                Session["order_start"] = null;
+            }
         }
     }
     private string GetFileExtension(string filePath)
@@ -162,6 +170,8 @@ public partial class wuc_wucUploadImage : System.Web.UI.UserControl
 
     protected void btnNext_Click(object sender, EventArgs e)
     {
+        Session["order_upload"] = 1;
         Response.Redirect("Default.aspx?t=order&start=true&upload=true");
+        return;
     }
 }

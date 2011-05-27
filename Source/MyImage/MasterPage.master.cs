@@ -17,7 +17,9 @@ public partial class MasterPage : System.Web.UI.MasterPage
     }
     /**
      * Session["user"] = user; ->null
-     * Session["upload_start"] = 1;->0
+     * Session["order_start"] = 1;->0
+     * Session["order_upload"] = 1;->0
+     * Session["order_orderdetails"] = 1
      * Session["upload_savepath"] = SavePath;->null
      * Session["upload_uploadmodel"] = ULModel;->null
      * Session["upload_uploaded"] = 1 -> null

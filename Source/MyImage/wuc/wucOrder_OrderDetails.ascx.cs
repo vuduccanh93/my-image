@@ -21,11 +21,17 @@ public partial class wuc_wucOrder_OrderDetails : System.Web.UI.UserControl
             if (Session["user"] == null)
             {
                 Response.Redirect(@"~");
+                return;
             }
-            //if (Session["upload_uploaded"] == null || !Session["upload_uploaded"].ToString().Equals("1"))
-            //{
-            //    Response.Redirect(@"~");
-            //}
+            if (Session["order_upload"] == null || !Session["order_upload"].ToString().Equals("1"))
+            {
+                Response.Redirect("Default.aspx?t=order&start=true&upload=true");
+                return;
+            }
+            else
+            {
+                Session["order_upload"] = null;
+            }
             BindData();
             BindPrintingPrice();
         }
@@ -109,8 +115,9 @@ public partial class wuc_wucOrder_OrderDetails : System.Web.UI.UserControl
         else
         {
             OrderModel orderModel = new OrderModel();
-            String orderId = OrderDAO.Insert(orderModel);
-            Session["orderid"] = orderId;
+            orderModel.ID= OrderDAO.Insert(orderModel);
+            orderModel.CustomerId = ((CustomerModel)Session["user"]).ID;
+            Session["order"] = orderModel;
             List<OrderDetailModel> _listModel = new List<OrderDetailModel>(); 
             foreach (GridViewRow _Dtr in grvUploadDetails.Rows)
             {
@@ -126,7 +133,7 @@ public partial class wuc_wucOrder_OrderDetails : System.Web.UI.UserControl
                     if (cbk.Checked)
                     {
                         OrderDetailModel model = new OrderDetailModel();
-                        model.OrderId = orderId;
+                        model.OrderId = orderModel.ID;
                         model.UploadDetailId = Id.Text; 
                         model.Price = lblPrice.Text;
                         model.Size = lblSize.Text;
@@ -141,12 +148,18 @@ public partial class wuc_wucOrder_OrderDetails : System.Web.UI.UserControl
             {
                 if (!OrderDetailDAO.MultiInsert(_listModel))
                 {
-                    Alert("Insert error");
+                    Alert("Error accour.Please try again later!");
+                }
+                else
+                {
+                    Session["order_orderdetails"] = 1;
+                    Response.Redirect("?t=order&start=true&upload=true&content=true");
+                    return;
                 }
             }
             else
             {
-                Response.Redirect("Default.aspx?t=order&start=true&upload=true&content=true");
+                //
             }
 
         }
