@@ -153,6 +153,7 @@ public partial class wuc_wucOrder_OrderDetails : System.Web.UI.UserControl
                 else
                 {
                     Session["order_orderdetails"] = 1;
+                    Session["total"] = txtTotal.Text;
                     Response.Redirect("?t=order&start=true&upload=true&content=true");
                     return;
                 }
