@@ -169,4 +169,26 @@ public partial class wuc_wucOrder_OrderDetails : System.Web.UI.UserControl
     {
         Response.Write("<script>alert('" + _Text + "')</script>");
     }
+
+    protected void btnUpdatePrice_Click(object sender, EventArgs e)
+    {
+        double Total=0;
+        foreach (GridViewRow _Dtr in grvUploadDetails.Rows)
+        {
+            GridView grvPrintingPrice = (GridView)_Dtr.FindControl("grvPrintingPrice");
+            foreach (GridViewRow _DtrP in grvPrintingPrice.Rows)
+            {
+                CheckBox cbk = (CheckBox)_DtrP.FindControl("ckbGet");
+                if (cbk.Checked)
+                {
+                    Label lblPrice = (Label)_DtrP.FindControl("lblPrice");
+                    TextBox txtQuantity = (TextBox)_DtrP.FindControl("txtQuantity");
+                    double dblQuantity = String.IsNullOrEmpty(txtQuantity.Text) ? 0 : Convert.ToDouble(txtQuantity.Text);
+                    Total += dblQuantity * Convert.ToDouble(lblPrice.Text);
+                }
+            }
+
+        }
+        txtTotal.Text = Convert.ToString(Total);
+    }
 }

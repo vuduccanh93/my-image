@@ -81,12 +81,14 @@ public partial class wuc_wucOrder_Order : System.Web.UI.UserControl
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
         OrderModel model = (OrderModel)Session["order"];
-
+        CustomerModel cuserModel = (CustomerModel)Session["user"];
         model.NO = txtNo.Text;
         model.Content = txtContent.Text;
         model.Address = txtAddress.Text;
         model.PMethodId = drlPaymenMethod.SelectedIndex.ToString();
+        model.PMethod = drlPaymenMethod.SelectedValue.ToString();
         model.SProvinceId = drlStateProvince.SelectedIndex.ToString();
+        model.SProvince = drlStateProvince.SelectedValue.ToString();
         if (model.PMethodId.Equals("1"))
         {
             CreditCardModel ccModel = new CreditCardModel();
@@ -95,15 +97,20 @@ public partial class wuc_wucOrder_Order : System.Web.UI.UserControl
             ccModel.Number = txtCCNumber.Text;
             ccModel.Exp_date = txtExpertDate.Text;
             model.CCardId = CreditCardDAO.Insert(ccModel);
+            Session["creditcard"] = ccModel;
         }
+        model.ShipTime = drlShipDay.SelectedItem.ToString();
         model.PPrice = txtPrintingPrice.Text;
         model.SPrice = txtShippingPrice.Text;
         model.Amount = txtAmount.Text;
         model.Status = "0";
+        model.Customer = cuserModel.FName + cuserModel.LName;
         model.CreatedDate = UtilDAO.GetDateTime();
+        Session["order"] = model;
         if (OrderDAO.Update(model))
         {
             Alert("Success");
+            Response.Redirect("?t=order&start=true&upload=true&content=true&payment=true");
         }
         else
         {
