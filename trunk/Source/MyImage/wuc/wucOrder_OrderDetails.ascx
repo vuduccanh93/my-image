@@ -1,7 +1,9 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="wucOrder_OrderDetails.ascx.cs" Inherits="wuc_wucOrder_OrderDetails" %>
 <asp:Button ID="btnNext" runat="server" Text="Next" OnClick="btnNext_Click" /><br />
 <asp:Label ID="lblAmount" runat="server" Text="Amount :"></asp:Label>
-<asp:TextBox ID="txtTotal" runat="server" ReadOnly="True" Width="81px"></asp:TextBox><br />
+<asp:TextBox ID="txtTotal" runat="server" ReadOnly="True" Width="81px"></asp:TextBox>
+<asp:Button ID="btnUpdatePrice" runat="server" CausesValidation="False" OnClick="btnUpdatePrice_Click"
+    Text="Update Price" UseSubmitBehavior="False" /><br />
 <asp:GridView ID="grvUploadDetails" runat="server" AutoGenerateColumns="False" CssClass="upload_orderdetails" >
     <Columns>
         <asp:TemplateField HeaderText="ID">
@@ -27,7 +29,7 @@
                                 <asp:CheckBox ID="CheckBox1" runat="server" />
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:CheckBox ID="ckbGet" runat="server" AutoPostBack="True" OnCheckedChanged="ckbGet_CheckedChanged" />
+                                <asp:CheckBox ID="ckbGet" runat="server" OnCheckedChanged="ckbGet_CheckedChanged" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="ID">
@@ -59,7 +61,7 @@
                                 <asp:TextBox ID="TextBox1" runat="server" ></asp:TextBox>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:TextBox ID="txtQuantity" runat="server" AutoPostBack="True" OnTextChanged="txtQuantity_TextChanged" ></asp:TextBox>
+                                <asp:TextBox ID="txtQuantity" runat="server" OnTextChanged="txtQuantity_TextChanged" ></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Amount">
@@ -77,4 +79,5 @@
 
     </Columns>
 </asp:GridView>
+&nbsp;
 
