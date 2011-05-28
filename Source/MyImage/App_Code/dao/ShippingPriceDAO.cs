@@ -44,4 +44,12 @@ public class ShippingPriceDAO
         param[i++].Value = _Model.Price;
         return DataUtil.executeNonStore("sp_ShippingPrice_Update", param);
     }
+    public static DataTable GetAllBySPI(String s_Providers_id_)
+    {
+        SqlParameter[] param = new SqlParameter[1];
+        int i = 0;
+        param[i] = new SqlParameter("@s_Providers_id", SqlDbType.Int);
+        param[i++].Value = s_Providers_id_;
+        return DataUtil.executeStore("sp_ShippingPrices_GetAllBySPI", param);
+    }
 }
