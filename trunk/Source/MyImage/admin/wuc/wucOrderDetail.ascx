@@ -80,3 +80,8 @@
         </asp:BoundField>
     </Columns>
 </asp:GridView>
+<asp:DataList ID="DataList1" runat="server" RepeatColumns="1">
+    <ItemTemplate>
+        <asp:Image ID="Image1" runat="server" ImageUrl='<% #  Eval("Link") %>' />
+    </ItemTemplate>
+</asp:DataList><br />

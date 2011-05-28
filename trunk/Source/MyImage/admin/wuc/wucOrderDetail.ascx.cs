@@ -43,6 +43,8 @@ public partial class admin_wuc_wucOrderDetail : System.Web.UI.UserControl
                 lblContent.Text = Model.Content;
                 grvOrderDetail.DataSource = OrderDetailDAO.GetByOrderId(Model.ID);
                 grvOrderDetail.DataBind();
+                DataList1.DataSource = OrderDetailDAO.GetByOrderId(Model.ID);
+                DataList1.DataBind();
             }
         }
     }
