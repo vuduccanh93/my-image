@@ -28,6 +28,7 @@ public partial class wuc_wucLogin : System.Web.UI.UserControl
             {
                 Session["user"] = model;
                 Response.Redirect(@"~");
+                return;
             }
             else
             {
