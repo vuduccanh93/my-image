@@ -20,9 +20,18 @@ public partial class _Default : System.Web.UI.Page
             WEB_URL = Request.Url.GetLeftPart(UriPartial.Authority) + VirtualPathUtility.ToAbsolute("~/");
         }
         Main();
+        
     }
     public void Main()
     {
+        if (Session["user"] == null)
+        {
+            addCtrl(PlaceHolderLogin, Request.ApplicationPath + @"/wuc/wucLogin.ascx");
+        }
+        else
+        {
+
+        }
         if (Request.QueryString["t"] != null)
         {
             _Token = Request.QueryString["t"].ToString();
@@ -30,9 +39,9 @@ public partial class _Default : System.Web.UI.Page
             {
                 case "register":
                     if (Request.QueryString["rs"] != null)
-                        addControl(Request.ApplicationPath + @"/wuc/wucRegisterSuccess.ascx");
+                        addCtrl(PlaceHolderRight,Request.ApplicationPath + @"/wuc/wucRegisterSuccess.ascx");
                     else
-                        addControl(Request.ApplicationPath + @"/wuc/wucRegister.ascx");
+                        addCtrl(PlaceHolderRight,Request.ApplicationPath + @"/wuc/wucRegister.ascx");
                     break;
                 case "login":
                     if (Request.QueryString["logout"] != null)
@@ -46,18 +55,21 @@ public partial class _Default : System.Web.UI.Page
                         Session["order"] = null;
                         Response.Redirect(WEB_URL);
                     }
-                    else
-                        addControl(Request.ApplicationPath + @"/wuc/wucLogin.ascx");
                     break;
                 case "changeinfo":
                     if (Session["user"] != null)
-                        addControl(Request.ApplicationPath + @"/wuc/wucChangeInfo.ascx");
+                        addCtrl(PlaceHolderRight, Request.ApplicationPath + @"/wuc/wucChangeInfo.ascx");
                     break;
 
                 case "order":
+                    if (Session["user"] == null)
+                    {
+                        Response.Redirect("~");
+                        return;
+                    }
                     if (Request.QueryString["t"] != null && Request.QueryString["start"] != null &&
                         Request.QueryString["upload"] != null && Request.QueryString["content"] != null &&
-                        Request.QueryString["payment"] != null && Request.QueryString["finish"]!=null)
+                        Request.QueryString["payment"] != null && Request.QueryString["finish"] != null)
                     {
 
                     }
@@ -65,35 +77,42 @@ public partial class _Default : System.Web.UI.Page
                                 Request.QueryString["upload"] != null && Request.QueryString["content"] != null &&
                                 Request.QueryString["payment"] != null)
                     {
-                        addControl(Request.ApplicationPath + @"/wuc/wucOrder_Payment.ascx");
+
                     }
                     else if (Request.QueryString["t"] != null && Request.QueryString["start"] != null &&
                                  Request.QueryString["upload"] != null && Request.QueryString["content"] != null)
                     {
-                        addControl(Request.ApplicationPath + @"/wuc/wucOrder_Order.ascx");
+                        addCtrl(PlaceHolderRight, Request.ApplicationPath + @"/wuc/wucOrder_Order.ascx");
                     }
                     else if (Request.QueryString["t"] != null && Request.QueryString["start"] != null &&
                         Request.QueryString["upload"] != null)
                     {
-                        addControl(Request.ApplicationPath + @"/wuc/wucOrder_OrderDetails.ascx");
+                        addCtrl(PlaceHolderRight, Request.ApplicationPath + @"/wuc/wucOrder_OrderDetails.ascx");
                     }
-                    else if (Request.QueryString["t"]!= null && Request.QueryString["start"] != null)
+                    else if (Request.QueryString["t"] != null && Request.QueryString["start"] != null)
                     {
-                        addControl(Request.ApplicationPath + @"/wuc/wucOrder_Upload.ascx");
+                        addCtrl(PlaceHolderRight, Request.ApplicationPath + @"/wuc/wucOrder_Upload.ascx");
                     }
                     else if (Request.QueryString["t"] != null)
                     {
-                        addControl(Request.ApplicationPath + @"/wuc/wucOrder_Start.ascx");
+                        addCtrl(PlaceHolderRight, Request.ApplicationPath + @"/wuc/wucOrder_Start.ascx");
                     }
-
+                    break;
+                default:
+                    Response.Redirect("~");
                     break;
             }
         }
+        else
+        {
+            addCtrl(PlaceHolderMain, Request.ApplicationPath + @"/wuc/wucHome.ascx");
+        }
     }
-    private void addControl(String _Path)
+    private void addCtrl(Control ID, String _Path){
+        ID.Controls.Add((Control)Page.LoadControl(_Path));
+    }
+    protected void Alert(String _Text)
     {
-        Control wucCus = (Control)Page.LoadControl(_Path);
-        PlaceHolderRight.Controls.Add(wucCus);
+        Response.Write("<script>alert('" + _Text + "')</script>");
     }
-
 }
