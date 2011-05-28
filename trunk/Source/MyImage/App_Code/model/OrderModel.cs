@@ -30,8 +30,14 @@ public class OrderModel
     private String customer;
     private String statusId;
     private String status;
+    private String shiptime;
     private String createdDate;
 
+    public String ShipTime
+    {
+        get { return this.shiptime; }
+        set { this.shiptime = value; }
+    }
     public String ID
     {
         get { return this.id; }
