@@ -65,7 +65,7 @@ public partial class _Default : System.Web.UI.Page
                                 Request.QueryString["upload"] != null && Request.QueryString["content"] != null &&
                                 Request.QueryString["payment"] != null)
                     {
-
+                        addControl(Request.ApplicationPath + @"/wuc/wucOrder_Payment.ascx");
                     }
                     else if (Request.QueryString["t"] != null && Request.QueryString["start"] != null &&
                                  Request.QueryString["upload"] != null && Request.QueryString["content"] != null)
