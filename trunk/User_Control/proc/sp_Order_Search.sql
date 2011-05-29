@@ -2,9 +2,9 @@ IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[dbo].[sp_Order_S
 DROP PROCEDURE [dbo].[sp_Order_Search]
 GO
 create PROC [sp_Order_Search](
-	@No				varchar(40),
-	@Name			varchar(40),
-	@Customer		varchar(40)
+	@No				varchar(40) = null ,
+	@ProvinceName	varchar(40) = null,
+	@CustomerName	varchar(40) = null
 )
 AS
 BEGIN
@@ -32,6 +32,8 @@ BEGIN
 	INNER JOIN PaymentMethods AS D ON D.ID = A.P_methods_id
 	INNER JOIN Customers AS E ON E.ID = A.C_id
 	INNER JOIN OrderStatus AS F ON F.ID = A.Status_id
-	WHERE A.No = @No AND C.Name = @Name AND (E.F_name + ' ' +  E.L_name) = @Customer
+	WHERE(@No is null or A.No like '%'+@No+ '%')AND (@ProvinceName is null or C.Name like '%' +@ProvinceName+ '%') AND
+		 (@CustomerName is null or (E.F_name + ' ' +  E.L_name) like '%' +@CustomerName+ '%')
 END
 
+execute sp_Order_Search 'hva', 'san','steven'
