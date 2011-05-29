@@ -9,7 +9,7 @@
 <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" />&nbsp;
 <br />
 <br />
-<asp:GridView ID="grvOrder" runat="server" AutoGenerateColumns="False" CssClass="order">
+<asp:GridView ID="grvOrder" runat="server" AutoGenerateColumns="False" >
     <Columns>
         <asp:BoundField DataField="ID" HeaderText="ID" Visible="False" />
         <asp:BoundField DataField="No" HeaderText="No" />
