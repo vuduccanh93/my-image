@@ -1,5 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="wucStateProvince.ascx.cs" Inherits="admin_wuc_wucStateProvince" %>
-<asp:GridView ID="grvStateProvince" runat="server" AutoGenerateColumns="False" CssClass="state-province" OnRowCancelingEdit="grvStateProvince_RowCancelingEdit" OnRowEditing="grvStateProvince_RowEditing" OnRowUpdated="grvStateProvince_RowUpdated" OnRowUpdating="grvStateProvince_RowUpdating" OnRowCommand="grvStateProvince_RowCommand" ShowFooter="True" AllowPaging="True" OnPageIndexChanging="grvStateProvince_PageIndexChanging" PageSize="5">
+<asp:GridView ID="grvStateProvince" runat="server" AutoGenerateColumns="False" CssClass="listing" OnRowCancelingEdit="grvStateProvince_RowCancelingEdit" OnRowEditing="grvStateProvince_RowEditing" OnRowUpdated="grvStateProvince_RowUpdated" OnRowUpdating="grvStateProvince_RowUpdating" OnRowCommand="grvStateProvince_RowCommand" ShowFooter="True" AllowPaging="True" OnPageIndexChanging="grvStateProvince_PageIndexChanging" PageSize="5">
     <Columns>
         <asp:TemplateField HeaderText="ID" Visible="False">
             <EditItemTemplate>
@@ -8,6 +8,7 @@
             <ItemTemplate>
                 <asp:Label ID="lblId" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
             </ItemTemplate>
+            <ControlStyle CssClass="first style1" />
         </asp:TemplateField>
         <asp:TemplateField HeaderText="State/Province">
             <EditItemTemplate>
@@ -19,8 +20,10 @@
             <HeaderTemplate>
             </HeaderTemplate>
             <FooterTemplate>
-                <asp:TextBox ID="txtNewSProvince" runat="server" CssClass="editmod-xl"></asp:TextBox>
+                <asp:TextBox ID="txtNewSProvince" runat="server" ></asp:TextBox>
             </FooterTemplate>
+            <FooterStyle CssClass="first style2" />
+            <ItemStyle CssClass="first style2" />
         </asp:TemplateField>
         <asp:TemplateField HeaderText="Available">
             <EditItemTemplate>
@@ -35,6 +38,7 @@
                 <asp:CheckBox ID="ckbNewAvailable" runat="server" CssClass="text-center"/>
                 </div>
             </FooterTemplate>
+            <FooterStyle CssClass="first style1" />
         </asp:TemplateField>
         <asp:TemplateField>
             <EditItemTemplate>
@@ -49,6 +53,7 @@
                     <asp:Button ID="btnInsertNewRow" CommandName="InsertNewSProvince" runat="server" Text="Insert" />
                 </div>
             </FooterTemplate>
+            <FooterStyle CssClass="style2" />
         </asp:TemplateField>
         <asp:CommandField ShowEditButton="True" />
     </Columns>

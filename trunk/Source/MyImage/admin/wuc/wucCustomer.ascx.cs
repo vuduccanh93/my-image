@@ -45,19 +45,31 @@ public partial class admin_wuc_wucCustomer : System.Web.UI.UserControl
         String _Id = ((Label)_Row.FindControl("lblStatusId")).Text;
         drlStatus.SelectedValue = _Id;
     }
+    private int getIndex(GridView _Grv, String _HeaderText)
+    {
+        int index = -1;
+        foreach (DataControlField col in _Grv.Columns)
+        {
+            if (col.HeaderText.Equals(_HeaderText))
+            {
+                index = _Grv.Columns.IndexOf(col);
+                break;
+            }
+        }
+        return index;
+    }
     protected void grvCustomer_RowEditing(object sender, GridViewEditEventArgs e)
     {
-
         grvCustomer.EditIndex = e.NewEditIndex;
         BindData();
         BindDRLStatus(e.NewEditIndex);
-        grvCustomer.Columns[1].Visible = false;
+        grvCustomer.Columns[getIndex(grvCustomer,"Username")].Visible = false;
     }
     protected void grvCustomer_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
     {
         grvCustomer.EditIndex = -1;
         BindData();
-        grvCustomer.Columns[1].Visible = true;
+        grvCustomer.Columns[getIndex(grvCustomer, "Username")].Visible = true;
     }
     protected void grvCustomer_RowUpdated(object sender, GridViewUpdatedEventArgs e)
     {
@@ -79,13 +91,6 @@ public partial class admin_wuc_wucCustomer : System.Web.UI.UserControl
         CustomerDAO.Update(_Model);
         grvCustomer.EditIndex = -1;
         BindData();
-        grvCustomer.Columns[1].Visible = true;
-    }
-    protected void grvCustomer_RowCommand(object sender, GridViewCommandEventArgs e)
-    {
-        if (e.CommandName == "Select")
-        {
-
-        }
+        grvCustomer.Columns[getIndex(grvCustomer, "Username")].Visible = true;
     }
 }
