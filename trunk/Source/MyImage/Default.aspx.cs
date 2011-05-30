@@ -59,6 +59,7 @@ public partial class _Default : System.Web.UI.Page
                 case "changeinfo":
                     if (Session["user"] != null)
                         addCtrl(PlaceHolderRight, Request.ApplicationPath + @"/wuc/wucChangeInfo.ascx");
+                    
                     break;
 
                 case "order":
@@ -77,7 +78,7 @@ public partial class _Default : System.Web.UI.Page
                                 Request.QueryString["upload"] != null && Request.QueryString["content"] != null &&
                                 Request.QueryString["payment"] != null)
                     {
-
+                        addCtrl(PlaceHolderRight, Request.ApplicationPath + @"/wuc/wucOrder_Payment.ascx");
                     }
                     else if (Request.QueryString["t"] != null && Request.QueryString["start"] != null &&
                                  Request.QueryString["upload"] != null && Request.QueryString["content"] != null)
