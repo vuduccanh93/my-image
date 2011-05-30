@@ -36,7 +36,7 @@ public partial class admin_Default : System.Web.UI.Page
     public void LoadMenu(String _Rid)
     {
         DataTable _MNTable = MenuDAO.GetByRoleId(_Rid);
-        String _pHtml = "<ul>";
+        String _pHtml = "";
         foreach (DataRow _Dr in _MNTable.Rows)
         {
             _pHtml += "<li><a href='" +
@@ -45,10 +45,9 @@ public partial class admin_Default : System.Web.UI.Page
                 _Dr["Name"].ToString() +
                 "</a><em></em></li>";
         }
-        _pHtml += "<li><a href=" +
+        _pHtml += "<li class='last'><a href=" +
                  WEB_URL +
                  @"admin/login/?logout=true" + ">Logout</a></li>";
-        _pHtml += "</ul>";
         Response.Write(_pHtml);
     }
     public void Main(){
