@@ -37,6 +37,10 @@ public partial class wuc_wucChangeInfo : System.Web.UI.UserControl
                 rdbMale.Checked = true;
             }
         }
+        if (Request.QueryString["rs"] != null)
+        {
+            lblErr.Text = "Change Info Success";
+        }
     }
 
     protected void btnAccept_Click(object sender, EventArgs e)
@@ -56,13 +60,21 @@ public partial class wuc_wucChangeInfo : System.Web.UI.UserControl
         {
             if (txtOldPassword.Text.Equals(model.Password))
             {
-                if (txtNewPassword.Text.Equals(txtCofPassword.Text))
+                if (!String.IsNullOrEmpty(txtNewPassword.Text.Trim()))
                 {
-                    model.Password = txtNewPassword.Text.Trim();
+                    if (txtNewPassword.Text.Trim().Equals(txtCofPassword.Text.Trim()))
+                    {
+                        model.Password = txtNewPassword.Text.Trim();
+                    }
+                    else
+                    {
+                        lblErr.Text = "New password is not match";
+                        return;
+                    }
                 }
                 else
                 {
-                    lblErr.Text = "New password is not match";
+                    lblErr.Text = "New password can't be empty";
                     return;
                 }
             }

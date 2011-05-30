@@ -21,8 +21,9 @@ public partial class wuc_wucRegister : System.Web.UI.UserControl
 
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
-        CustomerModel model = new CustomerModel();
+       
         
+        CustomerModel model = new CustomerModel();
         model.Username = CustomerDAO.GetUsername();
         model.Password = CustomerDAO.GetPassword();
         model.FName = txtFirstname.Text;

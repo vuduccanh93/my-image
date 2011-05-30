@@ -82,30 +82,6 @@ public partial class wuc_wucOrder_OrderDetails : System.Web.UI.UserControl
        
     }
 
-
-    protected void ckbGet_CheckedChanged(object sender, EventArgs e)
-    {
-        txtTotal.Text = "0";
-        CheckBox ckbGet = ((CheckBox)(sender));
-        GridViewRow gvr = ((GridViewRow)(ckbGet.NamingContainer));
-        TextBox txtQuantity = (TextBox)gvr.FindControl("txtQuantity");
-        double dblQuantity = String.IsNullOrEmpty(txtQuantity.Text) ? 0 : Convert.ToDouble(txtQuantity.Text);
-        foreach (GridViewRow _Dtr in grvUploadDetails.Rows)
-        {
-            GridView grvPrintingPrice = (GridView)_Dtr.FindControl("grvPrintingPrice");
-            foreach (GridViewRow _DtrP in grvPrintingPrice.Rows)
-            {
-                CheckBox cbk = (CheckBox)_DtrP.FindControl("ckbGet");
-                if (cbk.Checked)
-                {
-                    TextBox txtAmount = (TextBox)_DtrP.FindControl("txtAmount");
-                    double Amount = String.IsNullOrEmpty(txtAmount.Text) ? 0 : Convert.ToDouble(txtAmount.Text);
-                    txtTotal.Text = Convert.ToString(Amount + Convert.ToDouble(txtTotal.Text));
-                }
-            }
-
-        }
-    }
     protected void btnNext_Click(object sender, EventArgs e)
     {
         if (String.IsNullOrEmpty(txtTotal.Text) || txtTotal.Text.Equals("0"))
