@@ -5,7 +5,7 @@
 /* Project name:                                                          */
 /* Author:                                                                */
 /* Script type:           Database drop script                            */
-/* Created on:            2011-05-21 14:58                                */
+/* Created on:            2011-05-30 09:39                                */
 /* ---------------------------------------------------------------------- */
 
 
@@ -53,6 +53,9 @@ ALTER TABLE [Ro_Me] DROP CONSTRAINT [Menu_Ro_Me]
 GO
 
 ALTER TABLE [ShippingPrices] DROP CONSTRAINT [StateProvinces_ShippingPrices]
+GO
+
+ALTER TABLE [News] DROP CONSTRAINT [Members_News]
 GO
 
 /* ---------------------------------------------------------------------- */
@@ -291,4 +294,18 @@ GO
 /* Drop table */
 
 DROP TABLE [MemberStatus]
+GO
+
+/* ---------------------------------------------------------------------- */
+/* Drop table "News"                                                      */
+/* ---------------------------------------------------------------------- */
+
+/* Drop constraints */
+
+ALTER TABLE [News] DROP CONSTRAINT [PK_News]
+GO
+
+/* Drop table */
+
+DROP TABLE [News]
 GO
