@@ -16,10 +16,7 @@ public partial class admin_login_Default : System.Web.UI.Page
         if (Request.QueryString["logout"] != null && Request.QueryString["logout"].Equals("true"))
         {
             Session.Clear();
-            String _RedirectUrl = Request.Url.GetLeftPart(UriPartial.Authority) +
-                                VirtualPathUtility.ToAbsolute("~/") +
-                                @"admin/login/";
-            Response.Redirect(_RedirectUrl);
+            Response.Redirect("~/admin/login/");
         }
         return;
     }
