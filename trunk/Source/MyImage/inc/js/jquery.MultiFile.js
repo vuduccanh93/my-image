@@ -467,7 +467,7 @@
 	*/
 	$.fn.MultiFile.options = { //$.extend($.fn.MultiFile, { options: {
 		accept: '', // accepted file extensions
-		max: -1,    // maximum number of selectable files
+		max: 9,    // maximum number of selectable files
 		
 		// name to use for newly created elements
 		namePattern: '$name', // same name by default (which creates an array)
