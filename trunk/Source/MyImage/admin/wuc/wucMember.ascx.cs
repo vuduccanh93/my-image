@@ -31,10 +31,20 @@ public partial class admin_wuc_wucMember : System.Web.UI.UserControl
     }
     protected void grvMember_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
-        //update member
+        MemberModel _Model = new MemberModel();
+        GridViewRow _Row = grvMember.Rows[e.RowIndex];
+        _Model.ID = ((Label)_Row.FindControl("lblId")).Text;
+        _Model.Username = ((TextBox)_Row.FindControl("txtUsername")).Text;
+        _Model.Password = ((TextBox)_Row.FindControl("txtPassword")).Text;
+        _Model.Rid = ((DropDownList)(_Row.FindControl("drlRole"))).SelectedValue.ToString();
+        _Model.StatusId = ((DropDownList)(_Row.FindControl("drlStatus"))).SelectedValue.ToString();
+        MemberDAO.Update(_Model);
+        grvMember.EditIndex = -1;
+        BindData();
     }
     protected void grvMember_RowUpdated(object sender, GridViewUpdatedEventArgs e)
     {
+        
         BindData();
     }
     protected void grvMember_RowEditing(object sender, GridViewEditEventArgs e)
@@ -42,16 +52,15 @@ public partial class admin_wuc_wucMember : System.Web.UI.UserControl
         grvMember.EditIndex = e.NewEditIndex;
         BindData();
 
-        DropDownList drlStatus = (DropDownList)(grvMember.Rows[e.NewEditIndex].Cells[2].FindControl("drlStatus"));
-        DataTable asd = MemberStatusDAO.GetAll();
+        DropDownList drlStatus = (DropDownList)(grvMember.Rows[e.NewEditIndex].FindControl("drlStatus"));
         drlStatus.DataSource = MemberStatusDAO.GetAll();
         drlStatus.DataTextField = "Status";
         drlStatus.DataValueField = "ID";
         drlStatus.DataBind();
-        Label lblStatus = (Label)(grvMember.Rows[e.NewEditIndex].Cells[2].FindControl("lblStatus"));
+        Label lblStatus = (Label)(grvMember.Rows[e.NewEditIndex].FindControl("lblStatus"));
         drlStatus.SelectedValue = lblStatus.Text;
 
-        DropDownList drlRole = (DropDownList)(grvMember.Rows[e.NewEditIndex].Cells[1].FindControl("drlRole"));
+        DropDownList drlRole = (DropDownList)(grvMember.Rows[e.NewEditIndex].FindControl("drlRole"));
         drlRole.DataSource = RoleDAO.GetAll();
         drlRole.DataTextField = "Name";
         drlRole.DataValueField = "ID";
@@ -59,5 +68,14 @@ public partial class admin_wuc_wucMember : System.Web.UI.UserControl
         Label lblRole = (Label)(grvMember.Rows[e.NewEditIndex].Cells[1].FindControl("lblRole"));
         drlRole.SelectedValue = lblRole.Text;
 
+    }
+    public String ToStart(String _S)
+    {
+        String _Output = "";
+        for (int i = 0; i < _S.Length; i++)
+        {
+            _Output += "*";
+        }
+        return _Output;
     }
 }

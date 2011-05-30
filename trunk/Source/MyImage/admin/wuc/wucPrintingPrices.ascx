@@ -1,5 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="wucPrintingPrices.ascx.cs" Inherits="admin_wuc_wucPrintingPrices" %>
-<asp:GridView ID="grvPrintingPrices" runat="server" AutoGenerateColumns="False"  OnRowCancelingEdit="grvPrintingPrices_RowCancelingEdit"  OnRowEditing="grvPrintingPrices_RowEditing" OnRowUpdated="grvPrintingPrices_RowUpdated" ShowFooter="True" OnRowUpdating="grvPrintingPrices_RowUpdating" OnRowCommand="grvPrintingPrices_RowCommand" CssClass="printing-price"> 
+<asp:GridView ID="grvPrintingPrices" runat="server" AutoGenerateColumns="False"  OnRowCancelingEdit="grvPrintingPrices_RowCancelingEdit"  OnRowEditing="grvPrintingPrices_RowEditing" OnRowUpdated="grvPrintingPrices_RowUpdated" ShowFooter="True" OnRowUpdating="grvPrintingPrices_RowUpdating" OnRowCommand="grvPrintingPrices_RowCommand" CssClass="listing"> 
     <Columns>
         <asp:TemplateField HeaderText="ID">
             <EditItemTemplate>
@@ -22,6 +22,7 @@
             <FooterTemplate>
             <asp:TextBox ID="txtNewSize" runat="server"></asp:TextBox>
             </FooterTemplate>
+            <FooterStyle CssClass="first style1" />
         </asp:TemplateField>
         
         <asp:TemplateField HeaderText="Price">        
@@ -30,16 +31,17 @@
             </EditItemTemplate>
             <ItemTemplate>
                 <asp:Label ID="lblPrice" runat="server" Text='<%# Bind("Price") %>'></asp:Label>
-            </ItemTemplate>    
-
+            </ItemTemplate>
             <FooterTemplate>
             <asp:TextBox ID="txtNewPrice" runat="server"></asp:TextBox>
             </FooterTemplate>
+            <FooterStyle CssClass="first style1" />
         </asp:TemplateField>   
         <asp:TemplateField>
             <FooterTemplate>
                 <asp:Button ID="btnNewInsert" runat="server" CommandName="NewInsert" Text=" Insert" CssClass="text-center" />
             </FooterTemplate>
+            <FooterStyle CssClass="style2" />
         </asp:TemplateField>
         <asp:CommandField ShowEditButton="True" DeleteText="" />
     </Columns>

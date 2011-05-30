@@ -1,5 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="wucShippingPrice.ascx.cs" Inherits="admin_wuc_wucShippingPrice" %>
-<asp:GridView ID="grvPrintingPrice" runat="server" AutoGenerateColumns="False" CssClass="shipping-price" OnRowCancelingEdit="grvPrintingPrice_RowCancelingEdit" OnRowCommand="grvPrintingPrice_RowCommand" OnRowEditing="grvPrintingPrice_RowEditing" OnRowUpdated="grvPrintingPrice_RowUpdated" OnRowUpdating="grvPrintingPrice_RowUpdating" ShowFooter="True" AllowPaging="True" PageSize="4" OnPageIndexChanging="grvPrintingPrice_PageIndexChanging">
+<asp:GridView ID="grvPrintingPrice" runat="server" AutoGenerateColumns="False" CssClass="listing" OnRowCancelingEdit="grvPrintingPrice_RowCancelingEdit" OnRowCommand="grvPrintingPrice_RowCommand" OnRowEditing="grvPrintingPrice_RowEditing" OnRowUpdated="grvPrintingPrice_RowUpdated" OnRowUpdating="grvPrintingPrice_RowUpdating" ShowFooter="True" AllowPaging="True" PageSize="4" OnPageIndexChanging="grvPrintingPrice_PageIndexChanging">
     <Columns>
         <asp:TemplateField HeaderText="ID">
             <EditItemTemplate>
@@ -34,6 +34,7 @@
                 <asp:DropDownList ID="drlNewSProvince" runat="server">
                 </asp:DropDownList>
             </FooterTemplate>
+            <FooterStyle CssClass="first style1" />
         </asp:TemplateField>
         <asp:TemplateField HeaderText="Shipping time">
             <EditItemTemplate>
@@ -45,6 +46,7 @@
             <FooterTemplate>
                 <asp:TextBox ID="txtNewShippingTime" runat="server"></asp:TextBox>
             </FooterTemplate>
+            <FooterStyle CssClass="first style1" />
         </asp:TemplateField>
         <asp:TemplateField HeaderText="Price">
             <EditItemTemplate>
@@ -57,12 +59,13 @@
             <FooterTemplate>
                 <asp:TextBox ID="txtNewPrice" runat="server"></asp:TextBox>
             </FooterTemplate>
+            <FooterStyle CssClass="first style1" />
         </asp:TemplateField>
         <asp:TemplateField>
             <FooterTemplate>
                 <asp:Button ID="btnNewInsert" runat="server" CommandName="NewInsert" Text="Insert" />
             </FooterTemplate>
-            <FooterStyle CssClass="text-center" />
+            <FooterStyle CssClass="style2" />
         </asp:TemplateField>
         <asp:CommandField ShowEditButton="True" />
     </Columns>
