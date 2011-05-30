@@ -29,7 +29,7 @@
                                 <asp:CheckBox ID="CheckBox1" runat="server" />
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:CheckBox ID="ckbGet" runat="server" OnCheckedChanged="ckbGet_CheckedChanged" />
+                                <asp:CheckBox ID="ckbGet" runat="server" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="ID">

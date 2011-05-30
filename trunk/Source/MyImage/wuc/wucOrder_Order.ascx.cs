@@ -86,7 +86,9 @@ public partial class wuc_wucOrder_Order : System.Web.UI.UserControl
         model.Content = txtContent.Text;
         model.Address = txtAddress.Text;
         model.PMethodId = drlPaymenMethod.SelectedIndex.ToString();
+        model.PMethod = drlPaymenMethod.SelectedItem.ToString();
         model.SProvinceId = drlStateProvince.SelectedIndex.ToString();
+        model.SProvince = drlStateProvince.SelectedItem.ToString();
         if (model.PMethodId.Equals("1"))
         {
             CreditCardModel ccModel = new CreditCardModel();
@@ -96,14 +98,18 @@ public partial class wuc_wucOrder_Order : System.Web.UI.UserControl
             ccModel.Exp_date = txtExpertDate.Text;
             model.CCardId = CreditCardDAO.Insert(ccModel);
         }
+        model.ShipTime = drlShipDay.SelectedItem.ToString();
         model.PPrice = txtPrintingPrice.Text;
         model.SPrice = txtShippingPrice.Text;
         model.Amount = txtAmount.Text;
         model.Status = "0";
         model.CreatedDate = UtilDAO.GetDateTime();
+       
         if (OrderDAO.Update(model))
         {
-            Alert("Success");
+            Session["order"] = model;
+            Session["order_order"] = 1;
+            Response.Redirect("?t=order&start=true&upload=true&content=true&payment=true");
         }
         else
         {

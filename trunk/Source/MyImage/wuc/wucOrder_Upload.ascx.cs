@@ -48,7 +48,7 @@ public partial class wuc_wucUploadImage : System.Web.UI.UserControl
     {
         bool isValid = false;
 
-        string[] fileExtensions = { ".BMP", ".JPG", ".PNG", ".GIF", ".JPEG" };
+        string[] fileExtensions = { ".JPG", ".JPEG" };
 
         for (int i = 0; i < fileExtensions.Length; i++)
         {

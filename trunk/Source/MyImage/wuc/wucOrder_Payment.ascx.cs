@@ -15,9 +15,23 @@ public partial class wuc_wucOrder_Payment : System.Web.UI.UserControl
     {
         if (!Page.IsPostBack)
         {
+            if (Session["user"] == null)
+            {
+                Response.Redirect(@"~");
+                return;
+            }
+            if (Session["order_order"] == null || !Session["order_order"].ToString().Equals("1"))
+            {
+                Response.Redirect("Default.aspx?t=order&start=true&upload=true");
+                return;
+            }
+            else
+            {
+                Session["order_order"] = null;
+            }
             String _html="";
             OrderModel model = (OrderModel)Session["order"];
-            CreditCardModel ccmodel = (CreditCardModel)Session["creditcard"];
+            CustomerModel cusModel = (CustomerModel)Session["user"];
             if (model.PMethodId.Equals("1"))
             {
                 _html = "<table><tr> <td align='right'> No : </td><td align='left'>" + model.NO + " </td></tr>";
@@ -27,11 +41,13 @@ public partial class wuc_wucOrder_Payment : System.Web.UI.UserControl
                 _html += "<tr> <td align='right'> Content : </td><td align='left'>" + model.Content + " </td></tr>";
                 _html += "<tr> <td align='right'> Shipping Price : </td><td align='left'>" + model.SPrice + " </td></tr>";
                 _html += "<tr> <td align='right'> Printing Price : </td><td align='left'>" + model.PPrice + " </td></tr>";
-                _html += "<tr> <td align='right'> Amount : </td><td align='left>" + model.Amount + " </td></tr>";
+                _html += "<tr> <td align='right'> Amount : </td><td align='left'>" + model.Amount + " </td></tr>";
                 _html += "<tr> <td align='right'> Payment Method : </td><td align='left'>" + model.PMethod + " </td></tr>";
                 _html += "<tr> <td align='right'> ShipTime : </td><td align='left'>" + model.ShipTime + " </td></tr>";
-                _html += "<tr> <td align='right'> Customer : </td><td align='left'>" + model.Customer + model.CustomerId + " </td></tr>";
-                _html += "<tr> <td align='right'> Credit Card : </td><td align='left'>" + ccmodel.Number + " </td></tr></table>";
+                _html += "<tr> <td align='right'> Customer : </td><td align='left'>" + cusModel.FName + " " + cusModel.LName + " </td></tr>";
+                _html += "<tr> <td align='right' colspan='2'>  If Cash ,  </td></tr>";
+                _html += "</table>";
+
             }
             else
             {
@@ -45,7 +61,7 @@ public partial class wuc_wucOrder_Payment : System.Web.UI.UserControl
                 _html += "<tr> <td align='right'> Amount : </td><td align='left'>" + model.Amount + " </td></tr>";
                 _html += "<tr> <td align='right'> Payment Method : </td><td align='left'>" + model.PMethod + " </td></tr>";
                 _html += "<tr> <td align='right'> ShipTime : </td><td align='left'>" + model.ShipTime + " </td></tr>";
-                _html += "<tr> <td align='right'> Customer : </td><td align='left'>" + model.Customer + model.CustomerId + " </td></tr>";
+                _html += "<tr> <td align='right'> Customer : </td><td align='left'>" + cusModel.FName + " " + cusModel.LName + " </td></tr>";
                 _html += "</table>";
             }
             lblContent.Text = _html;
