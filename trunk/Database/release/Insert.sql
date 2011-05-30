@@ -27,6 +27,7 @@ Insert into Members Values('printer','printer','1',0)
 --Insert Menu
 
 Insert into Menu Values('Customers','?t=cu','')
+Insert into Menu Values('News','?t=ne','')
 Insert into Menu Values('Member','?t=me','')
 Insert into Menu Values('Orders','?t=or','')
 Insert into Menu Values('Payment Methods','?t=pm','')
