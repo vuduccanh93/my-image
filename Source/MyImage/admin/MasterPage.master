@@ -1,63 +1,61 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head runat="server">
+<html>
+<head>
     <title>Untitled Page</title>
 	<meta http-equiv="refresh" content="600" />
-    <link href="inc/css/web.css" rel="stylesheet" type="text/css" />
-    <!--[if IE]><p><link href="inc/css/ie.css" rel="stylesheet" type="text/css" /></p><![endif]-->
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <style media="all" type="text/css">@import "inc/css/all.css";</style>
     <link href="inc/css/calendar.css" rel="stylesheet" type="text/css" />
-    <script type='text/javascript' src='inc/js/remote.js'></script>
-    <script type='text/javascript' src='inc/js/calendar_us.js'></script>
-    
+    <script type='text/javascript' src='inc/js/calendar.js'></script>
 </head>
 <body>
-    <form id="mainform" runat="server">
-      <div id="header">
-          <div id="header-wrapper"></div>    
-      </div>
-      <div id="space"></div>
-      <div id="content">
-          <div id="content-wrapper">
-              <div id="content-left">
-                <div class="nav">
-                    <asp:contentplaceholder id="ContentPlaceHolderLeft" runat="server">
-                    </asp:contentplaceholder>
-                </div>
-              </div>
-              <div id="content-right">
-              <div id="top">
-                 <div class="tl"></div><div class="tm"></div><div class="tr"></div>
-              </div>
-              <!----------------------------------------------------------------------->  
-              <div id="content-main">
-                    <asp:contentplaceholder id="ContentPlaceHolderRight" runat="server">
-                    </asp:contentplaceholder>
-                        <!--[if IE]><p>You are using Internet Explorer.</p><![endif]-->
-                        <!--[if !IE]><p>You are not using an uplevel Internet Explorer version.</p><![endif]>
-                        <!--[if IE 8]><p>Welcome to Internet Explorer 8!</p><![endif]-->
-                        <!--[if !(IE 8)]><p>You are not using Internet Explorer8.</p><![endif]-->
-                        <!--[if gte IE 7]><p>You are using IE 7 or greater.</p><![endif]-->
-                        <!--[if (IE 5)]><p>You are using IE 5 (any version).</p><![endif]-->
-                        <!--[if (gte IE 5.5)&(lt IE 7)]><p>You are using IE 5.5 or IE 6.</p><![endif]-->
-                        <!--[if lt IE 5.5]><p>Please upgrade your version of Internet Explorer.</p><![endif]-->
-                        <!--[if true]>You are using an <em>uplevel</em> browser.<![endif]-->
-                        <!--[if false]>You are using a <em>downlevel</em> browser.<![endif]-->
-                        <!--[if true]><![if IE 7]><p>This nested comment is displayed in IE 7.</p><![endif]><![endif]-->
-              </div>
-              <!----------------------------------------------------------------------->        
-              <div id="bottom">
-                  <div class="bl"></div><div class="bm"></div><div class="br"></div>
-              </div>
-              </div> 
-          </div>
-      </div>
-      <div class="clear"></div>
-      <div id="footer">
-          <div id="footer-wrapper"></div>
-      </div>
-    </form>
+<form id="mainform" runat="server">
+<div id="main">
+	<div id="header">
+		<a href="#" class="logo"><img src="inc/img/logo.gif" width="101" height="29" alt="" /></a>
+		<ul id="top-navigation">
+			<li class="active"><span><span>Homepage</span></span></li>
+		</ul>
+	</div>
+	<div id="middle">
+		<div id="left-column">
+			<h3>------------</h3>
+			<ul class="nav">
+				<asp:contentplaceholder id="ContentPlaceHolderLeft" runat="server">
+                </asp:contentplaceholder>
+			</ul>
+		</div>
+		<div id="center-column">
+			<div class="top-bar">
+				<a href="#" class="button">ADD NEW </a>
+				<h1>Contents</h1>
+				<div class="breadcrumbs"><a href="#">Homepage</a> / <a href="#">Contents</a></div>
+			</div><br />
+		  <div class="select-bar">
+		    <label>
+		    <input type="text" name="textfield" />
+		    </label>
+		    <label>
+			<input type="submit" name="Submit" value="Search" />
+			</label>
+		  </div>
+			<div class="table">
+				<img src="inc/img/bg-th-left.gif" width="8" height="7" alt="" class="left" />
+				<img src="inc/img/bg-th-right.gif" width="7" height="7" alt="" class="right" />
+				<asp:contentplaceholder id="ContentPlaceHolderRight" runat="server">
+                </asp:contentplaceholder>
+				<div class="select">
+					<strong>Other Pages: </strong>
+					<select>
+						<option>1</option>
+					</select>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div id="footer"></div>
+</div>
+</form>
 </body>
 </html>
