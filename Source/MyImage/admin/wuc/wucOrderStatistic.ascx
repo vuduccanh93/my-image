@@ -1,5 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="wucOrderStatistic.ascx.cs" Inherits="admin_wuc_wucStatisticOrder" %>
-<table border="0" class='statistic-price'>
+<table border="0" class='listing'>
     <tr>
         <td style="height: 26px" align="right" valign="middle">
             Payment status:</td>
@@ -52,7 +52,7 @@
     </tr>
 </table>
 <asp:Label ID="lblInfo" runat="server" Font-Bold="True" ForeColor="#C00000"></asp:Label><br />
-<asp:GridView ID="grvStatisticOrder" runat="server" AutoGenerateColumns="False" CssClass="order" >
+<asp:GridView ID="grvStatisticOrder" runat="server" AutoGenerateColumns="False" CssClass="listing" AllowPaging="True" PageSize="15" >
     <Columns>
         <asp:TemplateField HeaderText="No">
             <EditItemTemplate>

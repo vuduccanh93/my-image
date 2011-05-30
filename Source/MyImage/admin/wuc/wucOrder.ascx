@@ -1,9 +1,9 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="wucOrder.ascx.cs" Inherits="admin_wuc_wucOrder" %>
 <asp:HyperLink ID="hplOrderStatistic" runat="server">HyperLink</asp:HyperLink><br />
-<asp:GridView ID="grvOrder" runat="server" AutoGenerateColumns="False" CssClass="order" >
+<asp:GridView ID="grvOrder" runat="server" AutoGenerateColumns="False" CssClass="listing" >
     <Columns>
         <asp:BoundField DataField="ID" HeaderText="ID" Visible="False" />
-        <asp:BoundField DataField="No" HeaderText="No" />
+        <asp:BoundField DataField="No" HeaderText="No" ControlStyle-CssClass="first style1" />
         <asp:BoundField DataField="Order_content" HeaderText="Order content" Visible="False" />
         <asp:BoundField DataField="Customer_name" HeaderText="Fullname" />
         <asp:BoundField DataField="Address" HeaderText="Address" Visible="False" />

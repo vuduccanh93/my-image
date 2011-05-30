@@ -1,5 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="wucCustomer.ascx.cs" Inherits="admin_wuc_wucCustomer" %>
-<asp:GridView ID="grvCustomer" runat="server" AutoGenerateColumns="False" CssClass="customer" OnRowEditing="grvCustomer_RowEditing" OnRowCancelingEdit="grvCustomer_RowCancelingEdit" OnRowUpdated="grvCustomer_RowUpdated" EditRowStyle-CssClass="customer" OnRowUpdating="grvCustomer_RowUpdating" AllowPaging="True" >
+<asp:GridView ID="grvCustomer" runat="server" AutoGenerateColumns="False" CssClass="listing" OnRowEditing="grvCustomer_RowEditing" OnRowCancelingEdit="grvCustomer_RowCancelingEdit" OnRowUpdated="grvCustomer_RowUpdated" EditRowStyle-CssClass="customer" OnRowUpdating="grvCustomer_RowUpdating" AllowPaging="True" >
     <Columns>
         <asp:TemplateField HeaderText="ID" HeaderStyle-CssClass="editmod-hide">
             <EditItemTemplate>
@@ -14,12 +14,12 @@
         </asp:TemplateField>
         <asp:TemplateField HeaderText="Username" >
             <EditItemTemplate>
-                <asp:TextBox ID="txtUsername" runat="server" Text='<%# Bind("Username") %>' ReadOnly="True" CssClass="editmod-s"></asp:TextBox>
+                <asp:TextBox ID="txtUsername" runat="server" Text='<%# Bind("Username") %>' ReadOnly="True"></asp:TextBox>
             </EditItemTemplate>
             <ItemTemplate>
                 <asp:Label ID="Label5" runat="server" Text='<%# Bind("Username") %>'></asp:Label>
             </ItemTemplate>
-            <ControlStyle CssClass="editmod-s" />
+            <ControlStyle CssClass="first style1" />
         </asp:TemplateField>
         <asp:TemplateField HeaderText="First name">
             <EditItemTemplate>
@@ -61,7 +61,7 @@
         <asp:BoundField DataField="Dob" HeaderText="Birthday" Visible="False" />
         <asp:TemplateField HeaderText="Phone .no">
             <EditItemTemplate>
-                <asp:TextBox ID="txtP_no" runat="server" Text='<%# Bind("P_no") %>' CssClass="editmod-s"></asp:TextBox>
+                <asp:TextBox ID="txtP_no" runat="server" Text='<%# Bind("P_no") %>' Width="90px"></asp:TextBox>
             </EditItemTemplate>
             <ItemTemplate>
                 <asp:Label ID="Label3" runat="server" Text='<%# Bind("P_no") %>'></asp:Label>
