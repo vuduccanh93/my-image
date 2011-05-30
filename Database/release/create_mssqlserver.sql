@@ -5,7 +5,7 @@
 /* Project name:                                                          */
 /* Author:                                                                */
 /* Script type:           Database creation script                        */
-/* Created on:            2011-05-21 14:58                                */
+/* Created on:            2011-05-30 09:39                                */
 /* ---------------------------------------------------------------------- */
 
 
@@ -246,6 +246,22 @@ CREATE TABLE [MemberStatus] (
 GO
 
 /* ---------------------------------------------------------------------- */
+/* Add table "News"                                                       */
+/* ---------------------------------------------------------------------- */
+
+CREATE TABLE [News] (
+    [ID] INTEGER IDENTITY(0,1) NOT NULL,
+    [Title] NVARCHAR(100),
+    [Content] TEXT,
+    [Display] BIT,
+    [Priority] INTEGER,
+    [Member_id] INTEGER,
+    [Create_date] VARCHAR(17),
+    CONSTRAINT [PK_News] PRIMARY KEY ([ID])
+)
+GO
+
+/* ---------------------------------------------------------------------- */
 /* Foreign key constraints                                                */
 /* ---------------------------------------------------------------------- */
 
@@ -303,4 +319,8 @@ GO
 
 ALTER TABLE [ShippingPrices] ADD CONSTRAINT [StateProvinces_ShippingPrices] 
     FOREIGN KEY ([S_providers_id]) REFERENCES [StateProvinces] ([ID])
+GO
+
+ALTER TABLE [News] ADD CONSTRAINT [Members_News] 
+    FOREIGN KEY ([Member_id]) REFERENCES [Members] ([ID])
 GO
