@@ -1,0 +1,370 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent;margin:0;padding:0;}
+
+body{
+    margin:0;
+    padding:0;
+    border:0;
+    background:#000 url(../img/header.jpg) top center no-repeat ;
+}
+#header{
+    margin: 50px 0 10px 0;
+    padding: 0;
+    position: relative;
+}
+#header-wrapper{
+    width:900px;
+    height: 150px;
+    position:relative;
+    left:50%;
+    margin-left:-450px;
+}
+#header-nav a,#header-subnav a:visited{
+    margin:0;
+    font-size:28px;
+    font-family:'Arial Black', Gadget, sans-serif;
+    text-decoration:none;
+    padding: 6px;
+    height: 34px;
+    color: white;
+}
+#header-subnav a:hover{
+    background: #C5EFFF;
+    text-decoration:underline;
+}
+#logo{
+    background:url(../img/logo.png) no-repeat left top;
+    width:400px;
+    height: 345px;
+    position:absolute;
+    left: 50%;
+    margin-left: -450px;
+    top: 0;
+}
+#content{
+    margin: 0;
+    padding: 0;
+}
+#content-wrapper{
+    width:1000px;
+    height:auto;
+    min-height: 500px;
+    position:relative;
+    left:50%;
+    margin-left:-500px;
+}
+#content-left
+{
+	margin:0;
+	padding:0;
+	width:150px;
+	position:relative;
+    float:left;
+}
+#content-right
+{
+	margin:0;
+	padding:0;
+	width:850px;
+	position:relative;
+    float:right;
+}
+.nav
+{
+	margin:0;
+	padding:0;
+	float:right;
+	font-size:14px;	
+}
+.nav ul
+{
+	margin:10px 0;
+    padding:0;
+}
+.nav ul li
+{
+	list-style:none;
+    padding:3px 0;
+    text-align:right;
+	font-weight:bold;
+	background:url(../img/pen.32x32.png) no-repeat top right;
+	height:32px;
+}
+.nav ul li a{
+	color: #FFFFFF;
+    text-decoration: none;
+    padding-right:30px;
+}
+#content-top{
+    width:850px;
+    height:120px;
+    padding:0;
+    background:#FFFFFF;
+    float:right;
+}
+#content-main{
+    width:830px;
+    min-height:300px;
+    padding:0 10px;
+    position:relative;
+    float:right;
+    background:#FFFFFF;
+}
+#login
+{
+	margin:0;
+	padding-top:60px;
+	color:#FFFFFF;
+}
+#login table
+{
+	width: inherit;
+	margin-left: auto;
+	margin-right: auto;
+	border:3px solid #FFFFFF;
+	padding:30px;
+}
+#top{
+    width:850px;
+    height:20px;
+    position:relative;
+    padding:0;
+    float:right;
+}
+.tl {
+    width: 20px;
+    height: 20px;
+    background: url(../img/circle.png) no-repeat top left;
+    float: left;
+}
+.tm {
+    width: 810px;
+    height: 20px;
+    float: left;
+    background: #FFFFFF;
+}
+.tr {
+    width: 20px;
+    height: 20px;
+    background: url(../img/circle.png) no-repeat top right;	
+    float: left;
+}
+#bottom{
+    width:850px;
+    height:20px;
+    position:relative;
+    float:right;
+    padding:0;
+}
+.bl {
+    width: 20px;
+    height: 20px;
+    background: url(../img/circle.png) no-repeat bottom left;
+    clear: both;
+    float: left;
+}
+.bm {
+    width: 810px;
+    height: 20px;
+    float: left;
+    background: #FFFFFF;
+}
+.br {
+    width: 20px;
+    height: 20px;
+    background: url(../img/circle.png) no-repeat bottom right;	
+    float: left;
+}
+#footer{
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+#footer-wrapper{
+    width:1000px;
+    height:100px;
+    position:relative;
+    left:50%;
+    margin-left:-450px;
+    margin-top: 10px;
+}
+.clear
+{
+	clear:both;
+	height:10px;
+}
+.groupbox{
+    margin: 3px 0;
+    border: 1px solid #DDDDDD;
+}
+
+.customer
+{
+	width:830px;
+	border-color: #600;
+    border-width: 1px;
+    border-style: solid;
+}
+.customer tr,.customer tr td
+{
+	border-color: #600;
+    border-width: 1px;
+    border-style: solid;
+    margin: 0;
+    padding: 4px;
+    background-color: #FFC;
+}
+.order-detail
+{
+	width:600px;
+	background-color: #FFC;
+	border-color: #600;
+    border-width: 1px;
+    border-style: solid;
+}
+.order-detail tr td
+{
+    margin: 0;
+    padding: 4px;
+    border-color: #600;
+    border-width: 1px;
+    border-style: solid;
+}
+.order-detail tr td.style2
+{
+	text-align:right;
+	font-weight:bold;
+	width:150px;
+}
+.order-detail tr td.style1
+{
+	text-align:center;
+	font-weight:bold;
+	width:150px;
+}
+.order
+{
+	width:830px;
+	border-color: #600;
+    border-width: 1px;
+    border-style: solid;
+}
+.order tr,.order tr td
+{
+	border-color: #600;
+    border-width: 1px;
+    border-style: solid;
+    margin: 0;
+    padding: 4px;
+    background-color: #FFC;
+}
+.member
+{
+	width:830px;
+	border-color: #600;
+    border-width: 1px;
+    border-style: solid;
+}
+.member tr,.member tr td
+{
+	border-color: #600;
+    border-width: 1px;
+    border-style: solid;
+    margin: 0;
+    padding: 4px;
+    background-color: #FFC;
+}
+.state-province
+{
+	width:400px;
+	border-color: #600;
+    border-width: 1px;
+    border-style: solid;
+}
+.state-province tr,.state-province tr td
+{
+	border-color: #600;
+    border-width: 1px;
+    border-style: solid;
+    margin: 0;
+    padding: 4px;
+    background-color: #FFC;
+}
+.shipping-price
+{
+	width:830px;
+	border-color: #600;
+    border-width: 1px;
+    border-style: solid;
+}
+.shipping-price tr,.shipping-price tr td
+{
+	border-color: #600;
+    border-width: 1px;
+    border-style: solid;
+    margin: 0;
+    padding: 4px;
+    background-color: #FFC;
+}
+.printing-price
+{
+	width:630px;
+	border-color: #600;
+    border-width: 1px;
+    border-style: solid;
+}
+.printing-price tr,.printing-price tr td
+{
+	border-color: #600;
+    border-width: 1px;
+    border-style: solid;
+    margin: 0;
+    padding: 4px;
+    background-color: #FFC;
+}
+.statistic-price
+{
+	width:830px;
+	border-color: #600;
+    border-width: 1px;
+    border-style: solid;
+}
+.statistic-price tr,.statistic-price tr td
+{
+    margin: 0;
+    padding: 4px;
+    background-color: #FFC;
+}
+.text-center
+{
+	text-align:center;
+}
+.editmod-hide
+{
+	display:none;	
+}
+.editmod-xs
+{
+	width:60px;	
+	vertical-align:middle;
+	color:Green;
+}
+.editmod-s
+{
+	width:100px;	
+	vertical-align:middle;
+}
+.editmod-m
+{
+	width:140px;	
+	vertical-align:middle;
+}
+.editmod-l
+{
+	width:180px;	
+	vertical-align:middle;
+}
+.editmod-xl
+{
+	width:220px;
+	vertical-align:middle;
+}
