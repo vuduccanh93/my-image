@@ -8,11 +8,8 @@
 <asp:Content ID="chmLogin" ContentPlaceHolderID="ContentPlaceLogin" runat="Server">
     <asp:PlaceHolder ID="PlaceHolderLogin" runat="server"></asp:PlaceHolder>
 </asp:Content>
-<asp:Content ID="ContentMain" ContentPlaceHolderID="ContentPlaceHolderMain" runat="Server">
-    <asp:PlaceHolder ID="PlaceHolderMain" runat="server"></asp:PlaceHolder>
-</asp:Content>
-<asp:Content ID="ContentRight" ContentPlaceHolderID="ContentPlaceHolderRight" runat="Server">
+<asp:Content ID="ContentRight" ContentPlaceHolderID="ContentPlaceHolderLeft" runat="Server">
     <div id="content_left">
-        <asp:PlaceHolder ID="PlaceHolderRight" runat="server"></asp:PlaceHolder>
+        <asp:PlaceHolder ID="PlaceHolderLeft" runat="server"></asp:PlaceHolder>
     </div>
 </asp:Content>
