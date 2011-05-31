@@ -13,7 +13,10 @@ public partial class admin_wuc_wucMember : System.Web.UI.UserControl
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Main();
+        if (!Page.IsPostBack)
+        {
+            Main();
+        }
     }
     public void Main()
     {
