@@ -61,15 +61,15 @@ public class MemberDAO
     {
         SqlParameter[] param = new SqlParameter[5];
         int i = 0;
-        param[i] = new SqlParameter("ID", SqlDbType.Int);
+        param[i] = new SqlParameter("@ID", SqlDbType.Int);
         param[i++].Value = _Model.ID;
-        param[i] = new SqlParameter("Username", SqlDbType.VarChar);
+        param[i] = new SqlParameter("@Username", SqlDbType.VarChar);
         param[i++].Value = _Model.Username;
-        param[i] = new SqlParameter("Password", SqlDbType.VarChar);
+        param[i] = new SqlParameter("@Password", SqlDbType.VarChar);
         param[i++].Value = _Model.Password;
-        param[i] = new SqlParameter("R_id", SqlDbType.Int);
+        param[i] = new SqlParameter("@RId", SqlDbType.Int);
         param[i++].Value = _Model.Rid;
-        param[i] = new SqlParameter("Status_id", SqlDbType.Int);
+        param[i] = new SqlParameter("@StatusId", SqlDbType.Int);
         param[i++].Value = _Model.StatusId;
         return DataUtil.executeNonStore("sp_Member_Update", param);
     }
