@@ -61,6 +61,11 @@ public partial class _Default : System.Web.UI.Page
                         addCtrl(PlaceHolderLeft, Request.ApplicationPath + @"/wuc/wucChangeInfo.ascx");
                     
                     break;
+                case "orderlist":
+                    if (Session["user"] != null)
+                        addCtrl(PlaceHolderRight, Request.ApplicationPath + @"/wuc/wucOrderList.ascx");
+
+                    break;
 
                 case "order":
                     if (Session["user"] == null)
