@@ -27,6 +27,7 @@ public partial class wuc_wucMainMenu : System.Web.UI.UserControl
         else
         {
             _Html += "<li><a href = 'Default.aspx?t=order'> ORDER </a><em></em></li>";
+            _Html += "<li><a href = 'Default.aspx?t=orderlist'> MY ORDER </a><em></em></li>";
             _Html += "<li><a href = 'Default.aspx?t=changeinfo'> CHANGE INFO </a><em></em></li>";
             _Html += "<li><a href = 'Default.aspx?t=login&logout=true'> LOGOUT </a><em></em></li>";
         }
