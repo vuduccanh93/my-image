@@ -10,7 +10,7 @@ BEGIN
 	DECLARE @Suf VARCHAR(36)
 
 	SET @Prefix = 'MIM-'
-	SELECT @Suf = COUNT(ID) FROM Members
+	SELECT @Suf = COUNT(ID) FROM Orders
 	IF @Suf < 10
 	BEGIN
 		SET @Suf = '0000' + @Suf
