@@ -5,7 +5,7 @@
 /* Project name:                                                          */
 /* Author:                                                                */
 /* Script type:           Database creation script                        */
-/* Created on:            2011-05-30 10:45                                */
+/* Created on:            2011-06-04 09:42                                */
 /* ---------------------------------------------------------------------- */
 
 
@@ -50,7 +50,7 @@ GO
 
 CREATE TABLE [CreditCards] (
     [ID] INTEGER IDENTITY(0,1) NOT NULL,
-    [Number] VARCHAR(17),
+    [Number] VARBINARY(MAX),
     [Exp_date] VARCHAR(17),
     [Holder_name] VARCHAR(50),
     [L_three_letter] VARCHAR(3),
