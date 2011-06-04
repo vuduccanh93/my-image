@@ -76,34 +76,3 @@ Insert into PrintingPrices Values('3x4','1')
 Insert into PrintingPrices Values('4x6','2')
 Insert into PrintingPrices Values('4x8','4')
 
---Insert CreditCards
-Insert into CreditCards Values('1234567891234567','2013/03/01','PHAM DINH THI','HDS')
-Insert into CreditCards Values('2342342523423413','2013/04/01','TRINH HUY HUY','SLL')
-Insert into CreditCards Values('1235151232323231','2013/04/01','SOLO','WES')
-Insert into CreditCards Values('1231232141251232','2013/08/01','HOANG LONG','AWQ')
-
-
---Insert Upload
-
-Insert into Upload Values('/asdg/','20110507 153012',1)
-Insert into Upload Values('/asds/','20110507 153012',1)
-
---Insert UploadDetails
-
-Insert into UploadDetails Values(0,'2.jpeg')
-Insert into UploadDetails Values(0,'1.jpeg')
-Insert into UploadDetails Values(0,'3.jpeg')
-
---Insert Orders
-
-Insert into Orders Values('HVA0000','ABBC','DIA CHI',0,100000,20000,120000,0,0,0,0,'20110507 153012')
-Insert into Orders Values('HVA0001','ABBC','DIA CHI',0,100000,20000,120000,0,0,1,0,'20110507 153012')
-Insert into Orders Values('HVA0002','ABBC','DIA CHI',0,100000,20000,120000,0,0,0,1,'20110507 153012')
-Insert into Orders Values('HVA0003','ABBC','DIA CHI',0,100000,20000,120000,0,0,1,1,'20110507 153012')
-Insert into Orders Values('HVA0004','ABBC','DIA CHI',0,100000,20000,120000,0,0,1,1,'20110507 153012')
-
---Insert OrderDetails
-
-Insert into OrderDetails Values(0,0,10000,'4x6',22,220000)
-Insert into OrderDetails Values(0,1,10000,'4x6',22,220000)
-Insert into OrderDetails Values(0,2,10000,'4x6',22,220000)
