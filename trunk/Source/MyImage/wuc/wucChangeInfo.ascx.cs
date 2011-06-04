@@ -39,7 +39,7 @@ public partial class wuc_wucChangeInfo : System.Web.UI.UserControl
         }
         if (Request.QueryString["rs"] != null)
         {
-            lblErr.Text = "Change Info Success";
+            lblErr.Text = "Changed Successful";
         }
     }
 

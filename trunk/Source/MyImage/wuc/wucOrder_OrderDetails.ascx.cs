@@ -82,65 +82,6 @@ public partial class wuc_wucOrder_OrderDetails : System.Web.UI.UserControl
        
     }
 
-    protected void btnNext_Click(object sender, EventArgs e)
-    {
-        if (String.IsNullOrEmpty(txtTotal.Text) || txtTotal.Text.Equals("0"))
-        {
-            return;
-        }
-        else
-        {
-            OrderModel orderModel = new OrderModel();
-            orderModel.ID= OrderDAO.Insert(orderModel);
-            orderModel.CustomerId = ((CustomerModel)Session["user"]).ID;
-            Session["order"] = orderModel;
-            List<OrderDetailModel> _listModel = new List<OrderDetailModel>(); 
-            foreach (GridViewRow _Dtr in grvUploadDetails.Rows)
-            {
-                GridView grvPrintingPrice = (GridView)_Dtr.FindControl("grvPrintingPrice");
-                Label Id = (Label)_Dtr.FindControl("lblID");
-                foreach (GridViewRow _DtrP in grvPrintingPrice.Rows)
-                {
-                    CheckBox cbk = (CheckBox)_DtrP.FindControl("ckbGet");
-                    Label lblPrice = (Label)_DtrP.FindControl("lblPrice");
-                    Label lblSize = (Label)_DtrP.FindControl("lblSize");
-                    TextBox txtQuantity = (TextBox)_DtrP.FindControl("txtQuantity");
-                    TextBox txtAmount = (TextBox)_DtrP.FindControl("txtAmount");
-                    if (cbk.Checked)
-                    {
-                        OrderDetailModel model = new OrderDetailModel();
-                        model.OrderId = orderModel.ID;
-                        model.UploadDetailId = Id.Text; 
-                        model.Price = lblPrice.Text;
-                        model.Size = lblSize.Text;
-                        model.Quantity = txtQuantity.Text;
-                        model.Amount = txtAmount.Text;
-                        _listModel.Add(model);
-                        
-                    }
-                }
-            }
-            if (_listModel.Count > 0)
-            {
-                if (!OrderDetailDAO.MultiInsert(_listModel))
-                {
-                    Alert("Error accour.Please try again later!");
-                }
-                else
-                {
-                    Session["order_orderdetails"] = 1;
-                    Session["total"] = txtTotal.Text;
-                    Response.Redirect("?t=order&start=true&upload=true&content=true");
-                    return;
-                }
-            }
-            else
-            {
-                //
-            }
-
-        }
-    }
     protected void Alert(String _Text)
     {
         Response.Write("<script>alert('" + _Text + "')</script>");
@@ -166,5 +107,76 @@ public partial class wuc_wucOrder_OrderDetails : System.Web.UI.UserControl
 
         }
         txtTotal.Text = Convert.ToString(Total);
+        enableNext();
+    }
+    protected void enableNext()
+    {
+        if (String.IsNullOrEmpty(txtTotal.Text) || txtTotal.Text.Equals("0"))
+        {
+            mbtNext.Enabled = false;
+        }
+        else
+        {
+            mbtNext.Enabled = true;
+        }
+    }
+    protected void mbtNext_Click(object sender, EventArgs e)
+    {
+        if (String.IsNullOrEmpty(txtTotal.Text) || txtTotal.Text.Equals("0"))
+        {
+            return;
+        }
+        else
+        {
+            OrderModel orderModel = new OrderModel();
+            orderModel.ID = OrderDAO.Insert(orderModel);
+            orderModel.CustomerId = ((CustomerModel)Session["user"]).ID;
+            Session["order"] = orderModel;
+            List<OrderDetailModel> _listModel = new List<OrderDetailModel>();
+            foreach (GridViewRow _Dtr in grvUploadDetails.Rows)
+            {
+                GridView grvPrintingPrice = (GridView)_Dtr.FindControl("grvPrintingPrice");
+                Label Id = (Label)_Dtr.FindControl("lblID");
+                foreach (GridViewRow _DtrP in grvPrintingPrice.Rows)
+                {
+                    CheckBox cbk = (CheckBox)_DtrP.FindControl("ckbGet");
+                    Label lblPrice = (Label)_DtrP.FindControl("lblPrice");
+                    Label lblSize = (Label)_DtrP.FindControl("lblSize");
+                    TextBox txtQuantity = (TextBox)_DtrP.FindControl("txtQuantity");
+                    TextBox txtAmount = (TextBox)_DtrP.FindControl("txtAmount");
+                    if (cbk.Checked)
+                    {
+                        OrderDetailModel model = new OrderDetailModel();
+                        model.OrderId = orderModel.ID;
+                        model.UploadDetailId = Id.Text;
+                        model.Price = lblPrice.Text;
+                        model.Size = lblSize.Text;
+                        model.Quantity = txtQuantity.Text;
+                        model.Amount = txtAmount.Text;
+                        _listModel.Add(model);
+
+                    }
+                }
+            }
+            if (_listModel.Count > 0)
+            {
+                if (!OrderDetailDAO.MultiInsert(_listModel))
+                {
+                    Alert("Error accour.Please try again later!");
+                }
+                else
+                {
+                    Session["order_orderdetails"] = 1;
+                    Session["total"] = txtTotal.Text;
+                    Response.Redirect("?t=order&start=true&upload=true&content=true");
+                    return;
+                }
+            }
+            else
+            {
+                //
+            }
+
+        }
     }
 }

@@ -33,6 +33,7 @@ public partial class wuc_wucUploadImage : System.Web.UI.UserControl
                 Session["order_start"] = null;
             }
         }
+        loadImage();
     }
     private string GetFileExtension(string filePath)
     {
@@ -67,12 +68,12 @@ public partial class wuc_wucUploadImage : System.Web.UI.UserControl
         //Check Length of File is Valid or Not.
         if (myFile.ContentLength > FileMaxSize)
         {
-            msg = msg + "File Size is Too Large.";
+            msg = msg + "File size is too large.Please try again!";
         }
         //Check File Type is Valid or Not.
         if (!IsValidFile(myFile.FileName))
         {
-            msg = msg + "Invalid File Type.";
+            msg = msg + "Invalid file fype.";
         }
         return msg;
     }
@@ -135,8 +136,10 @@ public partial class wuc_wucUploadImage : System.Web.UI.UserControl
                     }
                 }
             }
-            lblMsgInf.Text = MsgInf + " Uploaded Successfully.";
-            lblMsgErr.Text = MsgErr + " Failed.";
+            //lblMsgInf.Text = "Uploaded:" + MsgInf ;
+            //lblMsgErr.Text = "Failed:" + MsgErr;
+            loadImage();
+            enableNext();
         }
     }
     private string GetUniqueKey()
@@ -168,7 +171,74 @@ public partial class wuc_wucUploadImage : System.Web.UI.UserControl
         return result.ToString();
     }
 
-    protected void btnNext_Click(object sender, EventArgs e)
+    private void loadImage()
+    {
+        UploadModel ULModel = ((UploadModel)Session["upload_uploadmodel"]);
+        DataTable _Dt = UploadDAO.getImageByUId(ULModel.ID);
+        if (_Dt.Rows.Count > 0)
+        {
+            grvImages.DataSource = _Dt;
+            grvImages.DataBind();
+        }
+        else
+        {
+            grvImages.DataSource = _Dt;
+            grvImages.DataBind();
+            lblInfo.Text = "";
+        }
+    }
+    protected void grvImages_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        switch (e.CommandName)
+        {
+            case "RemoveImg":
+                int _Index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow _Row = grvImages.Rows[_Index];
+
+                UploadDetailModel _Model = new UploadDetailModel();
+                _Model = UploadDetailDAO.GetById(((Label)_Row.FindControl("lblID")).Text);
+                if (!String.IsNullOrEmpty(_Model.ID))
+                {
+                    try
+                    {
+                        String _Path = MapPath("~") + _Model.Img.Replace("~", "").Replace("/", "\\");
+                        FileInfo _File = new FileInfo(_Path);
+                        if (_File.Exists)
+                        {
+                            if (UploadDetailDAO.DeleteById(_Model))
+                                File.Delete(_Path);
+                        }
+                    }
+                    catch (FileNotFoundException fnfe)
+                    {
+                        Console.WriteLine(fnfe.StackTrace);
+                        lblInfo.Text = "Could not delete img, please try again!";
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        lblInfo.Text = "Could not delete img, please try again!";
+                    }
+                }
+                loadImage();
+                enableNext();
+                break;
+        }
+    }
+    protected void enableNext()
+    {
+        UploadModel ULModel = ((UploadModel)Session["upload_uploadmodel"]);
+        DataTable _Dt = UploadDAO.getImageByUId(ULModel.ID);
+        if (_Dt.Rows.Count > 0)
+        {
+            mbtNext.Enabled = true;
+        }
+        else
+        {
+            mbtNext.Enabled = false;
+        }
+    }
+    protected void mbtNext_Click(object sender, EventArgs e)
     {
         Session["order_upload"] = 1;
         Response.Redirect("Default.aspx?t=order&start=true&upload=true");
