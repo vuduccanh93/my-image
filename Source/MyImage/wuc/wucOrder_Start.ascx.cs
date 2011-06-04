@@ -21,11 +21,14 @@ public partial class wuc_wucOrder_Start : System.Web.UI.UserControl
             return;
         }
     }
-    protected void btnStart_Click(object sender, EventArgs e)
+    protected void FileExists(String _Path)
     {
-        
+        if (!Directory.Exists(_Path)) Directory.CreateDirectory(_Path);
+    }
+    protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+    {
         ULModel = new UploadModel();
-        string SavePath  = "";
+        string SavePath = "";
         string Username = ((CustomerModel)Session["user"]).Username;
         ULModel.Created_Date = UtilDAO.GetDateTime();
         if (!String.IsNullOrEmpty(ULModel.Created_Date))
@@ -41,9 +44,5 @@ public partial class wuc_wucOrder_Start : System.Web.UI.UserControl
             Response.Redirect("Default.aspx?t=order&start=true");
             return;
         }
-    }
-    protected void FileExists(String _Path)
-    {
-        if (!Directory.Exists(_Path)) Directory.CreateDirectory(_Path);
     }
 }

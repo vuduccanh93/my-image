@@ -1,8 +1,13 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="wucOrder_OrderDetails.ascx.cs" Inherits="wuc_wucOrder_OrderDetails" %>
-<asp:Button ID="btnNext" runat="server" Text="Next" OnClick="btnNext_Click" /><br />
+<img id="Img1" src="~/inc/img/o_s3.png" runat="server" alt="" />
+<span style="float:right">
+<asp:Button ID="mbtNext" CssClass="cusbutton" runat="server" Text="Next" OnClick="mbtNext_Click" Enabled="False" />
+</span>
+
+<br />
 <asp:Label ID="lblAmount" runat="server" Text="Amount :"></asp:Label>
-<asp:TextBox ID="txtTotal" runat="server" ReadOnly="True" Width="81px"></asp:TextBox>
-<asp:Button ID="btnUpdatePrice" runat="server" CausesValidation="False" OnClick="btnUpdatePrice_Click"
+<asp:TextBox ID="txtTotal" CssClass="inputfield" runat="server" ReadOnly="True" Width="81px"></asp:TextBox>
+<asp:Button ID="btnUpdatePrice" CssClass="cusbutton" runat="server" CausesValidation="False" OnClick="btnUpdatePrice_Click"
     Text="Update Price" UseSubmitBehavior="False" /><br />
 <asp:GridView ID="grvUploadDetails" runat="server" AutoGenerateColumns="False" CssClass="upload_orderdetails" >
     <Columns>
@@ -13,6 +18,9 @@
             <ItemTemplate>
                 <asp:Label ID="lblID" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
             </ItemTemplate>
+            <ItemStyle CssClass="hide" />
+            <HeaderStyle CssClass="hide" />
+            <FooterStyle CssClass="hide" />
         </asp:TemplateField>
         <asp:ImageField DataImageUrlField="ImgLink" HeaderText="Image">
             <ControlStyle Height="100px" Width="100px" />
@@ -39,6 +47,9 @@
                             <ItemTemplate>
                                 <asp:Label ID="lblID" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
                             </ItemTemplate>
+                                <ItemStyle CssClass="hide" />
+                                <HeaderStyle CssClass="hide" />
+                                <FooterStyle CssClass="hide" />
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Size">
                             <EditItemTemplate>
@@ -61,16 +72,20 @@
                                 <asp:TextBox ID="TextBox1" runat="server" ></asp:TextBox>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:TextBox ID="txtQuantity" runat="server" OnTextChanged="txtQuantity_TextChanged" ></asp:TextBox>
+                                <asp:TextBox ID="txtQuantity" runat="server"></asp:TextBox>
                             </ItemTemplate>
+                            <ItemStyle CssClass="inputfield" />
+                            <ControlStyle CssClass="inputfield" />
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Amount">
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:TextBox ID="txtAmount" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtAmount" runat="server" ReadOnly="true"></asp:TextBox>
                             </ItemTemplate>
+                            <ItemStyle CssClass="inputfield" />
+                            <ControlStyle CssClass="inputfield" />
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>

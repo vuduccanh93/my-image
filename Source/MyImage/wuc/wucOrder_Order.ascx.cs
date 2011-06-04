@@ -50,6 +50,7 @@ public partial class wuc_wucOrder_Order : System.Web.UI.UserControl
         txtPrintingPrice.Text = (String)Session["total"];
         txtShippingPrice.Text = drlShipDay.SelectedValue;
         txtAmount.Text = Convert.ToString(Convert.ToDouble(txtPrintingPrice.Text) + Convert.ToDouble(txtShippingPrice.Text));
+        bindDateTime();
         }
 
 
@@ -95,7 +96,7 @@ public partial class wuc_wucOrder_Order : System.Web.UI.UserControl
             ccModel.L_three_letter = txtCVV.Text;
             ccModel.Holder_name = txtHolderName.Text;
             ccModel.Number = txtCCNumber.Text;
-            ccModel.Exp_date = txtExpertDate.Text;
+            ccModel.Exp_date = drlExpertDate_Y + "/" + drlExpertDate_M;
             model.CCardId = CreditCardDAO.Insert(ccModel);
         }
         model.ShipTime = drlShipDay.SelectedItem.ToString();
@@ -119,5 +120,17 @@ public partial class wuc_wucOrder_Order : System.Web.UI.UserControl
     protected void Alert(String _Text)
     {
         Response.Write("<script>alert('" + _Text + "')</script>");
+    }
+    protected void bindDateTime()
+    {
+        int y = DateTime.Now.Year;
+        for (int i = y; i < (y + 10); i++)
+        {
+            drlExpertDate_Y.Items.Add(new ListItem(i.ToString(),i.ToString()));
+        }
+        for (int i = 1; i <= 12; i++)
+        {
+            drlExpertDate_M.Items.Add(new ListItem(i.ToString(), i.ToString()));
+        }
     }
 }
