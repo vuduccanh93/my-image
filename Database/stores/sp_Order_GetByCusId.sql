@@ -18,7 +18,7 @@ BEGIN
 			A.P_methods_id,
 			D.Name AS 'P_methods_name',
 			A.C_cards_id,
-			dbo.udf_Util_CreditCardFormat(decryptbypassphrase('XXX',B.Number)) AS	'C_cards_number',
+			dbo.udf_Util_CreditCardFormat(convert(varchar(max),decryptbypassphrase('XXX',B.Number))) AS	'C_cards_number',
 			A.C_id AS 'Customer_id',
 			(E.F_name + ' ' +  E.L_name) AS 'Customer_name',
 			F.ID AS 'Status_id',
