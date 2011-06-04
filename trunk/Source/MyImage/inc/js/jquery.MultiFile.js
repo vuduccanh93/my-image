@@ -466,7 +466,7 @@
 		$.fn.MultiFile.options.accept = 'gif|jpg';
 	*/
 	$.fn.MultiFile.options = { //$.extend($.fn.MultiFile, { options: {
-		accept: '', // accepted file extensions
+		accept: 'jpg|jpeg', // accepted file extensions
 		max: 9,    // maximum number of selectable files
 		
 		// name to use for newly created elements
