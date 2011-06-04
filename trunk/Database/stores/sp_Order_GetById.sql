@@ -25,11 +25,11 @@ BEGIN
 			F.Status AS 'Status_name',
 			dbo.udf_Util_DateTimeFormat(A.Created_date ,'yyyy-mm-dd hh:mm:ss') AS 'Created_date'
 	FROM Orders AS A
-	INNER JOIN CreditCards AS B ON B.ID = A.C_cards_id
-	INNER JOIN StateProvinces AS C ON C.ID = A.S_provinces_id
-	INNER JOIN PaymentMethods AS D ON D.ID = A.P_methods_id
-	INNER JOIN Customers AS E ON E.ID = A.C_id
-	INNER JOIN OrderStatus AS F ON F.ID = A.Status_id
+	FULL JOIN CreditCards AS B ON B.ID = A.C_cards_id
+	FULL JOIN StateProvinces AS C ON C.ID = A.S_provinces_id
+	FULL JOIN PaymentMethods AS D ON D.ID = A.P_methods_id
+	FULL JOIN Customers AS E ON E.ID = A.C_id
+	FULL JOIN OrderStatus AS F ON F.ID = A.Status_id
 	WHERE A.ID = @ID
 END
 
