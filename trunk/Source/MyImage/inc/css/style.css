@@ -138,9 +138,20 @@ img {
 	height: 19px;
 	line-height: normal;
 	padding: 4px;
-	width: 200px;
+	width: 175px;
 }
-
+.dropdownfield{
+	margin-bottom:1px;
+	background:#000000;
+	border: 1px solid #333333;
+	color: #A6D750;
+	font-size: 13px;
+	font-variant: normal;
+	height: 27px;
+	line-height: normal;
+	padding: 4px;
+	width: 185px;
+}
 
 .loginbutton{
 	background: url(../img/login_button.png); 
@@ -202,8 +213,8 @@ img {
 
 #content #content_left{
 	float: left;
-	padding: 0 0 0 30px;
-	width: 560px;
+	padding: 0 0 0 15px;
+	width: 575px;
 	min-height:600px;
 }
 #content_inner{
@@ -392,6 +403,95 @@ img {
 
 
 /* end of bottom */
+.order_imgs-inactive{
+	margin:0;
+	padding:0;
+	position:fixed;
+	left:-160px;
+	top:51px;
+	width:180px;
+	color:#000000;
+}
+.order_imgs-active{
+	margin:0;
+	padding:0;
+	position:fixed;
+	left:0;
+	top:51px;
+	width:180px;
+	color:#000000;
+}
+.left{
+	margin:0;
+	padding:10px 0 0 5px;
+	width:155px;
+	background-color:#FFFFFF;
+	float:left;
+	overflow: auto;
+	overflow-x: hidden;
+	height:500px;
+}
+.right{
+	margin:0;
+	padding:0;
+	width:20px;
+	float:right;
+}
+.tr{
+    width: 20px;
+    height: 20px;
+    background: url(../img/circle.png) no-repeat top right;	
+    float: right;
+}
+.mr{
+	margin:0;
+	padding:0;
+	width:20px;
+	background-color:#FFFFFF;
+	clear:both;
+}
+.br{
+    width: 20px;
+    height: 20px;
+    background: url(../img/circle.png) no-repeat bottom right;	
+    float: right;
+}
 
-
-
+.hide
+{
+	display:none;
+}
+.left table {
+	width:150px;
+	padding:0;
+	margin:0;
+	border-style:none;
+}
+.cusbutton{
+	background: url(../img/vertical_divider.gif); 
+	border: none;
+	cursor: pointer;
+	font-size: 12px;
+	font-weight: bold;
+	height: 28px;
+	margin: 10px 0 0 10px;
+	padding: 0 6px;
+	text-align: center;
+	vertical-align: bottom;
+	white-space: pre;
+	width: 100px;
+	color:#FFFFFF;
+}
+.uploadbutton
+{
+	margin-top:10px;
+	background: url(../img/vertical_divider.gif); 
+	border: none;
+	cursor: pointer;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: bottom;
+	white-space: pre;
+	color:#FFFFFF;
+}
