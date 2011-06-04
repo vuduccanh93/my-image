@@ -15,7 +15,7 @@ INSERT INTO CreditCards(	Number,
 					Holder_name,
 					L_three_letter
 					) 
-			VALUES(	@Number,
+			VALUES(	EncryptByPassPhrase('XXX',@Number),
 					@Exp_date,
 					@Holder_name,
 					@L_three_letter
