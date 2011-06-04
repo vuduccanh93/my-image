@@ -5,7 +5,8 @@ CREATE PROC [sp_Upload_GetImageByUId]
 @U_id			int
 AS
 BEGIN
-	Select A.Folder +'/'+ B.Img as Image 
+	Select	B.ID,
+			A.Folder + B.Img as Image 
 	from upload As A
 	Full Join UploadDetails AS B
 	on B.u_id = A.id	
