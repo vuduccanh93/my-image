@@ -1,4 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="wucOrderList.ascx.cs" Inherits="wuc_wucOrderList" %>
+<asp:Label ID="lblInfo" runat="server" Text="Label"></asp:Label><br />
 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
     <Columns>
         <asp:BoundField DataField="No" HeaderText="No" />

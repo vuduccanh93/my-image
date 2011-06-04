@@ -19,8 +19,16 @@ public partial class wuc_wucOrderList : System.Web.UI.UserControl
             if (!Page.IsPostBack)
             {
                 CustomerModel model = (CustomerModel)Session["user"];
-                GridView1.DataSource = OrderDAO.GetByCusId(model.ID);
-                GridView1.DataBind();
+                DataTable _Data = OrderDAO.GetByCusId(model.ID);
+                if (_Data != null && _Data.Rows.Count > 0)
+                {
+                    GridView1.DataSource = OrderDAO.GetByCusId(model.ID);
+                    GridView1.DataBind();
+                }
+                else
+                {
+                    lblInfo.Text = "<h2>No data found</h2>";
+                }
             }
         }
         else
