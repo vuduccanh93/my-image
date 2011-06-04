@@ -32,7 +32,6 @@ Insert into Menu Values('Orders','?t=or','')
 Insert into Menu Values('State/Province(s)','?t=sp','')
 Insert into Menu Values('Shipping Prices','?t=sh','')
 Insert into Menu Values('Printing Prices','?t=pp','')
-
 --insert Ro_Me
 
 Insert into Ro_Me Values(0,0)
@@ -41,7 +40,6 @@ Insert into Ro_Me Values(0,2)
 Insert into Ro_Me Values(0,3)
 Insert into Ro_Me Values(0,4)
 Insert into Ro_Me Values(0,5)
-Insert into Ro_Me Values(0,6)
 -- insert PaymentMethods
 
 Insert into PaymentMethods Values ('Cash')
