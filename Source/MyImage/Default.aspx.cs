@@ -63,7 +63,7 @@ public partial class _Default : System.Web.UI.Page
                     break;
                 case "orderlist":
                     if (Session["user"] != null)
-                        addCtrl(PlaceHolderRight, Request.ApplicationPath + @"/wuc/wucOrderList.ascx");
+                        addCtrl(PlaceHolderLeft, Request.ApplicationPath + @"/wuc/wucOrderList.ascx");
 
                     break;
 
@@ -98,6 +98,7 @@ public partial class _Default : System.Web.UI.Page
                     else if (Request.QueryString["t"] != null && Request.QueryString["start"] != null)
                     {
                         addCtrl(PlaceHolderLeft, Request.ApplicationPath + @"/wuc/wucOrder_Upload.ascx");
+                        
                     }
                     else if (Request.QueryString["t"] != null)
                     {
