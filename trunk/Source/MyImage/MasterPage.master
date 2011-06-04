@@ -89,7 +89,7 @@
                     &nbsp;</div>
                 <div class="bottom_section_box">
                     <div class="bottom_title"></div>
-                    <p>
+                    <p/>
                         
                     <div class="cleaner">
                         &nbsp;</div>
@@ -102,6 +102,8 @@
         <!-- end of bottom panel -->
         <div class="cleaner_h20">
             &nbsp;</div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolderOrderImg" runat="server">
+        </asp:ContentPlaceHolder>
     </form>
 </body>
 </html>
