@@ -13,10 +13,13 @@ public partial class wuc_wucRegisterSuccess : System.Web.UI.UserControl
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        lblName.Text = Session["tempUsername"].ToString();
-        lblPass.Text = Session["tempPassword"].ToString();
+        if (!Page.IsPostBack)
+        {
+            lblName.Text = Session["tempUsername"].ToString();
+            lblPass.Text = Session["tempPassword"].ToString();
 
-        Session["tempUsername"] = null;
-        Session["tempPassword"] = null;
+            Session["tempUsername"] = null;
+            Session["tempPassword"] = null;
+        }
     }
 }
