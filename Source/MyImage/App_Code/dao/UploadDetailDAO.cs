@@ -41,4 +41,30 @@ public class UploadDetailDAO
         }
         return _Rs;
     }
+    public static UploadDetailModel GetById(String Id)
+    {
+        UploadDetailModel _Model = new UploadDetailModel();
+        SqlParameter[] param = new SqlParameter[1];
+        int i = 0;
+        param[i] = new SqlParameter("@Id", SqlDbType.Int);
+        param[i++].Value = Id;
+        DataTable dt = DataUtil.executeStore("sp_UploadDetail_GetById", param);
+        if (dt != null && dt.Rows.Count > 0)
+        {
+            foreach(DataRow _Dr in dt.Rows ){
+            _Model.ID = _Dr["ID"].ToString();
+            _Model.Img = _Dr["Image"].ToString();
+            _Model.U_id = _Dr["U_id"].ToString();
+            }
+        }
+        return _Model;
+    }
+    public static Boolean DeleteById(UploadDetailModel _Model)
+    {
+        SqlParameter[] param = new SqlParameter[1];
+        int i = 0;
+        param[i] = new SqlParameter("@ID", SqlDbType.Int);
+        param[i++].Value = _Model.ID;
+        return DataUtil.executeNonStore("sp_UploadDetail_DeleteById", param);
+    }
 }
