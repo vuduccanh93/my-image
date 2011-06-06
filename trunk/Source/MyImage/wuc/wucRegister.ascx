@@ -8,7 +8,7 @@
             <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ControlToValidate="txtEmail"
                     ErrorMessage="*"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="txtEmail"
-                    ErrorMessage="Email is Fail" ValidationExpression="^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$"></asp:RegularExpressionValidator>
+                    ErrorMessage="Invalid email" ValidationExpression="^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$"></asp:RegularExpressionValidator>
             </td>
     </tr>
     
@@ -18,7 +18,7 @@
                 <asp:RequiredFieldValidator ID="rfvFirstname" runat="server" ControlToValidate="txtFirstname"
                     ErrorMessage="*"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="revFirstname" runat="server" ControlToValidate="txtFirstname"
-                    ErrorMessage="Fill 3  Charater " ValidationExpression="^[a-z0-9_-]{3,40}$"></asp:RegularExpressionValidator></td>
+                    ErrorMessage="Three chars at least!" ValidationExpression="^[a-zA-Z0-9\s_-]{3,40}$"></asp:RegularExpressionValidator></td>
     </tr>
     <tr>
         <td style="width: 98px">Last Name</td> <td style="width: 208px"> 
@@ -26,7 +26,7 @@
                 <asp:RequiredFieldValidator ID="rfvLastname" runat="server" ControlToValidate="txtLastname"
                     ErrorMessage="*"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="revLastname" runat="server" ControlToValidate="txtLastname"
-                    ErrorMessage="Fill 3  Charater " ValidationExpression="^[a-z0-9_-]{3,40}$"></asp:RegularExpressionValidator></td>
+                    ErrorMessage="Three chars at least!" ValidationExpression="^[a-zA-Z0-9\s_-]{3,40}$"></asp:RegularExpressionValidator></td>
     </tr>
     <tr>
         <td style="height: 22px; width: 98px;">Gender</td> <td style="height: 22px; width: 208px;"> 
@@ -57,7 +57,7 @@
                  <asp:RequiredFieldValidator ID="rfvPhone" runat="server" ControlToValidate="txtPhone"
                     ErrorMessage="*"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="revPhone" runat="server" ControlToValidate="txtPhone"
-                    ErrorMessage=" fill 9 numberic" ValidationExpression="^[0-9]{9,20}$"></asp:RegularExpressionValidator></td>
+                    ErrorMessage="Number only" ValidationExpression="^[0-9]{9,20}$"></asp:RegularExpressionValidator></td>
     </tr>
     <tr>
         <td style="width: 98px; height: 26px;">Address</td> <td style="width: 208px; height: 26px;"> 

@@ -52,36 +52,6 @@ public partial class wuc_wucOrder_OrderDetails : System.Web.UI.UserControl
             grv.DataBind();
         }
     }
-
-    protected void txtQuantity_TextChanged(object sender, EventArgs e)
-    {
-        txtTotal.Text = "0"; 
-        TextBox txtQuantity = ((TextBox)(sender));
-        GridViewRow gvr = ((GridViewRow)(txtQuantity.NamingContainer));
-        Label _Price = (Label)gvr.FindControl("lblPrice");
-        double dblQuantity = String.IsNullOrEmpty(txtQuantity.Text) ? 0 : Convert.ToDouble(txtQuantity.Text);
-        double dblPrice = Convert.ToDouble(_Price.Text);
-        TextBox _Amount = (TextBox)gvr.FindControl("txtAmount");
-        _Amount.Text = Convert.ToString(dblPrice * dblQuantity);
-        foreach (GridViewRow _Dtr in grvUploadDetails.Rows)
-        {
-            GridView grvPrintingPrice = (GridView)_Dtr.FindControl("grvPrintingPrice");
-            foreach (GridViewRow _DtrP in grvPrintingPrice.Rows)
-            {
-                CheckBox cbk = (CheckBox)_DtrP.FindControl("ckbGet");
-                if (cbk.Checked)
-                {
-                    TextBox txtAmount = (TextBox)_DtrP.FindControl("txtAmount");
-                    double Amount =  String.IsNullOrEmpty(txtAmount.Text) ? 0 : Convert.ToDouble(txtAmount.Text);
-                    txtTotal.Text = Convert.ToString(Amount + Convert.ToDouble(txtTotal.Text));
-                }
-            }
-
-        }
-        
-       
-    }
-
     protected void Alert(String _Text)
     {
         Response.Write("<script>alert('" + _Text + "')</script>");
@@ -146,6 +116,8 @@ public partial class wuc_wucOrder_OrderDetails : System.Web.UI.UserControl
                     TextBox txtAmount = (TextBox)_DtrP.FindControl("txtAmount");
                     if (cbk.Checked)
                     {
+                        if (String.IsNullOrEmpty(txtQuantity.Text.Trim()) || txtQuantity.Text.Trim().Equals("0"))
+                            continue;
                         OrderDetailModel model = new OrderDetailModel();
                         model.OrderId = orderModel.ID;
                         model.UploadDetailId = Id.Text;
@@ -166,6 +138,7 @@ public partial class wuc_wucOrder_OrderDetails : System.Web.UI.UserControl
                 }
                 else
                 {
+                    OrderModel xx = ((OrderModel)Session["order"]);
                     Session["order_orderdetails"] = 1;
                     Session["total"] = txtTotal.Text;
                     Response.Redirect("?t=order&start=true&upload=true&content=true");
