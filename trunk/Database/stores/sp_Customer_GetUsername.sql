@@ -8,7 +8,7 @@ AS
 BEGIN
 	DECLARE @Prefix VARCHAR(20)
 	DECLARE @Suf VARCHAR(20)
-	SELECT @Suf = COUNT(ID) FROM Members
+	SELECT @Suf = COUNT(ID) FROM Customers
 	IF @Suf < 10
 	BEGIN
 		SET @Suf = '000' + @Suf

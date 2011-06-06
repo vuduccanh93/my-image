@@ -31,7 +31,7 @@ INSERT INTO Orders(	No,
 					NULL,
 					NULL,
 					NULL,
-					NULL
+					dbo.udf_Util_GetDateTime()
 					)
 
 SET @Output = SCOPE_IDENTITY()

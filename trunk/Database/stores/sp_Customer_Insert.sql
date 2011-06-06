@@ -35,6 +35,6 @@ BEGIN
 			@Gender,
 			@PNo,
 			@Address,
-			'1'
+			'0'
 		)
 END

@@ -7,7 +7,10 @@ CREATE PROC [sp_Order_UpdateStatus](
 )
 AS
 BEGIN
-	UPDATE Orders SET Status_id = @Status WHERE ID = @ID	
+	UPDATE Orders SET 
+		Status_id = @Status,
+		Last_modified = dbo.udf_Util_GetDateTime()
+	WHERE ID = @ID	
 END
 
 
