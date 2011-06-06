@@ -20,7 +20,8 @@
                 <asp:Label ID="lblSize" runat="server" Text='<%# Bind("Size") %>'></asp:Label>
             </ItemTemplate>                        
             <FooterTemplate>
-            <asp:TextBox ID="txtNewSize" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtNewSize" runat="server"></asp:TextBox>
+                <asp:Label id="lblNewSizeErr" ForeColor="red" runat="server"></asp:Label>
             </FooterTemplate>
             <FooterStyle CssClass="first style1" />
         </asp:TemplateField>
@@ -33,7 +34,8 @@
                 <asp:Label ID="lblPrice" runat="server" Text='<%# Bind("Price") %>'></asp:Label>
             </ItemTemplate>
             <FooterTemplate>
-            <asp:TextBox ID="txtNewPrice" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtNewPrice" runat="server"></asp:TextBox>
+                <asp:Label id="lblPriceErr" ForeColor="red" runat="server"></asp:Label>
             </FooterTemplate>
             <FooterStyle CssClass="first style1" />
         </asp:TemplateField>   

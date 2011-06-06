@@ -17,7 +17,7 @@ public partial class admin_wuc_Login : System.Web.UI.UserControl
         WEB_URL = Request.Url.GetLeftPart(UriPartial.Authority) + VirtualPathUtility.ToAbsolute("~/");
         if (Session["U"] != null)
         {
-            String _RedirectUrl = @"../";
+            String _RedirectUrl = "~/admin";
             Response.Redirect(_RedirectUrl);
         }
     }

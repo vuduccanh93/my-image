@@ -61,14 +61,29 @@ public partial class admin_wuc_wucPrintingPrices : System.Web.UI.UserControl
     {
         if (e.CommandName == "NewInsert")
         {
-            String _PPSize = ((TextBox) grvPrintingPrices.FooterRow.FindControl("txtNewSize")).Text;
-            String _PPPrice = ((TextBox)grvPrintingPrices.FooterRow.FindControl("txtNewPrice")).Text;
-
-            PrintingPriceModel _Model = new PrintingPriceModel("", _PPSize, _PPPrice);
-            PrintingPriceDAO.Insert(_Model);
-            BindData();
-            
+            TextBox _PPSize = ((TextBox)grvPrintingPrices.FooterRow.FindControl("txtNewSize"));
+            Label _PPSizeErr = ((Label)grvPrintingPrices.FooterRow.FindControl("lblNewSizeErr"));
+            TextBox _PPrice = ((TextBox)grvPrintingPrices.FooterRow.FindControl("txtNewPrice"));
+            Label _PPriceErr = ((Label)grvPrintingPrices.FooterRow.FindControl("lblPriceErr"));
+            if (_PPSize != null && _PPSizeErr != null && _PPrice != null && _PPriceErr != null)
+            {
+                if (_PPSize.Text.Trim().Length < 3)
+                {
+                    _PPSizeErr.Text = "*";
+                    _PPSize.Focus();
+                    return;
+                }
+                int i = 0;
+                if (!String.IsNullOrEmpty(_PPrice.Text.Trim()) || !int.TryParse(_PPrice.Text.Trim(), out i))
+                {
+                    _PPriceErr.Text = "*";
+                    _PPriceErr.Focus();
+                    return;
+                }
+                PrintingPriceModel _Model = new PrintingPriceModel("", _PPSize.Text, _PPrice.Text);
+                PrintingPriceDAO.Insert(_Model);
+                BindData();
+            }
         }
     }
-    
 }
