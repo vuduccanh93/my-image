@@ -1,17 +1,48 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="wucOrderList.ascx.cs" Inherits="wuc_wucOrderList" %>
 <asp:Label ID="lblInfo" runat="server" Text="Label"></asp:Label><br />
-<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
+<asp:GridView ID="grvOrder" runat="server" Width="580px" AutoGenerateColumns="False" OnRowCommand="grvOrder_RowCommand">
     <Columns>
-        <asp:BoundField DataField="No" HeaderText="No" />
-        <asp:BoundField DataField="Content" HeaderText="Content" />
-        <asp:BoundField DataField="Address" HeaderText="Address" />
+        <asp:TemplateField HeaderText="ID">
+            <EditItemTemplate>
+                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("ID") %>'></asp:TextBox>
+            </EditItemTemplate>
+            <ItemTemplate>
+                <asp:Label ID="lblID" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
+            </ItemTemplate>
+            <ItemStyle CssClass="hide" />
+            <HeaderStyle CssClass="hide" />
+            <FooterStyle CssClass="hide" />
+        </asp:TemplateField>
+        <asp:TemplateField HeaderText="No">
+            <EditItemTemplate>
+                <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("No") %>'></asp:TextBox>
+            </EditItemTemplate>
+            <ItemTemplate>
+                <asp:Label ID="lblNo" runat="server" Text='<%# Bind("No") %>'></asp:Label>
+            </ItemTemplate>
+        </asp:TemplateField>
         <asp:BoundField DataField="S_provinces_name" HeaderText="State/Provinces" />
-        <asp:BoundField DataField="Shipping_price" HeaderText="Shipping price" />
-        <asp:BoundField DataField="Printing_price" HeaderText="Printing price" />
-        <asp:BoundField DataField="Amount" HeaderText="Amount" />
-        <asp:BoundField DataField="P_methods_name" HeaderText="Payment Methods" />
-        <asp:BoundField DataField="Customer_name" HeaderText="Customer name" />
+        <asp:BoundField DataField="Amount" HeaderText="Amount" ItemStyle-HorizontalAlign="Right"  />
         <asp:BoundField DataField="Status_name" HeaderText="Status" />
-        <asp:BoundField DataField="Created_date" HeaderText="Created date" />
+        <asp:TemplateField HeaderText="StatusId">
+            <EditItemTemplate>
+                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Status_id") %>'></asp:TextBox>
+            </EditItemTemplate>
+            <ItemTemplate>
+                <asp:Label ID="lblStatusId" runat="server" Text='<%# Bind("Status_id") %>'></asp:Label>
+            </ItemTemplate>
+            <ItemStyle CssClass="hide" />
+            <HeaderStyle CssClass="hide" />
+            <FooterStyle CssClass="hide" />
+        </asp:TemplateField>
+        <asp:BoundField DataField="Created_date" HeaderText="Created date" ItemStyle-HorizontalAlign="center" />
+        <asp:TemplateField HeaderText="Cancel" ShowHeader="False" >
+            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+            <ItemTemplate>
+                <asp:LinkButton ID="lbtnCancel" runat="server" CommandName="Cancel"
+                    Text="X"></asp:LinkButton>
+                <asp:Label ID="lblDisableCancel" Visible="false" runat="server" Text="Disable"></asp:Label>
+            </ItemTemplate>
+        </asp:TemplateField>
     </Columns>
 </asp:GridView>

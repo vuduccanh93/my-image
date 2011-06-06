@@ -29,32 +29,30 @@ public partial class wuc_wucOrder_Order : System.Web.UI.UserControl
             {
                 Session["order_orderdetails"] = null;
             }
+
             OrderModel _Model = OrderDAO.GetById(((OrderModel)Session["order"]).ID);
-        txtNo.Text = _Model.NO;
+            txtNo.Text = _Model.NO;
 
-        drlStateProvince.DataSource = StateProvinceDAO.GetAll();
-        drlStateProvince.DataTextField = "Name";
-        drlStateProvince.DataValueField = "ID";
-        drlStateProvince.DataBind();
+            drlStateProvince.DataSource = StateProvinceDAO.GetAllAvalable();
+            drlStateProvince.DataTextField = "Name";
+            drlStateProvince.DataValueField = "ID";
+            drlStateProvince.DataBind();
 
-        drlPaymenMethod.DataSource = PaymentMethodDAO.GetAll();
-        drlPaymenMethod.DataTextField = "Name";
-        drlPaymenMethod.DataValueField = "ID";
-        drlPaymenMethod.DataBind();
+            drlPaymenMethod.DataSource = PaymentMethodDAO.GetAll();
+            drlPaymenMethod.DataTextField = "Name";
+            drlPaymenMethod.DataValueField = "ID";
+            drlPaymenMethod.DataBind();
 
-        drlShipDay.DataSource = ShippingPriceDAO.GetAllBySPI(drlStateProvince.SelectedValue.ToString());
-        drlShipDay.DataTextField = "Ship_time";
-        drlShipDay.DataValueField = "Price";
-        DataBind();
+            drlShipDay.DataSource = ShippingPriceDAO.GetAllBySPI(drlStateProvince.SelectedValue.ToString());
+            drlShipDay.DataTextField = "Ship_time";
+            drlShipDay.DataValueField = "Price";
+            DataBind();
 
-        txtPrintingPrice.Text = (String)Session["total"];
-        txtShippingPrice.Text = drlShipDay.SelectedValue;
-        txtAmount.Text = Convert.ToString(Convert.ToDouble(txtPrintingPrice.Text) + Convert.ToDouble(txtShippingPrice.Text));
-        bindDateTime();
+            txtPrintingPrice.Text = (String)Session["total"];
+            txtShippingPrice.Text = drlShipDay.SelectedValue;
+            txtAmount.Text = Convert.ToString(Convert.ToDouble(txtPrintingPrice.Text) + Convert.ToDouble(txtShippingPrice.Text));
+            bindDateTime();
         }
-
-
-
     }
     protected void drlPaymenMethod_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -96,20 +94,20 @@ public partial class wuc_wucOrder_Order : System.Web.UI.UserControl
             ccModel.L_three_letter = txtCVV.Text;
             ccModel.Holder_name = txtHolderName.Text;
             ccModel.Number = txtCCNumber.Text;
-            ccModel.Exp_date = drlExpertDate_Y + "/" + drlExpertDate_M;
+            ccModel.Exp_date = drlExpertDate_Y.SelectedValue + "/" + drlExpertDate_M.SelectedValue;
             model.CCardId = CreditCardDAO.Insert(ccModel);
         }
         model.ShipTime = drlShipDay.SelectedItem.ToString();
         model.PPrice = txtPrintingPrice.Text;
         model.SPrice = txtShippingPrice.Text;
         model.Amount = txtAmount.Text;
-        model.Status = "0";
         model.CreatedDate = UtilDAO.GetDateTime();
        
         if (OrderDAO.Update(model))
         {
             Session["order"] = model;
             Session["order_order"] = 1;
+            UploadDAO.UpdateStatus(((UploadModel)Session["upload_uploadmodel"]).ID);
             Response.Redirect("?t=order&start=true&upload=true&content=true&payment=true");
         }
         else
@@ -128,9 +126,9 @@ public partial class wuc_wucOrder_Order : System.Web.UI.UserControl
         {
             drlExpertDate_Y.Items.Add(new ListItem(i.ToString(),i.ToString()));
         }
-        for (int i = 1; i <= 12; i++)
-        {
-            drlExpertDate_M.Items.Add(new ListItem(i.ToString(), i.ToString()));
-        }
+
+        String[] days = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
+        foreach( String s in days )
+            drlExpertDate_M.Items.Add(new ListItem(s, s));
     }
 }
