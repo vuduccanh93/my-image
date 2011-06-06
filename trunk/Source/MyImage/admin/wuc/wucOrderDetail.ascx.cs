@@ -43,13 +43,18 @@ public partial class admin_wuc_wucOrderDetail : System.Web.UI.UserControl
                 lblContent.Text = Model.Content;
                 grvOrderDetail.DataSource = OrderDetailDAO.GetByOrderId(Model.ID);
                 grvOrderDetail.DataBind();
-                DataList1.DataSource = OrderDetailDAO.GetByOrderId(Model.ID);
-                DataList1.DataBind();
+                
             }
         }
     }
     protected void btnSaveStatus_Click(object sender, EventArgs e)
     {
         OrderDAO.UpdateStatus(Model.ID,drlStatus.SelectedValue.ToString());
+    }
+    protected void grvOrderDetail_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        grvOrderDetail.PageIndex = e.NewPageIndex;
+        grvOrderDetail.DataSource = OrderDetailDAO.GetByOrderId(Model.ID);
+        grvOrderDetail.DataBind();
     }
 }

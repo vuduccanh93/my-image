@@ -61,10 +61,12 @@
 </table>
 <div class="clear">
 </div>
-<asp:GridView ID="grvOrderDetail" runat="server" AutoGenerateColumns="False" CssClass="order">
+<asp:GridView ID="grvOrderDetail" runat="server" CssClass="listing" AutoGenerateColumns="False" AllowPaging="True" OnPageIndexChanging="grvOrderDetail_PageIndexChanging" PageSize="3">
     <Columns>
-        <asp:BoundField DataField="name" HeaderText="Image" />
-        <asp:BoundField DataField="link" HeaderText="Link" />
+        <asp:ImageField DataImageUrlField="name" HeaderText="Image">
+            <ControlStyle Height="100px" Width="100px" />
+        </asp:ImageField>
+        <asp:HyperLinkField DataNavigateUrlFields="Link" Text="Link" />
         <asp:BoundField DataField="price" HeaderText="Price" >
             <ItemStyle HorizontalAlign="Right" VerticalAlign="Middle" />
         </asp:BoundField>
@@ -80,8 +82,4 @@
         </asp:BoundField>
     </Columns>
 </asp:GridView>
-<asp:DataList ID="DataList1" runat="server" RepeatColumns="1">
-    <ItemTemplate>
-        <asp:Image ID="Image1" runat="server" ImageUrl='<% #  Eval("Link") %>' />
-    </ItemTemplate>
-</asp:DataList><br />
+<br />
