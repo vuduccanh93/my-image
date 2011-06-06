@@ -9,7 +9,7 @@ BEGIN
 	SELECT	A.ID,
 			A.O_id,
 			A.U_details_id,
-			B.img AS 'name',
+			C.Folder+B.img AS 'name',
 			(C.Folder + B.img) AS 'link',
 			A.Price,
 			A.Size,
