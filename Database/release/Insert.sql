@@ -52,7 +52,7 @@ Insert into StateProvinces Values('Los Angeles',0)
 Insert into StateProvinces Values('New York',0)
 
 --Insert OrderStatus
-
+Insert into OrderStatus VALUES('Canceled','')
 Insert into OrderStatus VALUES('Not payment','')
 Insert into OrderStatus VALUES('Waiting','')
 Insert into OrderStatus VALUES('Applied','')

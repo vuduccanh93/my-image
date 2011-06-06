@@ -10,7 +10,7 @@ BEGIN
 			A.O_id,
 			A.U_details_id,
 			B.img AS 'name',
-			(C.Folder + '/' +B.img) AS 'link',
+			(C.Folder + B.img) AS 'link',
 			A.Price,
 			A.Size,
 			A.Quantity,
@@ -18,7 +18,7 @@ BEGIN
 	FROM OrderDetails AS A
 	INNER JOIN UploadDetails AS B ON B.ID = A.U_details_id
 	INNER JOIN Upload AS C ON C.ID = B.U_id
-	WHERE O_id = @OId
+	WHERE O_id = @OId AND C.Uploaded = 1
 END
 
 

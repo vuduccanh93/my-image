@@ -5,7 +5,7 @@
 /* Project name:                                                          */
 /* Author:                                                                */
 /* Script type:           Database creation script                        */
-/* Created on:            2011-06-04 09:42                                */
+/* Created on:            2011-06-06 08:29                                */
 /* ---------------------------------------------------------------------- */
 
 
@@ -74,7 +74,9 @@ CREATE TABLE [Orders] (
     [P_methods_id] INTEGER,
     [C_cards_id] INTEGER,
     [C_id] INTEGER,
+    [Shipping_time] VARCHAR(50),
     [Status_id] INTEGER,
+    [Last_modified] VARCHAR(17),
     [Created_date] VARCHAR(17),
     CONSTRAINT [PK_Orders] PRIMARY KEY ([ID])
 )
