@@ -26,6 +26,14 @@ public class OrderDAO
             param[i++].Value = _CusId;
             return DataUtil.executeStore("sp_Order_GetByCusId", param);
     }
+    public static DataTable Customer_GetAll(String _CusId)
+    {
+        SqlParameter[] param = new SqlParameter[1];
+        int i = 0;
+        param[i] = new SqlParameter("@CusId", SqlDbType.Int);
+        param[i++].Value = _CusId;
+        return DataUtil.executeStore("sp_Order_Customer_GetAll", param);
+    }
     public static Boolean UpdateStatus(String _Id,String _Status)
     {
         SqlParameter[] param = new SqlParameter[2];
@@ -38,67 +46,42 @@ public class OrderDAO
     }
     public static String Insert(OrderModel model)
     {
-        SqlParameter[] param = new SqlParameter[13];
+        SqlParameter[] param = new SqlParameter[1];
         int i = 0;
-        param[i] = new SqlParameter("@No", SqlDbType.VarChar);
-        param[i++].Value = model.NO;
-        param[i] = new SqlParameter("@Content", SqlDbType.VarChar);
-        param[i++].Value = model.Content;
-        param[i] = new SqlParameter("@Address", SqlDbType.VarChar);
-        param[i++].Value = model.Address;
-        param[i] = new SqlParameter("@S_provinces_id", SqlDbType.VarChar);
-        param[i++].Value = model.SProvinceId;
-        param[i] = new SqlParameter("@Shipping_price", SqlDbType.VarChar);
-        param[i++].Value = model.SPrice;
-        param[i] = new SqlParameter("@Printing_price", SqlDbType.VarChar);
-        param[i++].Value = model.PPrice;
-        param[i] = new SqlParameter("@Amount", SqlDbType.VarChar);
-        param[i++].Value = model.Amount;
-        param[i] = new SqlParameter("@P_methods_id", SqlDbType.VarChar);
-        param[i++].Value = model.PMethodId;
-        param[i] = new SqlParameter("@C_cards_id", SqlDbType.VarChar);
-        param[i++].Value = model.CCardId;
-        param[i] = new SqlParameter("@C_id", SqlDbType.VarChar);
-        param[i++].Value = model.CustomerId;
-        param[i] = new SqlParameter("@Status_id", SqlDbType.VarChar);
-        param[i++].Value = model.StatusId;
-        param[i] = new SqlParameter("@Created_date", SqlDbType.VarChar);
-        param[i++].Value = model.CreatedDate;
-        param[i] = new SqlParameter("@Output", SqlDbType.Int, 10);
+        param[i] = new SqlParameter("@Output", SqlDbType.Int);
         param[i].Direction = ParameterDirection.Output;
         DataUtil.executeNonStore("sp_Order_Insert", param);
         return param[i].Value.ToString();
     }
     public static Boolean Update(OrderModel model)
     {
-        SqlParameter[] param = new SqlParameter[13];
+        SqlParameter[] param = new SqlParameter[12];
         int i = 0;
-        param[i] = new SqlParameter("@id", SqlDbType.VarChar);
+        param[i] = new SqlParameter("@id", SqlDbType.Int);
         param[i++].Value = model.ID;
         param[i] = new SqlParameter("@No", SqlDbType.VarChar);
         param[i++].Value = model.NO;
-        param[i] = new SqlParameter("@Content", SqlDbType.VarChar);
+        param[i] = new SqlParameter("@Content", SqlDbType.NVarChar);
         param[i++].Value = model.Content;
         param[i] = new SqlParameter("@Address", SqlDbType.VarChar);
         param[i++].Value = model.Address;
-        param[i] = new SqlParameter("@S_provinces_id", SqlDbType.VarChar);
+        param[i] = new SqlParameter("@S_provinces_id", SqlDbType.Int);
         param[i++].Value = model.SProvinceId;
-        param[i] = new SqlParameter("@Shipping_price", SqlDbType.VarChar);
+        param[i] = new SqlParameter("@Shipping_price", SqlDbType.Float);
         param[i++].Value = model.SPrice;
-        param[i] = new SqlParameter("@Printing_price", SqlDbType.VarChar);
+        param[i] = new SqlParameter("@Printing_price", SqlDbType.Float);
         param[i++].Value = model.PPrice;
-        param[i] = new SqlParameter("@Amount", SqlDbType.VarChar);
+        param[i] = new SqlParameter("@Amount", SqlDbType.Float);
         param[i++].Value = model.Amount;
-        param[i] = new SqlParameter("@P_methods_id", SqlDbType.VarChar);
+        param[i] = new SqlParameter("@P_methods_id", SqlDbType.Int);
         param[i++].Value = model.PMethodId;
-        param[i] = new SqlParameter("@C_cards_id", SqlDbType.VarChar);
+        param[i] = new SqlParameter("@C_cards_id", SqlDbType.Int);
         param[i++].Value = model.CCardId;
-        param[i] = new SqlParameter("@C_id", SqlDbType.VarChar);
+        param[i] = new SqlParameter("@C_id", SqlDbType.Int);
         param[i++].Value = model.CustomerId;
-        param[i] = new SqlParameter("@Status_id", SqlDbType.VarChar);
-        param[i++].Value = model.StatusId;
-        param[i] = new SqlParameter("@Created_date", SqlDbType.VarChar);
-        param[i++].Value = model.CreatedDate;
+        param[i] = new SqlParameter("@Shipping_time", SqlDbType.VarChar);
+        param[i++].Value = model.ShipTime;
+        
         return DataUtil.executeNonStore("sp_Order_Update", param);
     }
     public static OrderModel GetById(String _Id)
@@ -135,6 +118,7 @@ public class OrderDAO
                     _Model.StatusId = row["Status_id"].ToString();
                     _Model.Status = row["Status_name"].ToString();
                     _Model.CreatedDate = row["Created_date"].ToString();
+                    _Model.ShipTime = row["Last_modified"].ToString();
                 }
             }
         }

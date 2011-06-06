@@ -36,4 +36,12 @@ public class UploadDAO
         param[i++].Value = id;
         return DataUtil.executeStore("sp_Upload_GetImageByUId", param);
     }
+    public static Boolean UpdateStatus(String id)
+    {
+        SqlParameter[] param = new SqlParameter[1];
+        int i = 0;
+        param[i] = new SqlParameter("@ID", SqlDbType.Int);
+        param[i++].Value = id;
+        return DataUtil.executeNonStore("sp_Upload_UpdateStatus", param);
+    }
 }
