@@ -14,6 +14,7 @@
     <td colspan="3" class="style2">
         &nbsp;<asp:DropDownList ID="drlStatus" runat="server">
         </asp:DropDownList>
+        <asp:Label ID="lblStatus" runat="server" Visible="False"></asp:Label>
         <asp:Button ID="btnSaveStatus" runat="server" OnClick="btnSaveStatus_Click" Text="Save" /></td>
 </tr>
 <tr>
