@@ -65,11 +65,11 @@ public partial class wuc_wucOrderList : System.Web.UI.UserControl
             _LbtnCancel = (LinkButton)Row.FindControl("lbtnCancel");
             if (_StatusId > 1)
             {
-                _LbtnCancel.Enabled = false;
+                _LbtnCancel.Visible = true;
             }
             else
             {
-                _LbtnCancel.Visible = true;
+                _LbtnCancel.Visible = false;
             }
         }
     }
