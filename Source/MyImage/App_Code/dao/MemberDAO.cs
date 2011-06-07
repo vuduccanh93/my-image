@@ -73,4 +73,14 @@ public class MemberDAO
         param[i++].Value = _Model.StatusId;
         return DataUtil.executeNonStore("sp_Member_Update", param);
     }
+    public static Boolean ChangePassword(String Id,String password )
+    {
+        SqlParameter[] param = new SqlParameter[2];
+        int i = 0;
+        param[i] = new SqlParameter("@ID", SqlDbType.Int);
+        param[i++].Value = Id;
+        param[i] = new SqlParameter("@Password", SqlDbType.VarChar);
+        param[i++].Value = password;
+        return DataUtil.executeNonStore("sp_Member_ChangePassword", param);
+    }
 }
