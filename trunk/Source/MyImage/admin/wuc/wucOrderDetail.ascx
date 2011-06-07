@@ -64,10 +64,19 @@
 </div>
 <asp:GridView ID="grvOrderDetail" runat="server" CssClass="listing" AutoGenerateColumns="False" AllowPaging="True" OnPageIndexChanging="grvOrderDetail_PageIndexChanging" PageSize="3">
     <Columns>
-        <asp:ImageField DataImageUrlField="name" HeaderText="Image">
-            <ControlStyle Height="100px" Width="100px" />
-        </asp:ImageField>
-        <asp:HyperLinkField DataNavigateUrlFields="Link" Text="Link" />
+        <asp:TemplateField HeaderText="Image">
+            
+            <ItemTemplate>
+                <asp:Image ID="Image" runat="server" ImageUrl='<%# Eval("name") %>' />
+                 <asp:Label ID="lblImage" runat="server" Text='<%# Eval("name") %>' Visible="false"></asp:Label>
+            </ItemTemplate>
+        </asp:TemplateField>
+        <asp:TemplateField HeaderText="Link">
+            <ItemTemplate>
+                <asp:HyperLink ID="HyperLink" runat="server" NavigateUrl='<%# Eval("Link") %>' Text="Link"></asp:HyperLink>
+                <asp:Label ID="lblLink" runat="server" Text='<%# Eval("folder") %>' Visible="false"></asp:Label>
+            </ItemTemplate>
+        </asp:TemplateField>
         <asp:BoundField DataField="price" HeaderText="Price" >
             <ItemStyle HorizontalAlign="Right" VerticalAlign="Middle" />
         </asp:BoundField>

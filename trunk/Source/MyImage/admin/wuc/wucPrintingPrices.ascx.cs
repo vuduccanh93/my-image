@@ -13,8 +13,12 @@ public partial class admin_wuc_wucPrintingPrices : System.Web.UI.UserControl
 {  
     protected void Page_Load(object sender, EventArgs e)
     {
-       if (!Page.IsPostBack)
-        Main();
+        if (!Page.IsPostBack)
+        {
+            Main();
+            TextBox txtNewPrice = (TextBox)grvPrintingPrices.FooterRow.FindControl("txtNewPrice");
+            txtNewPrice.Attributes.Add("onKeypress", "IsNumber(event);");
+        }
     }
 
     private void Main()
@@ -41,7 +45,9 @@ public partial class admin_wuc_wucPrintingPrices : System.Web.UI.UserControl
     protected void grvPrintingPrices_RowEditing(object sender, GridViewEditEventArgs e)
     {
         grvPrintingPrices.EditIndex = e.NewEditIndex;
-        BindData();           
+        BindData();
+        TextBox txtPrice = (TextBox)grvPrintingPrices.Rows[e.NewEditIndex].FindControl("txtPrice");
+        txtPrice.Attributes.Add("onKeypress", "IsNumber(event);");
     }    
     protected void grvPrintingPrices_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {

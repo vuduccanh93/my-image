@@ -16,7 +16,10 @@ public partial class admin_wuc_wucShippingPrice : System.Web.UI.UserControl
         if (!Page.IsPostBack)
         {
             BindData();
+            TextBox txtNewPrice = (TextBox)grvPrintingPrice.FooterRow.FindControl("txtNewPrice");
+            txtNewPrice.Attributes.Add("onKeypress", "IsNumber(event);");
         }
+       
     }
     private void BindData()
     {
@@ -53,6 +56,8 @@ public partial class admin_wuc_wucShippingPrice : System.Web.UI.UserControl
         grvPrintingPrice.EditIndex = e.NewEditIndex;
         BindData();
         BindDRLStateProvince(e.NewEditIndex);
+        TextBox txtPrice = (TextBox)grvPrintingPrice.Rows[e.NewEditIndex].FindControl("txtPrice");
+        txtPrice.Attributes.Add("onKeypress", "IsNumber(event);");
     }
     protected void grvPrintingPrice_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {

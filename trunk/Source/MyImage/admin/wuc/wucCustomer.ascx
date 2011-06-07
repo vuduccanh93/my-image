@@ -23,7 +23,7 @@
         </asp:TemplateField>
         <asp:TemplateField HeaderText="First name">
             <EditItemTemplate>
-                <asp:TextBox ID="txtF_name" runat="server" Text='<%# Bind("F_name") %>' CssClass="editmod-s" Width="80px"></asp:TextBox>
+                <asp:TextBox ID="txtF_name" runat="server" ReadOnly="True" Text='<%# Bind("F_name") %>' CssClass="editmod-s" Width="80px"></asp:TextBox>
             </EditItemTemplate>
             <ItemTemplate>
                 <asp:Label ID="Label1" runat="server" Text='<%# Bind("F_name") %>'></asp:Label>
@@ -32,7 +32,7 @@
         </asp:TemplateField>
         <asp:TemplateField HeaderText="Last name">
             <EditItemTemplate>
-                <asp:TextBox ID="txtL_name" runat="server" Text='<%# Bind("L_name") %>' CssClass="editmod-s" Width="80px"></asp:TextBox>
+                <asp:TextBox ID="txtL_name" runat="server" ReadOnly="True" Text='<%# Bind("L_name") %>' CssClass="editmod-s" Width="80px"></asp:TextBox>
             </EditItemTemplate>
             <ItemTemplate>
                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("L_name") %>'></asp:Label>
@@ -41,7 +41,7 @@
         </asp:TemplateField>
         <asp:TemplateField HeaderText="Male">
             <EditItemTemplate>
-                <asp:CheckBox ID="ckbGender" runat="server" Checked='<%# Bind("Gender") %>' CssClass="editmod-s" />
+                <asp:CheckBox ID="ckbGender" runat="server" ReadOnly="True" Checked='<%# Bind("Gender") %>' CssClass="editmod-s" />
             </EditItemTemplate>
             <ItemTemplate>
                 <asp:CheckBox ID="CheckBox1" runat="server" Checked='<%# Bind("Gender") %>' Enabled="false" />
@@ -51,17 +51,17 @@
         </asp:TemplateField>
         <asp:TemplateField HeaderText="Email">
             <EditItemTemplate>
-                <asp:TextBox ID="txtEmail" runat="server" Text='<%# Bind("Email") %>' CssClass="editmod-s" Width="90px"></asp:TextBox>
+                <asp:TextBox ID="txtEmail" runat="server" ReadOnly="True" Text='<%# Bind("Email") %>' CssClass="editmod-s" Width="90px"></asp:TextBox>
             </EditItemTemplate>
             <ItemTemplate>
                 <asp:Label ID="Label7" runat="server" Text='<%# Bind("Email") %>'></asp:Label>
             </ItemTemplate>
             <ControlStyle CssClass="editmod-m" />
         </asp:TemplateField>
-        <asp:BoundField DataField="Dob" HeaderText="Birthday" Visible="False" />
+        <asp:BoundField DataField="Dob" HeaderText="Birthday" ReadOnly="True" Visible="False" />
         <asp:TemplateField HeaderText="Phone .no">
             <EditItemTemplate>
-                <asp:TextBox ID="txtP_no" runat="server" Text='<%# Bind("P_no") %>' Width="90px"></asp:TextBox>
+                <asp:TextBox ID="txtP_no" runat="server" ReadOnly="True" Text='<%# Bind("P_no") %>' Width="90px"></asp:TextBox>
             </EditItemTemplate>
             <ItemTemplate>
                 <asp:Label ID="Label3" runat="server" Text='<%# Bind("P_no") %>'></asp:Label>
@@ -70,7 +70,7 @@
         </asp:TemplateField>
         <asp:TemplateField HeaderText="Address">
             <EditItemTemplate>
-                <asp:TextBox ID="txtAddress" runat="server" Text='<%# Bind("Address") %>' TextMode="MultiLine" CssClass="editmod-s" Width="140px"></asp:TextBox>
+                <asp:TextBox ID="txtAddress" runat="server" ReadOnly="True" Text='<%# Bind("Address") %>' TextMode="MultiLine" CssClass="editmod-s" Width="140px"></asp:TextBox>
             </EditItemTemplate>
             <ItemTemplate>
                 <asp:Label ID="Label4" runat="server" Text='<%# Bind("Address") %>'></asp:Label>
