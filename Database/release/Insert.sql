@@ -47,9 +47,9 @@ Insert into PaymentMethods Values ('Credit Card')
 
 -- insert StateProvinces
 
-Insert into StateProvinces Values('San Jose',0)
-Insert into StateProvinces Values('Los Angeles',0)
-Insert into StateProvinces Values('New York',0)
+Insert into StateProvinces Values('San Jose',1)
+Insert into StateProvinces Values('Los Angeles',1)
+Insert into StateProvinces Values('New York',1)
 
 --Insert OrderStatus
 Insert into OrderStatus VALUES('Canceled','')
