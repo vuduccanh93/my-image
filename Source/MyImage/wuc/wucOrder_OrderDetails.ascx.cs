@@ -34,6 +34,16 @@ public partial class wuc_wucOrder_OrderDetails : System.Web.UI.UserControl
             }
             BindData();
             BindPrintingPrice();
+            foreach (GridViewRow _Dtr in grvUploadDetails.Rows)
+            {
+                GridView grvPrintingPrice = (GridView)_Dtr.FindControl("grvPrintingPrice");
+                foreach (GridViewRow _DtrP in grvPrintingPrice.Rows)
+                {
+                    TextBox txtQuantity = (TextBox)_DtrP.FindControl("txtQuantity");
+                    txtQuantity.Attributes.Add("onKeypress", "IsNumber(event);");
+
+                }
+            }
         }
     }
     protected void BindData()

@@ -36,6 +36,7 @@ public partial class wuc_wucChangeInfo : System.Web.UI.UserControl
             {
                 rdbMale.Checked = true;
             }
+            txtPhone.Attributes.Add("onKeypress", "IsNumber(event);");
         }
         if (Request.QueryString["rs"] != null)
         {
@@ -58,13 +59,13 @@ public partial class wuc_wucChangeInfo : System.Web.UI.UserControl
         ServerValue = Request.Form["txtBirthday"];
         if (!String.IsNullOrEmpty(txtOldPassword.Text.Trim()))
         {
-            if (txtOldPassword.Text.Equals(model.Password))
+            if (txtOldPassword.Text.ToLower().Trim().Equals(model.Password.ToLower().Trim()))
             {
                 if (!String.IsNullOrEmpty(txtNewPassword.Text.Trim()))
                 {
-                    if (txtNewPassword.Text.Trim().Equals(txtCofPassword.Text.Trim()))
+                    if (txtNewPassword.Text.ToLower().Trim().Equals(txtCofPassword.Text.ToLower().Trim()))
                     {
-                        model.Password = txtNewPassword.Text.Trim();
+                        model.Password = txtNewPassword.Text.ToLower().Trim();
                     }
                     else
                     {
