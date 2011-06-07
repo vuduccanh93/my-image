@@ -70,7 +70,9 @@ public partial class wuc_wucOrder_OrderDetails : System.Web.UI.UserControl
                 {
                     Label lblPrice = (Label)_DtrP.FindControl("lblPrice");
                     TextBox txtQuantity = (TextBox)_DtrP.FindControl("txtQuantity");
+                    TextBox txtAmount = (TextBox)_DtrP.FindControl("txtAmount");
                     double dblQuantity = String.IsNullOrEmpty(txtQuantity.Text) ? 0 : Convert.ToDouble(txtQuantity.Text);
+                    txtAmount.Text = Convert.ToString( (dblQuantity * Convert.ToDouble(lblPrice.Text)));
                     Total += dblQuantity * Convert.ToDouble(lblPrice.Text);
                 }
             }
