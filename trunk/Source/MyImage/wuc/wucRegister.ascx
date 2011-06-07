@@ -1,6 +1,7 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="wucRegister.ascx.cs" Inherits="wuc_wucRegister" %>
 
 <div>
+<h1>Register Form</h1>
 <table>
     <tr>
         <td style="height: 26px; width: 98px;">Email</td> <td style="height: 26px; width: 208px;"> 
