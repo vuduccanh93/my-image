@@ -17,18 +17,22 @@ public partial class wuc_wucOrderList : System.Web.UI.UserControl
 
         if (!Page.IsPostBack)
         {
-            CustomerModel model = (CustomerModel)Session["user"];
-            DataTable _Data = OrderDAO.GetByCusId(model.ID);
-            if (_Data != null && _Data.Rows.Count > 0)
-            {
-                grvOrder.DataSource = OrderDAO.Customer_GetAll(model.ID);
-                grvOrder.DataBind();
-                //EnableCancelButton();
-            }
-            else
-            {
-                lblInfo.Text = "<h2>No data found</h2>";
-            }
+            loadOrder();
+        }
+    }
+    private void loadOrder()
+    {
+        CustomerModel model = (CustomerModel)Session["user"];
+        DataTable _Data = OrderDAO.GetByCusId(model.ID);
+        if (_Data != null && _Data.Rows.Count > 0)
+        {
+            grvOrder.DataSource = OrderDAO.Customer_GetAll(model.ID);
+            grvOrder.DataBind();
+            EnableCancelButton();
+        }
+        else
+        {
+            lblInfo.Text = "<h2>No data found</h2>";
         }
     }
     protected void grvOrder_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -42,6 +46,7 @@ public partial class wuc_wucOrderList : System.Web.UI.UserControl
             if (OrderDAO.UpdateStatus(_OrderId, "0"))
             {
                 lblInfo.Text = "The order no." + _OrderNo + " has been deleted";
+                loadOrder();
             }
             else
             {
@@ -57,15 +62,20 @@ public partial class wuc_wucOrderList : System.Web.UI.UserControl
         foreach (GridViewRow Row in grvOrder.Rows)
         {
             _StatusId = Convert.ToInt32(((Label)Row.FindControl("lblStatusId")).Text);
-            if (_StatusId >= 3)
+            _LbtnCancel = (LinkButton)Row.FindControl("lbtnCancel");
+            if (_StatusId > 1)
             {
-                _LbtnCancel = (LinkButton)Row.FindControl("lbtnCancel");
-                _LbtnCancel.Visible = false;
-
-                _LblDisableCancel = (Label)Row.FindControl("lblDisableCancel");
-                _LblDisableCancel.Visible = true;
+                _LbtnCancel.Enabled = false;
+            }
+            else
+            {
+                _LbtnCancel.Visible = true;
             }
         }
+    }
+    protected void grvOrder_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+    {
+
     }
 }
 
