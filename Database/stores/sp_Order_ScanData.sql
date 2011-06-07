@@ -34,13 +34,6 @@ FROM OrderDetails AS A
 FULL JOIN	Orders AS B ON B.ID = A.O_id
 FULL JOIN 	UploadDetails AS C ON C.ID = A.U_details_id
 FULL JOIN  Upload AS D ON D.ID = C.U_id
-
---Act = 0 ->DELETE
-------= 1 ->IN ACTION
-------= 2 ->PAYMENT BY CASH - STILL DIDN'T PAY
-------= 3 ->PAYMENT BY CASH - PAID
-------= 4 ->PAYMENT BY CC	- STILL NOT BE APPLIED
-------= 5 ->PAYMENT BY CC	- APPLIED
 SELECT * FROM @Table
 
 
