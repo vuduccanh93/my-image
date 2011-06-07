@@ -18,7 +18,6 @@ BEGIN
 			A.P_methods_id,
 			D.Name AS 'P_methods_name',
 			A.C_cards_id,
-			dbo.udf_Util_CreditCardFormat(convert(varchar(max),decryptbypassphrase('XXX',B.Number))) AS	'C_cards_number',
 			A.C_id AS 'Customer_id',
 			(E.F_name + ' ' +  E.L_name) AS 'Customer_name',
 			F.ID AS 'Status_id',
@@ -26,7 +25,6 @@ BEGIN
 			dbo.udf_Util_DateTimeFormat(A.Last_modified ,'yyyy-mm-dd hh:mm:ss') AS 'Last_modified',
 			dbo.udf_Util_DateTimeFormat(A.Created_date ,'yyyy-mm-dd hh:mm:ss') AS 'Created_date'
 	FROM Orders AS A
-	INNER JOIN CreditCards AS B ON B.ID = A.C_cards_id
 	INNER JOIN StateProvinces AS C ON C.ID = A.S_provinces_id
 	INNER JOIN PaymentMethods AS D ON D.ID = A.P_methods_id
 	INNER JOIN Customers AS E ON E.ID = A.C_id
