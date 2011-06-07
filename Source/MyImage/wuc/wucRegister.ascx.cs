@@ -16,6 +16,10 @@ public partial class wuc_wucRegister : System.Web.UI.UserControl
        
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!Page.IsPostBack)
+        {
+            txtPhone.Attributes.Add("onKeypress", "IsNumber(event);");
+        }
     }
 
 
@@ -43,7 +47,7 @@ public partial class wuc_wucRegister : System.Web.UI.UserControl
         }
         else
         {
-            Response.Write("That Bai");
+            Response.Write("Fails");
         }
 
     }
