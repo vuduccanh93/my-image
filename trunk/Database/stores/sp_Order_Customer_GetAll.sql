@@ -2,7 +2,7 @@ IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[dbo].[sp_Order_C
 DROP PROCEDURE [dbo].[sp_Order_Customer_GetAll]
 GO
 CREATE PROC [sp_Order_Customer_GetAll](
-	@CusId				INT
+	@CusId 		INT
 )
 AS
 BEGIN
@@ -23,7 +23,7 @@ BEGIN
 	INNER JOIN StateProvinces AS C ON C.ID = A.S_provinces_id
 	INNER JOIN PaymentMethods AS D ON D.ID = A.P_methods_id
 	INNER JOIN OrderStatus AS F ON F.ID = A.Status_id
-	WHERE A.C_id = @CusId
+	WHERE A.C_id = @CusId 
 END
 
 
