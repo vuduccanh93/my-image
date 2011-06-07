@@ -20,7 +20,6 @@ BEGIN
 			dbo.udf_Util_DateTimeFormat(A.Last_modified ,'yyyy-mm-dd hh:mm:ss') AS 'Last_modified',
 			dbo.udf_Util_DateTimeFormat(A.Created_date ,'yyyy-mm-dd hh:mm:ss') AS 'Created_date'
 	FROM Orders AS A
-	INNER JOIN CreditCards AS B ON B.ID = A.C_cards_id
 	INNER JOIN StateProvinces AS C ON C.ID = A.S_provinces_id
 	INNER JOIN PaymentMethods AS D ON D.ID = A.P_methods_id
 	INNER JOIN OrderStatus AS F ON F.ID = A.Status_id
