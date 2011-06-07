@@ -30,8 +30,10 @@ public partial class wuc_wucOrder_Order : System.Web.UI.UserControl
                 Session["order_orderdetails"] = null;
             }
 
-            OrderModel _Model = OrderDAO.GetById(((OrderModel)Session["order"]).ID);
-            txtNo.Text = _Model.NO;
+            OrderModel model = (OrderModel)Session["order"];
+            model = OrderDAO.GetById(model.ID);
+            txtNo.Text = model.NO;
+
 
             drlStateProvince.DataSource = StateProvinceDAO.GetAllAvalable();
             drlStateProvince.DataTextField = "Name";
