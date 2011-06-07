@@ -8,6 +8,7 @@
     <style media="all" type="text/css">@import "inc/css/all.css";</style>
     <link href="inc/css/calendar.css" rel="stylesheet" type="text/css" />
     <script type='text/javascript' src='inc/js/calendar.js'></script>
+    <script type='text/javascript' src='inc/js/web.js'></script>
 </head>
 <body>
 <form id="mainform" runat="server">
@@ -41,8 +42,6 @@
 			</label>
 		  </div>
 			<div class="table">
-				<img src="inc/img/bg-th-left.gif" width="8" height="7" alt="" class="left" />
-				<img src="inc/img/bg-th-right.gif" width="7" height="7" alt="" class="right" />
 				<asp:contentplaceholder id="ContentPlaceHolderRight" runat="server">
                 </asp:contentplaceholder>
 				<div class="select">
