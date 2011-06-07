@@ -10,6 +10,7 @@ BEGIN
 			A.O_id,
 			A.U_details_id,
 			C.Folder+B.img AS 'name',
+			C.Folder as folder,
 			(C.Folder + B.img) AS 'link',
 			A.Price,
 			A.Size,
