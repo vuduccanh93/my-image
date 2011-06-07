@@ -75,7 +75,7 @@ public class OrderDAO
         param[i++].Value = model.Amount;
         param[i] = new SqlParameter("@P_methods_id", SqlDbType.Int);
         param[i++].Value = model.PMethodId;
-        param[i] = new SqlParameter("@C_cards_id", SqlDbType.Int);
+        param[i] = new SqlParameter("@C_cards_id", SqlDbType.VarChar);
         param[i++].Value = model.CCardId;
         param[i] = new SqlParameter("@C_id", SqlDbType.Int);
         param[i++].Value = model.CustomerId;
