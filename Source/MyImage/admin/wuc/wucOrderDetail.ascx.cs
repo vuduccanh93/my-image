@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
+using System.IO;
 
 public partial class admin_wuc_wucOrderDetail : System.Web.UI.UserControl
 {
@@ -45,14 +46,29 @@ public partial class admin_wuc_wucOrderDetail : System.Web.UI.UserControl
                     lblStatus.Visible = true;
                     lblStatus.Text = Model.Status;
                     btnSaveStatus.Visible = false;
-                    grvOrderDetail.HeaderRow.Cells[0].Text = "";
-                    grvOrderDetail.HeaderRow.Cells[1].Text = "";
+                    int f =0;
                     foreach (GridViewRow _Dtr in grvOrderDetail.Rows)
                     {
-                        _Dtr.Cells[0].Visible = false;
-                        _Dtr.Cells[1].Visible = false;
+                        Image Image = (Image)_Dtr.FindControl("Image");
+                        Image.Visible = false;
+                        HyperLink hyperLink = (HyperLink)_Dtr.FindControl("HyperLink");
+                        hyperLink.Visible = false;
+                        Label lblImage = (Label)_Dtr.FindControl("lblImage");
+                        lblImage.Visible = true;
+                        Label lblLink = (Label)_Dtr.FindControl("lblLink");
+                        lblLink.Visible = true;
+                        if (f == grvOrderDetail.Rows.Count)
+                            if (Directory.Exists(MapPath(lblLink.Text)))
+                            {
+                                Directory.Delete(MapPath(lblLink.Text), true);
+                                Response.Redirect("?t=or&oid=" + Model.ID);
+                            }
+                        f++;
+                        lblLink.Text = "Null";
+                       
                     }
                    
+                       
                 }
                 else
                 {
@@ -61,6 +77,14 @@ public partial class admin_wuc_wucOrderDetail : System.Web.UI.UserControl
                     drlStatus.DataValueField = "ID";
                     drlStatus.DataBind();
                     drlStatus.SelectedValue = Model.StatusId;
+                    foreach (GridViewRow _Dtr in grvOrderDetail.Rows)
+                    {
+                        Image Image = (Image)_Dtr.FindControl("Image");
+                        Image.Width = 100;
+                        Image.Height = 100;
+                        
+                        
+                    }
                 }
                 
             }
@@ -69,10 +93,7 @@ public partial class admin_wuc_wucOrderDetail : System.Web.UI.UserControl
     protected void btnSaveStatus_Click(object sender, EventArgs e)
     {
         OrderDAO.UpdateStatus(Model.ID,drlStatus.SelectedValue.ToString());
-        Main();
-        
-       
-            
+        Main(); 
     }
     protected void grvOrderDetail_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
