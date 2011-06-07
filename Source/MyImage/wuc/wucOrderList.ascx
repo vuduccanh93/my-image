@@ -1,5 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="wucOrderList.ascx.cs" Inherits="wuc_wucOrderList" %>
-<asp:Label ID="lblInfo" runat="server" Text="Label"></asp:Label><br />
+<asp:Label ID="lblInfo" runat="server"></asp:Label><br />
 <asp:GridView ID="grvOrder" runat="server" Width="580px" AutoGenerateColumns="False" OnRowCommand="grvOrder_RowCommand">
     <Columns>
         <asp:TemplateField HeaderText="ID">
