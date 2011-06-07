@@ -23,7 +23,7 @@ public partial class wuc_wucOrderList : System.Web.UI.UserControl
             {
                 grvOrder.DataSource = OrderDAO.Customer_GetAll(model.ID);
                 grvOrder.DataBind();
-                EnableCancelButton();
+                //EnableCancelButton();
             }
             else
             {
