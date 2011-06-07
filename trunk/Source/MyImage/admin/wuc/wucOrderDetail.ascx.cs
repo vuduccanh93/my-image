@@ -28,11 +28,7 @@ public partial class admin_wuc_wucOrderDetail : System.Web.UI.UserControl
             {
                 lblNo.Text = Model.NO;
                 lblDate.Text = Model.CreatedDate;
-                drlStatus.DataSource = OrderStatusDAO.GetAll();
-                drlStatus.DataTextField = "Status";
-                drlStatus.DataValueField = "ID";
-                drlStatus.DataBind();
-                drlStatus.SelectedValue = Model.StatusId;
+             
                 lblCustomer.Text = Model.Customer;
                 lblPayment.Text = Model.PMethod;
                 lblCC.Text = Model.CCard;
@@ -43,6 +39,29 @@ public partial class admin_wuc_wucOrderDetail : System.Web.UI.UserControl
                 lblContent.Text = Model.Content;
                 grvOrderDetail.DataSource = OrderDetailDAO.GetByOrderId(Model.ID);
                 grvOrderDetail.DataBind();
+                if (Model.StatusId.Equals("5"))
+                {
+                    drlStatus.Visible = false;
+                    lblStatus.Visible = true;
+                    lblStatus.Text = Model.Status;
+                    btnSaveStatus.Visible = false;
+                    grvOrderDetail.HeaderRow.Cells[0].Text = "";
+                    grvOrderDetail.HeaderRow.Cells[1].Text = "";
+                    foreach (GridViewRow _Dtr in grvOrderDetail.Rows)
+                    {
+                        _Dtr.Cells[0].Visible = false;
+                        _Dtr.Cells[1].Visible = false;
+                    }
+                   
+                }
+                else
+                {
+                    drlStatus.DataSource = OrderStatusDAO.GetAll();
+                    drlStatus.DataTextField = "Status";
+                    drlStatus.DataValueField = "ID";
+                    drlStatus.DataBind();
+                    drlStatus.SelectedValue = Model.StatusId;
+                }
                 
             }
         }
@@ -50,6 +69,10 @@ public partial class admin_wuc_wucOrderDetail : System.Web.UI.UserControl
     protected void btnSaveStatus_Click(object sender, EventArgs e)
     {
         OrderDAO.UpdateStatus(Model.ID,drlStatus.SelectedValue.ToString());
+        Main();
+        
+       
+            
     }
     protected void grvOrderDetail_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
