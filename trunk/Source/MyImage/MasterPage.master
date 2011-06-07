@@ -10,6 +10,9 @@
     <script type='text/javascript' src='inc/js/calendar_us.js'></script>
     <script type='text/javascript' src='inc/js/jquery-1.3.2.js'></script>
     <script type='text/javascript' src="inc/js/jquery.MultiFile.js"></script>
+    <script type='text/javascript' src="inc/js/web.js"></script>
+
+
 </head>
 <body>
     <form id="mainform" runat="server">
