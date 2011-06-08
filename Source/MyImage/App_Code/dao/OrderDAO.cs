@@ -114,7 +114,7 @@ public class OrderDAO
                     _Model.CCardId = row["C_cards_id"].ToString();
                     _Model.CCard = row["C_cards_number"].ToString();
                     _Model.CustomerId = row["Customer_id"].ToString();
-                    _Model.CustomerId = row["Customer_name"].ToString();
+                    _Model.Customer = row["Customer_name"].ToString();
                     _Model.StatusId = row["Status_id"].ToString();
                     _Model.Status = row["Status_name"].ToString();
                     _Model.CreatedDate = row["Created_date"].ToString();
