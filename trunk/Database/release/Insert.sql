@@ -26,6 +26,7 @@ Insert into Members Values('printer','printer','1',0)
 
 --Insert Menu
 
+Insert into Menu Values('Change Password','?t=cf','')
 Insert into Menu Values('Customers','?t=cu','')
 Insert into Menu Values('Member','?t=me','')
 Insert into Menu Values('Orders','?t=or','')
@@ -40,6 +41,11 @@ Insert into Ro_Me Values(0,2)
 Insert into Ro_Me Values(0,3)
 Insert into Ro_Me Values(0,4)
 Insert into Ro_Me Values(0,5)
+Insert into Ro_Me Values(0,6)
+Insert into Ro_Me Values(1,0)
+Insert into Ro_Me Values(1,3)
+
+
 -- insert PaymentMethods
 
 Insert into PaymentMethods Values ('Cash')
