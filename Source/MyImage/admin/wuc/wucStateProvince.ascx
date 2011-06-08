@@ -1,4 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="wucStateProvince.ascx.cs" Inherits="admin_wuc_wucStateProvince" %>
+<asp:Label ID="lblLabel" runat="server" Text="Label"></asp:Label>
 <asp:GridView ID="grvStateProvince" runat="server" AutoGenerateColumns="False" CssClass="listing" OnRowCancelingEdit="grvStateProvince_RowCancelingEdit" OnRowEditing="grvStateProvince_RowEditing" OnRowUpdated="grvStateProvince_RowUpdated" OnRowUpdating="grvStateProvince_RowUpdating" OnRowCommand="grvStateProvince_RowCommand" ShowFooter="True" AllowPaging="True" OnPageIndexChanging="grvStateProvince_PageIndexChanging" PageSize="5">
     <Columns>
         <asp:TemplateField HeaderText="ID" Visible="False">

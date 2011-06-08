@@ -37,15 +37,23 @@ public partial class admin_wuc_wucStateProvince : System.Web.UI.UserControl
         String _Name = ((TextBox)_Row.FindControl("txtName")).Text;
         String _Avail = ((CheckBox)_Row.FindControl("ckbAvailable")).Checked ? "1" : "0";
         StateProvinceModel _Model = new StateProvinceModel(_Id, _Name, _Avail);
-        if (StateProvinceDAO.IsAvailable(_Model) == 0)
+        if (String.IsNullOrEmpty(_Name.Trim()))
         {
-            StateProvinceDAO.Update(_Model);
-            grvStateProvince.EditIndex = -1;
-            BindData();
+            lblLabel.Text = "State/Province(s) is NOT NULL or EMPTY!";
         }
         else
         {
-            Alert(_Name + " is NOT AVAILABLE!");
+            if (StateProvinceDAO.IsAvailable(_Model) == 0)
+            {
+                StateProvinceDAO.Update(_Model);
+                lblLabel.Text = "";
+                grvStateProvince.EditIndex = -1;
+                BindData();
+            }
+            else
+            {
+                lblLabel.Text = _Name + " is NOT AVAILABLE!";
+            }
         }
         
     }
@@ -67,7 +75,7 @@ public partial class admin_wuc_wucStateProvince : System.Web.UI.UserControl
             StateProvinceModel _NewModel = null;
             if (String.IsNullOrEmpty(_SPName.Text.Trim()))
             {
-                Alert("State/Province(s) is NOT NULL or EMPTY!");
+                lblLabel.Text = "State/Province(s) is NOT NULL or EMPTY!";
             }
             else
             {
@@ -75,20 +83,17 @@ public partial class admin_wuc_wucStateProvince : System.Web.UI.UserControl
                 if (StateProvinceDAO.IsAvailable(_NewModel) == 0)
                 {
                     StateProvinceDAO.Insert(_NewModel);
+                    lblLabel.Text = "";
                     BindData();
                 }
                 else
                 {
-                    Alert(_SPName.Text +" is NOT AVAILABLE!");
+                    lblLabel.Text = _SPName.Text +" is NOT AVAILABLE!";
                 }
             }
         }
     }
 
-    protected void Alert(String _Text)
-    {
-        Response.Write("<script>alert('" + _Text + "')</script>");
-    }
     protected void grvStateProvince_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
         grvStateProvince.PageIndex = e.NewPageIndex;
