@@ -8,15 +8,33 @@ CREATE PROCEDURE [sp_Order_Statistic_GetByFromTo](
 )
 AS
 BEGIN
-	SELECT	A.ID,
-			A.No, 
-			(B.F_name + ' ' +  B.L_name) AS 'Fullname',
-			A.Amount,
-			dbo.udf_Util_DateTimeFormat(A.Created_date ,'yyyy-mm-dd hh:mm:ss') AS 'Created_date',
-			A.Status_id
-	FROM Orders AS A
-	INNER JOIN Customers AS B ON B.ID = A.C_id
-	WHERE A.Created_date >= @From AND A.Created_date <= @To 
-	AND (A.Status_id = @Opt OR @Opt = -1)
+	IF @From = @To
+	BEGIN
+		SELECT	A.ID,
+				A.No, 
+				(B.F_name + ' ' +  B.L_name) AS 'Fullname',
+				A.Amount,
+				dbo.udf_Util_DateTimeFormat(A.Created_date ,'yyyy-mm-dd hh:mm:ss') AS 'Created_date',
+				A.Status_id
+		FROM Orders AS A
+		INNER JOIN Customers AS B ON B.ID = A.C_id
+		WHERE dbo.udf_Util_DateTimeFormat(A.Created_date,'yyyy-mm-dd') = dbo.udf_Util_DateTimeFormat(@From,'yyyy-mm-dd')
+		AND (A.Status_id = @Opt OR @Opt = -1)
+	END
+	ELSE
+	BEGIN
+		SELECT	A.ID,
+				A.No, 
+				(B.F_name + ' ' +  B.L_name) AS 'Fullname',
+				A.Amount,
+				dbo.udf_Util_DateTimeFormat(A.Created_date ,'yyyy-mm-dd hh:mm:ss') AS 'Created_date',
+				A.Status_id
+		FROM Orders AS A
+		INNER JOIN Customers AS B ON B.ID = A.C_id
+		WHERE dbo.udf_Util_DateTimeFormat(A.Created_date,'yyyy-mm-dd') >= dbo.udf_Util_DateTimeFormat(@From,'yyyy-mm-dd')
+		AND dbo.udf_Util_DateTimeFormat(A.Created_date,'yyyy-mm-dd') <= dbo.udf_Util_DateTimeFormat(@To,'yyyy-mm-dd')
+		AND (A.Status_id = @Opt OR @Opt = -1)
+	END
+	
 END
 
