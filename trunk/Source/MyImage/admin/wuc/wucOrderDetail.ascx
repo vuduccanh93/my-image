@@ -1,61 +1,62 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="wucOrderDetail.ascx.cs" Inherits="admin_wuc_wucOrderDetail" %>
 <table class="order-detail">
 <tr>
-    <td style="width:100px;">No:</td>
+    <td style="width:100px;"><b>No:</b></td>
     <td class="style2">
         <asp:Label ID="lblNo" runat="server" Text="Label"></asp:Label></td>
-    <td>Date:</td>
+    <td><b>Date:</b></td>
     <td class="style2">
         <asp:Label ID="lblDate" runat="server" Text="Label"></asp:Label></td>
 </tr>
 <tr>
     <td style="height: 21px">
-        Status:</td>
+        <b>Status:</b></td>
     <td colspan="3" class="style2">
-        &nbsp;<asp:DropDownList ID="drlStatus" runat="server">
+    <asp:Label ID="lblStatus" runat="server" Visible="False"></asp:Label>
+        <asp:DropDownList ID="drlStatus" runat="server">
         </asp:DropDownList>
-        <asp:Label ID="lblStatus" runat="server" Visible="False"></asp:Label>
+        
         <asp:Button ID="btnSaveStatus" runat="server" OnClick="btnSaveStatus_Click" Text="Save" /></td>
 </tr>
 <tr>
-    <td >Customer:</td>
+    <td ><b>Customer:</b></td>
     <td colspan="3" class="style2">
         <asp:Label ID="lblCustomer" runat="server" Text="Label"></asp:Label></td>
 </tr>
 <tr>
-    <td>Payment:</td>
+    <td><b>Payment:</b></td>
     <td class="style2">
         <asp:Label ID="lblPayment" runat="server" Text="Label"></asp:Label></td>
-    <td>Credit card:</td>
+    <td><b>Credit card:</b></td>
     <td class="style2">
         <asp:Label ID="lblCC" runat="server" Text="Label"></asp:Label></td>
 </tr>
 <tr>
     <td></td>
     <td></td>
-    <td>Printing price:</td>
+    <td><b>Printing price:</b></td>
     <td class="style2">
         <asp:Label ID="lblPPrice" runat="server" Text="Label"></asp:Label></td>
 </tr>
 <tr>
     <td>
-        Province/State:</td>
+        <b>Province/State:</b></td>
     <td class="style2">
         <asp:Label ID="lblPState" runat="server" Text="Label"></asp:Label></td>
-    <td>Shipping price:</td>
+    <td><b>Shipping price:</b></td>
     <td class="style2">
         <asp:Label ID="lblSPrice" runat="server" Text="Label"></asp:Label></td>
 </tr>
 <tr>
     <td></td>
     <td></td>
-    <td>Amount:</td>
+    <td><b>Amount:</b></td>
     <td class="style2">
         <asp:Label ID="lblAmount" runat="server" Text="Label"></asp:Label></td>
 </tr>
 <tr>
     <td>
-        Content:</td>
+        <b>Content:</b></td>
     <td colspan="3">
         <asp:Label ID="lblContent" runat="server" Text="Label"></asp:Label></td>
 </tr>
