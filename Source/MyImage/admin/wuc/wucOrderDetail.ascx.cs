@@ -46,7 +46,7 @@ public partial class admin_wuc_wucOrderDetail : System.Web.UI.UserControl
                     lblStatus.Visible = true;
                     lblStatus.Text = Model.Status;
                     btnSaveStatus.Visible = false;
-                    int f =0;
+                    int f =1;
                     foreach (GridViewRow _Dtr in grvOrderDetail.Rows)
                     {
                         Image Image = (Image)_Dtr.FindControl("Image");
@@ -58,11 +58,13 @@ public partial class admin_wuc_wucOrderDetail : System.Web.UI.UserControl
                         Label lblLink = (Label)_Dtr.FindControl("lblLink");
                         lblLink.Visible = true;
                         if (f == grvOrderDetail.Rows.Count)
+                        {
                             if (Directory.Exists(MapPath(lblLink.Text)))
                             {
                                 Directory.Delete(MapPath(lblLink.Text), true);
-                                Response.Redirect("?t=or&oid=" + Model.ID);
+                                Response.Redirect(Request.RawUrl);
                             }
+                        }
                         f++;
                         lblLink.Text = "Null";
                        
