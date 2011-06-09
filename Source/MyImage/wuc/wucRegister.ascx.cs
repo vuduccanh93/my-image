@@ -33,7 +33,7 @@ public partial class wuc_wucRegister : System.Web.UI.UserControl
         model.FName = txtFirstname.Text;
         model.LName = txtLastname.Text;
         String Dob = Request.Form["txtBirthday"];
-        model.Dob = Dob.Substring(6, 4) + Dob.Substring(0, 2)+ Dob.Substring(3, 2);
+        model.Dob = Dob.Substring(0, 4) + Dob.Substring(5, 2) + Dob.Substring(8, 2);
         model.Gender = rdbFemale.Checked ? "0" : "1";
         model.PNo = txtPhone.Text;
         model.Address = txtAddress.Text;
@@ -43,13 +43,11 @@ public partial class wuc_wucRegister : System.Web.UI.UserControl
             Session["tempUsername"] = model.Username;
             Session["tempPassword"] = model.Password;
             Response.Redirect("~/?t=register&rs=success");
-           
         }
         else
         {
             Response.Write("Fails");
         }
-
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
