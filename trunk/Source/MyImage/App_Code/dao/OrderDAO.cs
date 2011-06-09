@@ -144,4 +144,8 @@ public class OrderDAO
         param[i++].Value = _To;
         return DataUtil.executeStore("sp_Order_Statistic_GetByFromTo", param);
     }
+    public static DataTable ScanData()
+    {
+        return DataUtil.executeStore("sp_Order_ScanData", null);
+    }
 }
