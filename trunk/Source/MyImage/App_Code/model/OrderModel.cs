@@ -31,13 +31,10 @@ public class OrderModel
     private String statusId;
     private String status;
     private String shiptime;
+    private String lastModified;
     private String createdDate;
 
-    public String ShipTime
-    {
-        get { return this.shiptime; }
-        set { this.shiptime = value; }
-    }
+
     public String ID
     {
         get { return this.id; }
@@ -123,12 +120,21 @@ public class OrderModel
         get { return this.status; }
         set { this.status = value; }
     }
+    public String ShipTime
+    {
+        get { return this.shiptime; }
+        set { this.shiptime = value; }
+    }
     public String CreatedDate
     {
         get { return this.createdDate; }
         set { this.createdDate = value; }
     }
-
+    public String LastModified
+    {
+        get { return this.lastModified; }
+        set { this.lastModified = value; }
+    }
     public OrderModel()
     {
         this.id = "";
@@ -148,6 +154,8 @@ public class OrderModel
         this.customer = "";
         this.statusId = "";
         this.status = "";
+        this.ShipTime = "";
+        this.lastModified = "";
         this.createdDate = "";
     }
     public OrderModel(String _Id,
