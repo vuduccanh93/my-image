@@ -13,6 +13,10 @@ using System.Web.UI.HtmlControls;
 /// </summary>
 public class OrderStatusDAO
 {
+    /**
+     * get order status in database
+     * 
+     * */
     public static DataTable GetAll()
     {
         return DataUtil.executeStore("sp_OrderStatus_GetAll", null);

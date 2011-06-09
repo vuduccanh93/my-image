@@ -14,6 +14,10 @@ using System.Data.SqlClient;
 /// </summary>
 public class CreditCardDAO
 {
+    /**
+     * Insert new CC to database
+     * 
+     * */
     public static String Insert(CreditCardModel model)
     {
         SqlParameter[] param = new SqlParameter[5];

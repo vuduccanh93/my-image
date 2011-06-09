@@ -14,14 +14,26 @@ using System.Data.SqlClient;
 /// </summary>
 public class StateProvinceDAO
 {
+    /**
+     * get all state/provinces (admin page)
+     * 
+     * */
     public static DataTable GetAll()
     {
         return DataUtil.executeStore("sp_StateProvince_GetAll", null);
     }
+    /**
+     * get available state/province (customer page)
+     * 
+     * */
     public static DataTable GetAllAvalable()
     {
         return DataUtil.executeStore("sp_StateProvince_GetAllAvalable", null);
     }
+    /**
+     * update by id
+     * 
+     * */
     public static Boolean Update(StateProvinceModel _Model)
     {
         SqlParameter[] param = new SqlParameter[3];
@@ -35,6 +47,10 @@ public class StateProvinceDAO
 
         return DataUtil.executeNonStore("sp_StateProvince_Update", param);
     }
+    /**
+     * check avalable state/province's name
+     * 
+     * */
     public static int IsAvailable(StateProvinceModel _Model)
     {
         SqlParameter[] param = new SqlParameter[2];
@@ -45,6 +61,10 @@ public class StateProvinceDAO
         param[i++].Value = _Model.Name;
         return DataUtil.executeStore("sp_StateProvince_IsAvailable", param).Rows.Count;
     }
+    /**
+     * insert new
+     * 
+     * */
     public static Boolean Insert(StateProvinceModel _Model)
     {
         SqlParameter[] param = new SqlParameter[2];

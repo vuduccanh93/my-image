@@ -16,6 +16,10 @@ using System.Collections.Generic;
 /// </summary>
 public class OrderDetailDAO
 {
+    /**
+     * get order detail by order id
+     * 
+     * */
 	public static DataTable GetByOrderId(String _OId)
 	{
         DataTable _Rs = null;
@@ -33,6 +37,10 @@ public class OrderDetailDAO
         }
         return _Rs;
 	}
+    /**
+     * insert a new order detail
+     * 
+     * */
     public static Boolean Insert(OrderDetailModel model)
     {
         SqlParameter[] param = new SqlParameter[6];
@@ -51,6 +59,10 @@ public class OrderDetailDAO
         param[i++].Value = model.Amount;
         return DataUtil.executeNonStore("sp_OrderDetails_Insert", param);
     }
+    /**
+     * insert orders to database
+     * 
+     * */
     public static Boolean MultiInsert(List<OrderDetailModel> _List)
     {
         bool _Rs = false;

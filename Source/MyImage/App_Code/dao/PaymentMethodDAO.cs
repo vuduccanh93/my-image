@@ -13,6 +13,10 @@ using System.Web.UI.HtmlControls;
 /// </summary>
 public class PaymentMethodDAO
 {
+    /**
+     * get all payment methods in database
+     * 
+     * */
     public static DataTable GetAll()
     {
         return DataUtil.executeStore("sp_PaymentMethod_GetAll", null);

@@ -13,6 +13,9 @@ using System.Web.UI.HtmlControls;
 /// </summary>
 public class MemberStatusDAO
 {
+    /**
+     * get all member status in database
+     * */
     public static DataTable GetAll()
     {
         return DataUtil.executeStore("sp_MemberStatus_GetAll", null);
