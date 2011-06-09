@@ -50,17 +50,32 @@ public partial class admin_wuc_wucStatisticOrder : System.Web.UI.UserControl
     }
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
+        
         _TxtFrom = Request.Form["txtFrom"];
         _TxtTo = Request.Form["txtTo"];
-        if (String.IsNullOrEmpty(_TxtFrom) || String.IsNullOrEmpty(_TxtTo))
+        String fromDay = _TxtFrom.Substring(0, 4) + _TxtFrom.Substring(5, 2) + _TxtFrom.Substring(8, 2) + "000000";
+        String toDay = _TxtTo.Substring(0, 4) + _TxtTo.Substring(5, 2) + _TxtTo.Substring(8, 2) + "000000";
+        if (Convert.ToDouble(fromDay) > Convert.ToDouble(toDay))
         {
-            lblError.Text = "From/to date is not null!";
-            return;
+            lblError.Text = "To date cant font of from date ";
+            lblInfo.Text = "";
+            grvStatisticOrder.Visible = false;
         }
-        String _From = _TxtFrom.Substring(0, 4) + _TxtFrom.Substring(6, 2) + _TxtFrom.Substring(8, 2) + " 000000";
-        String _To = _TxtTo.Substring(0, 4) + _TxtTo.Substring(6, 2) + _TxtTo.Substring(8, 2)  + " 000000";
-        string _Opt = drlOrderStatus.SelectedValue.ToString();
-        BindData(_Opt, _From, _To);
+        else
+        {
+            if (String.IsNullOrEmpty(_TxtFrom) || String.IsNullOrEmpty(_TxtTo))
+            {
+                lblError.Text = "From/to date is not null!";
+                lblInfo.Text = "";
+                grvStatisticOrder.Visible = false;
+                return;
+            }
+            String _From = _TxtFrom.Substring(0, 4) + _TxtFrom.Substring(5, 2) + _TxtFrom.Substring(8, 2) + " 000000";
+            String _To = _TxtTo.Substring(0, 4) + _TxtTo.Substring(5, 2) + _TxtTo.Substring(8, 2) + " 000000";
+            string _Opt = drlOrderStatus.SelectedValue.ToString();
+            grvStatisticOrder.Visible = true;
+            BindData(_Opt, _From, _To);
+        }
     }
     private float TotalAmound(DataTable _Dt)
     {
