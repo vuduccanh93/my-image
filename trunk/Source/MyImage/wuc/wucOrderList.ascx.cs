@@ -63,13 +63,16 @@ public partial class wuc_wucOrderList : System.Web.UI.UserControl
         {
             _StatusId = Convert.ToInt32(((Label)Row.FindControl("lblStatusId")).Text);
             _LbtnCancel = (LinkButton)Row.FindControl("lbtnCancel");
-            if (_StatusId > 1)
+            _LblDisableCancel = (Label)Row.FindControl("lblCancelDisable");
+            if (_StatusId == 1 || _StatusId == 2)
             {
                 _LbtnCancel.Visible = true;
+                _LblDisableCancel.Visible = false;
             }
             else
             {
                 _LbtnCancel.Visible = false;
+                _LblDisableCancel.Visible = true;
             }
         }
     }

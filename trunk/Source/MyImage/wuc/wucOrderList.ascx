@@ -45,6 +45,7 @@
             <ItemTemplate>
                 <asp:LinkButton ID="lbtnCancel" runat="server" CommandArgument="<%# Container.DataItemIndex %>" CausesValidation="false" CommandName="cancel"
                     Text="X"></asp:LinkButton>
+                <asp:Label ID="lblCancelDisable" runat="server" Text="Disable"></asp:Label>
             </ItemTemplate>
         </asp:TemplateField>
     </Columns>
