@@ -24,6 +24,7 @@ public partial class _Default : System.Web.UI.Page
     }
     public void Main()
     {
+        RightStateProvince();
         if (Session["user"] == null)
         {
             addCtrl(PlaceHolderLogin, Request.ApplicationPath + @"/wuc/wucLogin.ascx");
@@ -115,11 +116,30 @@ public partial class _Default : System.Web.UI.Page
             addCtrl(PlaceHolderLeft, Request.ApplicationPath + @"/wuc/wucHome.ascx");
         }
     }
+    /**
+     * add a web user control to another control
+     * 
+     * */
     private void addCtrl(Control ID, String _Path){
         ID.Controls.Add((Control)Page.LoadControl(_Path));
     }
+    /**
+     * Message box
+     * 
+     * */
     protected void Alert(String _Text)
     {
         Response.Write("<script>alert('" + _Text + "')</script>");
+    }
+
+    public void RightStateProvince()
+    {
+        String _pHtml = "<ul>";
+        foreach (DataRow Row in StateProvinceDAO.GetAllAvalable().Rows)
+        {
+            _pHtml += "<li>" + Row["Name"].ToString() + "</li>";
+        }
+        _pHtml += "</ul>";
+        lblSPV.Text = _pHtml;
     }
 }

@@ -49,23 +49,27 @@
                         </div>
                         <div class="content_right_section">
                         <div class="ads_250_250">
-                            <a href="http://www.templatemo.com" target="_parent">
-                            <img src="inc/img/shopping_cart_icon.jpg" alt="250x250 banner" /></a>
+                            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+                                codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,65,0"
+                                id="html"
+                                width="250">
+                                <param name="movie" value="inc/img/flash.swf"/>
+                                <param name="bgcolor" value="#FFFFFF"/>
+                                <embed name="FSB" src="inc/img/flash.swf"
+                                quality="high" bgcolor="#FFFFFF" swLiveConnect="true"
+                                width="250"
+                                type="application/x-shockwave-flash"
+                                pluginspage="http://www.macromedia.com/go/getflashplayer"></embed>
+                            </object>
                         </div>
                         </div>
                         <div class="cleaner_h30">
                             &nbsp;</div>
                         <div class="content_right_section">
                             <div class="content_right_titile_01">
-                                Content</div>
-                            <ul>
-                                <li><a href="#">XXXXXXXXX</a></li>
-                                <li><a href="#">XXXXXXXXX</a></li>
-                                <li><a href="#">XXXXXXXXX</a></li>
-                                <li><a href="#">XXXXXXXXX</a></li>
-                                <li><a href="#">XXXXXXXXX</a></li>
-                                <li><a href="#">XXXXXXXXX</a></li>
-                            </ul>
+                                Available State/Province</div>
+                                <asp:ContentPlaceHolder ID="ContentPlaceHolderProvince" runat="server">
+                            </asp:ContentPlaceHolder>
                         </div>
                         <div class="cleaner_h30">
                             &nbsp;</div>
@@ -89,20 +93,20 @@
         <!-- bottom panel -->
         <div id="bottom_wrapper">
             <div id="bottom_panel">
-                <div class="bottom_section_box">
+                <div class="bottom_section_box">Admin:huybbc@gmail.com
                     &nbsp;</div>
                 <div class="bottom_section_box">
                     &nbsp;</div>
                 <div class="bottom_section_box">
                     &nbsp;</div>
                 <div class="bottom_section_box">
-                    <div class="bottom_title"></div>
-                    <p/>
-                        
+                    <div class="bottom_title">
+                    
+                    </div>
+                    
                     <div class="cleaner">
                         &nbsp;</div>
-                </div>
-                <!-- Free Website Templates @ TemplateMo.com -->
+                </div>&copy;&nbsp;Copyright Aptech. All Rights Reserved.
                 <div class="cleaner">
                     &nbsp;</div>
             </div>

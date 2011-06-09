@@ -18,4 +18,6 @@
         <asp:PlaceHolder ID="PlaceHolderLeft" runat="server"></asp:PlaceHolder>
     </div>
 </asp:Content>
-
+<asp:Content ID="ContentProvince" ContentPlaceHolderID="ContentPlaceHolderProvince" runat="Server">
+    <asp:Label ID="lblSPV" runat="server" Text="Label"></asp:Label>
+</asp:Content>
