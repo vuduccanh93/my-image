@@ -1,4 +1,7 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="wucMember.ascx.cs" Inherits="admin_wuc_wucMember" %>
+			<div class="top-bar">
+				<h1>  Member </h1>
+			</div>
 <asp:GridView ID="grvMember" runat="server" CssClass="listing" AutoGenerateColumns="False" OnRowCancelingEdit="grvMember_RowCancelingEdit" OnRowEditing="grvMember_RowEditing" OnRowUpdated="grvMember_RowUpdated" OnRowUpdating="grvMember_RowUpdating">
     <Columns>
         <asp:TemplateField HeaderText="ID">

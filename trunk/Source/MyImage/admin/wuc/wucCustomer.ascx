@@ -1,4 +1,7 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="wucCustomer.ascx.cs" Inherits="admin_wuc_wucCustomer" %>
+			<div class="top-bar">
+				<h1>  Customer </h1>
+			</div>
 <asp:GridView ID="grvCustomer" runat="server" AutoGenerateColumns="False" CssClass="listing" OnRowEditing="grvCustomer_RowEditing" OnRowCancelingEdit="grvCustomer_RowCancelingEdit" OnRowUpdated="grvCustomer_RowUpdated" EditRowStyle-CssClass="customer" OnRowUpdating="grvCustomer_RowUpdating" AllowPaging="True" >
     <Columns>
         <asp:TemplateField HeaderText="ID" HeaderStyle-CssClass="editmod-hide">

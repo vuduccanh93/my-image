@@ -1,4 +1,7 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="wucOrderStatistic.ascx.cs" Inherits="admin_wuc_wucStatisticOrder" %>
+			<div class="top-bar">
+				<h1>  Search Order </h1>
+			</div>
 <table border="0" class='listing'>
     <tr>
         <td style="height: 26px" align="right" valign="middle">

@@ -1,4 +1,7 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="wucOrderDetail.ascx.cs" Inherits="admin_wuc_wucOrderDetail" %>
+			<div class="top-bar">
+				<h1>  Order detail </h1>
+			</div>
 <table class="order-detail">
 <tr>
     <td style="width:100px;"><b>No:</b></td>

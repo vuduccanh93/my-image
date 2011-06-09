@@ -14,7 +14,7 @@
 <form id="mainform" runat="server">
 <div id="main">
 	<div id="header">
-		<a href="#" class="logo"><img src="inc/img/logo.gif" width="101" height="29" alt="" /></a>
+		<a href="#" class="logo"><img src="inc/img/logo.png" width="179" height="40" alt="" /></a>
 		<ul id="top-navigation">
 			<li class="active"><span><span>Homepage</span></span></li>
 		</ul>
@@ -28,19 +28,7 @@
 			</ul>
 		</div>
 		<div id="center-column">
-			<div class="top-bar">
-				<a href="#" class="button">ADD NEW </a>
-				<h1>Contents</h1>
-				<div class="breadcrumbs"><a href="#">Homepage</a> / <a href="#">Contents</a></div>
-			</div><br />
-		  <div class="select-bar">
-		    <label>
-		    <input type="text" name="textfield" />
-		    </label>
-		    <label>
-			<input type="submit" name="Submit" value="Search" />
-			</label>
-		  </div>
+
 			<div class="table">
 				<asp:contentplaceholder id="ContentPlaceHolderRight" runat="server">
                 </asp:contentplaceholder>
