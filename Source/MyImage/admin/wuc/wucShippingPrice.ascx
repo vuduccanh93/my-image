@@ -1,4 +1,7 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="wucShippingPrice.ascx.cs" Inherits="admin_wuc_wucShippingPrice" %>
+			<div class="top-bar">
+				<h1>  Shipping Price </h1>
+			</div>
 <asp:GridView ID="grvPrintingPrice" runat="server" AutoGenerateColumns="False" CssClass="listing" OnRowCancelingEdit="grvPrintingPrice_RowCancelingEdit" OnRowCommand="grvPrintingPrice_RowCommand" OnRowEditing="grvPrintingPrice_RowEditing" OnRowUpdated="grvPrintingPrice_RowUpdated" OnRowUpdating="grvPrintingPrice_RowUpdating" ShowFooter="True" AllowPaging="True" PageSize="4" OnPageIndexChanging="grvPrintingPrice_PageIndexChanging">
     <Columns>
         <asp:TemplateField HeaderText="ID">

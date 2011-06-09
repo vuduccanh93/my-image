@@ -33,6 +33,10 @@ public partial class admin_Default : System.Web.UI.Page
         }
         Main();
     }
+    /**
+     * use user role id to load menu item
+     * 
+     * */
     public void LoadMenu(String _Rid)
     {
         DataTable _MNTable = MenuDAO.GetByRoleId(_Rid);
@@ -45,9 +49,9 @@ public partial class admin_Default : System.Web.UI.Page
                 _Dr["Name"].ToString() +
                 "</a><em></em></li>";
         }
-        _pHtml += "<li class='last'><a href=" +
+        _pHtml += "<li><a href=" +
                  WEB_URL +
-                 @"admin/?t=scan" + ">Scan</a></li>";
+                 @"admin/?t=scan" + ">Scan</a><em></em></li>";
         _pHtml += "<li class='last'><a href=" +
                  WEB_URL +
                  @"admin/login/?logout=true" + ">Logout</a></li>";
@@ -79,9 +83,6 @@ public partial class admin_Default : System.Web.UI.Page
                         addControl(Request.ApplicationPath + @"/admin/wuc/wucOrder.ascx");
                     }
                     break;
-                case "ss":
-					
-                    break;
                 case "sp":
                     addControl(Request.ApplicationPath + @"/admin/wuc/wucStateProvince.ascx");
                     break;
@@ -94,9 +95,16 @@ public partial class admin_Default : System.Web.UI.Page
                 case "scan":
                     addControl(Request.ApplicationPath + @"/admin/wuc/wucScanData.ascx");
                     break;
+                case "cf":
+                    addControl(Request.ApplicationPath + @"/admin/wuc/wucChangePassword.ascx");
+                    break;
             }
         }
     }
+    /**
+     * add web user control to another control
+     * 
+     * */
     private void addControl(String _Path)
     {
         Control wucCus = (Control)Page.LoadControl(_Path);

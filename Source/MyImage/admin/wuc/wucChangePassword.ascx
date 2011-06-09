@@ -1,6 +1,8 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="wucChangePassword.ascx.cs" Inherits="admin_wuc_wucChangePassword" %>
+			<div class="top-bar">
+				<h1>  Change Password </h1>
+			</div>
 <table>
-    <caption>  Change Password </caption>
     <tr>
         <td colspan="2" align="center">
             <asp:Label ID="lblLabel" runat="server"></asp:Label></td>
