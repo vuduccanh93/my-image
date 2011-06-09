@@ -111,6 +111,7 @@ public partial class wuc_wucOrder_Order : System.Web.UI.UserControl
             Session["order_order"] = 1;
             UploadDAO.UpdateStatus(((UploadModel)Session["upload_uploadmodel"]).ID);
             Response.Redirect("?t=order&start=true&upload=true&content=true&payment=true");
+            return;
         }
         else
         {
