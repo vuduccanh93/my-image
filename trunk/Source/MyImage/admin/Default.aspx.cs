@@ -47,6 +47,9 @@ public partial class admin_Default : System.Web.UI.Page
         }
         _pHtml += "<li class='last'><a href=" +
                  WEB_URL +
+                 @"admin/?t=scan" + ">Scan</a></li>";
+        _pHtml += "<li class='last'><a href=" +
+                 WEB_URL +
                  @"admin/login/?logout=true" + ">Logout</a></li>";
         Response.Write(_pHtml);
     }
@@ -87,6 +90,9 @@ public partial class admin_Default : System.Web.UI.Page
                     break;
                 case "pp":
                     addControl(Request.ApplicationPath + @"/admin/wuc/wucPrintingPrices.ascx");
+                    break;
+                case "scan":
+                    addControl(Request.ApplicationPath + @"/admin/wuc/wucScanData.ascx");
                     break;
             }
         }
