@@ -30,7 +30,7 @@ public partial class _Default : System.Web.UI.Page
         }
         else
         {
-
+            addCtrl(PlaceHolderLogin, Request.ApplicationPath + @"/wuc/wucLoged.ascx");
         }
         if (Request.QueryString["t"] != null)
         {
