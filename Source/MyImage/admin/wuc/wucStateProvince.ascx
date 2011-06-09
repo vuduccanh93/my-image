@@ -2,6 +2,7 @@
 			<div class="top-bar">
 				<h1>  State Province </h1>
 			</div>
+<asp:Label ID="lblLabel" runat="server"></asp:Label>
 <asp:GridView ID="grvStateProvince" runat="server" AutoGenerateColumns="False" CssClass="listing" OnRowCancelingEdit="grvStateProvince_RowCancelingEdit" OnRowEditing="grvStateProvince_RowEditing" OnRowUpdated="grvStateProvince_RowUpdated" OnRowUpdating="grvStateProvince_RowUpdating" OnRowCommand="grvStateProvince_RowCommand" ShowFooter="True" AllowPaging="True" OnPageIndexChanging="grvStateProvince_PageIndexChanging" PageSize="5">
     <Columns>
         <asp:TemplateField HeaderText="ID" Visible="False">
@@ -63,3 +64,4 @@
     <EmptyDataTemplate>
     </EmptyDataTemplate>
 </asp:GridView>
+&nbsp;
