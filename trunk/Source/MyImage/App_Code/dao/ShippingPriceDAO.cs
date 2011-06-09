@@ -14,10 +14,18 @@ using System.Data.SqlClient;
 /// </summary>
 public class ShippingPriceDAO
 {
+    /**
+     * get all shipping price in database
+     * 
+     * */
     public static DataTable GetAll()
     {
         return DataUtil.executeStore("sp_ShippingPrice_GetAll", null);
     }
+    /**
+     * insert new
+     * 
+     * */
     public static Boolean Insert(ShippingPriceModel _Model)
     {
         SqlParameter[] param = new SqlParameter[3];
@@ -30,6 +38,10 @@ public class ShippingPriceDAO
         param[i++].Value = _Model.Price;
         return DataUtil.executeNonStore("sp_ShippingPrice_Insert", param);
     }
+    /**
+     * update by id
+     * 
+     * */
     public static Boolean Update(ShippingPriceModel _Model)
     {
         SqlParameter[] param = new SqlParameter[4];
@@ -44,6 +56,10 @@ public class ShippingPriceDAO
         param[i++].Value = _Model.Price;
         return DataUtil.executeNonStore("sp_ShippingPrice_Update", param);
     }
+    /**
+     * get all available shipping price of province/state
+     * 
+     * */
     public static DataTable GetAllBySPI(String s_Providers_id_)
     {
         SqlParameter[] param = new SqlParameter[1];

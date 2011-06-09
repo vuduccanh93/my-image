@@ -14,10 +14,17 @@ using System.Data.SqlClient;
 /// </summary>
 public class OrderDAO
 {
+    /**
+     * get all orders in database
+     * */
     public static DataTable GetAll()
     {
         return DataUtil.executeStore("sp_Order_GetAll", null);
     }
+
+    /**
+     * get customer's orders (used in admin page)
+     * */
     public static DataTable GetByCusId(String _CusId)
     {
         SqlParameter[] param = new SqlParameter[1];
@@ -26,6 +33,9 @@ public class OrderDAO
             param[i++].Value = _CusId;
             return DataUtil.executeStore("sp_Order_GetByCusId", param);
     }
+    /**
+     * get all available customer's orders (customer page)
+     * */
     public static DataTable Customer_GetAll(String _CusId)
     {
         SqlParameter[] param = new SqlParameter[1];
@@ -34,6 +44,9 @@ public class OrderDAO
         param[i++].Value = _CusId;
         return DataUtil.executeStore("sp_Order_Customer_GetAll", param);
     }
+    /**
+     * change status order
+     * */
     public static Boolean UpdateStatus(String _Id,String _Status)
     {
         SqlParameter[] param = new SqlParameter[2];
@@ -44,6 +57,9 @@ public class OrderDAO
         param[i++].Value = _Status;
         return DataUtil.executeNonStore("sp_Order_UpdateStatus", param);
     }
+    /**
+     * insert a new order
+     * */
     public static String Insert(OrderModel model)
     {
         SqlParameter[] param = new SqlParameter[1];
@@ -53,6 +69,9 @@ public class OrderDAO
         DataUtil.executeNonStore("sp_Order_Insert", param);
         return param[i].Value.ToString();
     }
+    /**
+     * update a order by its id
+     * */
     public static Boolean Update(OrderModel model)
     {
         SqlParameter[] param = new SqlParameter[12];
@@ -84,6 +103,9 @@ public class OrderDAO
         
         return DataUtil.executeNonStore("sp_Order_Update", param);
     }
+    /**
+     * get order info by id
+     * */
     public static OrderModel GetById(String _Id)
     {
         OrderModel _Model = null;
@@ -128,10 +150,16 @@ public class OrderDAO
         }
         return _Model;
     }
+    /**
+     * get all order status in database
+     * */
     public static DataTable Status_GetAll()
     {
         return DataUtil.executeStore("sp_Order_Status_GetAll", null);
     }
+    /**
+     * get orders have created beetwen from and to
+     * */
     public static DataTable Statistic_GetByFromTo(String _Opt,String _From,String _To)
     {
         SqlParameter[] param = new SqlParameter[3];
@@ -144,6 +172,9 @@ public class OrderDAO
         param[i++].Value = _To;
         return DataUtil.executeStore("sp_Order_Statistic_GetByFromTo", param);
     }
+    /**
+     * get orders, use to delete all unnecessary data
+     * */
     public static DataTable ScanData()
     {
         return DataUtil.executeStore("sp_Order_ScanData", null);

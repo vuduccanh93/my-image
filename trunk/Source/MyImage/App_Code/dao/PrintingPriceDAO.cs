@@ -13,12 +13,19 @@ using System.Data.SqlClient;
 /// Summary description for PrintingPricesDAO
 /// </summary>
 public class PrintingPriceDAO
-{
+{    
+    /**
+     * get printing price
+     * 
+     * */
 	public static DataTable GetAll()
     {
         return DataUtil.executeStore("sp_PrintingPrice_GetAll", null);
     }
-
+    /**
+     * update printing price by id
+     * 
+     * */
     public static Boolean Update(PrintingPriceModel _Model)
     {
         SqlParameter[] param = new SqlParameter[3];
@@ -32,7 +39,10 @@ public class PrintingPriceDAO
 
         return DataUtil.executeNonStore("sp_PrintingPrice_Update", param);
     }
-    
+    /**
+     * insert new printing price to database
+     * 
+     * */
     public static Boolean Insert(PrintingPriceModel _Model)
     {
         SqlParameter[] param = new SqlParameter[2];

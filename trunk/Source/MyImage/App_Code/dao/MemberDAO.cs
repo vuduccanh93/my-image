@@ -14,6 +14,9 @@ using System.Data.SqlClient;
 /// </summary>
 public class MemberDAO
 {
+    /**
+     * get all customers in database (#input id)
+     * */
     public static DataTable GetWithOutId(String _Id)
     {
         SqlParameter[] param = new SqlParameter[1];
@@ -22,6 +25,9 @@ public class MemberDAO
         param[i++].Value = _Id;
         return DataUtil.executeStore("sp_Members_GetWithOutId", param);
     }
+    /**
+     * get member by username and password
+     * */
     public static MemberModel GetByU_P(String _U, String _P)
     {
 
@@ -57,6 +63,9 @@ public class MemberDAO
         }
         return _Model;
     }
+    /**
+     * update member info by id
+     * */
     public static Boolean Update(MemberModel _Model)
     {
         SqlParameter[] param = new SqlParameter[5];
@@ -73,6 +82,9 @@ public class MemberDAO
         param[i++].Value = _Model.StatusId;
         return DataUtil.executeNonStore("sp_Member_Update", param);
     }
+    /**
+     * update member password by id
+     * */
     public static Boolean ChangePassword(String Id,String password )
     {
         SqlParameter[] param = new SqlParameter[2];

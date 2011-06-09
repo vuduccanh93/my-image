@@ -13,6 +13,10 @@ using System.Data.SqlClient;
 /// </summary>
 public class UploadDAO
 {
+    /**
+     * insert new one to databse
+     * 
+     * */
 	public static String Insert(UploadModel model)
 	{
         SqlParameter[] param = new SqlParameter[4];
@@ -28,6 +32,10 @@ public class UploadDAO
         DataUtil.executeNonStore("sp_Upload_Insert", param);
         return param[i].Value.ToString();
 	}
+    /**
+     * get image in update folder
+     * 
+     * */
     public static DataTable getImageByUId(String id)
     {
         SqlParameter[] param = new SqlParameter[1];
@@ -36,6 +44,10 @@ public class UploadDAO
         param[i++].Value = id;
         return DataUtil.executeStore("sp_Upload_GetImageByUId", param);
     }
+    /**
+     * update upload folder status
+     * 
+     * */
     public static Boolean UpdateStatus(String id)
     {
         SqlParameter[] param = new SqlParameter[1];

@@ -13,6 +13,10 @@ using System.Web.UI.HtmlControls;
 /// </summary>
 public class RoleDAO
 {
+    /**
+     * get all roles in database
+     * 
+     * */
     public static DataTable GetAll()
     {
         return DataUtil.executeStore("sp_Role_GetAll", null);

@@ -6,7 +6,6 @@ using System.Data.SqlClient;
 using System.Collections;
 using System.Configuration;
 using System.IO;
-
 public class DataUtil
 {
     protected static SqlConnection conn;

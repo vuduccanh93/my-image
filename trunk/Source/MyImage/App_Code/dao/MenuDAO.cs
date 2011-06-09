@@ -14,6 +14,9 @@ using System.Data.SqlClient;
 /// </summary>
 public class MenuDAO
 {
+    /**
+     * Get menu item by role id
+     * */
 	public static DataTable GetByRoleId(String _Rid){
         DataTable _Rs = null;
         try

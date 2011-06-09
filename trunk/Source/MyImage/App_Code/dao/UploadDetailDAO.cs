@@ -14,6 +14,10 @@ using System.Data.SqlClient;
 /// </summary>
 public class UploadDetailDAO
 {
+    /**
+     * insert a new one
+     * 
+     * */
     public static Boolean Insert(UploadDetailModel model)
     {
         SqlParameter[] param = new SqlParameter[2];
@@ -24,6 +28,10 @@ public class UploadDetailDAO
         param[i++].Value = model.Img;
         return DataUtil.executeNonStore("sp_UploadDetail_Insert", param);
     }
+    /**
+     * get by upload id
+     * 
+     * */
     public static DataTable GetByUploadId(String UploadId)
     {
         DataTable _Rs = null;
@@ -41,6 +49,10 @@ public class UploadDetailDAO
         }
         return _Rs;
     }
+    /**
+     * get by id
+     * 
+     * */
     public static UploadDetailModel GetById(String Id)
     {
         UploadDetailModel _Model = new UploadDetailModel();
@@ -59,6 +71,10 @@ public class UploadDetailDAO
         }
         return _Model;
     }
+    /**
+     * delete from database by id
+     * 
+     * */
     public static Boolean DeleteById(UploadDetailModel _Model)
     {
         SqlParameter[] param = new SqlParameter[1];

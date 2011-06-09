@@ -14,10 +14,16 @@ using System.Data.SqlClient;
 /// </summary>
 public class CustomerDAO
 {
+    /**
+     * get all customers
+     * */
     public static DataTable GetAll()
     {
         return DataUtil.executeStore("sp_Customer_GetAll", null);
     }
+    /**
+     * update existed customer info by his id
+     * */
     public static Boolean Update(CustomerModel _Model)
     {
         SqlParameter[] param = new SqlParameter[10];
@@ -44,6 +50,9 @@ public class CustomerDAO
         param[i++].Value = _Model.StatusId;
         return DataUtil.executeNonStore("sp_Customer_Update", param);
     }
+    /**
+     * insert new customer to database
+     * */
     public static Boolean Insert(CustomerModel _Model)
     {
         SqlParameter[] param = new SqlParameter[9];
@@ -68,6 +77,9 @@ public class CustomerDAO
         param[i++].Value = _Model.Address;
         return DataUtil.executeNonStore("sp_Customer_Insert", param);
     }
+    /**
+     * generate username
+     * */
     public static String GetUsername()
     {
         SqlParameter[] param = new SqlParameter[1];
@@ -76,6 +88,9 @@ public class CustomerDAO
         DataUtil.executeStore("sp_Customer_GetUsername", param);
         return param[0].Value.ToString();
     }
+    /**
+     * generate password
+     * */
     public static String GetPassword()
     {
         SqlParameter[] param = new SqlParameter[1];
@@ -84,6 +99,9 @@ public class CustomerDAO
         DataUtil.executeStore("sp_Customer_GetPassword", param);
         return param[0].Value.ToString();
     }
+    /**
+     * get customer info by username and password
+     * */
     public static CustomerModel GetByU_P(String _U, String _P)
     {
         CustomerModel _Model = null;

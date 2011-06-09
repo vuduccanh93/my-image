@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Collections;
 
+/*
+ * Included fixed variables
+ **/
 public class Constants
 {
     public static String DATE_FORMAT_YYYY_MM_DD_HH_MM_SS_S1 = "yyyy-mm-dd hh:mm:ss";
