@@ -28,8 +28,7 @@
                 <div class="header">
                 </div>
                 <div class="header_right_section">
-                    <asp:ContentPlaceHolder ID="ContentPlaceLogin" runat="server">
-                    </asp:ContentPlaceHolder>
+                    
                 </div>
             </div>
             <!-- end of header panel -->
@@ -44,9 +43,15 @@
                         <div class="cleaner">&nbsp;</div>
                     </div>
                     <div id="content_right">
+                        <div class="content_right_section">
+                            <asp:ContentPlaceHolder ID="ContentPlaceLogin" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </div>
+                        <div class="content_right_section">
                         <div class="ads_250_250">
                             <a href="http://www.templatemo.com" target="_parent">
-                                <img src="inc/img/shopping_cart_icon.jpg" alt="250x250 banner" /></a>
+                            <img src="inc/img/shopping_cart_icon.jpg" alt="250x250 banner" /></a>
+                        </div>
                         </div>
                         <div class="cleaner_h30">
                             &nbsp;</div>
